@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-// Importamos el video desde la ruta relativa en public
-import VideoIntro from '../../public/VideoIntro.mp4';
-// Importamos el logo desde la ruta relativa en public
-import logo from '../../public/icons/logo.png';
+// ⚠️ La ruta corregida para importar el video y el logo
+import VideoIntro from '/VideoIntro.mp4';
+import logo from '/icons/logo.png';
 
 const EntradaInmersiva = ({ onEntrar }) => {
   const texts = [
@@ -13,21 +12,17 @@ const EntradaInmersiva = ({ onEntrar }) => {
   ];
 
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [isMuted, setIsMuted] = useState(true); // Iniciamos el audio silenciado para evitar el error
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false); // Iniciamos el audio en pausa
+  const [isMuted, setIsMuted] = useState(true);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const audioRef = useRef(null);
 
-  // Manejador para el primer clic del usuario
   const handleUserInteraction = () => {
     if (!isAudioPlaying) {
       setIsAudioPlaying(true);
       setIsMuted(false);
     }
-    // Una vez que el usuario interactúa, puedes iniciar la lógica de entrada.
-    // Aquí puedes decidir si el clic en el botón "Habitarlo" también inicia el audio.
   };
 
-  // Efecto para la secuencia de texto
   useEffect(() => {
     let textTimer;
     if (currentTextIndex < texts.length) {
@@ -39,15 +34,13 @@ const EntradaInmersiva = ({ onEntrar }) => {
     return () => clearTimeout(textTimer);
   }, [currentTextIndex, texts.length]);
 
-
-  // Efecto para controlar la reproducción y mute del audio
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.muted = isMuted;
       if (isAudioPlaying) {
         audioRef.current.play().catch(e => {
           console.error("Error al intentar reproducir el audio:", e);
-          setIsAudioPlaying(false); // Si falla, lo ponemos en pausa
+          setIsAudioPlaying(false);
         });
       } else {
         audioRef.current.pause();
@@ -57,7 +50,6 @@ const EntradaInmersiva = ({ onEntrar }) => {
 
   const toggleMute = () => {
     setIsMuted(!isMuted);
-    // Si estaba silenciado y lo activas, asegúrate de que esté reproduciéndose
     if (isMuted && !isAudioPlaying) {
       setIsAudioPlaying(true);
     }
@@ -65,7 +57,6 @@ const EntradaInmersiva = ({ onEntrar }) => {
 
   const toggleAudioPlay = () => {
     setIsAudioPlaying(!isAudioPlaying);
-    // Si lo pones a reproducir, quita el silencio si estaba silenciado
     if (!isAudioPlaying && isMuted) {
       setIsMuted(false);
     }
@@ -74,6 +65,7 @@ const EntradaInmersiva = ({ onEntrar }) => {
   return (
     <div className="entrada-inmersiva" onClick={handleUserInteraction}>
       <video className="video-fondo" autoPlay loop muted playsInline>
+        {/* ⚠️ La ruta del video ha sido corregida */}
         <source src={VideoIntro} type="video/mp4" />
         Tu navegador no soporta la etiqueta de video.
       </video>

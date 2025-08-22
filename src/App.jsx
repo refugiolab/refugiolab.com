@@ -10,7 +10,8 @@ import ProgramaDeBienestar from './components/ProgramaDeBienestar';
 import Contacto from './components/Contacto';
 import Footer from './components/Footer';
 import './App.css';
-import logo from '../public/icons/logo.png';
+// ⚠️ La ruta corregida para importar el logo desde la raíz de `public`
+import logo from '/icons/logo.png';
 
 function SitioPrincipal() {
   return (
@@ -32,8 +33,6 @@ function SitioPrincipal() {
       <ProgramaDeBienestar />
       <Contacto />
       <Footer />
-      {/* ⚠️ Quitamos el placeholder que agregamos para la prueba de scroll */}
-      {/* <div style={{ height: '500px', backgroundColor: '#0a0a0a' }}></div> */}
     </div>
   );
 }
