@@ -1,6 +1,13 @@
 universo-refugio/
-├── node_modules
-├── public
+├── dist/
+│      ├── assets/
+│      ├── icons/
+│      ├── images/
+│      ├── index.html
+│      ├── Videointro.mp4
+│      ├── vite.svg
+├── node_modules/
+├── public/
 │      ├── icons/
 │              ├── instagram.png
 │              ├── whatsapp.png
