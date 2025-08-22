@@ -1,9 +1,11 @@
-[[headers]]
-  for = "/*"
-  [headers.values]
-  Content-Type = "text/javascript"
+[build]
+  # Comando que Netlify debe ejecutar para compilar el proyecto
+  command = "npm run build"
+  # Directorio donde se encuentran los archivos finales para el despliegue
+  publish = "dist"
 
-[[headers]]
-  for = "/index.html"
-  [headers.values]
-  Content-Type = "text/html"
+[[redirects]]
+  # Redirige cualquier ruta a index.html con un código de estado 200 (OK)
+  from = "/*"
+  to = "/index.html"
+  status = 200

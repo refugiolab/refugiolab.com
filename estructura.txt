@@ -52,6 +52,5 @@ universo-refugio/
 ├── package.json
 ├── package-lock.json
 ├── README.md
-├── _redirects
 ├── netlify.toml
 └── vite.config.js
