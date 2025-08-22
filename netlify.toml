@@ -2,3 +2,8 @@
   for = "/*"
   [headers.values]
   Content-Type = "text/javascript"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+  Content-Type = "text/html"
