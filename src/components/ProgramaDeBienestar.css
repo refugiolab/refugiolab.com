@@ -1,0 +1,70 @@
+/* Estilos para la sección Programa de Bienestar */
+.bienestar-section {
+  padding: 6rem 2rem;
+  background-color: rgba(255, 255, 255, 0.03); /* Un fondo muy sutil para diferenciarla */
+  color: var(--color-texto);
+  text-align: center;
+}
+
+.bienestar-header {
+  margin-bottom: 4rem;
+}
+
+.bienestar-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.bienestar-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 300;
+  color: #aaa;
+}
+
+.pilares-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pilar-card {
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.pilar-card:hover {
+  transform: translateY(-10px);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.pilar-titulo {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pilar-descripcion {
+  font-size: 1rem;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+  .bienestar-section {
+    padding: 4rem 1rem;
+  }
+  .pilares-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

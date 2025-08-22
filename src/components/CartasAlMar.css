@@ -1,0 +1,75 @@
+/* Estilos para la sección Cartas al Mar */
+.cartas-al-mar {
+  padding: 6rem 2rem;
+  background-color: #0a0a0a;
+  color: #f4f4f4;
+  text-align: center;
+}
+
+.cartas-header {
+  margin-bottom: 4rem;
+}
+
+.cartas-titulo {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.cartas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.carta-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* ESTILOS INICIALES PARA LA ANIMACIÓN ESCALONADA */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.carta-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* CLASE QUE SE AÑADE AL CONTENEDOR GRID CUANDO ESTÁ VISIBLE */
+.cartas-grid.is-in-view .carta-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.carta-subtitulo {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.carta-texto {
+  font-size: 1rem;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+  .cartas-al-mar {
+    padding: 4rem 1rem;
+  }
+  .cartas-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

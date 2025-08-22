@@ -1,0 +1,71 @@
+/* Variables CSS Globales */
+:root {
+  /* Paleta de Colores del Sitio */
+  --color-fondo: #0a0a0a;
+  --color-texto: #f4f4f4;
+  --color-primario: #ffffff;
+  --color-secundario: #aaa;
+  --color-acento: #e0e0e0;
+  
+  /* Fuentes */
+  --fuente-principal: "Cinzel", serif;
+  --fuente-secundaria: "Inter", sans-serif;
+  
+  /* Sombra de Textos */
+  --sombra-texto-clara: 0 0 5px rgba(255, 255, 255, 0.2);
+  --sombra-texto-oscura: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos de Tipografía y Carga de Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;700&family=Inter:wght@300;400;700&display=swap');
+
+/* Estilos Globales para el Cuerpo de la Página */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-secundaria);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Estilos de Elementos Básicos */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fuente-principal);
+  font-weight: 300;
+  color: var(--color-primario);
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.6;
+}
+
+a {
+  color: var(--color-acento);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-primario);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Regla para quitar los estilos por defecto de Vite */
+#root {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: block;
+}
