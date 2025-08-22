@@ -1,19 +1,189 @@
-/* Nuevos estilos para el logo y botón en la página principal */
-.main-content {
-  padding-top: 100px;
+/* Reset básico y estilos globales */
+:root {
+  /* Paleta de Colores del Sitio */
+  --color-fondo: #0a0a0a;
+  --color-texto: #f4f4f4;
+  --color-primario: #ffffff;
+  --color-secundario: #aaa;
+  --color-acento: #e0e0e0;
+  
+  /* Fuentes */
+  --fuente-principal: "Cinzel", serif;
+  --fuente-secundaria: "Inter", sans-serif;
+  
+  /* Sombra de Textos */
+  --sombra-texto-clara: 0 0 5px rgba(255, 255, 255, 0.2);
+  --sombra-texto-oscura: 0 0 10px rgba(0, 0, 0, 0.5);
+
+  /* Animación */
+  --duracion-animacion: 3.5s;
+}
+
+/* Estilos de Tipografía y Carga de Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;700&family=Inter:wght@300;400;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-secundaria);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: block;
+}
+
+/* --- Estilos para la Entrada Inmersiva --- */
+.entrada-inmersiva {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-fondo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+  z-index: 2;
+}
+
+.contenido-central {
+  position: relative;
   text-align: center;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* ⚠️ Quitamos height: 100vh; y overflow-y: auto; */
+  padding: 2rem;
 }
 
+.logo-refugio {
+  width: 550px;
+  max-width: 90%;
+  opacity: 0.7;
+  margin-bottom: 3rem;
+  transition: all 0.8s ease-in-out;
+}
+
+.logo-refugio.final {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.narrativa-texto {
+  min-height: 60px;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  line-height: 1.4;
+  text-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.frase-animada {
+  display: inline-block;
+  animation: fadeInOut var(--duracion-animacion) ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(15px); }
+  20% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-15px); }
+}
+
+.boton-entrar {
+  background: transparent;
+  border: 1px solid var(--color-texto);
+  color: var(--color-texto);
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  padding: 0.8rem 2rem;
+  text-transform: uppercase;
+  margin-top: 2rem;
+  transition: background-color 0.3s, color 0.3s;
+  animation: fadeIn 1.5s ease;
+}
+
+.boton-entrar:hover {
+  background-color: var(--color-texto);
+  color: var(--color-fondo);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.controles-musica {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 3;
+}
+
+.boton-audio {
+  background: none;
+  border: none;
+  color: var(--color-texto);
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.boton-audio:hover {
+  opacity: 1;
+}
+
+/* --- Estilos para las Páginas (secciones) del sitio --- */
+
+/* Ajusta el padding superior del contenido para evitar que quede oculto
+   detrás del header fijo. La altura del header es de aproximadamente 60px. */
+.main-content {
+  padding-top: 60px;
+  min-height: calc(100vh - 60px); /* Ajustamos la altura para que ocupe el espacio restante */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos para el logo principal y el botón en la página de inicio */
 .main-content-header {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .logo-principal {
@@ -36,96 +206,4 @@
 .boton-principal:hover {
   background-color: var(--color-texto);
   color: var(--color-fondo);
-}
-
-/* Estilos para el Header */
-.main-header {
-  position: fixed; /* Lo fijamos en la parte superior */
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 1rem 2rem; /* Espaciado interno */
-  background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
-  color: var(--color-texto);
-  z-index: 100; /* Asegura que esté por encima de otros elementos */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra sutil */
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-between; /* Alinea el logo a la izquierda y la navegación a la derecha */
-  align-items: center;
-  max-width: 1400px; /* Ancho máximo para el contenido del header */
-  margin: 0 auto; /* Centra el contenido */
-}
-
-.header-logo img {
-  height: 50px; /* Ajusta la altura del logo */
-  width: auto;
-  transition: transform 0.3s ease;
-}
-
-.header-logo img:hover {
-  transform: scale(1.05); /* Pequeño efecto al pasar el mouse */
-}
-
-.main-nav ul {
-  list-style: none; /* Elimina los puntos de la lista */
-  margin: 0;
-  padding: 0;
-  display: flex; /* Alinea los elementos de navegación en una fila */
-  gap: 2rem; /* Espacio entre los elementos de navegación */
-}
-
-.main-nav a {
-  color: var(--color-texto);
-  text-decoration: none; /* Elimina el subrayado de los enlaces */
-  font-size: 1rem;
-  font-weight: 400;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding-bottom: 0.3rem;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.main-nav a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--color-texto);
-  transition: width 0.3s ease;
-}
-
-.main-nav a:hover {
-  color: #fff; /* Color más brillante al pasar el mouse */
-}
-
-.main-nav a:hover::after {
-  width: 100%; /* Efecto de subrayado al pasar el mouse */
-}
-
-/* Media Queries para responsividad */
-@media (max-width: 768px) {
-  .main-header {
-    padding: 1rem;
-  }
-
-  .header-content {
-    flex-direction: column; /* Apila el logo y la navegación en pantallas pequeñas */
-    text-align: center;
-  }
-
-  .main-nav ul {
-    flex-direction: column; /* Apila los enlaces de navegación */
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  .header-logo {
-    margin-bottom: 1rem;
-  }
 }

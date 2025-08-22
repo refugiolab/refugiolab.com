@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import EntradaInmersiva from './components/EntradaInmersiva';
 import Header from './components/Header';
 import Manifiesto from './components/Manifiesto';
@@ -10,49 +10,75 @@ import ProgramaDeBienestar from './components/ProgramaDeBienestar';
 import Contacto from './components/Contacto';
 import Footer from './components/Footer';
 import './App.css';
-// ⚠️ Eliminamos la importación del logo desde la raíz de `public`
-// import logo from '/icons/logo.png'; // Ya no es necesario importar
-
-function SitioPrincipal() {
-  return (
-    <div id="top">
-      <Header />
-      <main className="main-content">
-        <div className="main-content-header">
-          {/* ⚠️ Referenciamos el logo directamente por su ruta pública */}
-          <img src="/icons/logo.png" alt="Refugio Logo" className="logo-principal" />
-          {/* ⚠️ El botón "Habitarlo" ha sido eliminado */}
-        </div>
-        <h1>Bienvenid@ al Universo Refugio</h1>
-        <p>Aquí irá la navegación principal y el resto de las secciones.</p>
-      </main>
-      <Manifiesto />
-      <LifeWear />
-      <CartasAlMar />
-      <NudosDeSal />
-      <DisenarTuRefugio />
-      <ProgramaDeBienestar />
-      <Contacto />
-      <Footer />
-    </div>
-  );
-}
 
 function App() {
-  const [mostrarSitio, setMostrarSitio] = useState(false);
-
-  const handleEntrar = () => {
-    setMostrarSitio(true);
-  };
-
   return (
-    <>
-      {mostrarSitio ? (
-        <SitioPrincipal />
-      ) : (
-        <EntradaInmersiva onEntrar={handleEntrar} />
-      )}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<EntradaInmersiva />} />
+        {/* Aquí la página de inicio es la que tiene la entrada inmersiva.
+        Cuando hagas clic en el botón "Entrar", irás a la página principal. */}
+        <Route path="/home" element={
+          <>
+            <Header />
+            <main className="main-content">
+              <h1>Bienvenid@ al Universo Refugio</h1>
+            </main>
+            <Footer />
+          </>
+        } />
+        {/* Rutas para cada una de las secciones */}
+        <Route path="/manifiesto" element={
+          <>
+            <Header />
+            <Manifiesto />
+            <Footer />
+          </>
+        } />
+        <Route path="/lifewear" element={
+          <>
+            <Header />
+            <LifeWear />
+            <Footer />
+          </>
+        } />
+        <Route path="/cartas-al-mar" element={
+          <>
+            <Header />
+            <CartasAlMar />
+            <Footer />
+          </>
+        } />
+        <Route path="/nudos-de-sal" element={
+          <>
+            <Header />
+            <NudosDeSal />
+            <Footer />
+          </>
+        } />
+        <Route path="/disenar-tu-refugio" element={
+          <>
+            <Header />
+            <DisenarTuRefugio />
+            <Footer />
+          </>
+        } />
+        <Route path="/programa-de-bienestar" element={
+          <>
+            <Header />
+            <ProgramaDeBienestar />
+            <Footer />
+          </>
+        } />
+        <Route path="/contacto" element={
+          <>
+            <Header />
+            <Contacto />
+            <Footer />
+          </>
+        } />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

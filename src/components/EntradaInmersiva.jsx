@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-// ⚠️ Eliminamos las importaciones de VideoIntro y logo.
-// import VideoIntro from '/VideoIntro.mp4'; // Ya no es necesario importar
-// import logo from '/icons/logo.png'; // Ya no es necesario importar
+import { useNavigate } from 'react-router-dom'; // ⚠️ Importamos useNavigate
 
-const EntradaInmersiva = ({ onEntrar }) => {
+const EntradaInmersiva = () => { // ⚠️ Eliminamos la prop onEntrar
+  const navigate = useNavigate(); // ⚠️ Inicializamos el hook useNavigate
+  
   const texts = [
     "La vida es un ritual.",
     "Encontrá tu propio ritmo.",
@@ -21,6 +21,11 @@ const EntradaInmersiva = ({ onEntrar }) => {
       setIsAudioPlaying(true);
       setIsMuted(false);
     }
+  };
+
+  // ⚠️ Nueva función para manejar el clic del botón
+  const handleEntrar = () => {
+    navigate('/home'); // ⚠️ Navegamos a la ruta /home
   };
 
   useEffect(() => {
@@ -65,7 +70,6 @@ const EntradaInmersiva = ({ onEntrar }) => {
   return (
     <div className="entrada-inmersiva" onClick={handleUserInteraction}>
       <video className="video-fondo" autoPlay loop muted playsInline>
-        {/* ⚠️ Referenciamos el video directamente por su ruta pública */}
         <source src="/VideoIntro.mp4" type="video/mp4" />
         Tu navegador no soporta la etiqueta de video.
       </video>
@@ -77,9 +81,9 @@ const EntradaInmersiva = ({ onEntrar }) => {
       <div className="overlay"></div>
 
       <div className="contenido-central">
-        {/* ⚠️ Referenciamos el logo directamente por su ruta pública */}
         <img src="/icons/logo.png" alt="Refugio Logo" className="logo-refugio final" />
-        <button className="boton-entrar" onClick={onEntrar}>
+        {/* ⚠️ El onClick ahora llama a la nueva función handleEntrar */}
+        <button className="boton-entrar" onClick={handleEntrar}>
           Habitarlo
         </button>
         <div className="narrativa-texto">
