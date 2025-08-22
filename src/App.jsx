@@ -10,8 +10,8 @@ import ProgramaDeBienestar from './components/ProgramaDeBienestar';
 import Contacto from './components/Contacto';
 import Footer from './components/Footer';
 import './App.css';
-// ⚠️ La ruta corregida para importar el logo desde la raíz de `public`
-import logo from '/icons/logo.png';
+// ⚠️ Eliminamos la importación del logo desde la raíz de `public`
+// import logo from '/icons/logo.png'; // Ya no es necesario importar
 
 function SitioPrincipal() {
   return (
@@ -19,7 +19,8 @@ function SitioPrincipal() {
       <Header />
       <main className="main-content">
         <div className="main-content-header">
-          <img src={logo} alt="Refugio Logo" className="logo-principal" />
+          {/* ⚠️ Referenciamos el logo directamente por su ruta pública */}
+          <img src="/icons/logo.png" alt="Refugio Logo" className="logo-principal" />
           {/* ⚠️ El botón "Habitarlo" ha sido eliminado */}
         </div>
         <h1>Bienvenid@ al Universo Refugio</h1>

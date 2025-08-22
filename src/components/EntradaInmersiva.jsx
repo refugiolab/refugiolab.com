@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-// ⚠️ La ruta corregida para importar el video y el logo
-import VideoIntro from '/VideoIntro.mp4';
-import logo from '/icons/logo.png';
+// ⚠️ Eliminamos las importaciones de VideoIntro y logo.
+// import VideoIntro from '/VideoIntro.mp4'; // Ya no es necesario importar
+// import logo from '/icons/logo.png'; // Ya no es necesario importar
 
 const EntradaInmersiva = ({ onEntrar }) => {
   const texts = [
@@ -65,8 +65,8 @@ const EntradaInmersiva = ({ onEntrar }) => {
   return (
     <div className="entrada-inmersiva" onClick={handleUserInteraction}>
       <video className="video-fondo" autoPlay loop muted playsInline>
-        {/* ⚠️ La ruta del video ha sido corregida */}
-        <source src={VideoIntro} type="video/mp4" />
+        {/* ⚠️ Referenciamos el video directamente por su ruta pública */}
+        <source src="/VideoIntro.mp4" type="video/mp4" />
         Tu navegador no soporta la etiqueta de video.
       </video>
       <audio ref={audioRef} autoPlay loop muted={isMuted}>
@@ -77,7 +77,8 @@ const EntradaInmersiva = ({ onEntrar }) => {
       <div className="overlay"></div>
 
       <div className="contenido-central">
-        <img src={logo} alt="Refugio Logo" className="logo-refugio final" />
+        {/* ⚠️ Referenciamos el logo directamente por su ruta pública */}
+        <img src="/icons/logo.png" alt="Refugio Logo" className="logo-refugio final" />
         <button className="boton-entrar" onClick={onEntrar}>
           Habitarlo
         </button>
