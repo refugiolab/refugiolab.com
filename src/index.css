@@ -1,3 +1,6 @@
+/* Estilos de Tipografía y Carga de Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;700&family=Inter:wght@300;400;700&display=swap');
+
 /* Variables CSS Globales */
 :root {
   /* Paleta de Colores del Sitio */
@@ -15,9 +18,6 @@
   --sombra-texto-clara: 0 0 5px rgba(255, 255, 255, 0.2);
   --sombra-texto-oscura: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-
-/* Estilos de Tipografía y Carga de Fuentes */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;700&family=Inter:wght@300;400;700&display=swap');
 
 /* Estilos Globales para el Cuerpo de la Página */
 html {
