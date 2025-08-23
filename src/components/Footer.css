@@ -1,7 +1,7 @@
 /* Estilos para el Footer */
 .main-footer {
-  background-color: var(--azul-profundo); /* Fondo principal del footer */
-  color: var(--blanco-horizonte); /* Color del texto general */
+  background-color: var(--azul-profundo);
+  color: var(--blanco-horizonte);
   padding: 4rem 2rem 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -23,16 +23,17 @@
 .footer-logo p {
   font-size: 0.9rem;
   font-style: italic;
-  color: var(--gris-bruma); /* Color para texto secundario o sutil */
+  color: var(--gris-bruma);
 }
 
-.footer-links h4 {
+.footer-links h4,
+.footer-newsletter-section h4 {
   font-size: 1.2rem;
   font-weight: 500;
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--blanco-horizonte); /* Títulos de enlaces con el blanco de la paleta */
+  color: var(--blanco-horizonte);
 }
 
 .footer-links ul {
@@ -46,7 +47,7 @@
 }
 
 .footer-links a {
-  color: var(--gris-bruma); /* Color de enlaces normal */
+  color: var(--gris-bruma);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 300;
@@ -54,7 +55,7 @@
 }
 
 .footer-links a:hover {
-  color: var(--blanco-horizonte); /* Color de enlaces en hover */
+  color: var(--blanco-horizonte);
 }
 
 .footer-bottom {
@@ -66,7 +67,7 @@
 
 .footer-bottom p {
   font-size: 0.8rem;
-  color: var(--oliva-suave); /* Un color más tenue para el copyright */
+  color: var(--oliva-suave);
 }
 
 /* Media Queries para responsividad */
@@ -76,7 +77,8 @@
     text-align: center;
   }
   
-  .footer-links {
+  .footer-links,
+  .footer-newsletter-section {
     margin-bottom: 1.5rem;
   }
   
@@ -85,6 +87,7 @@
     flex-direction: row;
     justify-content: center;
     gap: 1.5rem;
+    flex-wrap: wrap;
   }
 }
 

@@ -1,0 +1,90 @@
+/* Estilos para el componente de Newsletter */
+.newsletter-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.newsletter-section h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--blanco-horizonte);
+}
+
+.newsletter-text {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--gris-bruma);
+  max-width: 400px;
+  margin-bottom: 1.5rem;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+.newsletter-input {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--gris-bruma);
+  border-radius: 5px;
+  background-color: transparent;
+  color: var(--blanco-horizonte);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter-input::placeholder {
+  color: var(--gris-bruma);
+  opacity: 0.7;
+}
+
+.newsletter-input:focus {
+  outline: none;
+  border-color: var(--blanco-horizonte);
+}
+
+.newsletter-button {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--blanco-horizonte);
+  color: var(--azul-profundo);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.newsletter-button:hover {
+  background-color: var(--oliva-suave);
+}
+
+.newsletter-message {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.newsletter-message.success {
+  color: var(--oliva-suave);
+}
+
+.newsletter-message.error {
+  color: #ff6347; /* Un rojo para errores */
+}
+
+/* Media Queries para responsividad */
+@media (min-width: 768px) {
+  .newsletter-section {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
