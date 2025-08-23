@@ -1,10 +1,4 @@
 :root {
-  /* Variables para una fácil personalización */
-  /* NOTA: Estas variables ahora se redefinen desde index.css para mayor consistencia */
-  /* --color-texto-claro: #f4f4f4; */
-  /* --color-texto-oscuro: #333; */
-  /* --color-fondo-claro: rgba(255, 255, 255, 0.2); */
-  /* --color-fondo-oscuro: rgba(0, 0, 0, 0.4); */
   --transicion-suave: all 0.5s ease-in-out;
 }
 
@@ -19,7 +13,7 @@
   align-items: center;
   text-align: center;
   color: var(--blanco-horizonte); /* Usamos el blanco de la paleta */
-  font-family: 'Poppins', sans-serif; /* Asume una fuente predeterminada, puedes ajustarla */
+  font-family: var(--fuente-secundaria); /* Usa tu fuente secundaria para el texto general */
 }
 
 /* Estilo para el video de fondo */
@@ -73,7 +67,7 @@
 
 /* Estilo para el botón de "Entrar" */
 .boton-entrar {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--fuente-secundaria); /* Usa tu fuente secundaria */
   font-size: 1.2rem;
   font-weight: 500;
   color: var(--blanco-horizonte); /* Usamos el blanco de la paleta */
@@ -81,7 +75,8 @@
   border: 2px solid var(--blanco-horizonte); /* Borde con el blanco de la paleta */
   padding: 0.8rem 2.5rem;
   cursor: pointer;
-  text-transform: uppercase;
+  border-radius: 50px; /* ¡Botón más redondo! */
+  text-transform: none; /* ¡Quitadas las mayúsculas! o puedes usar 'capitalize' */
   letter-spacing: 2px;
   transition: var(--transicion-suave);
   opacity: 0;
@@ -100,6 +95,7 @@
   opacity: 0;
   animation: fade-in 1.5s ease-out forwards;
   animation-delay: 3s;
+  font-family: var(--fuente-secundaria); /* Usa tu fuente secundaria */
 }
 
 /* Animación para el texto de la narrativa */
@@ -109,6 +105,7 @@
   letter-spacing: 1.5px;
   opacity: 0;
   animation: fade-in-scale 1.5s ease-in-out forwards;
+  font-family: var(--fuente-secundaria); /* Usa tu fuente secundaria */
 }
 
 /* Contenedor de los controles de música */

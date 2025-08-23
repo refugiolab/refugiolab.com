@@ -51,6 +51,11 @@ body {
   display: block;
 }
 
+/* Estilos para los títulos globales */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fuente-principal); /* Aplicamos NewYork a todos los títulos */
+}
+
 /* Estilos para la entrada inmersiva */
 /* Asegúrate de que los textos aquí usen las nuevas variables de fuente si lo deseas */
 .entrada-inmersiva {

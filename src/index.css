@@ -1,13 +1,15 @@
 /* Declaración de las fuentes personalizadas */
 @font-face {
   font-family: 'NewYork';
-  src: url('./assets/fonts/NewYork.otf') format('opentype');
+  /* Asegúrate de que estas rutas sean correctas y usa .woff2/.woff si los tienes */
+  src: url('./assets/fonts/NewYork.otf') format('opentype'); 
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Recoleta';
+  /* Asegúrate de que estas rutas sean correctas y usa .woff2/.woff si los tienes */
   src: url('./assets/fonts/Recoleta.otf') format('opentype');
   font-weight: normal;
   font-style: normal;

@@ -4,10 +4,12 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding: 0 1rem; /* Añadir padding horizontal para evitar que el contenido se pegue a los bordes */
+  box-sizing: border-box; /* Asegura que padding no cause overflow */
 }
 
 .newsletter-section h4 {
-  font-size: 1.2rem;
+  font-size: 1.1rem; /* Ajuste del título para que sea más pequeño */
   font-weight: 500;
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -20,7 +22,7 @@
   font-size: 0.9rem;
   font-weight: 300;
   color: var(--gris-bruma); /* Usa el color de la paleta */
-  max-width: 400px;
+  max-width: 350px; /* Reducido un poco para móviles */
   margin-bottom: 1.5rem;
   font-family: var(--fuente-secundaria); /* Aplica Recoleta al texto */
 }
@@ -30,7 +32,7 @@
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  max-width: 300px;
+  max-width: 280px; /* Asegura que el formulario no sea demasiado ancho en móvil */
 }
 
 .newsletter-input {
@@ -42,6 +44,7 @@
   font-size: 1rem;
   transition: border-color 0.3s ease;
   font-family: var(--fuente-secundaria); /* Aplica Recoleta */
+  box-sizing: border-box; /* Asegura que padding no cause overflow */
 }
 
 .newsletter-input::placeholder {
@@ -65,6 +68,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
   font-family: var(--fuente-secundaria); /* Aplica Recoleta */
+  box-sizing: border-box; /* Asegura que padding no cause overflow */
 }
 
 .newsletter-button:hover {
