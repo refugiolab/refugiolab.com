@@ -1,9 +1,10 @@
 :root {
   /* Variables para una fácil personalización */
-  --color-texto-claro: #f4f4f4;
-  --color-texto-oscuro: #333;
-  --color-fondo-claro: rgba(255, 255, 255, 0.2);
-  --color-fondo-oscuro: rgba(0, 0, 0, 0.4);
+  /* NOTA: Estas variables ahora se redefinen desde index.css para mayor consistencia */
+  /* --color-texto-claro: #f4f4f4; */
+  /* --color-texto-oscuro: #333; */
+  /* --color-fondo-claro: rgba(255, 255, 255, 0.2); */
+  /* --color-fondo-oscuro: rgba(0, 0, 0, 0.4); */
   --transicion-suave: all 0.5s ease-in-out;
 }
 
@@ -17,7 +18,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: var(--color-texto-claro);
+  color: var(--blanco-horizonte); /* Usamos el blanco de la paleta */
   font-family: 'Poppins', sans-serif; /* Asume una fuente predeterminada, puedes ajustarla */
 }
 
@@ -39,7 +40,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--color-fondo-oscuro);
+  background-color: rgba(var(--azul-profundo-rgb), 0.4); /* Usamos el azul profundo con opacidad */
   z-index: 2;
 }
 
@@ -75,9 +76,9 @@
   font-family: 'Poppins', sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
-  color: var(--color-texto-claro);
+  color: var(--blanco-horizonte); /* Usamos el blanco de la paleta */
   background-color: transparent;
-  border: 2px solid var(--color-texto-claro);
+  border: 2px solid var(--blanco-horizonte); /* Borde con el blanco de la paleta */
   padding: 0.8rem 2.5rem;
   cursor: pointer;
   text-transform: uppercase;
@@ -89,8 +90,8 @@
 }
 
 .boton-entrar:hover {
-  background-color: var(--color-texto-claro);
-  color: var(--color-fondo-oscuro);
+  background-color: var(--blanco-horizonte); /* Fondo en hover con el blanco de la paleta */
+  color: var(--azul-profundo); /* Color del texto en hover con el azul profundo */
 }
 
 /* Contenedor del texto de la narrativa */
@@ -123,8 +124,8 @@
 /* Botones de audio */
 .boton-audio {
   background-color: transparent;
-  border: 1px solid var(--color-texto-claro);
-  color: var(--color-texto-claro);
+  border: 1px solid var(--blanco-horizonte); /* Borde con el blanco de la paleta */
+  color: var(--blanco-horizonte); /* Texto con el blanco de la paleta */
   font-size: 1.2rem;
   width: 40px;
   height: 40px;
@@ -137,8 +138,8 @@
 }
 
 .boton-audio:hover {
-  background-color: var(--color-texto-claro);
-  color: var(--color-fondo-oscuro);
+  background-color: var(--blanco-horizonte); /* Fondo en hover con el blanco de la paleta */
+  color: var(--azul-profundo); /* Color del texto en hover con el azul profundo */
 }
 
 /* Keyframes para las animaciones */

@@ -2,6 +2,8 @@
   padding: 2rem 0; /* Espacio arriba y abajo para el contenido */
   max-width: 1200px;
   margin: 0 auto;
+  color: var(--color-texto); /* Aseguramos que el texto dentro del layout use el color global */
+  background-color: var(--color-fondo); /* Aseguramos que el fondo del layout use el color global */
 }
 
 @media (max-width: 768px) {

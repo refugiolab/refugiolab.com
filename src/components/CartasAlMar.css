@@ -1,8 +1,8 @@
 /* Estilos para la sección Cartas al Mar */
 .cartas-al-mar {
   padding: 6rem 2rem;
-  background-color: #0a0a0a;
-  color: #f4f4f4;
+  background-color: var(--azul-profundo); /* Fondo con el azul profundo */
+  color: var(--blanco-horizonte); /* Texto principal con el blanco */
   text-align: center;
 }
 
@@ -26,11 +26,11 @@
 }
 
 .carta-item {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(var(--arena-atemporal-rgb), 0.1); /* Fondo de la tarjeta con arena atemporal y opacidad */
   padding: 2.5rem;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(var(--arena-atemporal-rgb), 0.2); /* Borde con arena atemporal y opacidad */
+  box-shadow: 0 4px 15px rgba(var(--azul-profundo-rgb), 0.2); /* Sombra con el azul profundo */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   /* ESTILOS INICIALES PARA LA ANIMACIÓN ESCALONADA */
@@ -40,7 +40,7 @@
 
 .carta-item:hover {
   transform: translateY(-10px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 20px rgba(var(--azul-profundo-rgb), 0.4); /* Sombra en hover con el azul profundo */
 }
 
 /* CLASE QUE SE AÑADE AL CONTENEDOR GRID CUANDO ESTÁ VISIBLE */
@@ -55,12 +55,14 @@
   font-weight: 400;
   margin-bottom: 1.5rem;
   letter-spacing: 1px;
+  color: var(--cobre-raiz); /* Subtítulo con el color cobre */
 }
 
 .carta-texto {
   font-size: 1rem;
   line-height: 1.8;
   font-weight: 300;
+  color: var(--blanco-horizonte); /* Texto de la carta con el blanco */
 }
 
 /* Media Queries para responsividad */

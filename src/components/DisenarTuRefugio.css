@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-texto);
+  color: var(--blanco-horizonte); /* Texto principal con el blanco */
   text-align: center;
   padding: 6rem 2rem;
 }
@@ -20,7 +20,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Oscurece la imagen de fondo */
+  background-color: rgba(var(--azul-profundo-rgb), 0.6); /* Overlay con el azul profundo y opacidad */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,8 +65,8 @@
 .refugio-form input,
 .refugio-form textarea {
   background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: var(--color-texto);
+  border: 1px solid rgba(var(--gris-bruma-rgb), 0.4); /* Borde con gris bruma y opacidad */
+  color: var(--blanco-horizonte); /* Color del texto */
   padding: 1rem;
   font-size: 1rem;
   transition: border-color 0.3s ease;
@@ -76,7 +76,7 @@
 .refugio-form input:focus,
 .refugio-form textarea:focus {
   outline: none;
-  border-color: var(--color-texto);
+  border-color: var(--blanco-horizonte); /* Borde enfocado con el blanco */
 }
 
 .refugio-form textarea {
@@ -84,8 +84,8 @@
 }
 
 .refugio-boton {
-  background: var(--color-texto);
-  color: var(--color-fondo);
+  background: var(--cobre-raiz); /* Botón con el color cobre */
+  color: var(--blanco-horizonte); /* Texto del botón con el blanco */
   padding: 1rem 2rem;
   border: none;
   cursor: pointer;
@@ -97,7 +97,8 @@
 }
 
 .refugio-boton:hover {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--oro-amanecer); /* Hover con el oro amanecer */
+  color: var(--azul-profundo); /* Texto en hover con el azul profundo */
 }
 
 /* Estilos para el Modal personalizado */
@@ -107,7 +108,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(var(--azul-profundo-rgb), 0.7); /* Overlay del modal con azul profundo */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -115,11 +116,11 @@
 }
 
 .modal-content {
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
+  background-color: var(--azul-profundo); /* Fondo del modal con azul profundo */
+  color: var(--blanco-horizonte); /* Texto del modal con el blanco */
   padding: 2.5rem;
   border-radius: 8px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 20px rgba(var(--azul-profundo-rgb), 0.5); /* Sombra con azul profundo */
   text-align: center;
   max-width: 400px;
   width: 90%;
@@ -130,7 +131,7 @@
 .modal-content h3 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: var(--color-primario);
+  color: var(--oro-amanecer); /* Título del modal con oro amanecer */
 }
 
 .modal-content p {
@@ -140,8 +141,8 @@
 }
 
 .modal-close-button {
-  background-color: var(--color-texto);
-  color: var(--color-fondo);
+  background-color: var(--cobre-raiz); /* Botón de cierre con cobre */
+  color: var(--blanco-horizonte); /* Texto del botón de cierre con blanco */
   padding: 0.8rem 1.8rem;
   border: none;
   border-radius: 5px;
@@ -152,7 +153,7 @@
 }
 
 .modal-close-button:hover {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--oro-amanecer); /* Hover del botón de cierre con oro amanecer */
 }
 
 @keyframes modal-appear {

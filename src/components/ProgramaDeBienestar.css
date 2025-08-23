@@ -1,8 +1,8 @@
 /* Estilos para la sección Programa de Bienestar */
 .bienestar-section {
   padding: 6rem 2rem;
-  background-color: rgba(255, 255, 255, 0.03); /* Un fondo muy sutil para diferenciarla */
-  color: var(--color-texto);
+  background-color: rgba(var(--azul-profundo-rgb), 0.05); /* Un fondo muy sutil con azul profundo */
+  color: var(--blanco-horizonte); /* Texto principal con el blanco */
   text-align: center;
 }
 
@@ -20,7 +20,7 @@
 .bienestar-subtitle {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   font-weight: 300;
-  color: #aaa;
+  color: var(--gris-bruma); /* Subtítulo con un gris sutil */
 }
 
 .pilares-grid {
@@ -44,9 +44,9 @@
 
 .pilar-card {
   padding: 2.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(var(--gris-bruma-rgb), 0.1); /* Borde con gris bruma y opacidad */
   border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(var(--arena-atemporal-rgb), 0.1); /* Fondo de tarjeta con arena atemporal y opacidad */
   transition: transform 0.3s ease, background-color 0.3s ease;
 
   /* ESTILOS INICIALES PARA LA ANIMACIÓN ESCALONADA DE LAS TARJETAS */
@@ -56,7 +56,7 @@
 
 .pilar-card:hover {
   transform: translateY(-10px);
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(var(--azul-profundo-rgb), 0.4); /* Fondo en hover con azul profundo */
 }
 
 /* CLASE QUE SE AÑADE AL CONTENEDOR GRID CUANDO ESTÁ VISIBLE */
@@ -72,12 +72,14 @@
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  color: var(--cobre-raiz); /* Título del pilar con el color cobre */
 }
 
 .pilar-descripcion {
   font-size: 1rem;
   line-height: 1.8;
   font-weight: 300;
+  color: var(--blanco-horizonte); /* Descripción con el blanco */
 }
 
 /* Media Queries para responsividad */

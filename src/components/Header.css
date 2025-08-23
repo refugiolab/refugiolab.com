@@ -5,8 +5,8 @@
   left: 0;
   width: 100%;
   padding: 1rem 2rem;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: var(--color-texto);
+  background-color: rgba(0, 0, 0, 0.7); /* Mantenemos una opacidad directa para el fondo oscuro */
+  color: var(--blanco-horizonte); /* Usamos el blanco de la paleta */
   z-index: 100;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
@@ -38,7 +38,7 @@
 }
 
 .main-nav a {
-  color: var(--color-texto);
+  color: var(--blanco-horizonte); /* Usamos el blanco de la paleta */
   text-decoration: none;
   font-size: 1rem;
   font-weight: 400;
@@ -56,12 +56,12 @@
   bottom: 0;
   width: 0;
   height: 1px;
-  background-color: var(--color-texto);
+  background-color: var(--blanco-horizonte); /* Usamos el blanco de la paleta */
   transition: width 0.3s ease;
 }
 
 .main-nav a:hover {
-  color: #fff;
+  color: var(--blanco-horizonte); /* El color de texto en hover sigue siendo el blanco de la paleta */
 }
 
 .main-nav a:hover::after {

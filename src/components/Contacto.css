@@ -1,8 +1,8 @@
 /* Estilos para la sección Contacto */
 .contacto-section {
   padding: 6rem 2rem;
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
+  background-color: var(--azul-profundo); /* Fondo principal de la sección */
+  color: var(--blanco-horizonte); /* Texto principal con el blanco */
 }
 
 .contacto-header {
@@ -20,7 +20,7 @@
 .contacto-subtitulo {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   font-weight: 300;
-  color: #aaa;
+  color: var(--gris-bruma); /* Subtítulo con un gris sutil */
 }
 
 .contacto-contenido {
@@ -66,14 +66,14 @@
 }
 
 .redes-sociales a {
-  color: var(--color-texto);
+  color: var(--cobre-raiz); /* Enlaces de redes sociales con el color cobre */
   font-size: 1rem;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .redes-sociales a:hover {
-  color: #fff;
+  color: var(--oro-amanecer); /* Hover con el oro amanecer */
 }
 
 .contacto-form-container {
@@ -88,9 +88,9 @@
 
 .contacto-form input,
 .contacto-form textarea {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--color-texto);
+  background-color: rgba(var(--gris-bruma-rgb), 0.05); /* Fondo de input con gris bruma y opacidad */
+  border: 1px solid rgba(var(--gris-bruma-rgb), 0.2); /* Borde con gris bruma y opacidad */
+  color: var(--blanco-horizonte); /* Color del texto */
   padding: 1rem;
   font-size: 1rem;
   transition: border-color 0.3s ease;
@@ -99,7 +99,7 @@
 .contacto-form input:focus,
 .contacto-form textarea:focus {
   outline: none;
-  border-color: var(--color-texto);
+  border-color: var(--cobre-raiz); /* Borde enfocado con el color cobre */
 }
 
 .contacto-form textarea {
@@ -108,8 +108,8 @@
 }
 
 .contacto-boton {
-  background: var(--color-texto);
-  color: var(--color-fondo);
+  background: var(--cobre-raiz); /* Botón con el color cobre */
+  color: var(--blanco-horizonte); /* Texto del botón con el blanco */
   padding: 1rem 2rem;
   border: none;
   cursor: pointer;
@@ -121,7 +121,8 @@
 }
 
 .contacto-boton:hover {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--oro-amanecer); /* Hover con el oro amanecer */
+  color: var(--azul-profundo); /* Texto en hover con el azul profundo */
 }
 
 /* Estilos para el Modal personalizado (reutilizados del componente Diseñar tu Refugio) */
@@ -131,7 +132,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(var(--azul-profundo-rgb), 0.7); /* Overlay del modal con azul profundo */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -139,11 +140,11 @@
 }
 
 .modal-content {
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
+  background-color: var(--azul-profundo); /* Fondo del modal con azul profundo */
+  color: var(--blanco-horizonte); /* Texto del modal con el blanco */
   padding: 2.5rem;
   border-radius: 8px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 20px rgba(var(--azul-profundo-rgb), 0.5); /* Sombra con azul profundo */
   text-align: center;
   max-width: 400px;
   width: 90%;
@@ -154,7 +155,7 @@
 .modal-content h3 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: var(--color-primario);
+  color: var(--oro-amanecer); /* Título del modal con oro amanecer */
 }
 
 .modal-content p {
@@ -164,8 +165,8 @@
 }
 
 .modal-close-button {
-  background-color: var(--color-texto);
-  color: var(--color-fondo);
+  background-color: var(--cobre-raiz); /* Botón de cierre con cobre */
+  color: var(--blanco-horizonte); /* Texto del botón de cierre con blanco */
   padding: 0.8rem 1.8rem;
   border: none;
   border-radius: 5px;
@@ -176,7 +177,7 @@
 }
 
 .modal-close-button:hover {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--oro-amanecer); /* Hover del botón de cierre con oro amanecer */
 }
 
 @keyframes modal-appear {

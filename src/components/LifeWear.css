@@ -2,8 +2,8 @@
 .lifewear-section {
   padding: 8rem 2rem;
   text-align: center;
-  color: var(--color-texto);
-  background-color: var(--color-fondo);
+  color: var(--blanco-horizonte); /* Usamos el blanco para el texto principal */
+  background-color: var(--azul-profundo); /* Fondo principal de la sección */
 }
 
 .lifewear-header {
@@ -20,7 +20,7 @@
 .lifewear-subtitle {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   font-weight: 300;
-  color: #aaa;
+  color: var(--gris-bruma); /* Usamos un gris sutil para el subtítulo */
 }
 
 .lifewear-grid {
@@ -46,7 +46,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(var(--azul-profundo-rgb), 0.3); /* Sombra con el azul profundo */
   transition: transform 0.3s ease;
 }
 
@@ -67,7 +67,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(var(--azul-profundo-rgb), 0.6); /* Overlay con el azul profundo y opacidad */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,8 +94,8 @@
 }
 
 .collection-button {
-  background: var(--color-texto);
-  color: var(--color-fondo);
+  background: var(--cobre-raiz); /* Botón con el color cobre */
+  color: var(--blanco-horizonte); /* Texto del botón con el blanco */
   padding: 0.75rem 2rem;
   text-decoration: none;
   text-transform: uppercase;
@@ -106,7 +106,8 @@
 }
 
 .collection-button:hover {
-  background-color: #fff;
+  background-color: var(--oro-amanecer); /* Hover con el oro amanecer */
+  color: var(--azul-profundo); /* Texto en hover con el azul profundo */
 }
 
 /* Media Queries para responsividad */
