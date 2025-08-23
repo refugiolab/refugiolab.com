@@ -1,5 +1,5 @@
 import React from 'react';
-import { useInView } from 'react-intersection-observer'; // Importamos useInView
+import { useInView } from 'react-intersection-observer';
 import './ProgramaDeBienestar.css';
 
 const ProgramaDeBienestar = () => {
@@ -18,25 +18,24 @@ const ProgramaDeBienestar = () => {
     },
   ];
 
-  // Hook para la animación de entrada
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.2, // El 20% del componente debe estar visible para activar
+    threshold: 0.2,
   });
 
   return (
-    <section id="programa-bienestar" className="bienestar-section">
-      <div className="bienestar-header">
-        <h2 className="bienestar-title">Programa de Bienestar</h2>
-        <p className="bienestar-subtitle">
+    <section id="programa-bienestar" className="programa-bienestar">
+      <div className="programa-bienestar__header">
+        <h2 className="programa-bienestar__titulo">Programa de Bienestar</h2>
+        <p className="programa-bienestar__subtitulo">
           Cultivando el equilibrio entre cuerpo, mente y alma.
         </p>
       </div>
-      <div className={`pilares-grid ${inView ? 'is-in-view' : ''}`} ref={ref}> {/* Aplicamos la clase de animación aquí */}
+      <div className={`programa-bienestar__pilares-grid ${inView ? 'is-in-view' : ''}`} ref={ref}>
         {pilares.map((pilar, index) => (
-          <div key={index} className="pilar-card" style={{ transitionDelay: `${index * 150}ms` }}>
-            <h3 className="pilar-titulo">{pilar.titulo}</h3>
-            <p className="pilar-descripcion">{pilar.descripcion}</p>
+          <div key={index} className="programa-bienestar__pilar-card" style={{ transitionDelay: `${index * 150}ms` }}>
+            <h3 className="programa-bienestar__pilar-titulo">{pilar.titulo}</h3>
+            <p className="programa-bienestar__pilar-descripcion">{pilar.descripcion}</p>
           </div>
         ))}
       </div>

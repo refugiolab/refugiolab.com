@@ -25,14 +25,14 @@ const CartasAlMar = () => {
 
   return (
     <section id="cartas-al-mar" className="cartas-al-mar">
-      <div className="cartas-header">
-        <h2 className="cartas-titulo">Cartas al Mar</h2>
+      <div className="cartas-al-mar__header">
+        <h2 className="cartas-al-mar__titulo">Cartas al Mar</h2>
       </div>
-      <div className={`cartas-grid ${inView ? 'is-in-view' : ''}`} ref={ref}>
+      <div className={`cartas-al-mar__grid ${inView ? 'is-in-view' : ''}`} ref={ref}>
         {cartas.map((carta, index) => (
-          <div key={index} className="carta-item" style={{ transitionDelay: `${index * 150}ms` }}>
-            <h3 className="carta-subtitulo">{carta.titulo}</h3>
-            <p className="carta-texto">{carta.texto}</p>
+          <div key={index} className="cartas-al-mar__item" style={{ transitionDelay: `${index * 150}ms` }}>
+            <h3 className="cartas-al-mar__subtitulo">{carta.titulo}</h3>
+            <p className="cartas-al-mar__texto">{carta.texto}</p>
           </div>
         ))}
       </div>

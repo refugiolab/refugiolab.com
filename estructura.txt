@@ -33,8 +33,8 @@ universo-refugio/
 │              ├── LifeWear.css
 │              ├── CartasAlMar.jsx
 │              ├── CartasAlMar.css
-Layout.jsx
-Layout.css
+│              ├── Layout.jsx
+│              ├── Layout.css
 │              ├── NudosDeSal.jsx
 │              ├── NudosDeSal.css
 │              ├── DisenarTuRefugio.jsx
@@ -45,9 +45,10 @@ Layout.css
 │              ├── Contacto.css
 │              ├── Footer.jsx
 │              ├── Footer.css
+│              ├── Modal.jsx
 │    	 ├── fonts/
-│              ├── NewYork.otf
-│              └── Recoleta.otf
+│              ├── NewYork.woff2
+│              └── Recoleta.woff2
 │      ├── App.css
 │      ├── App.jsx
 │      ├── index.css

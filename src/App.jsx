@@ -1,47 +1,63 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import EntradaInmersiva from './components/EntradaInmersiva';
 import Layout from './components/Layout';
 import Manifiesto from './components/Manifiesto';
 import LifeWear from './components/LifeWear';
-import CartasAlMar from './components/CartasAlMar';
 import NudosDeSal from './components/NudosDeSal';
+import CartasAlMar from './components/CartasAlMar';
 import DisenarTuRefugio from './components/DisenarTuRefugio';
 import ProgramaDeBienestar from './components/ProgramaDeBienestar';
 import Contacto from './components/Contacto';
 import './App.css';
 
-// Componentes de Placeholder para las colecciones de LifeWear
-const YogaWear = () => <div><h2>YogaWear</h2><p>Página de la colección YogaWear.</p></div>;
-const Knitwear = () => <div><h2>Knitwear</h2><p>Página de la colección Knitwear.</p></div>;
-const Archivo = () => <div><h2>Archivo</h2><p>Página de la colección Archivo.</p></div>;
+// Componente para la página de inicio que muestra todas las secciones
+const Home = () => (
+  <>
+    <Manifiesto />
+    <LifeWear />
+    <CartasAlMar />
+    <NudosDeSal />
+    <DisenarTuRefugio />
+    <ProgramaDeBienestar />
+    <Contacto />
+  </>
+);
+
+// Placeholder para las sub-páginas de LifeWear
+const LifeWearSubPage = ({ collection }) => (
+  <div className="sub-page-placeholder">
+    <h2>Colección {collection}</h2>
+    <p>Esta es la página de la colección de {collection}. ¡Pronto estará disponible!</p>
+  </div>
+);
 
 function App() {
+  const [hasEntered, setHasEntered] = useState(false);
+
+  const handleEnter = () => {
+    setHasEntered(true);
+  };
+
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/" element={<EntradaInmersiva />} />
-        
-        {/* Rutas anidadas dentro del Layout */}
+        <Route path="/" element={hasEntered ? <Navigate to="/home" replace /> : <EntradaInmersiva onEnter={handleEnter} />} />
         <Route path="/home" element={<Layout />}>
-          <Route index element={<h1>Bienvenid@ al Universo Refugio</h1>} />
+          <Route index element={<Home />} />
           <Route path="manifiesto" element={<Manifiesto />} />
+          <Route path="lifewear" element={<LifeWear />} />
+          <Route path="lifewear/yogawear" element={<LifeWearSubPage collection="YogaWear" />} />
+          <Route path="lifewear/knitwear" element={<LifeWearSubPage collection="Knitwear" />} />
+          <Route path="lifewear/archivo" element={<LifeWearSubPage collection="Archivo" />} />
           <Route path="cartas-al-mar" element={<CartasAlMar />} />
           <Route path="nudos-de-sal" element={<NudosDeSal />} />
           <Route path="disenar-tu-refugio" element={<DisenarTuRefugio />} />
           <Route path="programa-de-bienestar" element={<ProgramaDeBienestar />} />
           <Route path="contacto" element={<Contacto />} />
-          
-          {/* Rutas anidadas para la sección de LifeWear */}
-          <Route path="lifewear">
-            <Route index element={<LifeWear />} />
-            <Route path="yogawear" element={<YogaWear />} />
-            <Route path="knitwear" element={<Knitwear />} />
-            <Route path="archivo" element={<Archivo />} />
-          </Route>
         </Route>
-        
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 

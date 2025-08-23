@@ -1,47 +1,44 @@
-/* Estilos para la sección Diseñar tu Refugio */
-.disenar-refugio-section {
+.disenar-refugio {
   position: relative;
   width: 100%;
   min-height: 80vh;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* Efecto de paralaje */
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--blanco-horizonte); /* Texto principal con el blanco */
+  color: var(--blanco-horizonte);
   text-align: center;
   padding: 6rem 2rem;
 }
 
-.refugio-overlay {
+.disenar-refugio__overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(var(--azul-profundo-rgb), 0.6); /* Overlay con el azul profundo y opacidad */
+  background-color: rgba(var(--azul-profundo-rgb), 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.refugio-contenido {
+.disenar-refugio__contenido {
   z-index: 1;
   max-width: 600px;
-  /* ESTILOS INICIALES PARA LA ANIMACIÓN */
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-/* ESTADO FINAL: esta clase se añade para activar la animación */
-.refugio-contenido.is-in-view {
+.disenar-refugio__contenido.is-in-view {
   opacity: 1;
   transform: translateY(0);
 }
 
-.refugio-titulo {
+.disenar-refugio__titulo {
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 300;
   letter-spacing: 2px;
@@ -49,43 +46,45 @@
   margin-bottom: 1.5rem;
 }
 
-.refugio-subtitulo {
+.disenar-refugio__subtitulo {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   font-weight: 300;
   margin-bottom: 3rem;
 }
 
-.refugio-form {
+.disenar-refugio__form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
 }
 
-.refugio-form input,
-.refugio-form textarea {
+.disenar-refugio__form label {
+  text-align: left;
+  font-size: 0.9rem;
+  color: var(--gris-bruma);
+}
+
+.disenar-refugio__form input,
+.disenar-refugio__form textarea {
   background-color: transparent;
-  border: 1px solid rgba(var(--gris-bruma-rgb), 0.4); /* Borde con gris bruma y opacidad */
-  color: var(--blanco-horizonte); /* Color del texto */
+  border: 1px solid rgba(var(--gris-bruma-rgb), 0.4);
+  color: var(--blanco-horizonte);
   padding: 1rem;
   font-size: 1rem;
   transition: border-color 0.3s ease;
-  resize: vertical; /* Permite redimensionar verticalmente el textarea */
+  resize: vertical;
 }
 
-.refugio-form input:focus,
-.refugio-form textarea:focus {
+.disenar-refugio__form input:focus,
+.disenar-refugio__form textarea:focus {
   outline: none;
-  border-color: var(--blanco-horizonte); /* Borde enfocado con el blanco */
+  border-color: var(--blanco-horizonte);
 }
 
-.refugio-form textarea {
-  min-height: 120px;
-}
-
-.refugio-boton {
-  background: var(--cobre-raiz); /* Botón con el color cobre */
-  color: var(--blanco-horizonte); /* Texto del botón con el blanco */
+.disenar-refugio__boton {
+  background: var(--cobre-raiz);
+  color: var(--blanco-horizonte);
   padding: 1rem 2rem;
   border: none;
   cursor: pointer;
@@ -96,84 +95,14 @@
   transition: background-color 0.3s, color 0.3s;
 }
 
-.refugio-boton:hover {
-  background-color: var(--oro-amanecer); /* Hover con el oro amanecer */
-  color: var(--azul-profundo); /* Texto en hover con el azul profundo */
+.disenar-refugio__boton:hover {
+  background-color: var(--oro-amanecer);
+  color: var(--azul-profundo);
 }
 
-/* Estilos para el Modal personalizado */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(var(--azul-profundo-rgb), 0.7); /* Overlay del modal con azul profundo */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background-color: var(--azul-profundo); /* Fondo del modal con azul profundo */
-  color: var(--blanco-horizonte); /* Texto del modal con el blanco */
-  padding: 2.5rem;
-  border-radius: 8px;
-  box-shadow: 0 5px 20px rgba(var(--azul-profundo-rgb), 0.5); /* Sombra con azul profundo */
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-  position: relative;
-  animation: modal-appear 0.3s ease-out forwards;
-}
-
-.modal-content h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: var(--oro-amanecer); /* Título del modal con oro amanecer */
-}
-
-.modal-content p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-.modal-close-button {
-  background-color: var(--cobre-raiz); /* Botón de cierre con cobre */
-  color: var(--blanco-horizonte); /* Texto del botón de cierre con blanco */
-  padding: 0.8rem 1.8rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.modal-close-button:hover {
-  background-color: var(--oro-amanecer); /* Hover del botón de cierre con oro amanecer */
-}
-
-@keyframes modal-appear {
-  from {
-    opacity: 0;
-    transform: translateY(-20px) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Media Queries para responsividad */
 @media (max-width: 768px) {
-  .disenar-refugio-section {
+  .disenar-refugio {
     padding: 4rem 1rem;
     min-height: auto;
-  }
-  .modal-content {
-    padding: 2rem;
   }
 }

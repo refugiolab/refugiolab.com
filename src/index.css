@@ -2,7 +2,7 @@
 @font-face {
   font-family: 'NewYork';
   /* Asegúrate de que estas rutas sean correctas y usa .woff2/.woff si los tienes */
-  src: url('./assets/fonts/NewYork.otf') format('opentype'); 
+  src: url('./assets/fonts/NewYork.woff2') format('opentype'); 
   font-weight: normal;
   font-style: normal;
 }
@@ -10,7 +10,7 @@
 @font-face {
   font-family: 'Recoleta';
   /* Asegúrate de que estas rutas sean correctas y usa .woff2/.woff si los tienes */
-  src: url('./assets/fonts/Recoleta.otf') format('opentype');
+  src: url('./assets/fonts/Recoleta.woff2') format('opentype');
   font-weight: normal;
   font-style: normal;
 }

@@ -1,202 +1,145 @@
-:root {
-  /* No es necesario redefinir variables aquí, ya vienen de App.css */
-  --transicion-suave: all 0.5s ease-in-out;
-}
-
-/* Contenedor principal de la entrada inmersiva */
+/* Estilos para la entrada inmersiva */
 .entrada-inmersiva {
   position: relative;
-  width: 100vw;
   height: 100vh;
-  overflow: hidden; /* Importante para evitar desplazamiento horizontal */
+  width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  color: var(--blanco-horizonte); /* Usamos el blanco de la paleta */
-  font-family: var(--fuente-secundaria); /* Usa tu fuente secundaria para el texto general */
+  justify-content: center;
+  background-color: var(--azul-profundo);
+  overflow: hidden;
 }
 
-/* Estilo para el video de fondo */
 .video-fondo {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: translate(-50%, -50%);
   z-index: 1;
 }
 
-/* Capa de superposición (overlay) para oscurecer el video y mejorar la legibilidad */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Corregido: Usamos el valor RGB directamente si no tienes una variable --azul-profundo-rgb */
-  background-color: rgba(120, 137, 144, 0.4); /* RGB para --azul-profundo (78, 89, 90) convertido a 120, 137, 144 por un error de mi parte en la lectura inicial, el valor correcto de rgba para #788990 es rgba(120,137,144,0.4) */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3), rgba(0,0,0,0.6));
   z-index: 2;
 }
 
-/* Contenido principal centrado */
 .contenido-central {
   position: relative;
+  text-align: center;
   z-index: 3;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 2rem;
-  /* Ajuste del padding para evitar overflow y que el contenido no se pegue */
-  padding: 1rem min(2rem, 5vw); 
-  width: 100%; /* Asegura que no haya desbordamiento */
-  max-width: 100%; /* Asegura que no haya desbordamiento */
+  justify-content: center;
+  padding: 2rem min(1rem, 5vw);
+  width: 100%;
+  max-width: 100%;
+  color: var(--blanco-horizonte);
 }
 
-/* Estilo para el logo */
 .logo-refugio {
-  width: auto; /* Permite que el ancho se ajuste */
-  max-width: 150px; /* ¡Logo bastante más pequeño en ordenador! */
-  height: auto; /* Mantiene la proporción de la imagen */
-  opacity: 0;
-  animation: fade-in-up 2s ease-out forwards;
+  max-width: 450px;
+  width: 70%;
+  height: auto;
+  opacity: 0.7;
+  margin-bottom: 2rem; /* Espacio reducido entre el logo y el texto */
+  transition: all 0.8s ease-in-out;
 }
 
-/* Estilo para la clase 'final' del logo */
 .logo-refugio.final {
-  animation-delay: 1s; /* Inicia más tarde que otros elementos si es necesario */
-  animation-fill-mode: forwards;
+  opacity: 1;
+  transform: scale(1.05);
 }
 
-/* Estilo para el botón de "Entrar" */
-.boton-entrar {
-  font-family: var(--fuente-secundaria); /* Usa tu fuente secundaria */
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--blanco-horizonte); /* Usamos el blanco de la paleta */
-  background-color: transparent;
-  border: 2px solid var(--blanco-horizonte); /* Borde con el blanco de la paleta */
-  padding: 0.8rem 2.5rem;
-  cursor: pointer;
-  border-radius: 50px; /* ¡Botón más redondo! */
-  text-transform: none; /* ¡Quitadas las mayúsculas! */
-  letter-spacing: 2px;
-  transition: var(--transicion-suave);
-  opacity: 0;
-  animation: fade-in 1.5s ease-out forwards;
-  animation-delay: 5s;
-}
-
-.boton-entrar:hover {
-  background-color: var(--blanco-horizonte); /* Fondo en hover con el blanco de la paleta */
-  color: var(--azul-profundo); /* Color del texto en hover con el azul profundo */
-}
-
-/* Contenedor del texto de la narrativa */
 .narrativa-texto {
-  min-height: 40px; /* Evita que el layout se mueva cuando el texto cambia */
-  opacity: 0;
-  animation: fade-in 1.5s ease-out forwards;
-  animation-delay: 3s;
-  font-family: var(--fuente-secundaria); /* Usa tu fuente secundaria */
-  /* Asegura que el texto no desborde y tenga padding responsivo */
-  max-width: 700px; 
-  padding: 0 1rem;
+  min-height: 60px;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  line-height: 1.4;
+  text-shadow: 0 0 15px rgba(0,0,0,0.5);
+  font-family: var(--fuente-secundaria);
+  padding: 0 min(1rem, 5vw);
+  max-width: 800px;
   margin: 0 auto;
 }
 
-/* Animación para el texto de la narrativa */
 .frase-animada {
-  font-size: 1.5rem;
-  font-weight: 300;
-  letter-spacing: 1.5px;
-  opacity: 0;
-  animation: fade-in-scale 1.5s ease-in-out forwards;
-  font-family: var(--fuente-secundaria); /* Usa tu fuente secundaria */
+  display: inline-block;
+  animation: fadeInOut var(--duracion-animacion) ease-in-out;
 }
 
-/* Contenedor de los controles de música */
-.controles-musica {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 5;
-  display: flex;
-  gap: 1rem;
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(15px); }
+  20% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-15px); }
 }
 
-/* Botones de audio */
-.boton-audio {
-  background-color: transparent;
-  border: 1px solid var(--blanco-horizonte); /* Borde con el blanco de la paleta */
-  color: var(--blanco-horizonte); /* Texto con el blanco de la paleta */
-  font-size: 1.2rem;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.boton-entrar {
+  background: var(--cobre-raiz);
+  border: 1px solid var(--cobre-raiz);
+  color: var(--blanco-horizonte);
   cursor: pointer;
-  transition: var(--transicion-suave);
+  font-size: clamp(1rem, 2vw, 1.25rem); /* El tamaño del botón ahora es responsivo */
+  letter-spacing: 2px;
+  padding: 1rem 3rem; /* Aumenta el padding para un botón más grande */
+  text-transform: lowercase;
+  font-weight: bold;
+  margin-top: 3rem; /* Aumenta el margen superior para más separación */
+  border-radius: 50px;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  animation: fadeIn 1.5s ease;
+  font-family: var(--fuente-secundaria);
 }
 
-.boton-audio:hover {
-  background-color: var(--blanco-horizonte); /* Fondo en hover con el blanco de la paleta */
-  color: var(--azul-profundo); /* Color del texto en hover con el azul profundo */
+.boton-entrar:hover {
+  background-color: var(--oro-amanecer);
+  color: var(--azul-profundo);
+  transform: scale(1.05);
 }
 
-/* Keyframes para las animaciones */
-@keyframes fade-in {
+@keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.controles-musica {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 3;
 }
 
-@keyframes fade-in-scale {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+.boton-audio {
+  background: none;
+  border: none;
+  color: var(--blanco-horizonte);
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s;
 }
 
-/* Media Queries para responsividad en dispositivos móviles */
+.boton-audio:hover {
+  opacity: 1;
+}
+
 @media (max-width: 768px) {
   .logo-refugio {
-    max-width: 120px; /* Tamaño para tablets y móviles */
-    width: auto; /* Permitir que el ancho se ajuste proporcionalmente */
-  }
-
-  .frase-animada {
-    font-size: 1.2rem;
+    max-width: 300px;
+    width: 80%;
   }
 
   .boton-entrar {
     font-size: 1rem;
-    padding: 0.6rem 2rem;
-  }
-
-  .controles-musica {
-    bottom: 1rem;
-    right: 1rem;
-  }
-
-  /* Ajustar padding del contenido central para evitar desbordamiento en móviles */
-  .contenido-central {
-    padding: 1rem 0.5rem;
-  }
-}
-
-/* Media Query adicional para pantallas muy pequeñas */
-@media (max-width: 480px) {
-  .logo-refugio {
-    max-width: 90px; /* Tamaño para teléfonos muy pequeños */
-  }
-  .narrativa-texto {
-    font-size: 1.1rem;
+    padding: 0.8rem 2.5rem;
   }
 }

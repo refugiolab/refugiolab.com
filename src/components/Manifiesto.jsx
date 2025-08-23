@@ -1,7 +1,7 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import './Manifiesto.css';
-import fondoManifiesto from '../../public/images/mar.png';
+import fondoManifiesto from '/images/mar.png';
 
 const Manifiesto = () => {
   const { ref, inView } = useInView({
@@ -11,13 +11,12 @@ const Manifiesto = () => {
 
   return (
     <section id="manifiesto" className="manifiesto" style={{ backgroundImage: `url(${fondoManifiesto})` }}>
-      {/* El ref se coloca en el elemento que se va a animar */}
-      <div className={`manifiesto-overlay ${inView ? 'is-in-view' : ''}`} ref={ref}>
-        <div className="manifiesto-contenido">
-          <h2 className="manifiesto-titulo">
+      <div className={`manifiesto__overlay ${inView ? 'is-in-view' : ''}`} ref={ref}>
+        <div className="manifiesto__contenido">
+          <h2 className="manifiesto__titulo">
             Manifiesto
           </h2>
-          <div className="manifiesto-texto">
+          <div className="manifiesto__texto">
             <p>
               En el vasto silencio del mar, encontramos nuestro eco. Refugio no es solo una marca; es un estado del ser. Un recordatorio de que la vida es un ritual, un fluir constante entre el caos y la calma. Nos vestimos con fibras que respiran, con texturas que abrazan, con colores que cuentan historias de la tierra y del mar.
             </p>

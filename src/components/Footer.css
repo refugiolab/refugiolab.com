@@ -1,106 +1,104 @@
-/* Estilos para el Footer */
 .main-footer {
-  background-color: var(--azul-profundo); /* Usa el color de la paleta */
-  color: var(--blanco-horizonte); /* Usa el color de la paleta */
-  padding: 4rem min(2rem, 5vw) 2rem; /* Ajuste del padding horizontal */
+  background-color: var(--azul-profundo);
+  color: var(--blanco-horizonte);
+  padding: 4rem min(2rem, 5vw) 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  box-sizing: border-box; /* Asegura que padding no cause overflow */
+  box-sizing: border-box;
 }
 
 .footer-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Ajustado minmax para más flexibilidad */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto 2rem;
   text-align: center;
 }
 
-.footer-logo img {
+.footer__logo img {
   width: 120px;
   margin-bottom: 1rem;
 }
 
-.footer-logo p {
+.footer__logo p {
   font-size: 0.9rem;
   font-style: italic;
-  color: var(--gris-bruma); /* Usa el color de la paleta */
-  font-family: var(--fuente-secundaria); /* Aplica Recoleta */
+  color: var(--gris-bruma);
+  font-family: var(--fuente-secundaria);
 }
 
-.footer-links h4,
-.footer-newsletter-section h4 {
-  font-size: 1.1rem; /* Títulos más pequeños en ordenador */
+.footer__links h4,
+.footer__newsletter-section h4 {
+  font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--blanco-horizonte); /* Usa el color de la paleta */
-  font-family: var(--fuente-principal); /* Aplica NewYork a los títulos */
+  color: var(--blanco-horizonte);
+  font-family: var(--fuente-principal);
 }
 
-.footer-links ul {
+.footer__links ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.footer-links li {
+.footer__links li {
   margin-bottom: 0.5rem;
 }
 
-.footer-links a {
-  color: var(--gris-bruma); /* Usa el color de la paleta */
+.footer__links a {
+  color: var(--gris-bruma);
   text-decoration: none;
-  font-family: var(--fuente-secundaria); /* Aplica Recoleta a los enlaces */
+  font-family: var(--fuente-secundaria);
   font-size: 0.9rem;
   font-weight: 300;
   transition: color 0.3s ease;
 }
 
-.footer-links a:hover {
-  color: var(--blanco-horizonte); /* Usa el color de la paleta */
+.footer__links a:hover {
+  color: var(--blanco-horizonte);
 }
 
-.footer-bottom {
+.footer__bottom {
   text-align: center;
   margin-top: 2rem;
   padding-top: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  box-sizing: border-box; /* Asegura que padding no cause overflow */
+  box-sizing: border-box;
 }
 
-.footer-bottom p {
+.footer__bottom p {
   font-size: 0.8rem;
-  color: var(--oliva-suave); /* Usa el color de la paleta */
-  font-family: var(--fuente-secundaria); /* Aplica Recoleta */
+  color: var(--oliva-suave);
+  font-family: var(--fuente-secundaria);
 }
 
-/* Media Queries para responsividad */
 @media (max-width: 768px) {
   .footer-container {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 1.5rem; /* Reduce el espacio entre secciones en móvil */
+    gap: 1.5rem;
   }
   
-  .footer-links,
-  .footer-newsletter-section {
-    margin-bottom: 0; /* Elimina el margin-bottom extra si ya está manejado por el gap del grid */
-    padding: 0 1rem; /* Añadir padding horizontal para que no se pegue a los bordes */
+  .footer__links,
+  .footer__newsletter-section {
+    margin-bottom: 0;
+    padding: 0 1rem;
   }
   
-  .footer-links ul {
+  .footer__links ul {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 1rem; /* Reduce el espacio entre enlaces en móvil */
+    gap: 1rem;
     flex-wrap: wrap;
   }
 
-  .footer-links h4,
-  .footer-newsletter-section h4 {
-    font-size: 1.1rem; /* Mantener tamaño consistente en móvil si se desea */
+  .footer__links h4,
+  .footer__newsletter-section h4 {
+    font-size: 1.1rem;
   }
 }
 

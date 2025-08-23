@@ -1,144 +1,93 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import './EntradaInmersiva.css';
+import logoRefugio from '/isonegro.svg'; // La ruta corregida
 
-const EntradaInmersiva = () => {
-  const navigate = useNavigate();
-  
-  const texts = [
-    "La vida es un ritual.",
-    "Encontrá tu propio ritmo.",
-    "Estamos en movimiento.",
-    "Vestir(nos) con sentido."
-  ];
+import VideoIntro from '/VideoIntro.mp4';
+import { FaPlay, FaPause } from 'react-icons/fa';
 
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [isMuted, setIsMuted] = useState(true);
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+const frases = [
+  "La vida es un ritual.",
+  "El bienestar es la nueva alta costura.",
+  "La moda es un refugio."
+];
+
+const EntradaInmersiva = ({ onEnter }) => {
+  const [currentFrase, setCurrentFrase] = useState(0);
+  const [showButton, setShowButton] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef(null);
   const audioRef = useRef(null);
+  const logoRef = useRef(null);
 
-  const handleUserInteraction = () => {
-    // Si el audio no está sonando, inicia la reproducción y desmutea
-    if (!isAudioPlaying && audioRef.current) {
-      audioRef.current.play().then(() => {
-        setIsAudioPlaying(true);
-        setIsMuted(false);
-      }).catch(e => {
-        console.error("Error al intentar iniciar el audio con interacción de usuario:", e);
-        setIsAudioPlaying(false);
-        setIsMuted(true); // Si falla, vuelve a mutear
-      });
-    } else if (isMuted && audioRef.current) {
-        // Si está muteado y ya está reproduciendo (o intentando), desmutea
-        setIsMuted(false);
-    }
-  };
-
-  const handleEntrar = () => {
-    navigate('/home');
-  };
-
-  // Efecto para la secuencia de textos
   useEffect(() => {
-    let textTimer;
-    if (currentTextIndex < texts.length) {
-      const delay = currentTextIndex === 0 ? 2000 : 3500;
-      textTimer = setTimeout(() => {
-        setCurrentTextIndex((prevIndex) => prevIndex + 1);
-      }, delay);
-    } else if (currentTextIndex === texts.length) {
-      // Opcional: Si quieres que el último texto se quede un tiempo más o hacer algo al final
-      // Por ahora, solo deja que el timer termine
+    let timeoutId;
+    if (videoRef.current) {
+      const handleVideoReady = () => {
+        timeoutId = setTimeout(() => {
+          const logo = logoRef.current;
+          if (logo) {
+            logo.classList.add('final');
+          }
+          setShowButton(true);
+        }, 10000);
+      };
+      
+      handleVideoReady();
     }
-    return () => clearTimeout(textTimer);
-  }, [currentTextIndex, texts.length]);
+    return () => clearTimeout(timeoutId);
+  }, []);
 
-  // Efecto para controlar la reproducción y mute del audio
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.muted = isMuted;
+    const intervalId = setInterval(() => {
+      setCurrentFrase((prev) => (prev + 1) % frases.length);
+    }, 3500);
+    return () => clearInterval(intervalId);
+  }, []);
 
-      if (isAudioPlaying) {
-        audioRef.current.play().catch(e => {
-          console.error("Error al intentar reproducir el audio:", e);
-          setIsAudioPlaying(false);
-        });
+  const toggleAudio = () => {
+    const audio = audioRef.current;
+    if (audio) {
+      if (isPlaying) {
+        audio.pause();
       } else {
-        audioRef.current.pause();
+        audio.play().catch(error => console.error("Error al reproducir el audio:", error));
       }
+      setIsPlaying(!isPlaying);
     }
-
-    // Función de limpieza: se ejecuta cuando el componente se desmonta
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause(); // Pausa el audio para evitar el error de interrupción
-        audioRef.current.currentTime = 0; // Opcional: reinicia el audio al inicio
-      }
-    };
-  }, [isMuted, isAudioPlaying]);
-
-
-  const toggleMute = () => {
-    setIsMuted(prevIsMuted => {
-      // Si estaba muteado y se va a desmutear, y el audio no estaba reproduciendo, intenta iniciarlo.
-      if (prevIsMuted && !isAudioPlaying && audioRef.current) {
-        audioRef.current.play().catch(e => {
-          console.error("Error al intentar reproducir al desmutear:", e);
-          setIsAudioPlaying(false);
-        });
-        setIsAudioPlaying(true); // Asume que intentará reproducir
-      }
-      return !prevIsMuted;
-    });
-  };
-
-  const toggleAudioPlay = () => {
-    setIsAudioPlaying(prevIsAudioPlaying => {
-      if (!prevIsAudioPlaying && audioRef.current) { // Si no estaba reproduciendo y se va a iniciar
-        audioRef.current.play().catch(e => {
-          console.error("Error al intentar reproducir con el botón de play/pause:", e);
-          // Si falla al reproducir, asegúrate de que el estado refleje eso.
-          setIsAudioPlaying(false); 
-        });
-      }
-      return !prevIsAudioPlaying;
-    });
   };
 
   return (
-    <div className="entrada-inmersiva" onClick={handleUserInteraction}>
-      <video className="video-fondo" autoPlay loop muted playsInline>
-        <source src="/VideoIntro.mp4" type="video/mp4" />
-        Tu navegador no soporta la etiqueta de video.
-      </video>
-      <audio ref={audioRef} autoPlay loop muted={isMuted}>
-        {/* Aquí debes añadir la fuente de audio real de tu proyecto */}
-        <source src="/audio/background-music.mp3" type="audio/mpeg" />
-        Tu navegador no soporta la etiqueta de audio.
-      </audio>
-
+    <div className="entrada-inmersiva">
+      <video
+        ref={videoRef}
+        id="video-fondo"
+        className="video-fondo"
+        src={VideoIntro}
+        autoPlay
+        loop
+        muted
+        playsInline
+      ></video>
       <div className="overlay"></div>
 
       <div className="contenido-central">
-        {/* ¡Ruta del logo corregida! */}
-        <img src="/icons/logo.png" alt="Refugio Logo" className="logo-refugio final" />
-        <button className="boton-entrar" onClick={handleEntrar}>
-          Habitarlo
-        </button>
+        <img ref={logoRef} src={logoRefugio} alt="Refugio Logo" className="logo-refugio" />
         <div className="narrativa-texto">
-          {currentTextIndex < texts.length && (
-            <p key={currentTextIndex} className="frase-animada">
-              {texts[currentTextIndex]}
-            </p>
-          )}
+          <span key={currentFrase} className="frase-animada">
+            {frases[currentFrase]}
+          </span>
         </div>
+        {showButton && (
+          <button className="boton-entrar" onClick={onEnter}>
+            Habitarlo
+          </button>
+        )}
       </div>
 
       <div className="controles-musica">
-        <button onClick={toggleAudioPlay} className="boton-audio">
-          {isAudioPlaying ? '⏸️' : '▶️'}
-        </button>
-        <button onClick={toggleMute} className="boton-audio">
-          {isMuted ? '🔇' : '🔊'}
+        <audio ref={audioRef} src="/audio/musica-ambiente.mp3" loop />
+        <button onClick={toggleAudio} className="boton-audio" aria-label={isPlaying ? "Pausar audio" : "Reproducir audio"}>
+          {isPlaying ? <FaPause size={24} /> : <FaPlay size={24} />}
         </button>
       </div>
     </div>

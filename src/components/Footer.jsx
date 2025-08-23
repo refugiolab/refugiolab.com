@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
-import logo from '../../public/icons/logo.png';
+import logo from '/icons/logo.png';
 import NewsletterForm from './NewsletterForm';
 
 const Footer = () => {
@@ -15,23 +15,21 @@ const Footer = () => {
   const connectLinks = [
     { name: "contacto@refugiolab.com", href: "mailto:contacto@refugiolab.com" },
     { name: "Instagram", href: "https://instagram.com/refugio_________" },
-    { name: "Whatsapp", href: "https://wa.me/6ZMNWYQBIN5HA1" }, // Agrega tu número de teléfono con el formato internacional aquí
+    { name: "Whatsapp", href: "https://wa.me/6ZMNWYQBIN5HA1" },
     { name: "Diseñar", href: "/home/disenar-tu-refugio" },
   ];
 
   return (
     <footer className="main-footer" role="contentinfo">
       <div className="footer-container">
-        {/* Sección de Logo */}
-        <div className="footer-logo">
+        <div className="footer__logo">
           <Link to="/home" aria-label="Ir a la página de inicio">
             <img src={logo} alt="Refugio Logo" />
           </Link>
           <p>La vida es un ritual.</p>
         </div>
 
-        {/* Sección de Enlaces Explorar */}
-        <nav className="footer-links" aria-label="Navegación de exploración">
+        <nav className="footer__links" aria-label="Navegación de exploración">
           <h4>Explorar</h4>
           <ul>
             {exploreLinks.map((link) => (
@@ -42,8 +40,7 @@ const Footer = () => {
           </ul>
         </nav>
 
-        {/* Sección de Enlaces Conectar */}
-        <nav className="footer-links" aria-label="Navegación para conectar">
+        <nav className="footer__links" aria-label="Navegación para conectar">
           <h4>Conectar</h4>
           <ul>
             {connectLinks.map((link) => (
@@ -60,14 +57,12 @@ const Footer = () => {
           </ul>
         </nav>
 
-        {/* Sección de Newsletter */}
-        <div className="footer-newsletter-section">
+        <div className="footer__newsletter-section">
           <NewsletterForm />
         </div>
       </div>
       
-      {/* Sección de Copyright */}
-      <div className="footer-bottom">
+      <div className="footer__bottom">
         <p>&copy; {new Date().getFullYear()} Refugio. Todos los derechos reservados.</p>
       </div>
     </footer>

@@ -3,21 +3,21 @@
   /* Paleta de Colores de Refugio */
   --blanco-horizonte: #eae6e3; /* Fondo de contenido, texto secundario */
   --gris-bruma: #c6cbc7;      /* Fondos secundarios, bordes sutiles */
-  --azul-profundo: #788990;   /* Texto principal, encabezados, íconos */
+  --azul-profundo: #788990;  /* Texto principal, encabezados, íconos */
   --arena-atemporal: #ad9c8a; /* Fondos de tarjetas, acentos cálidos */
-  --verde-costero: #8e8679;   /* Acentos decorativos, detalles sutiles */
-  --oliva-suave: #8d957e;     /* Acentos frescos, toques de renovación */
+  --verde-costero: #8e8679;  /* Acentos decorativos, detalles sutiles */
+  --oliva-suave: #8d957e;    /* Acentos frescos, toques de renovación */
   --cobre-raiz: #a07033;      /* Botones de acción, títulos destacados */
   --oro-amanecer: #cc9929;    /* Detalles de acento, highlights */
 
   /* Colores genéricos adaptados a la paleta */
-  --color-fondo: var(--blanco-horizonte); /* Color de fondo de la página principal */
-  --color-texto: var(--azul-profundo); /* Texto principal sobre fondo claro */
-  --color-primario: var(--azul-profundo); /* Color primario */
-  --color-secundario: var(--gris-bruma); /* Color secundario */
-  --color-acento: var(--cobre-raiz); /* Color de acento */
+  --color-fondo: var(--blanco-horizonte);
+  --color-texto: var(--azul-profundo);
+  --color-primario: var(--azul-profundo);
+  --color-secundario: var(--gris-bruma);
+  --color-acento: var(--cobre-raiz);
   
-  --duracion-animacion: 3.5s; /* Mantener la duración de la animación */
+  --duracion-animacion: 3.5s;
 
   /* Fuentes actualizadas */
   --fuente-principal: "NewYork", serif;
@@ -31,23 +31,21 @@
 /* Estilos Globales para el Cuerpo de la Página */
 html {
   scroll-behavior: smooth;
-  /* Aplicar box-sizing globalmente para un mejor control del layout */
   box-sizing: border-box; 
 }
 
 *, *::before, *::after {
-  box-sizing: inherit; /* Hereda box-sizing del html */
+  box-sizing: inherit;
 }
 
 body {
   margin: 0;
   padding: 0;
   width: 100%;
-  /* Eliminar overflow-x oculto si fue la causa de desplazamiento */
   overflow-x: hidden; 
-  background-color: var(--color-fondo); /* Usamos la variable de fondo */
-  color: var(--color-texto); /* Usamos la variable de texto */
-  font-family: var(--fuente-secundaria); /* Aplicamos Recoleta como fuente secundaria por defecto */
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-secundaria);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -61,183 +59,19 @@ body {
 
 /* Estilos para los títulos globales */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--fuente-principal); /* Aplicamos NewYork a todos los títulos */
+  font-family: var(--fuente-principal);
 }
-
-/* Estilos para la entrada inmersiva */
-.entrada-inmersiva {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.video-fondo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3), rgba(0,0,0,0.6));
-  z-index: 2;
-}
-
-.contenido-central {
-  position: relative;
-  text-align: center;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* Aseguramos que el padding no cause overflow en ancho total */
-  padding: 2rem min(1rem, 5vw); 
-  width: 100%; /* Asegura que no haya desbordamiento */
-  max-width: 100%; /* Asegura que no haya desbordamiento */
-}
-
-.logo-refugio {
-  /* Usaremos max-width: 100% para el logo en general, el width se ajustará */
-  width: auto; /* Dejar que el ancho se ajuste */
-  max-width: 90%; /* Máximo 90% del contenedor padre */
-  height: auto; /* Mantiene la proporción */
-  opacity: 0.7;
-  margin-bottom: 3rem;
-  transition: all 0.8s ease-in-out;
-}
-
-.logo-refugio.final {
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-.narrativa-texto {
-  min-height: 60px;
-  font-size: clamp(1.5rem, 4vw, 2.2rem);
-  font-weight: 300;
-  letter-spacing: 1.5px;
-  line-height: 1.4;
-  text-shadow: 0 0 15px rgba(0,0,0,0.5);
-  font-family: var(--fuente-secundaria); /* Usar Recoleta */
-  padding: 0 min(1rem, 5vw); /* Padding responsivo para el texto */
-  max-width: 800px; /* Limitar el ancho máximo para la legibilidad */
-  margin: 0 auto;
-}
-
-.frase-animada {
-  display: inline-block;
-  animation: fadeInOut var(--duracion-animacion) ease-in-out;
-}
-
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translateY(15px); }
-  20% { opacity: 1; transform: translateY(0); }
-  80% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(-15px); }
-}
-
-.boton-entrar {
-  background: transparent;
-  border: 1px solid var(--color-texto);
-  color: var(--color-texto);
-  cursor: pointer;
-  font-size: 1rem;
-  letter-spacing: 3px;
-  padding: 0.8rem 2rem;
-  text-transform: uppercase;
-  margin-top: 2rem;
-  transition: background-color 0.3s, color 0.3s;
-  animation: fadeIn 1.5s ease;
-  font-family: var(--fuente-secundaria); /* Usar Recoleta */
-}
-
-.boton-entrar:hover {
-  background-color: var(--color-texto);
-  color: var(--color-fondo);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.controles-musica {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 3;
-}
-
-.boton-audio {
-  background: none;
-  border: none;
-  color: var(--color-texto);
-  cursor: pointer;
-  opacity: 0.6;
-  transition: opacity 0.3s;
-}
-
-.boton-audio:hover {
-  opacity: 1;
-}
-
-/* --- Estilos para las Páginas (secciones) del sitio --- */
 
 /* Ajusta el padding superior del contenido para evitar que quede oculto
-    detrás del header fijo. La altura del header es de aproximadamente 60px. */
+   detrás del header fijo. La altura del header es de aproximadamente 60px. */
 .main-content {
   padding-top: 60px;
-  min-height: calc(100vh - 60px); /* Ajustamos la altura para que ocupe el espacio restante */
+  min-height: calc(100vh - 60px);
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--blanco-horizonte); /* Asegurarse de que el main-content también sea blanco */
-  color: var(--azul-profundo); /* Texto oscuro sobre fondo claro */
-}
-
-/* Estilos para el logo principal y el botón en la página de inicio */
-.main-content-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.logo-principal {
-  width: 250px;
-  margin-bottom: 1.5rem;
-}
-
-.boton-principal {
-  background: transparent;
-  border: 1px solid var(--color-texto);
-  color: var(--color-texto);
-  cursor: pointer;
-  font-size: 1rem;
-  letter-spacing: 3px;
-  padding: 0.8rem 2rem;
-  text-transform: uppercase;
-  transition: background-color 0.3s, color 0.3s;
-  font-family: var(--fuente-secundaria); /* Usar Recoleta */
-}
-
-.boton-principal:hover {
-  background-color: var(--color-texto);
-  color: var(--color-fondo);
+  background-color: var(--blanco-horizonte);
+  color: var(--azul-profundo);
 }

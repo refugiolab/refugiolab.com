@@ -1,23 +1,22 @@
-/* Estilos para la sección Cartas al Mar */
 .cartas-al-mar {
   padding: 6rem 2rem;
-  background-color: var(--azul-profundo); /* Fondo con el azul profundo */
-  color: var(--blanco-horizonte); /* Texto principal con el blanco */
+  background-color: var(--azul-profundo);
+  color: var(--blanco-horizonte);
   text-align: center;
 }
 
-.cartas-header {
+.cartas-al-mar__header {
   margin-bottom: 4rem;
 }
 
-.cartas-titulo {
+.cartas-al-mar__titulo {
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
-.cartas-grid {
+.cartas-al-mar__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 3rem;
@@ -25,52 +24,48 @@
   margin: 0 auto;
 }
 
-.carta-item {
-  background-color: rgba(var(--arena-atemporal-rgb), 0.1); /* Fondo de la tarjeta con arena atemporal y opacidad */
+.cartas-al-mar__item {
+  background-color: rgba(var(--arena-atemporal-rgb), 0.1);
   padding: 2.5rem;
   border-radius: 8px;
-  border: 1px solid rgba(var(--arena-atemporal-rgb), 0.2); /* Borde con arena atemporal y opacidad */
-  box-shadow: 0 4px 15px rgba(var(--azul-profundo-rgb), 0.2); /* Sombra con el azul profundo */
+  border: 1px solid rgba(var(--arena-atemporal-rgb), 0.2);
+  box-shadow: 0 4px 15px rgba(var(--azul-profundo-rgb), 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  /* ESTILOS INICIALES PARA LA ANIMACIÓN ESCALONADA */
   opacity: 0;
   transform: translateY(20px);
 }
 
-.carta-item:hover {
+.cartas-al-mar__item:hover {
   transform: translateY(-10px);
-  box-shadow: 0 8px 20px rgba(var(--azul-profundo-rgb), 0.4); /* Sombra en hover con el azul profundo */
+  box-shadow: 0 8px 20px rgba(var(--azul-profundo-rgb), 0.4);
 }
 
-/* CLASE QUE SE AÑADE AL CONTENEDOR GRID CUANDO ESTÁ VISIBLE */
-.cartas-grid.is-in-view .carta-item {
+.cartas-al-mar__grid.is-in-view .cartas-al-mar__item {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-.carta-subtitulo {
+.cartas-al-mar__subtitulo {
   font-size: 1.5rem;
   font-weight: 400;
   margin-bottom: 1.5rem;
   letter-spacing: 1px;
-  color: var(--cobre-raiz); /* Subtítulo con el color cobre */
+  color: var(--cobre-raiz);
 }
 
-.carta-texto {
+.cartas-al-mar__texto {
   font-size: 1rem;
   line-height: 1.8;
   font-weight: 300;
-  color: var(--blanco-horizonte); /* Texto de la carta con el blanco */
+  color: var(--blanco-horizonte);
 }
 
-/* Media Queries para responsividad */
 @media (max-width: 768px) {
   .cartas-al-mar {
     padding: 4rem 1rem;
   }
-  .cartas-grid {
+  .cartas-al-mar__grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
