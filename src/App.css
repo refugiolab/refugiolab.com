@@ -1,27 +1,34 @@
-/* Reset básico y estilos globales */
+/* Definición de variables CSS */
 :root {
-  /* Paleta de Colores del Sitio */
-  --color-fondo: #0a0a0a;
-  --color-texto: #f4f4f4;
-  --color-primario: #ffffff;
-  --color-secundario: #aaa;
-  --color-acento: #e0e0e0;
+  /* Paleta de Colores de Refugio */
+  --blanco-horizonte: #eae6e3; /* Fondo de contenido, texto secundario */
+  --gris-bruma: #c6cbc7;      /* Fondos secundarios, bordes sutiles */
+  --azul-profundo: #788990;   /* Texto principal, encabezados, íconos */
+  --arena-atemporal: #ad9c8a; /* Fondos de tarjetas, acentos cálidos */
+  --verde-costero: #8e8679;   /* Acentos decorativos, detalles sutiles */
+  --oliva-suave: #8d957e;     /* Acentos frescos, toques de renovación */
+  --cobre-raiz: #a07033;      /* Botones de acción, títulos destacados */
+  --oro-amanecer: #cc9929;    /* Detalles de acento, highlights */
+
+  /* Colores genéricos adaptados a la paleta */
+  --color-fondo: var(--blanco-horizonte); /* ¡Cambiado a blanco horizonte para la página principal! */
+  --color-texto: var(--azul-profundo); /* Texto principal sobre fondo claro */
+  --color-primario: var(--azul-profundo); /* Color primario */
+  --color-secundario: var(--gris-bruma); /* Color secundario */
+  --color-acento: var(--cobre-raiz); /* Color de acento */
   
-  /* Fuentes */
-  --fuente-principal: "Cinzel", serif;
-  --fuente-secundaria: "Inter", sans-serif;
+  --duracion-animacion: 3.5s; /* Mantener la duración de la animación */
+
+  /* Fuentes actualizadas */
+  --fuente-principal: "NewYork", serif;
+  --fuente-secundaria: "Recoleta", sans-serif;
   
   /* Sombra de Textos */
   --sombra-texto-clara: 0 0 5px rgba(255, 255, 255, 0.2);
   --sombra-texto-oscura: 0 0 10px rgba(0, 0, 0, 0.5);
-
-  /* Animación */
-  --duracion-animacion: 3.5s;
 }
 
-/* Estilos de Tipografía y Carga de Fuentes */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;700&family=Inter:wght@300;400;700&display=swap');
-
+/* Estilos Globales para el Cuerpo de la Página */
 html {
   scroll-behavior: smooth;
 }
@@ -30,20 +37,22 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
-  font-family: var(--fuente-secundaria);
+  background-color: var(--color-fondo); /* Usamos la variable de fondo, ahora es blanco-horizonte */
+  color: var(--color-texto); /* Usamos la variable de texto, ahora es azul-profundo */
+  font-family: var(--fuente-secundaria); /* Aplicamos Recoleta como fuente secundaria por defecto */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Regla para quitar los estilos por defecto de Vite */
 #root {
   min-height: 100vh;
   min-width: 100vw;
   display: block;
 }
 
-/* --- Estilos para la Entrada Inmersiva --- */
+/* Estilos para la entrada inmersiva */
+/* Asegúrate de que los textos aquí usen las nuevas variables de fuente si lo deseas */
 .entrada-inmersiva {
   position: relative;
   height: 100vh;
@@ -105,6 +114,7 @@ body {
   letter-spacing: 1.5px;
   line-height: 1.4;
   text-shadow: 0 0 15px rgba(0,0,0,0.5);
+  font-family: var(--fuente-secundaria); /* Usar Recoleta */
 }
 
 .frase-animada {
@@ -131,6 +141,7 @@ body {
   margin-top: 2rem;
   transition: background-color 0.3s, color 0.3s;
   animation: fadeIn 1.5s ease;
+  font-family: var(--fuente-secundaria); /* Usar Recoleta */
 }
 
 .boton-entrar:hover {
@@ -166,7 +177,7 @@ body {
 /* --- Estilos para las Páginas (secciones) del sitio --- */
 
 /* Ajusta el padding superior del contenido para evitar que quede oculto
-   detrás del header fijo. La altura del header es de aproximadamente 60px. */
+    detrás del header fijo. La altura del header es de aproximadamente 60px. */
 .main-content {
   padding-top: 60px;
   min-height: calc(100vh - 60px); /* Ajustamos la altura para que ocupe el espacio restante */
@@ -175,6 +186,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: var(--blanco-horizonte); /* Asegurarse de que el main-content también sea blanco */
+  color: var(--azul-profundo); /* Texto oscuro sobre fondo claro */
 }
 
 /* Estilos para el logo principal y el botón en la página de inicio */
@@ -201,6 +214,7 @@ body {
   padding: 0.8rem 2rem;
   text-transform: uppercase;
   transition: background-color 0.3s, color 0.3s;
+  font-family: var(--fuente-secundaria); /* Usar Recoleta */
 }
 
 .boton-principal:hover {

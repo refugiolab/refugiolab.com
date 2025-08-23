@@ -13,9 +13,9 @@ const Footer = () => {
   ];
 
   const connectLinks = [
-    { name: "Mail", href: "mailto:contacto@refugiolab.com" },
-    { name: "Instagram", href: "https://instagram.com/refugio______" },
-    { name: "Whatsapp", href: "https://wa.me/" }, // Agrega tu número de teléfono con el formato internacional aquí
+    { name: "contacto@refugiolab.com", href: "mailto:contacto@refugiolab.com" },
+    { name: "Instagram", href: "https://instagram.com/refugio_________" },
+    { name: "Whatsapp", href: "https://wa.me/6ZMNWYQBIN5HA1" }, // Agrega tu número de teléfono con el formato internacional aquí
     { name: "Diseñar", href: "/home/disenar-tu-refugio" },
   ];
 

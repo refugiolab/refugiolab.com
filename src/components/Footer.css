@@ -1,7 +1,7 @@
 /* Estilos para el Footer */
 .main-footer {
-  background-color: var(--azul-profundo);
-  color: var(--blanco-horizonte);
+  background-color: var(--azul-profundo); /* Usa el color de la paleta */
+  color: var(--blanco-horizonte); /* Usa el color de la paleta */
   padding: 4rem 2rem 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -23,7 +23,8 @@
 .footer-logo p {
   font-size: 0.9rem;
   font-style: italic;
-  color: var(--gris-bruma);
+  color: var(--gris-bruma); /* Usa el color de la paleta */
+  font-family: var(--fuente-secundaria); /* Aplica Recoleta */
 }
 
 .footer-links h4,
@@ -33,7 +34,8 @@
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--blanco-horizonte);
+  color: var(--blanco-horizonte); /* Usa el color de la paleta */
+  font-family: var(--fuente-principal); /* Aplica NewYork a los títulos */
 }
 
 .footer-links ul {
@@ -47,15 +49,16 @@
 }
 
 .footer-links a {
-  color: var(--gris-bruma);
+  color: var(--gris-bruma); /* Usa el color de la paleta */
   text-decoration: none;
+  font-family: var(--fuente-secundaria); /* Aplica Recoleta a los enlaces */
   font-size: 0.9rem;
   font-weight: 300;
   transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: var(--blanco-horizonte);
+  color: var(--blanco-horizonte); /* Usa el color de la paleta */
 }
 
 .footer-bottom {
@@ -67,7 +70,8 @@
 
 .footer-bottom p {
   font-size: 0.8rem;
-  color: var(--oliva-suave);
+  color: var(--oliva-suave); /* Usa el color de la paleta */
+  font-family: var(--fuente-secundaria); /* Aplica Recoleta */
 }
 
 /* Media Queries para responsividad */

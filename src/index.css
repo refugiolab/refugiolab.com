@@ -1,175 +1,29 @@
-/* Reset básico y estilos globales */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;700&family=Inter:wght@300;400;700&display=swap');
-
-/* Variables CSS Globales con la paleta de Refugio */
-:root {
-  /* Paleta de Colores de Refugio */
-  --blanco-horizonte: #eae6e3; /* Fondo de contenido, texto secundario */
-  --gris-bruma: #c6cbc7;     /* Fondos secundarios, bordes sutiles */
-  --azul-profundo: #788990;   /* Texto principal, encabezados, íconos */
-  --arena-atemporal: #ad9c8a; /* Fondos de tarjetas, acentos cálidos */
-  --verde-costero: #8e8679;   /* Acentos decorativos, detalles sutiles */
-  --oliva-suave: #8d957e;     /* Acentos frescos, toques de renovación */
-  --cobre-raiz: #a07033;      /* Botones de acción, títulos destacados */
-  --oro-amanecer: #cc9929;    /* Detalles de acento, highlights */
-
-  /* Colores genéricos adaptados a la paleta */
-  --color-fondo: var(--azul-profundo); /* Puedes ajustar este según el fondo principal deseado, aquí usamos el azul profundo como base */
-  --color-texto: var(--blanco-horizonte); /* Texto principal sobre fondo oscuro */
-  --color-primario: var(--blanco-horizonte); /* Color primario, a menudo para texto o elementos clave */
-  --color-secundario: var(--gris-bruma); /* Color secundario, para texto o elementos menos prominentes */
-  --color-acento: var(--cobre-raiz); /* Color de acento para botones, enlaces hover, etc. */
-  
-  --duracion-animacion: 3.5s; /* Mantener la duración de la animación */
-
-  /* Fuentes */
-  --fuente-principal: "Cinzel", serif;
-  --fuente-secundaria: "Inter", sans-serif;
-  
-  /* Sombra de Textos */
-  --sombra-texto-clara: 0 0 5px rgba(255, 255, 255, 0.2);
-  --sombra-texto-oscura: 0 0 10px rgba(0, 0, 0, 0.5);
+/* Declaración de las fuentes personalizadas */
+@font-face {
+  font-family: 'NewYork';
+  src: url('./assets/fonts/NewYork.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-/* Estilos Globales para el Cuerpo de la Página */
-html {
-  scroll-behavior: smooth;
+@font-face {
+  font-family: 'Recoleta';
+  src: url('./assets/fonts/Recoleta.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
+/* El resto de tus estilos globales */
 body {
   margin: 0;
-  padding: 0;
-  width: 100%;
-  background-color: var(--color-fondo); /* Usamos la variable de fondo */
-  color: var(--color-texto); /* Usamos la variable de texto */
-  font-family: var(--fuente-secundaria);
+  /* La fuente base para todo el cuerpo se establecerá en App.css */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Regla para quitar los estilos por defecto de Vite */
-#root {
-  min-height: 100vh;
-  min-width: 100vw;
-  display: block;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-/* Estilos para la entrada inmersiva (se mantienen los específicos, pero pueden usar las nuevas variables) */
-.entrada-inmersiva {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.video-fondo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3), rgba(0,0,0,0.6));
-  z-index: 2;
-}
-
-.contenido-central {
-  position: relative;
-  text-align: center;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.logo-refugio {
-  width: 550px;
-  max-width: 90%;
-  opacity: 0.7;
-  margin-bottom: 3rem;
-  transition: all 0.8s ease-in-out;
-}
-
-.logo-refugio.final {
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-.narrativa-texto {
-  min-height: 60px;
-  font-size: clamp(1.5rem, 4vw, 2.2rem);
-  font-weight: 300;
-  letter-spacing: 1.5px;
-  line-height: 1.4;
-  text-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-
-.frase-animada {
-  display: inline-block;
-  animation: fadeInOut var(--duracion-animacion) ease-in-out;
-}
-
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translateY(15px); }
-  20% { opacity: 1; transform: translateY(0); }
-  80% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(-15px); }
-}
-
-.boton-entrar {
-  background: transparent;
-  border: 1px solid var(--color-texto);
-  color: var(--color-texto);
-  cursor: pointer;
-  font-size: 1rem;
-  letter-spacing: 3px;
-  padding: 0.8rem 2rem;
-  text-transform: uppercase;
-  margin-top: 2rem;
-  transition: background-color 0.3s, color 0.3s;
-  animation: fadeIn 1.5s ease;
-}
-
-.boton-entrar:hover {
-  background-color: var(--color-texto);
-  color: var(--color-fondo);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.controles-musica {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 3;
-}
-
-.boton-audio {
-  background: none;
-  border: none;
-  color: var(--color-texto);
-  cursor: pointer;
-  opacity: 0.6;
-  transition: opacity 0.3s;
-}
-
-.boton-audio:hover {
-  opacity: 1;
-}
+/* Otros estilos... */

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom'; // ⚠️ Importamos useNavigate
+import { useNavigate } from 'react-router-dom';
 
-const EntradaInmersiva = () => { // ⚠️ Eliminamos la prop onEntrar
-  const navigate = useNavigate(); // ⚠️ Inicializamos el hook useNavigate
+const EntradaInmersiva = () => {
+  const navigate = useNavigate();
   
   const texts = [
     "La vida es un ritual.",
@@ -17,17 +17,27 @@ const EntradaInmersiva = () => { // ⚠️ Eliminamos la prop onEntrar
   const audioRef = useRef(null);
 
   const handleUserInteraction = () => {
-    if (!isAudioPlaying) {
-      setIsAudioPlaying(true);
-      setIsMuted(false);
+    // Si el audio no está sonando, inicia la reproducción y desmutea
+    if (!isAudioPlaying && audioRef.current) {
+      audioRef.current.play().then(() => {
+        setIsAudioPlaying(true);
+        setIsMuted(false);
+      }).catch(e => {
+        console.error("Error al intentar iniciar el audio con interacción de usuario:", e);
+        setIsAudioPlaying(false);
+        setIsMuted(true); // Si falla, vuelve a mutear
+      });
+    } else if (isMuted && audioRef.current) {
+        // Si está muteado y ya está reproduciendo (o intentando), desmutea
+        setIsMuted(false);
     }
   };
 
-  // ⚠️ Nueva función para manejar el clic del botón
   const handleEntrar = () => {
-    navigate('/home'); // ⚠️ Navegamos a la ruta /home
+    navigate('/home');
   };
 
+  // Efecto para la secuencia de textos
   useEffect(() => {
     let textTimer;
     if (currentTextIndex < texts.length) {
@@ -35,13 +45,18 @@ const EntradaInmersiva = () => { // ⚠️ Eliminamos la prop onEntrar
       textTimer = setTimeout(() => {
         setCurrentTextIndex((prevIndex) => prevIndex + 1);
       }, delay);
+    } else if (currentTextIndex === texts.length) {
+      // Opcional: Si quieres que el último texto se quede un tiempo más o hacer algo al final
+      // Por ahora, solo deja que el timer termine
     }
     return () => clearTimeout(textTimer);
   }, [currentTextIndex, texts.length]);
 
+  // Efecto para controlar la reproducción y mute del audio
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.muted = isMuted;
+
       if (isAudioPlaying) {
         audioRef.current.play().catch(e => {
           console.error("Error al intentar reproducir el audio:", e);
@@ -51,20 +66,42 @@ const EntradaInmersiva = () => { // ⚠️ Eliminamos la prop onEntrar
         audioRef.current.pause();
       }
     }
+
+    // Función de limpieza: se ejecuta cuando el componente se desmonta
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause(); // Pausa el audio para evitar el error de interrupción
+        audioRef.current.currentTime = 0; // Opcional: reinicia el audio al inicio
+      }
+    };
   }, [isMuted, isAudioPlaying]);
 
+
   const toggleMute = () => {
-    setIsMuted(!isMuted);
-    if (isMuted && !isAudioPlaying) {
-      setIsAudioPlaying(true);
-    }
+    setIsMuted(prevIsMuted => {
+      // Si estaba muteado y se va a desmutear, y el audio no estaba reproduciendo, intenta iniciarlo.
+      if (prevIsMuted && !isAudioPlaying && audioRef.current) {
+        audioRef.current.play().catch(e => {
+          console.error("Error al intentar reproducir al desmutear:", e);
+          setIsAudioPlaying(false);
+        });
+        setIsAudioPlaying(true); // Asume que intentará reproducir
+      }
+      return !prevIsMuted;
+    });
   };
 
   const toggleAudioPlay = () => {
-    setIsAudioPlaying(!isAudioPlaying);
-    if (!isAudioPlaying && isMuted) {
-      setIsMuted(false);
-    }
+    setIsAudioPlaying(prevIsAudioPlaying => {
+      if (!prevIsAudioPlaying && audioRef.current) { // Si no estaba reproduciendo y se va a iniciar
+        audioRef.current.play().catch(e => {
+          console.error("Error al intentar reproducir con el botón de play/pause:", e);
+          // Si falla al reproducir, asegúrate de que el estado refleje eso.
+          setIsAudioPlaying(false); 
+        });
+      }
+      return !prevIsAudioPlaying;
+    });
   };
 
   return (
@@ -74,15 +111,15 @@ const EntradaInmersiva = () => { // ⚠️ Eliminamos la prop onEntrar
         Tu navegador no soporta la etiqueta de video.
       </video>
       <audio ref={audioRef} autoPlay loop muted={isMuted}>
-        {/* Aquí se podría añadir la fuente de audio */}
+        {/* Aquí debes añadir la fuente de audio real de tu proyecto */}
+        <source src="/audio/background-music.mp3" type="audio/mpeg" /> {/* <--- ¡Añadido! */}
         Tu navegador no soporta la etiqueta de audio.
       </audio>
 
       <div className="overlay"></div>
 
       <div className="contenido-central">
-        <img src="/icons/logo.png" alt="Refugio Logo" className="logo-refugio final" />
-        {/* ⚠️ El onClick ahora llama a la nueva función handleEntrar */}
+        <img src="/public/icons/logo.png" alt="Refugio Logo" className="logo-refugio final" />
         <button className="boton-entrar" onClick={handleEntrar}>
           Habitarlo
         </button>
