@@ -29,6 +29,17 @@
   gap: 3rem;
   max-width: 1200px;
   margin: 0 auto;
+
+  /* ESTILOS INICIALES PARA LA ANIMACIÓN DEL CONTENEDOR */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* CLASE QUE SE AÑADE CON EL HOOK useInView PARA ACTIVAR LA ANIMACIÓN DEL CONTENEDOR */
+.pilares-grid.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .pilar-card {
@@ -37,11 +48,22 @@
   border-radius: 8px;
   background-color: rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, background-color 0.3s ease;
+
+  /* ESTILOS INICIALES PARA LA ANIMACIÓN ESCALONADA DE LAS TARJETAS */
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .pilar-card:hover {
   transform: translateY(-10px);
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* CLASE QUE SE AÑADE AL CONTENEDOR GRID CUANDO ESTÁ VISIBLE */
+.pilares-grid.is-in-view .pilar-card {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .pilar-titulo {

@@ -88,4 +88,21 @@
   .header-logo {
     margin-bottom: 1rem;
   }
+
+  .main-nav a {
+    font-size: 0.9rem; /* Ajuste del tamaño de fuente para tablets */
+  }
+}
+
+@media (max-width: 480px) { /* Media query para teléfonos más pequeños */
+  .main-nav a {
+    font-size: 0.8rem; /* Tamaño de fuente aún más pequeño para móviles */
+    letter-spacing: 0.5px;
+  }
+  .main-nav ul {
+    gap: 0.75rem; /* Reducir el espacio entre enlaces en móviles */
+  }
+  .header-content img {
+    height: 40px; /* Reducir el logo en pantallas muy pequeñas */
+  }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 import logo from '../../public/icons/logo.png';
 
@@ -13,19 +14,19 @@ const Footer = () => {
         <div className="footer-links">
           <h4>Explorar</h4>
           <ul>
-            <li><a href="#manifiesto">Manifiesto</a></li>
-            <li><a href="#lifewear">LifeWear</a></li>
-            <li><a href="#cartas-al-mar">Cartas al Mar</a></li>
-            <li><a href="#nudos-de-sal">Nudos de Sal</a></li>
+            <li><Link to="/home/manifiesto">Manifiesto</Link></li>
+            <li><Link to="/home/lifewear">LifeWear</Link></li>
+            <li><Link to="/home/cartas-al-mar">Cartas al Mar</Link></li>
+            <li><Link to="/home/nudos-de-sal">Nudos de Sal</Link></li>
           </ul>
         </div>
         <div className="footer-links">
           <h4>Conectar</h4>
           <ul>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><Link to="/home/contacto">Contacto</Link></li>
             <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
             <li><a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
-            <li><a href="#disenar-tu-refugio">Diseñar</a></li>
+            <li><Link to="/home/disenar-tu-refugio">Diseñar</Link></li>
           </ul>
         </div>
       </div>

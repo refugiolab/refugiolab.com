@@ -1,4 +1,5 @@
 import React from 'react';
+import { useInView } from 'react-intersection-observer'; // Importamos useInView
 import './ProgramaDeBienestar.css';
 
 const ProgramaDeBienestar = () => {
@@ -17,6 +18,12 @@ const ProgramaDeBienestar = () => {
     },
   ];
 
+  // Hook para la animación de entrada
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2, // El 20% del componente debe estar visible para activar
+  });
+
   return (
     <section id="programa-bienestar" className="bienestar-section">
       <div className="bienestar-header">
@@ -25,9 +32,9 @@ const ProgramaDeBienestar = () => {
           Cultivando el equilibrio entre cuerpo, mente y alma.
         </p>
       </div>
-      <div className="pilares-grid">
+      <div className={`pilares-grid ${inView ? 'is-in-view' : ''}`} ref={ref}> {/* Aplicamos la clase de animación aquí */}
         {pilares.map((pilar, index) => (
-          <div key={index} className="pilar-card">
+          <div key={index} className="pilar-card" style={{ transitionDelay: `${index * 150}ms` }}>
             <h3 className="pilar-titulo">{pilar.titulo}</h3>
             <p className="pilar-descripcion">{pilar.descripcion}</p>
           </div>

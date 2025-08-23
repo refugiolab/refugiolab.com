@@ -19,11 +19,12 @@ universo-refugio/
 │              ├── imagen2.png
 │              └── mar.png
 │      ├── VideoIntro.mp4
-│      └──vite.svg
+│      └── isoblanco.svg
 ├── src/
 │      ├── assets/
 │      ├──components/
 │              ├── EntradaInmersiva.jsx
+│              ├── EntradaInmersiva.css
 │              ├── Header.jsx
 │              ├── Header.css
 │              ├── Manifiesto.jsx

@@ -5,13 +5,13 @@ import logo from '../../public/icons/logo.png';
 
 const Header = () => {
   const navLinks = [
-    { name: "Manifiesto", href: "/manifiesto" },
-    { name: "LifeWear", href: "/lifewear" },
-    { name: "Cartas al Mar", href: "/cartas-al-mar" },
-    { name: "Nudos de Sal", href: "/nudos-de-sal" },
-    { name: "Diseñar tu Refugio", href: "/disenar-tu-refugio" },
-    { name: "Programa de Bienestar", href: "/programa-de-bienestar" },
-    { name: "Contacto", href: "/contacto" },
+    { name: "Manifiesto", href: "/home/manifiesto" },
+    { name: "LifeWear", href: "/home/lifewear" },
+    { name: "Cartas al Mar", href: "/home/cartas-al-mar" },
+    { name: "Nudos de Sal", href: "/home/nudos-de-sal" },
+    { name: "Diseñar tu Refugio", href: "/home/disenar-tu-refugio" },
+    { name: "Programa de Bienestar", href: "/home/programa-de-bienestar" },
+    { name: "Contacto", href: "/home/contacto" },
   ];
 
   return (

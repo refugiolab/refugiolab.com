@@ -30,6 +30,17 @@
   max-width: 1000px;
   margin: 0 auto;
   align-items: center;
+
+  /* ESTILOS INICIALES PARA LA ANIMACIÓN DEL CONTENEDOR */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* ESTADO FINAL: esta clase se añade para activar la animación del contenedor */
+.contacto-contenido.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .contacto-info {
@@ -113,6 +124,72 @@
   background-color: rgba(255, 255, 255, 0.8);
 }
 
+/* Estilos para el Modal personalizado (reutilizados del componente Diseñar tu Refugio) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  animation: modal-appear 0.3s ease-out forwards;
+}
+
+.modal-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--color-primario);
+}
+
+.modal-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.modal-close-button {
+  background-color: var(--color-texto);
+  color: var(--color-fondo);
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.modal-close-button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 /* Media Queries para responsividad */
 @media (max-width: 768px) {
   .contacto-section {
@@ -122,5 +199,8 @@
   .contacto-contenido {
     grid-template-columns: 1fr; /* Una sola columna para móviles */
     gap: 2rem;
+  }
+  .modal-content {
+    padding: 2rem;
   }
 }

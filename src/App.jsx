@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import EntradaInmersiva from './components/EntradaInmersiva';
-import Header from './components/Header';
+import Layout from './components/Layout';
 import Manifiesto from './components/Manifiesto';
 import LifeWear from './components/LifeWear';
 import CartasAlMar from './components/CartasAlMar';
@@ -8,75 +8,38 @@ import NudosDeSal from './components/NudosDeSal';
 import DisenarTuRefugio from './components/DisenarTuRefugio';
 import ProgramaDeBienestar from './components/ProgramaDeBienestar';
 import Contacto from './components/Contacto';
-import Footer from './components/Footer';
 import './App.css';
+
+// Componentes de Placeholder para las colecciones de LifeWear
+const YogaWear = () => <div><h2>YogaWear</h2><p>Página de la colección YogaWear.</p></div>;
+const Knitwear = () => <div><h2>Knitwear</h2><p>Página de la colección Knitwear.</p></div>;
+const Archivo = () => <div><h2>Archivo</h2><p>Página de la colección Archivo.</p></div>;
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<EntradaInmersiva />} />
-        {/* Aquí la página de inicio es la que tiene la entrada inmersiva.
-        Cuando hagas clic en el botón "Entrar", irás a la página principal. */}
-        <Route path="/home" element={
-          <>
-            <Header />
-            <main className="main-content">
-              <h1>Bienvenid@ al Universo Refugio</h1>
-            </main>
-            <Footer />
-          </>
-        } />
-        {/* Rutas para cada una de las secciones */}
-        <Route path="/manifiesto" element={
-          <>
-            <Header />
-            <Manifiesto />
-            <Footer />
-          </>
-        } />
-        <Route path="/lifewear" element={
-          <>
-            <Header />
-            <LifeWear />
-            <Footer />
-          </>
-        } />
-        <Route path="/cartas-al-mar" element={
-          <>
-            <Header />
-            <CartasAlMar />
-            <Footer />
-          </>
-        } />
-        <Route path="/nudos-de-sal" element={
-          <>
-            <Header />
-            <NudosDeSal />
-            <Footer />
-          </>
-        } />
-        <Route path="/disenar-tu-refugio" element={
-          <>
-            <Header />
-            <DisenarTuRefugio />
-            <Footer />
-          </>
-        } />
-        <Route path="/programa-de-bienestar" element={
-          <>
-            <Header />
-            <ProgramaDeBienestar />
-            <Footer />
-          </>
-        } />
-        <Route path="/contacto" element={
-          <>
-            <Header />
-            <Contacto />
-            <Footer />
-          </>
-        } />
+        
+        {/* Rutas anidadas dentro del Layout */}
+        <Route path="/home" element={<Layout />}>
+          <Route index element={<h1>Bienvenid@ al Universo Refugio</h1>} />
+          <Route path="manifiesto" element={<Manifiesto />} />
+          <Route path="cartas-al-mar" element={<CartasAlMar />} />
+          <Route path="nudos-de-sal" element={<NudosDeSal />} />
+          <Route path="disenar-tu-refugio" element={<DisenarTuRefugio />} />
+          <Route path="programa-de-bienestar" element={<ProgramaDeBienestar />} />
+          <Route path="contacto" element={<Contacto />} />
+          
+          {/* Rutas anidadas para la sección de LifeWear */}
+          <Route path="lifewear">
+            <Route index element={<LifeWear />} />
+            <Route path="yogawear" element={<YogaWear />} />
+            <Route path="knitwear" element={<Knitwear />} />
+            <Route path="archivo" element={<Archivo />} />
+          </Route>
+        </Route>
+        
       </Routes>
     </BrowserRouter>
   );

@@ -1,11 +1,24 @@
-import React from 'react';
-import './Contacto.css';
-import logo from '../../public/icons/logo.png'; // Reutilizamos el logo de la marca
+import React, { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+import './Contacto.css'; // La ruta a Contacto.css es correcta ya que están en la misma carpeta
+import logo from '../../public/icons/logo.png'; // Ruta corregida para el logo
 
 const Contacto = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('¡Mensaje enviado! Nos pondremos en contacto contigo pronto.');
+    setShowModal(true);
+    // Aquí podrías añadir la lógica para enviar el formulario a un backend
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -17,7 +30,7 @@ const Contacto = () => {
         </p>
       </div>
 
-      <div className="contacto-contenido">
+      <div className={`contacto-contenido ${inView ? 'is-in-view' : ''}`} ref={ref}>
         <div className="contacto-info">
           <img src={logo} alt="Refugio Logo" className="contacto-logo" />
           <p>
@@ -42,6 +55,16 @@ const Contacto = () => {
           </form>
         </div>
       </div>
+
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>¡Mensaje Enviado!</h3>
+            <p>Gracias por contactarnos. Nos pondremos en contacto contigo pronto.</p>
+            <button onClick={closeModal} className="modal-close-button">Cerrar</button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
