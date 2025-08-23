@@ -6,6 +6,7 @@
   text-align: center;
   padding: 0 1rem; /* Añadir padding horizontal para evitar que el contenido se pegue a los bordes */
   box-sizing: border-box; /* Asegura que padding no cause overflow */
+  width: 100%; /* Asegura que ocupe el ancho disponible */
 }
 
 .newsletter-section h4 {
@@ -25,6 +26,8 @@
   max-width: 350px; /* Reducido un poco para móviles */
   margin-bottom: 1.5rem;
   font-family: var(--fuente-secundaria); /* Aplica Recoleta al texto */
+  width: 100%; /* Asegura que ocupe el ancho disponible */
+  padding: 0 0.5rem; /* Pequeño padding para el texto */
 }
 
 .newsletter-form {
@@ -80,6 +83,8 @@
   font-size: 0.9rem;
   font-weight: 500;
   font-family: var(--fuente-secundaria); /* Aplica Recoleta */
+  width: 100%; /* Asegura que ocupe el ancho disponible */
+  padding: 0 0.5rem; /* Pequeño padding para el mensaje */
 }
 
 .newsletter-message.success {

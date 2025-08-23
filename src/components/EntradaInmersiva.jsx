@@ -112,14 +112,15 @@ const EntradaInmersiva = () => {
       </video>
       <audio ref={audioRef} autoPlay loop muted={isMuted}>
         {/* Aquí debes añadir la fuente de audio real de tu proyecto */}
-        <source src="/audio/background-music.mp3" type="audio/mpeg" /> {/* <--- ¡Añadido! */}
+        <source src="/audio/background-music.mp3" type="audio/mpeg" />
         Tu navegador no soporta la etiqueta de audio.
       </audio>
 
       <div className="overlay"></div>
 
       <div className="contenido-central">
-        <img src="/public/icons/logo.png" alt="Refugio Logo" className="logo-refugio final" />
+        {/* ¡Ruta del logo corregida! */}
+        <img src="/icons/logo.png" alt="Refugio Logo" className="logo-refugio final" />
         <button className="boton-entrar" onClick={handleEntrar}>
           Habitarlo
         </button>

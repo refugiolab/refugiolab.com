@@ -11,7 +11,7 @@
   --oro-amanecer: #cc9929;    /* Detalles de acento, highlights */
 
   /* Colores genéricos adaptados a la paleta */
-  --color-fondo: var(--blanco-horizonte); /* ¡Cambiado a blanco horizonte para la página principal! */
+  --color-fondo: var(--blanco-horizonte); /* Color de fondo de la página principal */
   --color-texto: var(--azul-profundo); /* Texto principal sobre fondo claro */
   --color-primario: var(--azul-profundo); /* Color primario */
   --color-secundario: var(--gris-bruma); /* Color secundario */
@@ -31,14 +31,22 @@
 /* Estilos Globales para el Cuerpo de la Página */
 html {
   scroll-behavior: smooth;
+  /* Aplicar box-sizing globalmente para un mejor control del layout */
+  box-sizing: border-box; 
+}
+
+*, *::before, *::after {
+  box-sizing: inherit; /* Hereda box-sizing del html */
 }
 
 body {
   margin: 0;
   padding: 0;
   width: 100%;
-  background-color: var(--color-fondo); /* Usamos la variable de fondo, ahora es blanco-horizonte */
-  color: var(--color-texto); /* Usamos la variable de texto, ahora es azul-profundo */
+  /* Eliminar overflow-x oculto si fue la causa de desplazamiento */
+  overflow-x: hidden; 
+  background-color: var(--color-fondo); /* Usamos la variable de fondo */
+  color: var(--color-texto); /* Usamos la variable de texto */
   font-family: var(--fuente-secundaria); /* Aplicamos Recoleta como fuente secundaria por defecto */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -57,7 +65,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Estilos para la entrada inmersiva */
-/* Asegúrate de que los textos aquí usen las nuevas variables de fuente si lo deseas */
 .entrada-inmersiva {
   position: relative;
   height: 100vh;
@@ -96,12 +103,17 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  /* Aseguramos que el padding no cause overflow en ancho total */
+  padding: 2rem min(1rem, 5vw); 
+  width: 100%; /* Asegura que no haya desbordamiento */
+  max-width: 100%; /* Asegura que no haya desbordamiento */
 }
 
 .logo-refugio {
-  width: 550px;
-  max-width: 90%;
+  /* Usaremos max-width: 100% para el logo en general, el width se ajustará */
+  width: auto; /* Dejar que el ancho se ajuste */
+  max-width: 90%; /* Máximo 90% del contenedor padre */
+  height: auto; /* Mantiene la proporción */
   opacity: 0.7;
   margin-bottom: 3rem;
   transition: all 0.8s ease-in-out;
@@ -120,6 +132,9 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.4;
   text-shadow: 0 0 15px rgba(0,0,0,0.5);
   font-family: var(--fuente-secundaria); /* Usar Recoleta */
+  padding: 0 min(1rem, 5vw); /* Padding responsivo para el texto */
+  max-width: 800px; /* Limitar el ancho máximo para la legibilidad */
+  margin: 0 auto;
 }
 
 .frase-animada {

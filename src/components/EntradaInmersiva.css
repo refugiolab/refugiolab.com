@@ -1,4 +1,5 @@
 :root {
+  /* No es necesario redefinir variables aquí, ya vienen de App.css */
   --transicion-suave: all 0.5s ease-in-out;
 }
 
@@ -7,7 +8,7 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow: hidden; /* Importante para evitar desplazamiento horizontal */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +35,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(var(--azul-profundo-rgb), 0.4); /* Usamos el azul profundo con opacidad */
+  /* Corregido: Usamos el valor RGB directamente si no tienes una variable --azul-profundo-rgb */
+  background-color: rgba(120, 137, 144, 0.4); /* RGB para --azul-profundo (78, 89, 90) convertido a 120, 137, 144 por un error de mi parte en la lectura inicial, el valor correcto de rgba para #788990 es rgba(120,137,144,0.4) */
   z-index: 2;
 }
 
@@ -47,14 +49,17 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  padding: 1rem;
+  /* Ajuste del padding para evitar overflow y que el contenido no se pegue */
+  padding: 1rem min(2rem, 5vw); 
+  width: 100%; /* Asegura que no haya desbordamiento */
+  max-width: 100%; /* Asegura que no haya desbordamiento */
 }
 
 /* Estilo para el logo */
 .logo-refugio {
-  width: 250px;
-  max-width: 80%;
-  height: auto;
+  width: auto; /* Permite que el ancho se ajuste */
+  max-width: 150px; /* ¡Logo bastante más pequeño en ordenador! */
+  height: auto; /* Mantiene la proporción de la imagen */
   opacity: 0;
   animation: fade-in-up 2s ease-out forwards;
 }
@@ -76,7 +81,7 @@
   padding: 0.8rem 2.5rem;
   cursor: pointer;
   border-radius: 50px; /* ¡Botón más redondo! */
-  text-transform: none; /* ¡Quitadas las mayúsculas! o puedes usar 'capitalize' */
+  text-transform: none; /* ¡Quitadas las mayúsculas! */
   letter-spacing: 2px;
   transition: var(--transicion-suave);
   opacity: 0;
@@ -96,6 +101,10 @@
   animation: fade-in 1.5s ease-out forwards;
   animation-delay: 3s;
   font-family: var(--fuente-secundaria); /* Usa tu fuente secundaria */
+  /* Asegura que el texto no desborde y tenga padding responsivo */
+  max-width: 700px; 
+  padding: 0 1rem;
+  margin: 0 auto;
 }
 
 /* Animación para el texto de la narrativa */
@@ -158,7 +167,8 @@
 /* Media Queries para responsividad en dispositivos móviles */
 @media (max-width: 768px) {
   .logo-refugio {
-    width: 200px;
+    max-width: 120px; /* Tamaño para tablets y móviles */
+    width: auto; /* Permitir que el ancho se ajuste proporcionalmente */
   }
 
   .frase-animada {
@@ -173,5 +183,20 @@
   .controles-musica {
     bottom: 1rem;
     right: 1rem;
+  }
+
+  /* Ajustar padding del contenido central para evitar desbordamiento en móviles */
+  .contenido-central {
+    padding: 1rem 0.5rem;
+  }
+}
+
+/* Media Query adicional para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .logo-refugio {
+    max-width: 90px; /* Tamaño para teléfonos muy pequeños */
+  }
+  .narrativa-texto {
+    font-size: 1.1rem;
   }
 }
