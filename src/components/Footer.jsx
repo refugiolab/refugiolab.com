@@ -2,21 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
 import logo from '/icons/logo.png';
-import NewsletterForm from './NewsletterForm';
 
 const Footer = () => {
   const exploreLinks = [
-    { name: "Manifiesto", href: "/home/manifiesto" },
-    { name: "LifeWear", href: "/home/lifewear" },
-    { name: "Cartas al Mar", href: "/home/cartas-al-mar" },
-    { name: "Nudos de Sal", href: "/home/nudos-de-sal" },
+    { name: "about", href: "/home/about" },
+    { name: "lifewear", href: "/home/lifewear" },
+    { name: "cartas al mar", href: "/home/cartas-al-mar" },
+    { name: "nudos de sal", href: "/home/nudos-de-sal" },
   ];
 
   const connectLinks = [
     { name: "contacto@refugiolab.com", href: "mailto:contacto@refugiolab.com" },
     { name: "Instagram", href: "https://instagram.com/refugio_________" },
     { name: "Whatsapp", href: "https://wa.me/6ZMNWYQBIN5HA1" },
-    { name: "Diseñar", href: "/home/disenar-tu-refugio" },
+    { name: "FAQ", href: "/home/faq" },
   ];
 
   return (
@@ -56,14 +55,10 @@ const Footer = () => {
             ))}
           </ul>
         </nav>
-
-        <div className="footer__newsletter-section">
-          <NewsletterForm />
-        </div>
       </div>
       
       <div className="footer__bottom">
-        <p>&copy; {new Date().getFullYear()} Refugio. Todos los derechos reservados.</p>
+        <p>&copy; 2025 Refugio. Todos los derechos reservados.</p>
       </div>
     </footer>
   );

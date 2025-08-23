@@ -55,6 +55,7 @@
   font-size: 0.9rem;
   font-weight: 300;
   transition: color 0.3s ease;
+  text-transform: lowercase;
 }
 
 .footer__links a:hover {
@@ -71,7 +72,7 @@
 
 .footer__bottom p {
   font-size: 0.8rem;
-  color: var(--oliva-suave);
+  color: var(--gris-bruma); /* Mejor contraste */
   font-family: var(--fuente-secundaria);
 }
 

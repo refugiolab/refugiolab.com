@@ -1,43 +1,38 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './EntradaInmersiva.css';
-import logoRefugio from '/isonegro.svg'; // La ruta corregida
-
+import logoRefugio from '/isoblanco.svg';
 import VideoIntro from '/VideoIntro.mp4';
 import { FaPlay, FaPause } from 'react-icons/fa';
 
 const frases = [
-  "La vida es un ritual.",
-  "El bienestar es la nueva alta costura.",
-  "La moda es un refugio."
+  "La vida es un ritual",
+  "Encontrá tu propio ritmo",
+  "Estamos en movimiento",
+  "Vestir(nos) con sentido"
 ];
 
 const EntradaInmersiva = ({ onEnter }) => {
   const [currentFrase, setCurrentFrase] = useState(0);
-  const [showButton, setShowButton] = useState(false);
+  const [showButton, setShowButton] = useState(true); // El botón ahora es visible desde el principio
   const [isPlaying, setIsPlaying] = useState(true);
   const videoRef = useRef(null);
   const audioRef = useRef(null);
   const logoRef = useRef(null);
 
   useEffect(() => {
-    let timeoutId;
-    if (videoRef.current) {
-      const handleVideoReady = () => {
-        timeoutId = setTimeout(() => {
-          const logo = logoRef.current;
-          if (logo) {
-            logo.classList.add('final');
-          }
-          setShowButton(true);
-        }, 10000);
-      };
-      
-      handleVideoReady();
+    // Este efecto maneja la animación final del logo
+    const logo = logoRef.current;
+    if (logo) {
+      // El logo se anima inmediatamente
+      const logoAnimationTimeout = setTimeout(() => {
+        logo.classList.add('final');
+      }, 500); // Pequeño retraso para que la animación se vea fluida
+      return () => clearTimeout(logoAnimationTimeout);
     }
-    return () => clearTimeout(timeoutId);
   }, []);
 
   useEffect(() => {
+    // Este efecto maneja el cambio de frases
     const intervalId = setInterval(() => {
       setCurrentFrase((prev) => (prev + 1) % frases.length);
     }, 3500);
@@ -79,7 +74,7 @@ const EntradaInmersiva = ({ onEnter }) => {
         </div>
         {showButton && (
           <button className="boton-entrar" onClick={onEnter}>
-            Habitarlo
+            Ingresar
           </button>
         )}
       </div>
