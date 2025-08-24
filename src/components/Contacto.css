@@ -1,7 +1,7 @@
 .contacto {
   padding: 6rem 2rem;
-  background-color: var(--azul-profundo);
-  color: var(--blanco-horizonte);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
 }
 
 .contacto__header {
@@ -19,7 +19,8 @@
 .contacto__subtitulo {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   font-weight: 300;
-  color: var(--gris-bruma);
+  color: var(--color-texto);
+  opacity: 0.8;
 }
 
 .contacto__contenido {
@@ -62,14 +63,15 @@
 }
 
 .contacto__redes-sociales a {
-  color: var(--cobre-raiz);
+  color: var(--color-texto);
   font-size: 1rem;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: opacity 0.3s ease;
+  opacity: 0.8;
 }
 
 .contacto__redes-sociales a:hover {
-  color: var(--oro-amanecer);
+  opacity: 1;
 }
 
 .contacto__form-container {
@@ -84,9 +86,9 @@
 
 .contacto__form input,
 .contacto__form textarea {
-  background-color: rgba(var(--gris-bruma-rgb), 0.05);
-  border: 1px solid rgba(var(--gris-bruma-rgb), 0.2);
-  color: var(--blanco-horizonte);
+  background-color: transparent;
+  border: 1px solid rgba(68, 70, 83, 0.3);
+  color: var(--color-texto);
   padding: 1rem;
   font-size: 1rem;
   transition: border-color 0.3s ease;
@@ -95,7 +97,7 @@
 .contacto__form input:focus,
 .contacto__form textarea:focus {
   outline: none;
-  border-color: var(--cobre-raiz);
+  border-color: var(--color-texto);
 }
 
 .contacto__form textarea {
@@ -106,14 +108,15 @@
 .contacto__form label {
   text-align: left;
   font-size: 0.9rem;
-  color: var(--gris-bruma);
+  color: var(--color-texto);
+  opacity: 0.8;
 }
 
 .contacto__boton {
-  background: var(--cobre-raiz);
-  color: var(--blanco-horizonte);
+  background: var(--color-texto);
+  color: var(--color-fondo);
   padding: 1rem 2rem;
-  border: none;
+  border: 1px solid var(--color-texto);
   cursor: pointer;
   font-size: 1rem;
   text-transform: uppercase;
@@ -123,8 +126,8 @@
 }
 
 .contacto__boton:hover {
-  background-color: var(--oro-amanecer);
-  color: var(--azul-profundo);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
 }
 
 @media (max-width: 768px) {

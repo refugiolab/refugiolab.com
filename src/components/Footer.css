@@ -1,8 +1,10 @@
 .main-footer {
-  background-color: var(--azul-profundo);
-  color: var(--blanco-horizonte);
+  /* Se usan los colores base */
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
   padding: 4rem min(2rem, 5vw) 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  /* Borde sutil con el color de texto */
+  border-top: 1px solid rgba(68, 70, 83, 0.1);
   box-sizing: border-box;
 }
 
@@ -23,7 +25,9 @@
 .footer__logo p {
   font-size: 0.9rem;
   font-style: italic;
-  color: var(--gris-bruma);
+  /* Se usa el color de texto con opacidad para diferenciarlo */
+  color: var(--color-texto);
+  opacity: 0.8;
   font-family: var(--fuente-secundaria);
 }
 
@@ -34,7 +38,7 @@
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--blanco-horizonte);
+  color: var(--color-texto);
   font-family: var(--fuente-principal);
 }
 
@@ -49,30 +53,36 @@
 }
 
 .footer__links a {
-  color: var(--gris-bruma);
+  /* Se usa el color de texto con opacidad */
+  color: var(--color-texto);
+  opacity: 0.8;
   text-decoration: none;
   font-family: var(--fuente-secundaria);
   font-size: 0.9rem;
   font-weight: 300;
-  transition: color 0.3s ease;
+  transition: opacity 0.3s ease;
   text-transform: lowercase;
 }
 
 .footer__links a:hover {
-  color: var(--blanco-horizonte);
+  /* Al pasar el mouse, la opacidad se va a 1 */
+  opacity: 1;
 }
 
 .footer__bottom {
   text-align: center;
   margin-top: 2rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  /* Borde sutil */
+  border-top: 1px solid rgba(68, 70, 83, 0.05);
   box-sizing: border-box;
 }
 
 .footer__bottom p {
   font-size: 0.8rem;
-  color: var(--gris-bruma); /* Mejor contraste */
+  /* Texto con opacidad */
+  color: var(--color-texto);
+  opacity: 0.8;
   font-family: var(--fuente-secundaria);
 }
 

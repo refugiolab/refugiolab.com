@@ -1,9 +1,12 @@
+/* Nota: La mayoría de los estilos de .main-content ya están definidos globalmente. */
+/* Este archivo puede simplificarse o unirse a los estilos globales si solo contiene esto. */
 .main-content {
   padding: 2rem 0;
   max-width: 1200px;
   margin: 0 auto;
-  color: var(--azul-profundo);
-  background-color: var(--blanco-horizonte);
+  /* Los colores ya son heredados del body, pero se puede ser explícito si se desea */
+  /* color: var(--color-texto); */
+  /* background-color: var(--color-fondo); */
 }
 
 @media (max-width: 768px) {

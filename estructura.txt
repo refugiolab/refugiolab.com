@@ -1,58 +1,65 @@
+Estructura del proyecto: 
+
 universo-refugio/
 ├── dist/
-│      ├── assets/
-│      ├── icons/
-│      ├── images/
-│      ├── index.html
-│      ├── Videointro.mp4
-│      ├── vite.svg
+│      ├── assets/
+│      ├── icons/
+│      ├── images/
+│      ├── index.html
+│      ├── Videointro.mp4
+│      └── vite.svg
 ├── node_modules/
 ├── public/
-│      ├── icons/
-│              ├── instagram.png
-│              ├── whatsapp.png
-│              ├── youtube.png
-│              ├── logo.png
-│              └── iso.png
-│      └── images/
-│              ├── imagen1.png
-│              ├── imagen2.png
-│              └── mar.png
-│      ├── VideoIntro.mp4
-│      └── isoblanco.svg
+│      ├── audio/                 
+│      │      └── musica-ambiente.mp3
+│      ├── icons/
+│      │      ├── instagram.png
+│      │      ├── whatsapp.png
+│      │      ├── youtube.png
+│      │      ├── logo.png
+│      │      └── iso.png
+│      └── images/
+│              ├── imagen1.png
+│              ├── imagen2.png
+│              └── mar.png
+│      ├── VideoIntro.mp4
+│      └── isoblanco.svg
 ├── src/
-│      ├── assets/
-│      ├──components/
-│              ├── EntradaInmersiva.jsx
-│              ├── EntradaInmersiva.css
-│              ├── Header.jsx
-│              ├── Header.css
-│              ├── Manifiesto.jsx
-│              ├── Manifiesto.css
-│              ├── LifeWear.jsx
-│              ├── LifeWear.css
-│              ├── CartasAlMar.jsx
-│              ├── CartasAlMar.css
-│              ├── Layout.jsx
-│              ├── Layout.css
-│              ├── NudosDeSal.jsx
-│              ├── NudosDeSal.css
-│              ├── DisenarTuRefugio.jsx
-│              ├── DisenarTuRefugio.css
-│              ├── ProgramaDeBienestar.jsx
-│              ├── ProgramaDeBienestar.css
-│              ├── Contacto.jsx
-│              ├── Contacto.css
-│              ├── Footer.jsx
-│              ├── Footer.css
-│              ├── Modal.jsx
-│    	 ├── fonts/
-│              ├── NewYork.woff2
-│              └── Recoleta.woff2
-│      ├── App.css
-│      ├── App.jsx
-│      ├── index.css
-│      └── main.jsx
+│      ├── assets/
+│      ├──components/
+│              ├── EntradaInmersiva.jsx   
+│              ├── EntradaInmersiva.css   
+│              ├── Header.jsx
+│              ├── Header.css           
+│              ├── Manifiesto.jsx
+│              ├── Manifiesto.css
+│              ├── LifeWear.jsx
+│              ├── LifeWear.css
+│              ├── CartasAlMar.jsx
+│              ├── CartasAlMar.css
+│              ├── Layout.jsx
+│              ├── Layout.css
+│              ├── NudosDeSal.jsx
+│              ├── NudosDeSal.css
+│              ├── DisenarTuRefugio.jsx
+│              ├── DisenarTuRefugio.css
+│              ├── ProgramaDeBienestar.jsx
+│              ├── ProgramaDeBienestar.css
+│              ├── Contacto.jsx
+│              ├── Contacto.css
+│              ├── Home.jsx
+│              ├── Home.css             
+│              ├── Footer.jsx
+│              ├── Footer.css
+│              ├── Modal.jsx
+│              └── Modal.css
+│    ├── fonts/
+│              ├── NewYork.woff2
+│              └── Recoleta.woff2
+│      ├── App.css                    
+│      ├── App.jsx
+│      ├── index.css                  
+│      └── main.jsx
 ├── .gitignore
 ├── eslint.config.js
 ├── estructura.txt
@@ -61,3 +68,4 @@ universo-refugio/
 ├── README.md
 ├── netlify.toml
 └── vite.config.js
+

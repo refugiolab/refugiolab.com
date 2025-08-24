@@ -1,7 +1,8 @@
 .home-container {
   width: 100%;
   overflow-x: hidden;
-  color: var(--blanco-horizonte);
+  /* Se usa el color de texto principal definido en :root */
+  color: var(--color-texto);
 }
 
 .home__intro {
@@ -29,7 +30,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(var(--azul-profundo-rgb), 0.5);
+  /* Superposición oscura para asegurar la legibilidad del texto sobre el video */
+  background: rgba(0, 0, 0, 0.4); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,6 +44,8 @@
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease-out, transform 1s ease-out;
+  /* El texto sobre el video debe ser claro para contrastar */
+  color: #fffffc; /* ¡CAMBIO AQUÍ! - Usamos el color de fondo como texto aquí */
 }
 
 .home__intro-texto.is-in-view {
@@ -52,8 +56,10 @@
 .home__intro-slogan {
   font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 300;
-  color: var(--oliva-suave);
+  /* Mantenemos el texto claro */
+  color: #fffffc; /* ¡CAMBIO AQUÍ! */
   margin-bottom: 1rem;
+  opacity: 0.9;
 }
 
 .home__intro-titulo {
@@ -74,8 +80,9 @@
 .home__lifewear-resumen {
   padding: 6rem 2rem;
   text-align: center;
-  background-color: var(--azul-profundo);
-  color: var(--blanco-horizonte);
+  /* Se usan los colores base */
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
 }
 
 .lifewear-resumen__header h2 {
@@ -98,7 +105,8 @@
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(var(--azul-profundo-rgb), 0.3);
+  /* Sombra sutil con el color de texto */
+  box-shadow: 0 4px 15px rgba(68, 70, 83, 0.1);
 }
 
 .lifewear-resumen__imagen {
@@ -109,26 +117,30 @@
 }
 
 .lifewear-resumen__boton {
-  background: var(--cobre-raiz);
-  color: var(--blanco-horizonte);
+  /* Botón con colores invertidos para destacar */
+  background: var(--color-texto);
+  color: var(--color-fondo);
   padding: 1rem 2.5rem;
-  border: none;
+  border: 1px solid var(--color-texto);
   border-radius: 50px;
   text-decoration: none;
   font-weight: bold;
   letter-spacing: 1px;
   text-transform: lowercase;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .lifewear-resumen__boton:hover {
-  background-color: var(--oro-amanecer);
+  /* Efecto hover invierte los colores */
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
 }
 
 .home__newsletter {
   padding: 6rem 2rem;
-  background-color: var(--blanco-horizonte);
-  color: var(--azul-profundo);
+  /* Se usan los colores base */
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
   text-align: center;
 }
 
@@ -156,7 +168,7 @@
   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   line-height: 1.6;
   margin-bottom: 2rem;
-  color: var(--azul-profundo);
+  color: var(--color-texto);
 }
 
 .newsletter__form {
@@ -169,28 +181,31 @@
 
 .newsletter__form input {
   padding: 1rem;
-  border: 1px solid var(--azul-profundo);
+  border: 1px solid var(--color-texto);
   border-radius: 50px;
   background-color: transparent;
-  color: var(--azul-profundo);
+  color: var(--color-texto);
   font-family: var(--fuente-secundaria);
   font-size: 1rem;
 }
 
 .newsletter__form input::placeholder {
-  color: var(--gris-bruma);
+  /* Placeholder con opacidad para ser sutil */
+  color: var(--color-texto);
+  opacity: 0.6;
 }
 
 .newsletter__form input:focus {
   outline: none;
-  border-color: var(--cobre-raiz);
+  /* Se mantiene el color de borde, se podría aumentar el grosor si se quiere */
+  border-color: var(--color-texto);
 }
 
 .newsletter__boton {
   padding: 1rem;
-  border: none;
-  background-color: var(--azul-profundo);
-  color: var(--blanco-horizonte);
+  border: 1px solid var(--color-texto);
+  background-color: var(--color-texto);
+  color: var(--color-fondo);
   font-weight: bold;
   text-transform: lowercase;
   letter-spacing: 1px;
@@ -200,12 +215,16 @@
 }
 
 .newsletter__boton:hover {
-  background-color: var(--cobre-raiz);
+  /* Efecto hover invierte los colores */
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
 }
 
 .home__cierre {
   padding: 6rem 2rem;
-  background-color: var(--azul-profundo);
+  /* Se usan los colores base */
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
   text-align: center;
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   line-height: 1.6;

@@ -4,30 +4,31 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 1rem; /* Añadir padding horizontal para evitar que el contenido se pegue a los bordes */
-  box-sizing: border-box; /* Asegura que padding no cause overflow */
-  width: 100%; /* Asegura que ocupe el ancho disponible */
+  padding: 0 1rem;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .newsletter-section h4 {
-  font-size: 1.1rem; /* Ajuste del título para que sea más pequeño */
+  font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--blanco-horizonte); /* Usa el color de la paleta */
-  font-family: var(--fuente-principal); /* Aplica NewYork al título */
+  color: var(--color-texto);
+  font-family: var(--fuente-principal);
 }
 
 .newsletter-text {
   font-size: 0.9rem;
   font-weight: 300;
-  color: var(--gris-bruma); /* Usa el color de la paleta */
-  max-width: 350px; /* Reducido un poco para móviles */
+  color: var(--color-texto);
+  opacity: 0.8;
+  max-width: 350px;
   margin-bottom: 1.5rem;
-  font-family: var(--fuente-secundaria); /* Aplica Recoleta al texto */
-  width: 100%; /* Asegura que ocupe el ancho disponible */
-  padding: 0 0.5rem; /* Pequeño padding para el texto */
+  font-family: var(--fuente-secundaria);
+  width: 100%;
+  padding: 0 0.5rem;
 }
 
 .newsletter-form {
@@ -35,67 +36,67 @@
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  max-width: 280px; /* Asegura que el formulario no sea demasiado ancho en móvil */
+  max-width: 280px;
 }
 
 .newsletter-input {
   padding: 0.75rem 1rem;
-  border: 1px solid var(--gris-bruma); /* Usa el color de la paleta */
+  border: 1px solid rgba(68, 70, 83, 0.3);
   border-radius: 5px;
   background-color: transparent;
-  color: var(--blanco-horizonte); /* Usa el color de la paleta */
+  color: var(--color-texto);
   font-size: 1rem;
   transition: border-color 0.3s ease;
-  font-family: var(--fuente-secundaria); /* Aplica Recoleta */
-  box-sizing: border-box; /* Asegura que padding no cause overflow */
+  font-family: var(--fuente-secundaria);
+  box-sizing: border-box;
 }
 
 .newsletter-input::placeholder {
-  color: var(--gris-bruma); /* Usa el color de la paleta */
-  opacity: 0.7;
+  color: var(--color-texto);
+  opacity: 0.5;
 }
 
 .newsletter-input:focus {
   outline: none;
-  border-color: var(--blanco-horizonte); /* Usa el color de la paleta */
+  border-color: var(--color-texto);
 }
 
 .newsletter-button {
   padding: 0.75rem 1rem;
-  border: none;
+  border: 1px solid var(--color-texto);
   border-radius: 5px;
-  background-color: var(--blanco-horizonte); /* Usa el color de la paleta */
-  color: var(--azul-profundo); /* Usa el color de la paleta */
+  background-color: var(--color-texto);
+  color: var(--color-fondo);
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
-  font-family: var(--fuente-secundaria); /* Aplica Recoleta */
-  box-sizing: border-box; /* Asegura que padding no cause overflow */
+  font-family: var(--fuente-secundaria);
+  box-sizing: border-box;
 }
 
 .newsletter-button:hover {
-  background-color: var(--oliva-suave); /* Usa el color de la paleta */
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
 }
 
 .newsletter-message {
   margin-top: 1rem;
   font-size: 0.9rem;
   font-weight: 500;
-  font-family: var(--fuente-secundaria); /* Aplica Recoleta */
-  width: 100%; /* Asegura que ocupe el ancho disponible */
-  padding: 0 0.5rem; /* Pequeño padding para el mensaje */
+  font-family: var(--fuente-secundaria);
+  width: 100%;
+  padding: 0 0.5rem;
 }
 
 .newsletter-message.success {
-  color: var(--oliva-suave); /* Usa el color de la paleta */
+  color: #3c763d; /* Un verde para éxito, se podría definir como variable de acento */
 }
 
 .newsletter-message.error {
-  color: #ff6347; /* Un rojo para errores */
+  color: #a94442; /* Un rojo para errores, se podría definir como variable de acento */
 }
 
-/* Media Queries para responsividad */
 @media (min-width: 768px) {
   .newsletter-section {
     align-items: flex-start;

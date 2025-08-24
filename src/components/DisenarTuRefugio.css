@@ -8,7 +8,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--blanco-horizonte);
+  /* El texto sobre la imagen de fondo debe ser claro */
+  color: #f1f0eb;
   text-align: center;
   padding: 6rem 2rem;
 }
@@ -19,7 +20,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(var(--azul-profundo-rgb), 0.6);
+  /* Superposición oscura para legibilidad */
+  background-color: rgba(68, 70, 83, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,14 +64,15 @@
 .disenar-refugio__form label {
   text-align: left;
   font-size: 0.9rem;
-  color: var(--gris-bruma);
+  color: #f1f0eb;
+  opacity: 0.8;
 }
 
 .disenar-refugio__form input,
 .disenar-refugio__form textarea {
   background-color: transparent;
-  border: 1px solid rgba(var(--gris-bruma-rgb), 0.4);
-  color: var(--blanco-horizonte);
+  border: 1px solid rgba(241, 240, 235, 0.4);
+  color: #f1f0eb;
   padding: 1rem;
   font-size: 1rem;
   transition: border-color 0.3s ease;
@@ -79,14 +82,15 @@
 .disenar-refugio__form input:focus,
 .disenar-refugio__form textarea:focus {
   outline: none;
-  border-color: var(--blanco-horizonte);
+  border-color: #f1f0eb;
 }
 
 .disenar-refugio__boton {
-  background: var(--cobre-raiz);
-  color: var(--blanco-horizonte);
+  /* Botón claro para contrastar con el fondo oscuro */
+  background: #f1f0eb;
+  color: #444653;
   padding: 1rem 2rem;
-  border: none;
+  border: 1px solid #f1f0eb;
   cursor: pointer;
   font-size: 1rem;
   text-transform: uppercase;
@@ -96,8 +100,8 @@
 }
 
 .disenar-refugio__boton:hover {
-  background-color: var(--oro-amanecer);
-  color: var(--azul-profundo);
+  background-color: transparent;
+  color: #f1f0eb;
 }
 
 @media (max-width: 768px) {

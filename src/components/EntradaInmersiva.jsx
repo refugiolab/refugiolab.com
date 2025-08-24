@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './EntradaInmersiva.css';
-import logoRefugio from '/isoblanco.svg';
+import logoRefugio from '/logorefugioblanco.svg';
 import VideoIntro from '/VideoIntro.mp4';
 import { FaPlay, FaPause } from 'react-icons/fa';
 
@@ -13,26 +13,23 @@ const frases = [
 
 const EntradaInmersiva = ({ onEnter }) => {
   const [currentFrase, setCurrentFrase] = useState(0);
-  const [showButton, setShowButton] = useState(true); // El botón ahora es visible desde el principio
+  const [showButton, setShowButton] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
   const videoRef = useRef(null);
   const audioRef = useRef(null);
   const logoRef = useRef(null);
 
   useEffect(() => {
-    // Este efecto maneja la animación final del logo
     const logo = logoRef.current;
     if (logo) {
-      // El logo se anima inmediatamente
       const logoAnimationTimeout = setTimeout(() => {
         logo.classList.add('final');
-      }, 500); // Pequeño retraso para que la animación se vea fluida
+      }, 500);
       return () => clearTimeout(logoAnimationTimeout);
     }
   }, []);
 
   useEffect(() => {
-    // Este efecto maneja el cambio de frases
     const intervalId = setInterval(() => {
       setCurrentFrase((prev) => (prev + 1) % frases.length);
     }, 3500);
@@ -66,23 +63,25 @@ const EntradaInmersiva = ({ onEnter }) => {
       <div className="overlay"></div>
 
       <div className="contenido-central">
-        <img ref={logoRef} src={logoRefugio} alt="Refugio Logo" className="logo-refugio" />
-        <div className="narrativa-texto">
-          <span key={currentFrase} className="frase-animada">
-            {frases[currentFrase]}
-          </span>
+        <div className="content-group">
+          <img ref={logoRef} src={logoRefugio} alt="Refugio Logo" className="logo-refugio" />
+          <div className="narrativa-texto">
+            <span key={currentFrase} className="frase-animada">
+              {frases[currentFrase]}
+            </span>
+          </div>
+          {showButton && (
+            <button className="boton-entrar" onClick={onEnter}>
+              Ingresar
+            </button>
+          )}
         </div>
-        {showButton && (
-          <button className="boton-entrar" onClick={onEnter}>
-            Ingresar
-          </button>
-        )}
       </div>
 
       <div className="controles-musica">
         <audio ref={audioRef} src="/audio/musica-ambiente.mp3" loop />
         <button onClick={toggleAudio} className="boton-audio" aria-label={isPlaying ? "Pausar audio" : "Reproducir audio"}>
-          {isPlaying ? <FaPause size={24} /> : <FaPlay size={24} />}
+          {isPlaying ? <FaPause size={18} /> : <FaPlay size={18} />} {/* ¡CAMBIO AQUÍ! Tamaño reducido a 18 */}
         </button>
       </div>
     </div>

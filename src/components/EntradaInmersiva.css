@@ -6,7 +6,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--azul-profundo);
+  /* Fondo oscuro de respaldo si el video no carga */
+  background-color: var(--color-texto);
   overflow: hidden;
 }
 
@@ -27,6 +28,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+  /* Superposición oscura para legibilidad */
   background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3), rgba(0,0,0,0.6));
   z-index: 2;
 }
@@ -38,19 +40,45 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 2rem min(1rem, 5vw);
+  justify-content: center; /* Centra el nuevo 'content-group' verticalmente */
   width: 100%;
   max-width: 100%;
-  color: var(--blanco-horizonte);
+  /* Texto claro para contrastar */
+  color: var(--color-fondo);
+  height: 100%; /* Asegura que ocupe toda la altura para la distribución */
+}
+
+/* Nuevo contenedor para el grupo de elementos a centrar */
+.content-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem min(1rem, 5vw); /* Padding movido aquí para el grupo */
+  width: 100%;
+  box-sizing: border-box; /* Asegura que el padding no exceda el width */
+  opacity: 0; /* ¡CAMBIO AQUÍ! Inicialmente invisible */
+  transform: translateY(20px); /* ¡CAMBIO AQUÍ! Ligeramente abajo */
+  animation: fadeSlideUp 1.5s ease-out forwards; /* ¡CAMBIO AQUÍ! Animación de entrada */
+  animation-delay: 0.5s; /* Retraso para que el video de fondo cargue */
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .logo-refugio {
-  max-width: 450px;
-  width: 70%;
+  max-width: 300px; /* ¡CAMBIO AQUÍ! Un poco más grande aún */
+  width: 65%; /* Ajuste para responsividad */
   height: auto;
   opacity: 0.7;
-  margin-bottom: 2rem;
+  margin-top: 3rem; /* Se mantiene para la posición inicial dentro del grupo */
   transition: all 0.8s ease-in-out;
 }
 
@@ -60,8 +88,8 @@
 }
 
 .narrativa-texto {
-  min-height: 60px;
-  font-size: clamp(1.2rem, 3vw, 1.8rem); /* Letras más pequeñas y sutiles */
+  min-height: 40px;
+  font-size: clamp(0.7rem, 1.8vw, 1rem);
   font-weight: 300;
   letter-spacing: 1.5px;
   line-height: 1.4;
@@ -69,7 +97,7 @@
   font-family: var(--fuente-secundaria);
   padding: 0 min(1rem, 5vw);
   max-width: 800px;
-  margin: 0 auto;
+  margin: 2rem auto 0;
 }
 
 .frase-animada {
@@ -85,16 +113,16 @@
 }
 
 .boton-entrar {
-  background: var(--oliva-suave); /* Color cambiado a oliva-suave */
-  border: 1px solid var(--oliva-suave);
-  color: var(--blanco-horizonte);
+  background: transparent;
+  border: 1px solid var(--color-fondo);
+  color: var(--color-fondo);
   cursor: pointer;
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
   letter-spacing: 2px;
-  padding: 1rem 3rem;
-  text-transform: lowercase;
+  padding: 0.8rem 2.5rem;
+  text-transform: capitalize;
   font-weight: bold;
-  margin-top: 3rem;
+  margin-top: 2rem;
   border-radius: 50px;
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
   animation: fadeIn 1.5s ease;
@@ -102,8 +130,8 @@
 }
 
 .boton-entrar:hover {
-  background-color: var(--oro-amanecer);
-  color: var(--azul-profundo);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
   transform: scale(1.05);
 }
 
@@ -122,7 +150,7 @@
 .boton-audio {
   background: none;
   border: none;
-  color: var(--blanco-horizonte);
+  color: var(--color-fondo);
   cursor: pointer;
   opacity: 0.6;
   transition: opacity 0.3s;
@@ -134,12 +162,19 @@
 
 @media (max-width: 768px) {
   .logo-refugio {
-    max-width: 300px;
-    width: 80%;
+    max-width: 220px; /* ¡CAMBIO AQUÍ! Ajuste para móviles */
+    width: 75%; /* Ajuste para móviles */
+    margin-top: 2rem;
+  }
+
+  .narrativa-texto {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    margin-top: 1.5rem;
   }
 
   .boton-entrar {
-    font-size: 1rem;
-    padding: 0.8rem 2.5rem;
+    font-size: 0.8rem;
+    padding: 0.7rem 2rem;
+    margin-top: 1.5rem;
   }
 }

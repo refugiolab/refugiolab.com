@@ -1,29 +1,17 @@
-/* Definición de variables CSS */
+/* Definición de variables CSS simplificadas */
 :root {
-  /* Paleta de Colores de Refugio */
-  --blanco-horizonte: #eae6e3; /* Fondo de contenido, texto secundario */
-  --gris-bruma: #c6cbc7;      /* Fondos secundarios, bordes sutiles */
-  --azul-profundo: #788990;  /* Texto principal, encabezados, íconos */
-  --arena-atemporal: #ad9c8a; /* Fondos de tarjetas, acentos cálidos */
-  --verde-costero: #8e8679;  /* Acentos decorativos, detalles sutiles */
-  --oliva-suave: #8d957e;    /* Acentos frescos, toques de renovación */
-  --cobre-raiz: #a07033;      /* Botones de acción, títulos destacados */
-  --oro-amanecer: #cc9929;    /* Detalles de acento, highlights */
-
-  /* Colores genéricos adaptados a la paleta */
-  --color-fondo: var(--blanco-horizonte);
-  --color-texto: var(--azul-profundo);
-  --color-primario: var(--azul-profundo);
-  --color-secundario: var(--gris-bruma);
-  --color-acento: var(--cobre-raiz);
+  /* Nueva paleta de dos colores */
+  --color-fondo: #fffffc; /* ¡CAMBIO AQUÍ! */
+  --color-texto: #444653;
   
+  /* Mantengo otras variables que no son de color */
   --duracion-animacion: 3.5s;
 
-  /* Fuentes actualizadas */
+  /* Fuentes */
   --fuente-principal: "NewYork", serif;
   --fuente-secundaria: "Recoleta", sans-serif;
   
-  /* Sombra de Textos */
+  /* Sombra de Textos (se pueden ajustar o eliminar si no se usan) */
   --sombra-texto-clara: 0 0 5px rgba(255, 255, 255, 0.2);
   --sombra-texto-oscura: 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -60,10 +48,11 @@ body {
 /* Estilos para los títulos globales */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--fuente-principal);
+  color: var(--color-texto); /* Aseguramos que los títulos también tomen el color */
 }
 
 /* Ajusta el padding superior del contenido para evitar que quede oculto
-   detrás del header fijo. La altura del header es de aproximadamente 60px. */
+    detrás del header fijo. La altura del header es de aproximadamente 60px. */
 .main-content {
   padding-top: 60px;
   min-height: calc(100vh - 60px);
@@ -72,6 +61,6 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--blanco-horizonte);
-  color: var(--azul-profundo);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
 }
