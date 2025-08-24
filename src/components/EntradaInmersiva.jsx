@@ -14,7 +14,7 @@ const frases = [
 const EntradaInmersiva = ({ onEnter }) => {
   const [currentFrase, setCurrentFrase] = useState(0);
   const [showButton, setShowButton] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false); // ¡CAMBIO AQUÍ! Inicialmente el audio no está reproduciéndose
   const videoRef = useRef(null);
   const audioRef = useRef(null);
   const logoRef = useRef(null);
@@ -42,6 +42,7 @@ const EntradaInmersiva = ({ onEnter }) => {
       if (isPlaying) {
         audio.pause();
       } else {
+        // Solo intenta reproducir si no está ya reproduciendo (para evitar errores)
         audio.play().catch(error => console.error("Error al reproducir el audio:", error));
       }
       setIsPlaying(!isPlaying);
@@ -79,9 +80,9 @@ const EntradaInmersiva = ({ onEnter }) => {
       </div>
 
       <div className="controles-musica">
-        <audio ref={audioRef} src="/audio/musica-ambiente.mp3" loop />
+        <audio ref={audioRef} src="/audio/musica-ambiente.mp3" loop /* ¡CAMBIO AQUÍ! Eliminado autoPlay */ />
         <button onClick={toggleAudio} className="boton-audio" aria-label={isPlaying ? "Pausar audio" : "Reproducir audio"}>
-          {isPlaying ? <FaPause size={18} /> : <FaPlay size={18} />} {/* ¡CAMBIO AQUÍ! Tamaño reducido a 18 */}
+          {isPlaying ? <FaPause size={18} /> : <FaPlay size={18} />}
         </button>
       </div>
     </div>
