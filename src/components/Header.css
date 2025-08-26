@@ -5,7 +5,7 @@
   width: 100%;
   z-index: 50;
   display: flex;
-  justify-content: space-between; /* ¡MODIFICADO AQUÍ! Vuelve a space-between */
+  justify-content: space-between; /* Distribuye el menú toggle a la izquierda y el nav a la derecha */
   align-items: center;
   padding: 1.5rem 2rem;
   background-color: transparent; /* Inicialmente transparente */
@@ -15,23 +15,23 @@
 }
 
 .main-header.scrolled {
-  background-color: transparent; /* Ahora es transparente para que se vea la imagen del hero */
+  background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco 50% opaco */
   backdrop-filter: blur(5px); /* Blur al hacer scroll */
   -webkit-backdrop-filter: blur(5px);
-  border-bottom: 1px solid rgba(68, 70, 83, 0.1); /* Mantenemos un borde sutil */
+  border-bottom: 1px solid rgba(68, 70, 83, 0.1); /* Borde sutil */
 }
 
 .header__logo-container {
-  order: 2; /* Para centrar el logo entre las listas de navegación */
-  flex-grow: 0; /* No crece para mantener el tamaño */
-  text-align: center;
-  /* Ya no necesitamos auto margins aquí, el flex-grow de las listas hará el trabajo */
-  margin: 0;
+  order: 2; /* Para que aparezca en el medio del flujo flex */
+  flex-shrink: 0; /* Previene que el logo se encoja */
+  /* ¡MODIFICADO AQUÍ! Ya no usamos padding; el gap en header__nav gestionará el espacio */
+  margin: 0; 
 }
 
 /* Estilos para el círculo del logo */
 .header__logo-circle {
   background-color: #fffffc; /* Color de fondo blanco solicitado */
+  opacity: 0.85; /* Opacidad reducida en un 15% */
   border-radius: 50%; /* Hace que sea un círculo */
   width: 50px; /* Diámetro del círculo */
   height: 50px; /* Diámetro del círculo */
@@ -110,10 +110,11 @@
 
 .header__nav {
   display: flex;
-  flex-grow: 1; /* Permite que la navegación ocupe el espacio disponible */
-  justify-content: space-between; /* ¡MODIFICADO AQUÍ! Distribuye espacio entre listas y logo */
+  flex-grow: 1; /* Permite que la navegación ocupe el espacio restante en el header */
+  justify-content: center; /* ¡MODIFICADO AQUÍ! Centra los tres bloques (lista izq, logo, lista der) */
   align-items: center;
   width: 100%;
+  gap: 4rem; /* ¡NUEVO! Espacio entre la lista izquierda, el logo y la lista derecha */
 }
 
 .header__nav-list {
@@ -121,26 +122,20 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 2rem; /* Separación entre los elementos de la lista */
+  gap: 2rem; /* Espacio entre los elementos DENTRO de CADA lista */
 }
 
 .header__nav-list--left {
-  flex-grow: 1; /* ¡NUEVO! Permite que la lista izquierda crezca */
-  justify-content: flex-end; /* Alinea los elementos a la derecha dentro de su espacio */
+  /* ¡MODIFICADO AQUÍ! Quitamos flex-grow, el gap en el padre manejará el espacio */
+  /* Quitamos justify-content, ya que los elementos tienen espacio fijo con gap */
 }
 
 .header__nav-list--right {
-  flex-grow: 1; /* ¡NUEVO! Permite que la lista derecha crezca */
-  justify-content: flex-start; /* Alinea los elementos a la izquierda dentro de su espacio */
+  /* ¡MODIFICADO AQUÍ! Quitamos flex-grow, el gap en el padre manejará el espacio */
+  /* Quitamos justify-content, ya que los elementos tienen espacio fijo con gap */
 }
 
-/* Espacio específico entre Bespoke y Universo Sensorial */
-.header__nav-list--left li:last-child {
-    margin-right: 2rem; /* ¡NUEVO! Espacio después de Bespoke */
-}
-.header__nav-list--right li:first-child {
-    margin-left: 2rem; /* ¡NUEVO! Espacio antes de Universo Sensorial */
-}
+/* El espaciado entre "Bespoke" y "Universo Sensorial" ahora se gestiona con el gap del header__nav */
 
 .header__nav-link {
   text-decoration: none;
@@ -172,11 +167,29 @@
 }
 
 .header__cart-icon {
-  margin-left: 2rem; /* ¡MODIFICADO AQUÍ! Espacio a la izquierda del carrito */
-}
-.header__cart-icon .header__nav-link {
+  position: relative;
+  /* ¡MODIFICADO AQUÍ! El gap en header__nav gestionará el espacio hasta el carrito */
+  margin-left: 0; 
   display: flex;
   align-items: center;
+}
+
+/* Estilos para el contador de artículos del carrito */
+.cart-item-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #a07033;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  line-height: 1;
+  min-width: 18px;
+  text-align: center;
+  pointer-events: none;
+  font-family: var(--fuente-secundaria);
 }
 
 
@@ -236,14 +249,6 @@
     margin: 0;
   }
 
-  /* Eliminar márgenes específicos en móvil */
-  .header__nav-list--left li:last-child {
-    margin-right: 0;
-  }
-  .header__nav-list--right li:first-child {
-    margin-left: 0;
-  }
-
   .header__nav-link {
     font-size: 1.2rem;
   }
@@ -258,5 +263,12 @@
   .header__cart-icon {
     margin-left: 0;
     margin-top: 1.5rem;
+    margin-right: auto;
+    margin-left: auto; /* Centrar en el menú móvil */
+  }
+
+  .cart-item-count {
+    top: -5px; /* Ajusta la posición en móvil si es necesario */
+    right: -5px; /* Ajusta la posición en móvil si es necesario */
   }
 }

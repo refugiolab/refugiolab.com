@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import './Home.css';
@@ -11,9 +11,11 @@ const Home = () => {
   });
 
   const { ref: pilaresIntroRef, inView: pilaresIntroInView } = useInView({
-    triggerOnce: true,
+    triggerOnce: true, // Se dispara una vez cuando entra en vista
     threshold: 0.2,
   });
+  const [hasPilaresIntroBeenViewed, setHasPilaresIntroBeenViewed] = useState(false);
+
 
   const { ref: lifewearRef, inView: lifewearInView } = useInView({
     triggerOnce: true,
@@ -34,6 +36,14 @@ const Home = () => {
     triggerOnce: true,
     threshold: 0.2,
   });
+
+  // Estado para controlar la altura del overlay de desvanecimiento del hero
+  const [fadeOverlayHeight, setFadeOverlayHeight] = useState(0);
+  // Estado para controlar la visibilidad y animación del logo gris
+  const [showGrayLogo, setShowGrayLogo] = useState(false);
+
+  // Ref para la sección hero
+  const heroSectionRef = useRef(null);
 
   // --- Lógica para el Carrusel de LifeWear ---
   const lifewearImages = [
@@ -65,7 +75,7 @@ const Home = () => {
 
   // Estado y handler para el formulario de newsletter
   const [newsletterName, setNewsletterName] = useState('');
-  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterEmail, setNewsletterNameEmail] = useState('');
   const [submissionMessage, setSubmissionMessage] = useState('');
 
   const handleNewsletterSubmit = (e) => {
@@ -73,14 +83,55 @@ const Home = () => {
     console.log('Newsletter Subscription:', { name: newsletterName, email: newsletterEmail });
     setSubmissionMessage('🌿Gracias por sumarte. Muy pronto recibirás tu primera carta de Refugio.');
     setNewsletterName('');
-    setNewsletterEmail('');
+    setNewsletterNameEmail('');
     setTimeout(() => setSubmissionMessage(''), 5000);
   };
+
+  // Efecto para el desvanecimiento de la imagen hero y aparición del logo gris
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroSectionRef.current) {
+        const heroHeight = heroSectionRef.current.offsetHeight; // Altura real del hero
+        const scrollPosition = window.scrollY;
+
+        let newFadeHeight = 0;
+        // El desvanecimiento comenzará cuando se haya scrollado el 40% del hero
+        const fadeStart = heroHeight * 0.4;
+        // El desvanecimiento terminará cuando se haya scrollado el 90% del hero
+        const fadeEnd = heroHeight * 0.9;
+
+        if (scrollPosition > fadeStart) {
+          setShowGrayLogo(true);
+          const scrollAmountInFadeSection = scrollPosition - fadeStart;
+          const fadeProgress = Math.min(1, scrollAmountInFadeSection / (fadeEnd - fadeStart)); // Asegura que no pase de 1
+          const maxFadeCoverHeight = heroHeight * 0.5; // La capa de fade cubrirá hasta el 50% del hero
+          newFadeHeight = maxFadeCoverHeight * fadeProgress;
+        } else {
+          newFadeHeight = 0; // No hay desvanecimiento al principio
+          setShowGrayLogo(false); // Ocultar el logo gris al principio
+        }
+        setFadeOverlayHeight(newFadeHeight);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // ¡NUEVO EFECTO! Para mantener el texto de pilares visible una vez que ha entrado en vista
+  useEffect(() => {
+    if (pilaresIntroInView && !hasPilaresIntroBeenViewed) {
+      setHasPilaresIntroBeenViewed(true);
+    }
+  }, [pilaresIntroInView, hasPilaresIntroBeenViewed]);
+
 
   return (
     <div className="home-container">
       {/* 2.1. Hero Section */}
-      <section className="hero-section" style={{ backgroundImage: `url('/images/hero.svg')` }}>
+      <section className="hero-section" style={{ backgroundImage: `url('/images/hero.svg')` }} ref={heroSectionRef}>
         <div className="hero__overlay"></div>
         <div className="hero-content">
           <p className={`hero__manifiesto text-justify-custom ${heroTextInView ? 'is-in-view' : ''}`} ref={heroTextRef}>
@@ -92,17 +143,21 @@ const Home = () => {
             </Link>
           </div>
         </div>
+        {/* Overlay para el efecto de desvanecimiento */}
+        <div className="hero-fade-overlay" style={{ height: `${fadeOverlayHeight}px` }}></div>
       </section>
 
-      {/* Nuevo Logo entre secciones */}
-      <div className="home__logo-gris-container">
+      {/* Logo entre secciones */}
+      {/* Añadimos clase condicional para el fade-in */}
+      <div className={`home__logo-gris-container ${showGrayLogo ? 'is-visible' : ''}`}> 
         <img src="/icons/logorefugiogris.svg" alt="Refugio Logo Gris" className="home__logo-gris" />
       </div>
 
       {/* 2.2. Nuestros Pilares: La Esencia de Refugio */}
       <section className="pilares-section">
-        <p className={`pilares__intro-text ${pilaresIntroInView ? 'is-in-view' : ''}`} ref={pilaresIntroRef}>
-          En Refugio, cada hilo, cada ritual, cada palabra te invita a redescubrir lo esencial.
+        {/* Usamos hasPilaresIntroBeenViewed para mantener la clase 'is-in-view' */}
+        <p className={`pilares__intro-text ${hasPilaresIntroBeenViewed ? 'is-in-view' : ''}`} ref={pilaresIntroRef}>
+          El arte de crear un modo distinto de estar en el mundo se vive en cada una de nuestras piezas y en la conexión con tu propia esencia.
         </p>
         <div className="pilares-grid">
           {/* Bloque 1: LifeWear */}
@@ -186,7 +241,7 @@ const Home = () => {
               placeholder="Email"
               aria-label="Email"
               value={newsletterEmail}
-              onChange={(e) => setNewsletterEmail(e.target.value)}
+              onChange={(e) => setNewsletterNameEmail(e.target.value)}
               required
             />
             <button type="submit" className="newsletter__boton">Suscribirme</button>
