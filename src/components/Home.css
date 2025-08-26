@@ -353,7 +353,7 @@
 
 /* --- 2.3. Cartas al Mar --- */
 .cartas-al-mar-section {
-  padding: 6rem 2rem;
+  padding: 4rem 2rem; /* Se ajusta de 6rem a 4rem para subir 2cm */
   text-align: center;
   background-color: var(--color-fondo);
   color: var(--color-texto);
@@ -600,7 +600,7 @@
   }
 
   .cartas-al-mar-section {
-    padding: 4rem 1.5rem;
+    padding: 2rem 1.5rem; /* Se ajusta de 4rem a 2rem para subir 2cm en móvil */
     margin-top: 20px;
   }
 

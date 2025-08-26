@@ -61,7 +61,7 @@
   font-size: 0.9rem;
   font-weight: 300;
   transition: opacity 0.3s ease;
-  text-transform: lowercase;
+  /* Se eliminó la línea `text-transform: lowercase;` */
 }
 
 .footer__links a:hover {
