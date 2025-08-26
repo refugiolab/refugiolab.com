@@ -1,66 +1,96 @@
+/* Importación de fuentes de Google Fonts */
+/* Commissioner para fuente secundaria */
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap');
+
+/* Declaración de las fuentes personalizadas */
+/* ¡ATENCIÓN! Si tus archivos .woff2 son versiones de demostración,
+   es probable que el mensaje "DEMO LATINO TYPE" vuelva a aparecer en las tildes.
+   Para eliminarlo permanentemente, necesitarás obtener las licencias completas de estas fuentes. */
+@font-face {
+  font-family: 'NewYork';
+  /* Ruta relativa desde App.css a src/fonts/ */
+  src: url('./fonts/NewYork.woff2') format('woff2'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* @font-face {
+   font-family: 'Recoleta';
+   src: url('./fonts/Recoleta.woff2') format('woff2');
+   font-weight: normal;
+   font-style: normal;
+} */
+
+
 /* Definición de variables CSS simplificadas */
 :root {
   /* Nueva paleta de dos colores */
-  --color-fondo: #fffffc; /* ¡CAMBIO AQUÍ! */
-  --color-texto: #444653;
+  --color-fondo: #fffffc; /* Blanco casi puro */
+  --color-texto: #444653; /* Gris oscuro para texto principal */
+  --color-borde-gris: #f1f0eb; /* Color de borde que querías */
   
   /* Mantengo otras variables que no son de color */
   --duracion-animacion: 3.5s;
 
   /* Fuentes */
-  --fuente-principal: "NewYork", serif;
-  --fuente-secundaria: "Recoleta", sans-serif;
+  --fuente-principal: "NewYork", serif; /* Manteniendo NewYork por ahora */
+  --fuente-secundaria: "Commissioner", sans-serif; /* ¡Commissioner para la fuente secundaria! */
   
   /* Sombra de Textos (se pueden ajustar o eliminar si no se usan) */
   --sombra-texto-clara: 0 0 5px rgba(255, 255, 255, 0.2);
   --sombra-texto-oscura: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Estilos Globales para el Cuerpo de la Página */
-html {
-  scroll-behavior: smooth;
-  box-sizing: border-box; 
-}
-
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
-body {
+/* Estilos Globales para el Cuerpo de la Página - RESET MÁS ROBUSTO */
+html, body { /* ¡MODIFICADO! Aplicamos el reset a ambos elementos */
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden; 
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
-  font-family: var(--fuente-secundaria);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh; /* Asegura que el body tenga al menos la altura del viewport */
+  overflow-x: hidden; /* Controla el scroll horizontal global */
+  box-sizing: border-box; /* Modelo de caja universal */
+  scroll-behavior: smooth;
 }
 
-/* Regla para quitar los estilos por defecto de Vite */
+body {
+  background-color: var(--color-fondo); /* Fondo de la página */
+  color: var(--color-texto);
+  font-family: var(--fuente-secundaria); /* Aquí se aplica la fuente base */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5; /* Buen valor por defecto para legibilidad */
+}
+
+/* Reset universal para todos los elementos */
+*, *::before, *::after {
+  box-sizing: inherit; /* Todos los elementos heredan el modelo de caja */
+  /* ¡Importante! No se define margin/padding aquí para no sobrescribir los valores específicos que se necesitan.
+     El reset inicial de html, body ya debería solucionar el problema de la franja. */
+}
+
+/* Regla para el #root (contenedor principal de React) */
 #root {
   min-height: 100vh;
-  min-width: 100vw;
-  display: block;
+  width: 100%; /* Asegura que #root ocupe el 100% del ancho */
+  display: flex; /* Permite que el contenido principal flex-grow */
+  flex-direction: column;
 }
 
 /* Estilos para los títulos globales */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--fuente-principal);
-  color: var(--color-texto); /* Aseguramos que los títulos también tomen el color */
+  color: var(--color-texto);
 }
 
 /* Ajusta el padding superior del contenido para evitar que quede oculto
-    detrás del header fijo. La altura del header es de aproximadamente 60px. */
+   detrás del header fijo. La altura del header es de aproximadamente 60px. */
 .main-content {
-  padding-top: 60px;
-  min-height: calc(100vh - 60px);
+  flex-grow: 1; /* Permite que el contenido principal crezca para ocupar el espacio restante */
+  /* Este padding-top podría ser ajustado si el header es más alto o más bajo
+     pero usualmente es mejor dejar que el contenido de las páginas individuales
+     maneje su propio espaciado si el header es transparente */
+  padding-top: 0; /* ¡MODIFICADO! Eliminamos el padding superior aquí, ya que el header es transparente y el hero debe ocupar todo el espacio */
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   background-color: var(--color-fondo);
   color: var(--color-texto);
 }

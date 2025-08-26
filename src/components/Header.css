@@ -5,33 +5,49 @@
   width: 100%;
   z-index: 50;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* ¡MODIFICADO AQUÍ! Vuelve a space-between */
   align-items: center;
   padding: 1.5rem 2rem;
-  background-color: transparent;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  transition: background-color 0.3s ease, border-bottom 0.3s ease;
+  background-color: transparent; /* Inicialmente transparente */
+  backdrop-filter: blur(0px); /* Sin blur inicial */
+  -webkit-backdrop-filter: blur(0px);
+  transition: background-color 0.3s ease, border-bottom 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .main-header.scrolled {
-  /* Al hacer scroll, el fondo se vuelve sólido con un borde sutil */
-  background-color: var(--color-fondo);
-  border-bottom: 1px solid rgba(68, 70, 83, 0.1);
+  background-color: transparent; /* Ahora es transparente para que se vea la imagen del hero */
+  backdrop-filter: blur(5px); /* Blur al hacer scroll */
+  -webkit-backdrop-filter: blur(5px);
+  border-bottom: 1px solid rgba(68, 70, 83, 0.1); /* Mantenemos un borde sutil */
 }
 
 .header__logo-container {
-  order: 2;
-  flex-grow: 1;
+  order: 2; /* Para centrar el logo entre las listas de navegación */
+  flex-grow: 0; /* No crece para mantener el tamaño */
   text-align: center;
+  /* Ya no necesitamos auto margins aquí, el flex-grow de las listas hará el trabajo */
+  margin: 0;
+}
+
+/* Estilos para el círculo del logo */
+.header__logo-circle {
+  background-color: #fffffc; /* Color de fondo blanco solicitado */
+  border-radius: 50%; /* Hace que sea un círculo */
+  width: 50px; /* Diámetro del círculo */
+  height: 50px; /* Diámetro del círculo */
+  display: flex; /* Para centrar la imagen dentro del círculo */
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para darle relieve */
 }
 
 .header__logo {
-  height: 40px;
+  height: 45px; /* Mantenemos el logo más grande */
+  width: auto; /* Mantiene la proporción */
 }
 
 .header__menu-toggle {
-  display: none;
+  display: none; /* Se oculta en desktop */
   background: none;
   border: none;
   cursor: pointer;
@@ -47,24 +63,38 @@
   width: 100%;
   height: 3px;
   margin-bottom: 5px;
+  background-color: var(--color-fondo); /* Por defecto blanco para el hero */
   transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
 }
 
-/* El texto de los links y el ícono en el header inicial sobre el video deben ser claros */
+/* Color del texto de los links y el ícono en el header inicial sobre el video */
 .main-header:not(.scrolled) .header__nav-link {
-    color: var(--color-texto); /* Ahora gris oscuro */
+  color: var(--color-fondo); /* Blanco para contraste sobre hero */
 }
 .main-header:not(.scrolled) .header__icon-bar {
-    background-color: var(--color-texto); /* Ahora gris oscuro */
+  background-color: var(--color-fondo); /* Blanco para contraste sobre hero */
+}
+.main-header:not(.scrolled) .header__cart-icon .header__nav-link {
+  color: var(--color-fondo); /* Blanco para contraste sobre hero */
+}
+.main-header:not(.scrolled) .header__nav-link::after {
+  background-color: var(--color-fondo); /* Línea blanca sobre hero */
 }
 
-/* Cuando se hace scroll, el texto y el ícono vuelven al color principal */
+/* Cuando se hace scroll, el texto y el ícono vuelven al color principal (del tema) */
 .main-header.scrolled .header__nav-link {
-    color: var(--color-texto);
+  color: var(--color-texto);
 }
 .main-header.scrolled .header__icon-bar {
-    background-color: var(--color-texto);
+  background-color: var(--color-texto);
 }
+.main-header.scrolled .header__cart-icon .header__nav-link {
+  color: var(--color-texto);
+}
+.main-header.scrolled .header__nav-link::after {
+  background-color: var(--color-texto);
+}
+
 
 .main-header.open .header__icon-bar:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
@@ -80,8 +110,8 @@
 
 .header__nav {
   display: flex;
-  flex-grow: 1;
-  justify-content: space-between;
+  flex-grow: 1; /* Permite que la navegación ocupe el espacio disponible */
+  justify-content: space-between; /* ¡MODIFICADO AQUÍ! Distribuye espacio entre listas y logo */
   align-items: center;
   width: 100%;
 }
@@ -91,21 +121,32 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 2rem;
-  flex-grow: 1;
-  justify-content: flex-end;
+  gap: 2rem; /* Separación entre los elementos de la lista */
 }
 
-.header__nav-list:first-of-type {
-  justify-content: flex-start;
+.header__nav-list--left {
+  flex-grow: 1; /* ¡NUEVO! Permite que la lista izquierda crezca */
+  justify-content: flex-end; /* Alinea los elementos a la derecha dentro de su espacio */
+}
+
+.header__nav-list--right {
+  flex-grow: 1; /* ¡NUEVO! Permite que la lista derecha crezca */
+  justify-content: flex-start; /* Alinea los elementos a la izquierda dentro de su espacio */
+}
+
+/* Espacio específico entre Bespoke y Universo Sensorial */
+.header__nav-list--left li:last-child {
+    margin-right: 2rem; /* ¡NUEVO! Espacio después de Bespoke */
+}
+.header__nav-list--right li:first-child {
+    margin-left: 2rem; /* ¡NUEVO! Espacio antes de Universo Sensorial */
 }
 
 .header__nav-link {
-  /* El color se define dinámicamente arriba basado en el scroll */
   text-decoration: none;
-  text-transform: none; /* ¡CAMBIO AQUÍ! Ahora el texto se mostrará como se escribe en el HTML/JSX */
+  text-transform: capitalize;
   font-family: var(--fuente-secundaria);
-  font-size: 0.8rem; /* ¡CAMBIO AQUÍ! Tamaño de fuente más pequeño */
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 1px;
   transition: color 0.3s ease;
@@ -119,16 +160,9 @@
   left: 0;
   width: 100%;
   height: 1px;
-  /* La línea de abajo usa el color de texto principal */
-  background-color: var(--color-texto);
   transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s ease-out;
-}
-
-/* El color de la línea de hover debe coincidir con el del texto */
-.main-header:not(.scrolled) .header__nav-link::after {
-    background-color: var(--color-texto); /* Ahora gris oscuro */
 }
 
 .header__nav-link:hover::after,
@@ -137,18 +171,31 @@
   transform-origin: bottom left;
 }
 
+.header__cart-icon {
+  margin-left: 2rem; /* ¡MODIFICADO AQUÍ! Espacio a la izquierda del carrito */
+}
+.header__cart-icon .header__nav-link {
+  display: flex;
+  align-items: center;
+}
+
+
 @media (max-width: 768px) {
   .main-header {
     padding: 1rem;
-    /* En móvil el fondo siempre es sólido para legibilidad */
     background-color: var(--color-fondo);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
 
-  /* En móvil, los links y el ícono siempre usan el color de texto principal */
   .main-header .header__nav-link,
-  .main-header .header__icon-bar {
-      color: var(--color-texto) !important;
-      background-color: var(--color-texto) !important;
+  .main-header .header__icon-bar,
+  .main-header .header__cart-icon .header__nav-link {
+    color: var(--color-texto) !important;
+    background-color: var(--color-texto) !important;
+  }
+  .main-header .header__nav-link::after {
+    background-color: var(--color-texto) !important;
   }
 
   .header__menu-toggle {
@@ -165,7 +212,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* El menú desplegable usa el color de fondo */
     background-color: var(--color-fondo);
     transform: translateX(100%);
     transition: transform 0.4s ease-in-out;
@@ -179,15 +225,38 @@
     flex-direction: column;
     text-align: center;
     gap: 1.5rem;
+    width: 100%;
+    margin: 0;
+  }
+
+  .header__nav-list--left,
+  .header__nav-list--right {
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  /* Eliminar márgenes específicos en móvil */
+  .header__nav-list--left li:last-child {
+    margin-right: 0;
+  }
+  .header__nav-list--right li:first-child {
+    margin-left: 0;
   }
 
   .header__nav-link {
-    font-size: 1.2rem; /* Ajustado para pantallas pequeñas también */
+    font-size: 1.2rem;
   }
   
   .header__logo-container {
-    order: 2;
+    order: 0;
+    margin-bottom: 2rem;
     margin-right: auto;
     margin-left: auto;
+  }
+
+  .header__cart-icon {
+    margin-left: 0;
+    margin-top: 1.5rem;
   }
 }

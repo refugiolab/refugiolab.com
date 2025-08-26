@@ -1,16 +1,28 @@
-/* Nota: La mayoría de los estilos de .main-content ya están definidos globalmente. */
-/* Este archivo puede simplificarse o unirse a los estilos globales si solo contiene esto. */
-.main-content {
-  padding: 2rem 0;
-  max-width: 1200px;
-  margin: 0 auto;
-  /* Los colores ya son heredados del body, pero se puede ser explícito si se desea */
-  /* color: var(--color-texto); */
-  /* background-color: var(--color-fondo); */
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegura que el layout ocupe al menos toda la altura del viewport */
+  width: 100%; /* ¡CLAVE! Asegura que el Layout ocupe el 100% del ancho disponible */
+  background-color: var(--color-fondo); /* El fondo general de la aplicación */
 }
 
-@media (max-width: 768px) {
-  .main-content {
-    padding: 1rem;
-  }
+.layout__main-content {
+  flex-grow: 1; /* Permite que el contenido crezca para llenar el espacio restante */
+  width: 100%; /* Asegura que el contenido principal siempre tenga 100% de ancho */
+  /* Si el Header es fijo y flota por encima del contenido,
+     el main-content necesitará un padding-top igual a la altura del Header. */
+  padding-top: 60px; /* Asumiendo que tu Header tiene una altura de ~60px */
+}
+
+/* Estilos para el Header (solo si no tiene su propio archivo CSS para Layout) */
+/* Si tu Header.css ya maneja esto, puedes omitir esta sección */
+.header-container {
+  position: fixed; /* O fixed si quieres que flote */
+  top: 0;
+  left: 0;
+  width: 100%; /* ¡CLAVE! Asegura que el Header ocupe el 100% del ancho */
+  background-color: #f1f0eb; /* ¡COLOR CORREGIDO! El color gris claro que querías */
+  z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Otros estilos de tu Header.css */
 }

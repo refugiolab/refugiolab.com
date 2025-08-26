@@ -57,8 +57,7 @@ universo-refugio/
 │              ├── NewYork.woff2
 │              └── Recoleta.woff2
 │      ├── App.css                    
-│      ├── App.jsx
-│      ├── index.css                  
+│      ├── App.jsx               
 │      └── main.jsx
 ├── .gitignore
 ├── eslint.config.js

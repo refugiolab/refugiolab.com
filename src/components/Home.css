@@ -1,240 +1,629 @@
+/* Estilos Globales para el Contenedor del Home */
 .home-container {
   width: 100%;
-  overflow-x: hidden;
-  /* Se usa el color de texto principal definido en :root */
   color: var(--color-texto);
+  background-color: var(--color-fondo);
 }
 
-.home__intro {
+/* --- 2.1. Hero Section --- */
+.hero-section {
   position: relative;
   width: 100%;
   height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.home__video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-
-.home__intro-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Superposición oscura para asegurar la legibilidad del texto sobre el video */
-  background: rgba(0, 0, 0, 0.4); 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.home__intro-texto {
-  max-width: 800px;
   text-align: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.hero__manifiesto {
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: #ffffff;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease-out, transform 1s ease-out;
-  /* El texto sobre el video debe ser claro para contrastar */
-  color: #fffffc; /* ¡CAMBIO AQUÍ! - Usamos el color de fondo como texto aquí */
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
 }
 
-.home__intro-texto.is-in-view {
+.hero__manifiesto.is-in-view {
   opacity: 1;
   transform: translateY(0);
 }
 
-.home__intro-slogan {
+.hero__cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out 0.5s, transform 1s ease-out 0.5s;
+}
+
+.hero__manifiesto.is-in-view + .hero__cta-group {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero__cta-full-button {
+  background: #a07033;
+  color: #fffffc;
+  padding: 1rem 2.5rem;
+  border: 1px solid #a07033;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: var(--fuente-secundaria);
   font-size: clamp(1rem, 2vw, 1.25rem);
-  font-weight: 300;
-  /* Mantenemos el texto claro */
-  color: #fffffc; /* ¡CAMBIO AQUÍ! */
-  margin-bottom: 1rem;
-  opacity: 0.9;
+  font-weight: normal;
+  letter-spacing: 0.8px;
+  text-transform: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: fit-content;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s, border-color 0.3s;
 }
 
-.home__intro-titulo {
-  font-family: var(--fuente-principal);
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 300;
-  text-transform: lowercase;
-  margin: 0 0 1rem 0;
-  line-height: 1.2;
+.hero__cta-full-button:hover {
+  background-color: transparent;
+  border-color: #a07033;
+  color: #a07033;
+  transform: scale(1.05);
 }
 
-.home__intro-descripcion {
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  font-weight: 300;
-  line-height: 1.6;
+.hero__cta-descubri {
+  font-weight: bold;
+  margin-right: 0.3em;
 }
 
-.home__lifewear-resumen {
-  padding: 6rem 2rem;
+/* --- Logo entre secciones --- */
+.home__logo-gris-container {
+  padding: 2rem;
+  margin-top: 20px; /* Desplaza el logo 20px (aprox. 2cm) hacia abajo */
   text-align: center;
-  /* Se usan los colores base */
+  background-color: var(--color-fondo);
+  margin-bottom: 1.25rem;
+}
+
+.home__logo-gris {
+  max-width: 301px;
+  width: 50%;
+  height: auto;
+  opacity: 0.7;
+}
+
+/* --- 2.2. Nuestros Pilares: La Esencia de Refugio --- */
+.pilares-section {
+  padding: 0 2rem 6rem;
+  text-align: center;
   background-color: var(--color-fondo);
   color: var(--color-texto);
 }
 
-.lifewear-resumen__header h2 {
-  font-family: var(--fuente-principal);
-  font-size: clamp(2.5rem, 6vw, 4rem);
+.pilares__intro-text {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 300;
-  text-transform: lowercase;
-  margin-bottom: 3rem;
-}
-
-.lifewear-resumen__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto 3rem;
-}
-
-.lifewear-resumen__item {
-  position: relative;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  white-space: nowrap;
   overflow: hidden;
-  border-radius: 8px;
-  /* Sombra sutil con el color de texto */
-  box-shadow: 0 4px 15px rgba(68, 70, 83, 0.1);
+  text-overflow: ellipsis;
+  text-align: center; /* Centrado */
 }
 
-.lifewear-resumen__imagen {
+.pilares__intro-text.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pilares-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Ahora en columna */
+  gap: 4rem; /* Aumenta el espacio entre los bloques apilados */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pilar-item {
+  background-color: var(--color-fondo);
+  border: 1px solid rgba(68, 70, 83, 0.1);
+  border-radius: 12px;
+  padding: 2.5rem;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.pilar-item.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ajustes para el retraso de la animación entre los items del pilar */
+.pilar-item.lifewear-item.is-in-view { transition-delay: 0.2s; }
+.pilar-item.bespoke-item.is-in-view { transition-delay: 0.4s; }
+
+
+.pilar-item h3 {
+  font-family: var(--fuente-principal);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 300;
+  margin-bottom: 0.5rem; /* Ajustado para dejar espacio a la fonética */
+  color: var(--color-texto);
+  text-transform: capitalize;
+}
+
+.lifewear__phonetic, .bespoke__phonetic {
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem); /* ¡AUMENTADO 30% APROXIMADAMENTE! */
+  font-style: italic;
+  color: rgba(68, 70, 83, 0.7); /* Gris más claro */
+  margin-bottom: 1.5rem; /* Espacio después de la fonética */
+  display: block; /* Asegura que ocupe su propia línea */
+  text-align: left; /* Alineado al título en desktop */
+  width: 100%; /* Asegura que ocupe el ancho completo para alineación */
+}
+
+.pilar-item__description {
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+  text-align: justify; /* Justificado */
+}
+
+/* Estilos para el Carrusel de LifeWear */
+.lifewear-carousel-container {
+  position: relative;
   width: 100%;
-  height: 450px;
-  object-fit: cover;
-  display: block;
+  height: 568.75px; /* ¡AUMENTADO 30%! Nueva altura para más contenido vertical (437.5 * 1.30 = 568.75) */
+  background-color: rgba(68, 70, 83, 0.05);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  overflow: hidden; /* Importante para la transición de la imagen */
+  display: flex; /* Para centrar la imagen */
+  justify-content: center;
+  align-items: center;
 }
 
-.lifewear-resumen__boton {
-  /* Botón con colores invertidos para destacar */
+.lifewear-carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen para ocupar el ancho completo */
+  opacity: 1;
+  transition: opacity 1s ease-in-out; /* Transición suave de 1 segundo */
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(68, 70, 83, 0.4); /* Fondo más transparente */
+  color: white;
+  border: none;
+  padding: 0.5rem 0.8rem; /* Más pequeñas y estéticas */
+  cursor: pointer;
+  font-size: 1rem; /* Más pequeñas */
+  border-radius: 50%; /* Flechas redondas */
+  z-index: 10;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para estética */
+}
+
+.carousel-arrow:hover {
+  background-color: var(--color-texto); /* Color más oscuro al pasar el mouse */
+}
+
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.6); /* Puntos semi-transparentes */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: 1px solid rgba(68, 70, 83, 0.3); /* Borde sutil */
+}
+
+.dot.active, .dot:hover {
+  background-color: var(--color-texto); /* Color de texto como activo */
+  transform: scale(1.1);
+}
+
+.pilar-item__boton {
   background: var(--color-texto);
   color: var(--color-fondo);
-  padding: 1rem 2.5rem;
+  padding: 0.8rem 2rem;
   border: 1px solid var(--color-texto);
   border-radius: 50px;
   text-decoration: none;
+  font-family: var(--fuente-secundaria);
+  font-size: 0.9rem;
   font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: lowercase;
+  letter-spacing: 0.5px;
+  /* Eliminado text-transform: lowercase; para respetar la capitalización del JSX */
   transition: background-color 0.3s, color 0.3s;
+  align-self: flex-start;
 }
 
-.lifewear-resumen__boton:hover {
-  /* Efecto hover invierte los colores */
+.pilar-item__boton:hover {
   background-color: var(--color-fondo);
   color: var(--color-texto);
 }
 
-.home__newsletter {
+/* Títulos de sección (Cartas al Mar, Newsletter) */
+.cartas-al-mar-section h3,
+.newsletter-section h3 {
+  font-family: var(--fuente-principal); /* Usamos la fuente principal para los títulos */
+  font-size: clamp(2rem, 4vw, 2.8rem); /* Tamaño similar a los títulos de pilares */
+  font-weight: 300;
+  color: var(--color-texto);
+  margin-bottom: 1.5rem; /* Espacio debajo del título */
+  text-align: center; /* Centrado */
+  text-transform: capitalize; /* Capitaliza la primera letra */
+}
+
+/* --- 2.3. Cartas al Mar --- */
+.cartas-al-mar-section {
   padding: 6rem 2rem;
-  /* Se usan los colores base */
+  text-align: center;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  margin-top: 20px; /* ¡NUEVO! 2cm de separación con el bloque Bespoke */
+}
+
+.cartas__intro-text {
+  max-width: 800px;
+  margin: -20px auto 3rem; /* 2cm (20px) más arriba */
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  text-align: justify; /* Justificado */
+}
+
+.cartas__intro-text.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cartas__image-link {
+  display: block;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.cartas__image-link:hover {
+  transform: translateY(-5px);
+}
+
+.cartas__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cartas__boton {
+  background: var(--color-texto);
+  color: var(--color-fondo);
+  padding: 1rem 3rem;
+  border: 1px solid var(--color-texto);
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  transition: background-color 0.3s, color 0.3s;
+  margin-bottom: 20px; /* ¡NUEVO! 2cm de separación con Newsletter */
+}
+
+.cartas__boton:hover {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+/* --- 2.4. Formulario de Newsletter --- */
+.newsletter-section {
+  padding: 6rem 2rem;
   background-color: var(--color-fondo);
   color: var(--color-texto);
   text-align: center;
 }
 
-.newsletter__contenido {
-  max-width: 600px;
+.newsletter__content {
+  max-width: 700px;
   margin: 0 auto;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-.newsletter__contenido.is-in-view {
+.newsletter__content.is-in-view {
   opacity: 1;
   transform: translateY(0);
 }
 
-.newsletter__titulo {
-  font-family: var(--fuente-principal);
-  font-size: clamp(2rem, 5vw, 3rem);
-  text-transform: lowercase;
-  margin-bottom: 1rem;
-}
+/* Eliminado .newsletter__image */
 
-.newsletter__texto {
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+.newsletter__text {
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
   line-height: 1.6;
-  margin-bottom: 2rem;
-  color: var(--color-texto);
+  margin-top: 2rem; /* Espacio entre el nuevo título y el texto */
+  margin-bottom: 3rem;
+  text-align: justify; /* Justificado */
 }
 
 .newsletter__form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
   max-width: 400px;
   margin: 0 auto;
 }
 
 .newsletter__form input {
-  padding: 1rem;
+  padding: 1.2rem;
   border: 1px solid var(--color-texto);
   border-radius: 50px;
   background-color: transparent;
   color: var(--color-texto);
   font-family: var(--fuente-secundaria);
   font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .newsletter__form input::placeholder {
-  /* Placeholder con opacidad para ser sutil */
-  color: var(--color-texto);
-  opacity: 0.6;
+  color: rgba(68, 70, 83, 0.6);
+  opacity: 1;
 }
 
 .newsletter__form input:focus {
   outline: none;
-  /* Se mantiene el color de borde, se podría aumentar el grosor si se quiere */
   border-color: var(--color-texto);
+  box-shadow: 0 0 0 2px rgba(68, 70, 83, 0.2);
 }
 
 .newsletter__boton {
-  padding: 1rem;
+  padding: 1.2rem;
   border: 1px solid var(--color-texto);
   background-color: var(--color-texto);
   color: var(--color-fondo);
   font-weight: bold;
-  text-transform: lowercase;
   letter-spacing: 1px;
+  text-transform: capitalize;
   cursor: pointer;
   border-radius: 50px;
   transition: background-color 0.3s, color 0.3s;
+  font-family: var(--fuente-secundaria);
+  font-size: 1rem;
 }
 
 .newsletter__boton:hover {
-  /* Efecto hover invierte los colores */
   background-color: var(--color-fondo);
   color: var(--color-texto);
 }
 
-.home__cierre {
-  padding: 6rem 2rem;
-  /* Se usan los colores base */
-  background-color: var(--color-fondo);
+.newsletter__submission-message {
+  margin-top: 1.5rem;
+  font-family: var(--fuente-secundaria);
+  font-size: 1rem;
   color: var(--color-texto);
+  font-style: italic;
+}
+
+
+/* --- 2.5. Frase Pre-Footer --- */
+.pre-footer-section {
+  position: relative;
+  width: 100%;
+  min-height: 40vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-fondo);
   text-align: center;
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  line-height: 1.6;
-  font-weight: 300;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
 }
 
+.pre-footer-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.pre-footer__text {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  font-family: var(--fuente-principal);
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem); /* ¡TAMAÑO REDUCIDO AQUÍ! */
+  font-weight: 300;
+  line-height: 1.4;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Clase para justificar texto */
+.text-justify-custom {
+  text-align: justify;
+}
+
+/* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
-  .home__intro-titulo,
-  .lifewear-resumen__header h2,
-  .newsletter__titulo {
-    font-size: 2.5rem;
+  .hero-content {
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .pilares-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .pilares__intro-text {
+    margin-bottom: 3rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    line-height: 1.3;
+    text-align: center; /* Centrado en móvil también */
+  }
+
+  .pilar-item {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .pilar-item h3 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+  }
+
+  .lifewear__phonetic, .bespoke__phonetic {
+    font-size: clamp(1rem, 2.2vw, 1.4rem); /* Ajuste de fonética para móviles */
+    margin-bottom: 1rem;
+    text-align: center; /* En móviles, la fonética puede centrarse mejor */
+  }
+
+  .pilar-item__description {
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
+    text-align: justify; /* Justificado */
+  }
+
+  .pilar-item__boton {
+    align-self: center;
+    font-size: 0.85rem;
+    padding: 0.7rem 1.8rem;
+  }
+
+  .lifewear-carousel-container {
+    height: 420px; /* ¡AUMENTADO 30%! Ajuste de altura para móviles (312.5 * 1.30 = 406.25, redondeado a 420) */
+  }
+
+  .cartas-al-mar-section {
+    padding: 4rem 1.5rem;
+    margin-top: 20px; /* 2cm de separación con Bespoke en móvil */
+  }
+
+  .cartas-al-mar-section h3,
+  .newsletter-section h3 {
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem); /* Ajuste de tamaño para móviles */
+    margin-bottom: 1rem;
+  }
+
+  .cartas__intro-text {
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    margin: -15px auto 2rem; /* Ajuste para móviles, un poco más arriba */
+    text-align: justify; /* Justificado */
+  }
+
+  .cartas__boton {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    padding: 0.8rem 2.5rem;
+    margin-bottom: 20px; /* 2cm de separación con Newsletter en móvil */
+  }
+
+  .newsletter-section {
+    padding: 4rem 1.5rem;
+  }
+
+  /* Eliminado .newsletter__image para móviles */
+
+  .newsletter__text {
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    margin-top: 1.5rem; /* Ajuste para móviles, espacio después del título */
+    margin-bottom: 2.5rem;
+    text-align: justify; /* Justificado */
+  }
+
+  .newsletter__form input, .newsletter__boton {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .pre-footer-section {
+    padding: 3rem 1.5rem;
+    min-height: 30vh;
+  }
+
+  .pre-footer__text {
+    font-size: clamp(1.3rem, 3vw, 2rem); /* ¡TAMAÑO REDUCIDO AQUÍ para móviles! */
   }
 }
