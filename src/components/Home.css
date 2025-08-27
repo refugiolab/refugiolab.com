@@ -568,14 +568,16 @@
     width: 100vw;
     max-width: 100vw;
     min-width: 0;
-    /* Hemos eliminado 'height' fijo en vh para mayor flexibilidad */
-    min-height: 550px; /* Establece una altura mínima en píxeles */
-    height: auto; /* Permite que la altura se adapte al contenido */
+    /* AJUSTE CLAVE: Altura más flexible y background-size: contain */
+    height: 65vh; /* Se usa vh para mantener una relación con el viewport */
+    background-size: contain; /* ¡Permite que la imagen se vea entera! */
+    background-position: center center; /* Centra la imagen contenida */
+    background-repeat: no-repeat; /* Evita que la imagen se repita si hay espacio */
     padding-top: 80px; /* Asegura que el contenido no quede debajo del header fijo */
     padding-bottom: 40px; /* Espacio inferior para el contenido */
     overflow-x: hidden;
-    justify-content: center; /* Centra el contenido verticalmente */
-    align-items: center; /* Centra el contenido horizontalmente */
+    justify-content: center;
+    align-items: center;
   }
 
   .pilares-section {
