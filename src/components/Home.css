@@ -561,6 +561,12 @@
     max-width: 100%; /* Asegura que no exceda el ancho del contenedor padre */
     box-sizing: border-box; /* Incluye padding y borde en el ancho total */
   }
+  
+  /* **NUEVA CORRECCIÓN: Asegurar que el hero-section respete el ancho del viewport** */
+  .hero-section {
+    max-width: 100%; /* Asegura que la sección no exceda el ancho del viewport */
+    min-width: 0; /* Asegura que la sección pueda encogerse si es necesario */
+  }
 
   .pilares-section {
     padding: 4rem 1.5rem;
