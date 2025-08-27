@@ -47,7 +47,7 @@
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 900px;
+  max-width: 900px; /* Max-width para escritorio */
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -99,7 +99,7 @@
   font-weight: normal;
   letter-spacing: 0.8px;
   text-transform: none;
-  white-space: nowrap; /* Esto es para escritorio, en móvil lo modificaremos */
+  white-space: nowrap; /* Esto es para escritorio */
   overflow: hidden;
   text-overflow: ellipsis;
   display: inline-flex;
@@ -553,6 +553,8 @@
   .hero-content {
     gap: 1rem;
     padding: 1.5rem;
+    max-width: 100%; /* ¡NUEVO! Asegura que el contenido del hero se adapte al 100% del ancho disponible */
+    box-sizing: border-box; /* Fundamental para que padding no cause overflow */
   }
 
   /* **CORRECCIÓN: Permitir que el texto del botón se envuelva en móvil** */
@@ -560,6 +562,7 @@
     white-space: normal; /* Permite que el texto se ajuste a varias líneas */
     max-width: 100%; /* Asegura que no exceda el ancho del contenedor padre */
     box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+    padding: 0.8rem 1.5rem; /* Ajuste el padding para pantallas más pequeñas */
   }
   
   /* **AJUSTE PRINCIPAL: Reducir la altura del hero para móviles** */
