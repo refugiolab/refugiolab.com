@@ -552,7 +552,7 @@
 @media (max-width: 768px) {
   .hero-content {
     gap: 1rem;
-    padding: 0 5vw; /* AJUSTADO: Padding horizontal en vw */
+    padding: 2rem 5vw; /* Padding vertical para espacio, horizontal en vw */
     max-width: 100%;
     box-sizing: border-box;
   }
@@ -565,11 +565,17 @@
   }
   
   .hero-section {
-    width: 100vw; /* AJUSTADO: Ancho directo del viewport */
-    max-width: 100vw; /* Asegura que no exceda el viewport */
+    width: 100vw;
+    max-width: 100vw;
     min-width: 0;
-    height: 70vh;
-    overflow-x: hidden; /* Asegura que cualquier cosa dentro no cause un scroll */
+    /* Hemos eliminado 'height' fijo en vh para mayor flexibilidad */
+    min-height: 550px; /* Establece una altura mínima en píxeles */
+    height: auto; /* Permite que la altura se adapte al contenido */
+    padding-top: 80px; /* Asegura que el contenido no quede debajo del header fijo */
+    padding-bottom: 40px; /* Espacio inferior para el contenido */
+    overflow-x: hidden;
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
   }
 
   .pilares-section {
