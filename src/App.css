@@ -64,8 +64,6 @@ body {
 /* Reset universal para todos los elementos */
 *, *::before, *::after {
   box-sizing: inherit; /* Todos los elementos heredan el modelo de caja */
-  /* ¡Importante! No se define margin/padding aquí para no sobrescribir los valores específicos que se necesitan.
-     El reset inicial de html, body ya debería solucionar el problema de la franja. */
 }
 
 /* Regla para el #root (contenedor principal de React) */
@@ -86,10 +84,7 @@ h1, h2, h3, h4, h5, h6 {
    detrás del header fijo. La altura del header es de aproximadamente 60px. */
 .main-content {
   flex-grow: 1; /* Permite que el contenido principal crezca para ocupar el espacio restante */
-  /* Este padding-top podría ser ajustado si el header es más alto o más bajo
-     pero usualmente es mejor dejar que el contenido de las páginas individuales
-     maneje su propio espaciado si el header es transparente */
-  padding-top: 0; /* ¡MODIFICADO! Eliminamos el padding superior aquí, ya que el header es transparente y el hero debe ocupar todo el espacio */
+  padding-top: 0; /* Eliminamos el padding superior aquí, ya que el header es transparente y el hero debe ocupar todo el espacio */
   width: 100%;
   background-color: var(--color-fondo);
   color: var(--color-texto);

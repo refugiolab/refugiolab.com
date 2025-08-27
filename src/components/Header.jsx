@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
-import isonegro from '/isonegro.svg';
-import { FaShoppingBag } from 'react-icons/fa'; // Importamos FaShoppingBag
+import isonegro from '/isoblanco.svg'; // Asegúrate de que esta ruta sea correcta para tu proyecto
+import { FaShoppingBag } from 'react-icons/fa';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [itemCount, setItemCount] = useState(0); // ¡MODIFICADO AQUÍ! Contador de artículos inicia en 0
+  const [itemCount, setItemCount] = useState(0); 
   const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
-      // El Header se considera "scrolled" solo cuando el scroll es igual o mayor a la altura total del viewport
-      if (window.scrollY >= window.innerHeight) { 
+      // El Header se considera "scrolled" cuando el scroll es mayor a 50px
+      if (window.scrollY > 50) { 
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -32,7 +36,13 @@ const Header = () => {
 
   return (
     <header className={`main-header ${isOpen ? 'open' : ''} ${isScrolled ? 'scrolled' : ''}`}>
-      <button className="header__menu-toggle" onClick={toggleMenu} aria-expanded={isOpen} aria-controls="main-navigation" aria-label="Abrir menú de navegación">
+      <button 
+        className="header__menu-toggle" 
+        onClick={toggleMenu} 
+        aria-expanded={isOpen} 
+        aria-controls="main-navigation" 
+        aria-label="Abrir menú de navegación"
+      >
         <span className="header__icon-bar"></span>
         <span className="header__icon-bar"></span>
         <span className="header__icon-bar"></span>
@@ -40,25 +50,27 @@ const Header = () => {
 
       <nav className="header__nav" id="main-navigation">
         <ul className="header__nav-list header__nav-list--left">
-          <li><Link to="/lifewear" className={`header__nav-link ${location.pathname === '/lifewear' ? 'active' : ''}`} onClick={toggleMenu}>LifeWear</Link></li>
-          <li><Link to="/cartas-al-mar" className={`header__nav-link ${location.pathname === '/cartas-al-mar' ? 'active' : ''}`} onClick={toggleMenu}>Cartas al Mar</Link></li>
-          <li><Link to="/bespoke" className={`header__nav-link ${location.pathname === '/bespoke' ? 'active' : ''}`} onClick={toggleMenu}>Bespoke</Link></li>
+          {/* Todas las rutas anidadas bajo /home deben tener el prefijo /home */}
+          <li><Link to="/home/lifewear" className={`header__nav-link ${location.pathname === '/home/lifewear' ? 'active' : ''}`} onClick={closeMenu}>LifeWear</Link></li>
+          <li><Link to="/home/cartas-al-mar" className={`header__nav-link ${location.pathname === '/home/cartas-al-mar' ? 'active' : ''}`} onClick={closeMenu}>Cartas al Mar</Link></li>
+          <li><Link to="/home/disenar-tu-refugio" className={`header__nav-link ${location.pathname === '/home/disenar-tu-refugio' ? 'active' : ''}`} onClick={closeMenu}>Bespoke</Link></li>
         </ul>
-        <div className="header__logo-container">
-          <Link to="/">
-            <div className="header__logo-circle">
-              <img src={isonegro} alt="Refugio Logo" className="header__logo" />
-            </div>
-          </Link>
-        </div>
+        {/* El logo va a la raíz, que redirige a /home */}
+        <Link to="/" className="header__logo-container" onClick={closeMenu}>
+          <div className="header__logo-circle">
+            <img src={isonegro} alt="Refugio Logo" className="header__logo" />
+          </div>
+        </Link>
         <ul className="header__nav-list header__nav-list--right">
-          <li><Link to="/universo-sensorial" className={`header__nav-link ${location.pathname === '/universo-sensorial' ? 'active' : ''}`} onClick={toggleMenu}>Universo Sensorial</Link></li>
-          <li><Link to="/programa-de-bienestar" className={`header__nav-link ${location.pathname === '/programa-de-bienestar' ? 'active' : ''}`} onClick={toggleMenu}>Programa de Bienestar</Link></li>
-          <li><Link to="/contacto" className={`header__nav-link ${location.pathname === '/contacto' ? 'active' : ''}`} onClick={toggleMenu}>Contacto</Link></li>
+          {/* Todas las rutas anidadas bajo /home deben tener el prefijo /home */}
+          <li><Link to="/home/nudos-de-sal" className={`header__nav-link ${location.pathname === '/home/nudos-de-sal' ? 'active' : ''}`} onClick={closeMenu}>Universo Sensorial</Link></li>
+          <li><Link to="/home/programa-de-bienestar" className={`header__nav-link ${location.pathname === '/home/programa-de-bienestar' ? 'active' : ''}`} onClick={closeMenu}>Programa de Bienestar</Link></li>
+          <li><Link to="/home/contacto" className={`header__nav-link ${location.pathname === '/home/contacto' ? 'active' : ''}`} onClick={closeMenu}>Contacto</Link></li>
           <li className="header__cart-icon">
-            <Link to="/cart" className="header__nav-link" onClick={toggleMenu} aria-label="Bolsa de compras">
-              <FaShoppingBag size={18} /> {/* Icono de bolsa */}
-              {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>} {/* Contador de artículos */}
+            {/* Ruta para el carrito */}
+            <Link to="/home/cart" className="header__nav-link" onClick={closeMenu} aria-label="Bolsa de compras">
+              <FaShoppingBag size={18} />
+              {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
             </Link>
           </li>
         </ul>
