@@ -53,15 +53,18 @@ universo-refugio/
 │              ├── Footer.css
 │              ├── Modal.jsx
 │              └── Modal.css
-│    ├── fonts/
+│      ├── fonts/
 │              ├── NewYork.woff2
 │              └── Recoleta.woff2
 │      ├── App.css                    
 │      ├── App.jsx               
 │      └── main.jsx
 ├── .gitignore
+├── audiointro.m4a
 ├── eslint.config.js
 ├── estructura.txt
+├── index.html
+├── netflify.toml
 ├── package.json
 ├── package-lock.json
 ├── README.md
