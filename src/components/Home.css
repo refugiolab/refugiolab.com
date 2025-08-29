@@ -586,8 +586,8 @@
   }
 
   .home__logo-gris-container {
-    /* Revertido a un valor más neutro para evitar superposición */
-    margin-top: 2rem; /* Valor positivo para que no se suba tanto */
+    /* AJUSTADO: Se le da un margin-top para bajarlo y separarlo del hero */
+    margin-top: 5rem; 
     padding-top: 0; 
     margin-bottom: 0; 
     opacity: 1; /* Siempre visible en móvil */
@@ -599,8 +599,8 @@
   }
 
   .pilares__intro-text {
-    /* Revertido a un valor más neutro para evitar superposición */
-    margin-top: 1rem; /* Valor positivo para que no se suba tanto */
+    /* AJUSTADO: Se le da un margin-top para bajarlo y separarlo del logo */
+    margin-top: 3rem; 
     margin-bottom: 3rem;
     font-size: clamp(0.9rem, 2.5vw, 1.2rem);
     line-height: 1.3;

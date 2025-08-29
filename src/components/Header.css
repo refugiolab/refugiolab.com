@@ -178,13 +178,14 @@
 @media (max-width: 768px) {
   .main-header {
     padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente SIEMPRE en móvil */
-    backdrop-filter: blur(8px); /* Blur SIEMPRE en móvil */
-    -webkit-backdrop-filter: blur(8px);
+    background-color: var(--color-fondo); /* AJUSTADO: Fondo sólido (gris/blanco) desde el inicio en móvil */
+    backdrop-filter: blur(0px); /* Sin blur, el color es sólido */
+    -webkit-backdrop-filter: blur(0px);
+    border-bottom: 1px solid rgba(68, 70, 83, 0.1); /* Añadir un borde sutil para definirlo */
   }
 
   /* Colores de los links y el ícono en móvil SIEMPRE serán var(--color-texto) */
-  /* para que sean legibles sobre el fondo semi-transparente */
+  /* para que sean legibles sobre el fondo sólido del header */
   .main-header .header__nav-link,
   .main-header .header__icon-bar,
   .main-header .header__cart-icon .header__nav-link {
@@ -210,8 +211,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* AJUSTADO: Fondo sólido para cuando el menú está abierto */
-    background-color: var(--color-fondo); 
+    background-color: var(--color-fondo); /* AJUSTADO: Fondo sólido para el menú al abrir */
     backdrop-filter: blur(12px); /* Blur al abrir */
     -webkit-backdrop-filter: blur(12px);
     transform: translateX(100%);
@@ -219,6 +219,7 @@
     gap: 2rem;
     padding-top: 5rem; /* Espacio para el icono de cierre */
     z-index: 55; /* Aseguramos que esté por encima del main-header */
+    /* Para el fondo del menú abierto, aseguramos que el color sea opaco, var(--color-fondo) */
   }
 
   .main-header.open .header__nav {
