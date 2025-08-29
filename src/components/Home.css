@@ -9,10 +9,10 @@
 .hero-section {
   position: relative;
   width: 100%;
-  height: 100vh; /* Alto para escritorio y pantallas grandes */
-  background-size: cover; /* ¡Asegura que la imagen cubra toda la sección en escritorio! */
+  height: 100vh;
+  background-size: cover;
   background-position: center center;
-  background-repeat: no-repeat; /* Evita la repetición */
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,8 +20,7 @@
   overflow: hidden;
   margin: 0;
   padding: 0;
-  /* El color de fondo para escritorio solo se vería si la imagen no carga */
-  background-color: #f1f0eb; 
+  background-color: #f1f0eb;
 }
 
 .hero__overlay {
@@ -30,7 +29,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3); /* Asegura que el overlay también cubre el fondo */
+  background: rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
 
@@ -49,7 +48,7 @@
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 900px; /* Max-width para escritorio */
+  max-width: 900px;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -60,7 +59,7 @@
 
 .hero__manifiesto {
   font-family: var(--fuente-secundaria);
-  font-size: clamp(1.08rem, 2.25vw, 1.44rem); /* Reducido en un 10% */
+  font-size: clamp(1.08rem, 2.25vw, 1.44rem);
   font-weight: 300;
   line-height: 1.6;
   color: #ffffff;
@@ -101,7 +100,7 @@
   font-weight: normal;
   letter-spacing: 0.8px;
   text-transform: none;
-  white-space: nowrap; /* Esto es para escritorio */
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   display: inline-flex;
@@ -126,13 +125,13 @@
 /* --- Logo entre secciones --- */
 .home__logo-gris-container {
   padding: 2rem;
-  margin-top: -4rem; /* Se mantiene para que el logo se superponga con el hero en la transición */
+  margin-top: -4rem;
   text-align: center;
   background-color: var(--color-fondo);
   margin-bottom: 0.5rem;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1s ease-out, transform 1s ease-out, margin-top 0.5s ease-out; /* Añadida transición para margin-top */
+  transition: opacity 1s ease-out, transform 1s ease-out, margin-top 0.5s ease-out;
   position: relative;
   z-index: 3;
 }
@@ -140,7 +139,7 @@
 .home__logo-gris-container.is-visible {
   opacity: 1;
   transform: translateY(0);
-  margin-top: -10rem; /* Valor para escritorio, puede que necesite ajuste si hay superposición */
+  margin-top: -10rem;
 }
 
 .home__logo-gris {
@@ -152,7 +151,7 @@
 
 /* --- 2.2. Nuestros Pilares: La Esencia de Refugio --- */
 .pilares-section {
-  padding: 0 2rem 3rem; 
+  padding: 0 2rem 3rem;
   text-align: center;
   background-color: var(--color-fondo);
   color: var(--color-texto);
@@ -160,14 +159,14 @@
 
 .pilares__intro-text {
   max-width: 900px;
-  margin: -6rem auto 4rem; /* Valor para escritorio, puede que necesite ajuste si hay superposición */
+  margin: -6rem auto 4rem;
   font-family: var(--fuente-secundaria);
   font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 300;
   line-height: 1.4;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1s ease-out, transform 1s ease-out, margin-top 0.5s ease-out; /* Añadida transición para margin-top */
+  transition: opacity 1s ease-out, transform 1s ease-out, margin-top 0.5s ease-out;
   white-space: normal;
   overflow: visible;
   text-overflow: clip;
@@ -177,7 +176,7 @@
 .pilares__intro-text.is-in-view {
   opacity: 1;
   transform: translateY(0);
-  margin-top: 0; /* Valor para escritorio */
+  margin-top: 0;
 }
 
 .pilares-grid {
@@ -209,8 +208,13 @@
 }
 
 /* Ajustes para el retraso de la animación entre los items del pilar */
-.pilar-item.lifewear-item.is-in-view { transition-delay: 0.2s; }
-.pilar-item.bespoke-item.is-in-view { transition-delay: 0.4s; }
+.pilar-item.lifewear-item.is-in-view {
+  transition-delay: 0.2s;
+}
+
+.pilar-item.bespoke-item.is-in-view {
+  transition-delay: 0.4s;
+}
 
 
 .pilar-item h3 {
@@ -222,7 +226,8 @@
   text-transform: capitalize;
 }
 
-.lifewear__phonetic, .bespoke__phonetic {
+.lifewear__phonetic,
+.bespoke__phonetic {
   font-family: var(--fuente-secundaria);
   font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   font-style: italic;
@@ -315,7 +320,8 @@
   border: 1px solid rgba(68, 70, 83, 0.3);
 }
 
-.dot.active, .dot:hover {
+.dot.active,
+.dot:hover {
   background-color: var(--color-texto);
   transform: scale(1.1);
 }
@@ -358,7 +364,7 @@
   text-align: center;
   background-color: var(--color-fondo);
   color: var(--color-texto);
-  margin-top: 0; 
+  margin-top: 0;
 }
 
 .cartas__intro-text {
@@ -556,7 +562,7 @@
 @media (max-width: 768px) {
   .hero-content {
     gap: 1rem;
-    padding: 100px 5vw 40px; 
+    padding: 100px 5vw 40px;
     max-width: 100%;
     box-sizing: border-box;
   }
@@ -567,44 +573,47 @@
     box-sizing: border-box;
     padding: 0.8rem 1.5rem;
   }
-  
+
   .hero-section {
-    width: 100vw;
-    max-width: 100vw;
-    min-width: 0;
-    height: auto; 
-    min-height: 500px; /* Asegura un tamaño mínimo para el hero */
+    height: 100vh;
+    min-height: 500px;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    padding-top: 0; 
-    padding-bottom: 0; 
+    padding-top: 0;
+    padding-bottom: 0;
     overflow-x: hidden;
     justify-content: center;
     align-items: center;
     background-color: #f1f0eb;
+    /* AJUSTADO: El hero ocupa el 100% de la pantalla para el efecto de "plena" */
+    height: 100vh;
   }
 
   .home__logo-gris-container {
-    /* AJUSTADO: Margin-top para posicionar debajo del hero sin superponerse */
-    margin-top: 3rem; 
-    padding: 2rem; /* Mantener padding original */
-    margin-bottom: 0; 
-    opacity: 1; /* Siempre visible en móvil */
-    transform: translateY(0); /* Sin animación de traducción en móvil */
+    /* AJUSTADO: Elimina la superposición en móvil */
+    margin-top: 0;
+    padding: 2rem 0;
+    /* Elimina el margen negativo para que se posicione debajo del hero */
+    margin-bottom: 0;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .pilares-section {
-    padding: 2rem 1.5rem 4rem; /* Ajustado el padding general de la sección */
+    padding: 2rem 1.5rem 4rem;
   }
 
   .pilares__intro-text {
-    /* AJUSTADO: Margin-top para posicionar debajo del logo con espacio */
-    margin-top: 1rem; 
+    /* AJUSTADO: Elimina la superposición en móvil */
+    margin-top: 1rem;
     margin-bottom: 3rem;
     font-size: clamp(0.9rem, 2.5vw, 1.2rem);
     line-height: 1.3;
     text-align: justify;
+    /* Asegura que no haya superposición con el logo */
+    margin-top: 0;
+    padding: 1.5rem 1.5rem 0;
   }
 
   .pilar-item {
@@ -616,7 +625,8 @@
     font-size: clamp(1.8rem, 4vw, 2.5rem);
   }
 
-  .lifewear__phonetic, .bespoke__phonetic {
+  .lifewear__phonetic,
+  .bespoke__phonetic {
     font-size: clamp(1rem, 2.2vw, 1.4rem);
     margin-bottom: 1rem;
     text-align: center;
