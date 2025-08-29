@@ -82,8 +82,8 @@ const Home = () => {
         const scrollPosition = window.scrollY;
         
         // Define el punto de inicio y fin del efecto de desvanecimiento
-        const fadeStart = heroHeight * 0.4;
-        const fadeEnd = heroHeight * 0.9;
+        const fadeStart = heroHeight * 0.1; // Inicia antes para que el logo aparezca más rápido
+        const fadeEnd = heroHeight * 0.5; // Termina antes
         
         let newFadeHeight = 0;
         
