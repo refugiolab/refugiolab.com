@@ -178,9 +178,9 @@
 @media (max-width: 768px) {
   .main-header {
     padding: 1rem;
-    background-color: var(--color-fondo); /* AJUSTADO: Fondo sólido (gris/blanco) desde el inicio en móvil */
-    backdrop-filter: blur(0px); /* Sin blur, el color es sólido */
-    -webkit-backdrop-filter: blur(0px);
+    background-color: var(--color-fondo); /* AJUSTADO: Fondo sólido desde el inicio en móvil */
+    backdrop-filter: none; /* AJUSTADO: Sin blur inicial si el fondo es sólido */
+    -webkit-backdrop-filter: none;
     border-bottom: 1px solid rgba(68, 70, 83, 0.1); /* Añadir un borde sutil para definirlo */
   }
 
@@ -219,7 +219,6 @@
     gap: 2rem;
     padding-top: 5rem; /* Espacio para el icono de cierre */
     z-index: 55; /* Aseguramos que esté por encima del main-header */
-    /* Para el fondo del menú abierto, aseguramos que el color sea opaco, var(--color-fondo) */
   }
 
   .main-header.open .header__nav {

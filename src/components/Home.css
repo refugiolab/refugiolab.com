@@ -140,7 +140,7 @@
 .home__logo-gris-container.is-visible {
   opacity: 1;
   transform: translateY(0);
-  margin-top: -10rem; /* Revertido a un valor previo para escritorio */
+  margin-top: -10rem; /* Valor para escritorio, puede que necesite ajuste si hay superposición */
 }
 
 .home__logo-gris {
@@ -160,7 +160,7 @@
 
 .pilares__intro-text {
   max-width: 900px;
-  margin: -6rem auto 4rem; /* Revertido a un valor previo para escritorio */
+  margin: -6rem auto 4rem; /* Valor para escritorio, puede que necesite ajuste si hay superposición */
   font-family: var(--fuente-secundaria);
   font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 300;
@@ -177,7 +177,7 @@
 .pilares__intro-text.is-in-view {
   opacity: 1;
   transform: translateY(0);
-  margin-top: 0; /* Revertido a un valor previo para escritorio */
+  margin-top: 0; /* Valor para escritorio */
 }
 
 .pilares-grid {
@@ -573,7 +573,7 @@
     max-width: 100vw;
     min-width: 0;
     height: auto; 
-    min-height: 500px;
+    min-height: 500px; /* Asegura un tamaño mínimo para el hero */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -586,21 +586,21 @@
   }
 
   .home__logo-gris-container {
-    /* AJUSTADO: Se le da un margin-top para bajarlo y separarlo del hero */
-    margin-top: 5rem; 
-    padding-top: 0; 
+    /* AJUSTADO: Margin-top para posicionar debajo del hero sin superponerse */
+    margin-top: 3rem; 
+    padding: 2rem; /* Mantener padding original */
     margin-bottom: 0; 
     opacity: 1; /* Siempre visible en móvil */
     transform: translateY(0); /* Sin animación de traducción en móvil */
   }
 
   .pilares-section {
-    padding: 2rem 1.5rem 4rem; 
+    padding: 2rem 1.5rem 4rem; /* Ajustado el padding general de la sección */
   }
 
   .pilares__intro-text {
-    /* AJUSTADO: Se le da un margin-top para bajarlo y separarlo del logo */
-    margin-top: 3rem; 
+    /* AJUSTADO: Margin-top para posicionar debajo del logo con espacio */
+    margin-top: 1rem; 
     margin-bottom: 3rem;
     font-size: clamp(0.9rem, 2.5vw, 1.2rem);
     line-height: 1.3;
