@@ -178,13 +178,12 @@
 @media (max-width: 768px) {
   .main-header {
     padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.5); /* AJUSTADO: Siempre un fondo semi-transparente en móvil */
-    backdrop-filter: blur(5px); /* AJUSTADO: Siempre con blur en móvil */
-    -webkit-backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.8); /* AJUSTADO: Fondo más sólido al 80% */
+    backdrop-filter: blur(8px); /* AJUSTADO: Más blur */
+    -webkit-backdrop-filter: blur(8px);
   }
 
   /* Colores de los links y el ícono en móvil SIEMPRE serán var(--color-texto) */
-  /* para que sean legibles sobre el fondo semi-transparente */
   .main-header .header__nav-link,
   .main-header .header__icon-bar,
   .main-header .header__cart-icon .header__nav-link {
@@ -197,23 +196,21 @@
   /* Estilos específicos cuando el menú hamburguesa está abierto */
   .main-header.open .header__nav {
     background-color: var(--color-fondo); /* Fondo sólido cuando el menú está abierto */
-    backdrop-filter: blur(10px); /* Más blur al abrir */
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px); /* AJUSTADO: Más blur al abrir */
+    -webkit-backdrop-filter: blur(12px);
+    /* Asegurar que el header en sí también tenga el fondo cuando el menú está abierto */
+    /* Esto es clave para que la franja blanca no sea transparente */
+    /* ¡IMPORTANTE! Esto se aplica al .header__nav, no al .main-header directamente */
+    /* El .main-header ya tiene un fondo semi-transparente, pero el nav lo cubre */
   }
   
   .header__menu-toggle {
     display: block;
     order: 1;
     margin-right: auto;
-    /* Ajustes estéticos para el icono de hamburguesa */
     transition: all 0.3s ease;
   }
-  /* Color del icono de hamburguesa cuando el header no se ha scrolleado y en móvil */
-  .main-header:not(.scrolled) .header__icon-bar {
-    background-color: var(--color-texto); /* AJUSTADO: color para que se vea sobre el hero */
-  }
-
-
+  
   .header__nav {
     position: fixed;
     top: 0;
@@ -223,7 +220,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: transparent; /* AJUSTADO: Transparente por defecto, toma el del .main-header */
+    /* AJUSTADO: Le damos un fondo sólido aquí para cuando se abre */
+    background-color: var(--color-fondo); 
+    backdrop-filter: blur(12px); /* Y su propio blur */
+    -webkit-backdrop-filter: blur(12px);
     transform: translateX(100%);
     transition: transform 0.4s ease-in-out;
     gap: 2rem;

@@ -140,7 +140,7 @@
 .home__logo-gris-container.is-visible {
   opacity: 1;
   transform: translateY(0);
-  margin-top: -10rem; /* ¡AJUSTADO! Se sube más el logo gris */
+  margin-top: -10rem; /* Ajustado */
 }
 
 .home__logo-gris {
@@ -160,7 +160,7 @@
 
 .pilares__intro-text {
   max-width: 900px;
-  margin: -6rem auto 4rem; /* ¡AJUSTADO! Se sube más para reducir el espacio */
+  margin: -6rem auto 4rem; /* Ajustado */
   font-family: var(--fuente-secundaria);
   font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 300;
@@ -177,7 +177,7 @@
 .pilares__intro-text.is-in-view {
   opacity: 1;
   transform: translateY(0);
-  margin-top: 0; /* ¡AJUSTADO! Se posiciona en su lugar final, más arriba */
+  margin-top: 0; /* Ajustado */
 }
 
 .pilares-grid {
@@ -588,7 +588,7 @@
   .home__logo-gris-container {
     opacity: 1; /* Siempre visible en móvil */
     transform: translateY(0); /* Sin animación de traducción en móvil */
-    margin-top: -14rem; /* ¡AJUSTADO! Se sube aún más el logo gris (de -12rem a -14rem) */
+    margin-top: -6rem; /* AJUSTADO: Se reduce el margen negativo para evitar superposición */
     padding-top: 0; 
     margin-bottom: 0; 
   }
@@ -602,7 +602,7 @@
     font-size: clamp(0.9rem, 2.5vw, 1.2rem);
     line-height: 1.3;
     text-align: justify;
-    margin-top: -8rem; /* ¡AJUSTADO! Se sube aún más la frase introductoria de pilares (de -6rem a -8rem) */
+    margin-top: -2rem; /* AJUSTADO: Se reduce el margen negativo para evitar superposición */
   }
 
   .pilar-item {
