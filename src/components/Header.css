@@ -8,14 +8,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
-  background-color: transparent; /* Inicialmente transparente */
-  backdrop-filter: blur(0px); /* Sin blur inicial */
+  background-color: transparent; /* Inicialmente transparente en escritorio */
+  backdrop-filter: blur(0px); /* Sin blur inicial en escritorio */
   -webkit-backdrop-filter: blur(0px);
   transition: background-color 0.3s ease, border-bottom 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .main-header.scrolled {
-  background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco 50% opaco */
+  background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco 50% opaco al hacer scroll */
   backdrop-filter: blur(5px); /* Blur al hacer scroll */
   -webkit-backdrop-filter: blur(5px);
   border-bottom: 1px solid rgba(68, 70, 83, 0.1); /* Borde sutil */
@@ -67,7 +67,7 @@
 }
 
 /* Color del texto de los links y el ícono en el header inicial sobre el video */
-/* Estos estilos se aplican CUANDO NO se ha hecho scroll */
+/* Estos estilos se aplican CUANDO NO se ha hecho scroll (en escritorio) */
 .main-header:not(.scrolled) .header__nav-link,
 .main-header:not(.scrolled) .header__cart-icon .header__nav-link {
   color: var(--color-fondo); /* Blanco para contraste sobre hero */
@@ -178,35 +178,42 @@
 @media (max-width: 768px) {
   .main-header {
     padding: 1rem;
-    /* Eliminado el background-color fijo para que sea transparente al inicio */
+    background-color: rgba(255, 255, 255, 0.5); /* AJUSTADO: Siempre un fondo semi-transparente en móvil */
+    backdrop-filter: blur(5px); /* AJUSTADO: Siempre con blur en móvil */
+    -webkit-backdrop-filter: blur(5px);
   }
 
-  /* Colores de los links y el ícono en móvil (transparente al inicio) */
-  .main-header:not(.scrolled) .header__nav-link,
-  .main-header:not(.scrolled) .header__icon-bar,
-  .main-header:not(.scrolled) .header__cart-icon .header__nav-link {
-    color: var(--color-fondo); /* Blanco sobre el hero */
+  /* Colores de los links y el ícono en móvil SIEMPRE serán var(--color-texto) */
+  /* para que sean legibles sobre el fondo semi-transparente */
+  .main-header .header__nav-link,
+  .main-header .header__icon-bar,
+  .main-header .header__cart-icon .header__nav-link {
+    color: var(--color-texto); 
   }
-  .main-header:not(.scrolled) .header__nav-link::after {
-    background-color: var(--color-fondo); /* Línea blanca sobre el hero */
-  }
-
-  /* Colores al hacer scroll en móvil */
-  .main-header.scrolled .header__nav-link,
-  .main-header.scrolled .header__icon-bar,
-  .main-header.scrolled .header__cart-icon .header__nav-link {
-    color: var(--color-texto); /* Gris oscuro al hacer scroll */
-  }
-  .main-header.scrolled .header__nav-link::after {
-    background-color: var(--color-texto); /* Línea gris oscuro al hacer scroll */
+  .main-header .header__nav-link::after {
+    background-color: var(--color-texto); 
   }
 
+  /* Estilos específicos cuando el menú hamburguesa está abierto */
+  .main-header.open .header__nav {
+    background-color: var(--color-fondo); /* Fondo sólido cuando el menú está abierto */
+    backdrop-filter: blur(10px); /* Más blur al abrir */
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
   .header__menu-toggle {
     display: block;
     order: 1;
     margin-right: auto;
+    /* Ajustes estéticos para el icono de hamburguesa */
+    transition: all 0.3s ease;
   }
-  
+  /* Color del icono de hamburguesa cuando el header no se ha scrolleado y en móvil */
+  .main-header:not(.scrolled) .header__icon-bar {
+    background-color: var(--color-texto); /* AJUSTADO: color para que se vea sobre el hero */
+  }
+
+
   .header__nav {
     position: fixed;
     top: 0;
@@ -216,10 +223,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-fondo); /* Fondo sólido cuando el menú está abierto */
+    background-color: transparent; /* AJUSTADO: Transparente por defecto, toma el del .main-header */
     transform: translateX(100%);
     transition: transform 0.4s ease-in-out;
     gap: 2rem;
+    padding-top: 5rem; /* Asegura espacio para el icono de cierre */
   }
 
   .main-header.open .header__nav {

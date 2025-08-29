@@ -32,7 +32,7 @@ const Home = () => {
 
   // Estado y ref para el desvanecimiento y visibilidad del logo
   const [fadeOverlayHeight, setFadeOverlayHeight] = useState(0);
-  const [showGrayLogo, setShowGrayLogo] = useState(false);
+  const [showGrayLogo, setShowGrayLogo] = useState(false); // Mantener para el efecto de escritorio
   const heroSectionRef = useRef(null);
 
   // Lógica para el Carrusel de LifeWear
@@ -81,26 +81,38 @@ const Home = () => {
         const heroHeight = heroSectionRef.current.offsetHeight;
         const scrollPosition = window.scrollY;
         
-        // Define el punto de inicio y fin del efecto de desvanecimiento
-        const fadeStart = heroHeight * 0.1; // Inicia antes para que el logo aparezca más rápido
-        const fadeEnd = heroHeight * 0.5; // Termina antes
-        
-        let newFadeHeight = 0;
-        
-        if (scrollPosition > fadeStart) {
-          setShowGrayLogo(true);
-          const scrollAmountInFadeSection = scrollPosition - fadeStart;
-          const fadeProgress = Math.min(1, scrollAmountInFadeSection / (fadeEnd - fadeStart));
-          const maxFadeCoverHeight = heroHeight * 0.5;
-          newFadeHeight = maxFadeCoverHeight * fadeProgress;
+        // La lógica del logo gris solo se aplica en escritorio
+        // En móvil, usaremos CSS para que siempre sea visible (ver Home.css)
+        if (window.innerWidth > 768) { // Solo aplica esta lógica en escritorio
+          const fadeStart = heroHeight * 0.1; 
+          const fadeEnd = heroHeight * 0.5; 
+          
+          let newFadeHeight = 0;
+          
+          if (scrollPosition > fadeStart) {
+            setShowGrayLogo(true);
+            const scrollAmountInFadeSection = scrollPosition - fadeStart;
+            const fadeProgress = Math.min(1, scrollAmountInFadeSection / (fadeEnd - fadeStart));
+            const maxFadeCoverHeight = heroHeight * 0.5;
+            newFadeHeight = maxFadeCoverHeight * fadeProgress;
+          } else {
+            newFadeHeight = 0;
+            setShowGrayLogo(false);
+          }
+          setFadeOverlayHeight(newFadeHeight);
         } else {
-          newFadeHeight = 0;
-          setShowGrayLogo(false);
+          // En móvil, la capa de desvanecimiento no se usa para el logo gris
+          // y el logo gris siempre está visible por CSS
+          setFadeOverlayHeight(0);
+          setShowGrayLogo(true); // Asegura que el estado sea true para que la clase is-visible se aplique
         }
-        setFadeOverlayHeight(newFadeHeight);
       }
     };
     window.addEventListener('scroll', handleScroll);
+    
+    // Llamar al handler una vez al cargar para establecer el estado inicial en móvil
+    handleScroll();
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -116,8 +128,8 @@ const Home = () => {
             Refugio es una declaración viva, un espacio nómade donde arte, cuerpo y tiempo se entrelazan. Nace de la urgencia de crear un modo distinto de estar en el mundo: más humano, más consciente, más lento.
           </p>
           <div className="hero__cta-group">
-            <Link to="/about" className="hero__cta-full-button"> {/* La ruta se mantiene como /about */}
-              <span className="hero__cta-descubri">Descubrí</span> Refugio {/* ¡Texto modificado aquí! */}
+            <Link to="/about" className="hero__cta-full-button">
+              <span className="hero__cta-descubri">Descubrí</span> Refugio
             </Link>
           </div>
         </div>
