@@ -198,10 +198,6 @@
     background-color: var(--color-fondo); /* Fondo sólido cuando el menú está abierto */
     backdrop-filter: blur(12px); /* AJUSTADO: Más blur al abrir */
     -webkit-backdrop-filter: blur(12px);
-    /* Asegurar que el header en sí también tenga el fondo cuando el menú está abierto */
-    /* Esto es clave para que la franja blanca no sea transparente */
-    /* ¡IMPORTANTE! Esto se aplica al .header__nav, no al .main-header directamente */
-    /* El .main-header ya tiene un fondo semi-transparente, pero el nav lo cubre */
   }
   
   .header__menu-toggle {
@@ -211,6 +207,10 @@
     transition: all 0.3s ease;
   }
   
+  /* Color del icono de hamburguesa cuando el header no se ha scrolleado y en móvil */
+  /* Este ya se hereda de .main-header .header__icon-bar ahora */
+
+
   .header__nav {
     position: fixed;
     top: 0;
@@ -220,10 +220,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* AJUSTADO: Le damos un fondo sólido aquí para cuando se abre */
-    background-color: var(--color-fondo); 
-    backdrop-filter: blur(12px); /* Y su propio blur */
-    -webkit-backdrop-filter: blur(12px);
+    background-color: transparent; /* Se mantiene transparente, el fondo lo da .main-header.open .header__nav */
     transform: translateX(100%);
     transition: transform 0.4s ease-in-out;
     gap: 2rem;

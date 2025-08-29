@@ -60,7 +60,7 @@
 
 .hero__manifiesto {
   font-family: var(--fuente-secundaria);
-  font-size: clamp(1.08rem, 2.25vw, 1.44rem); /* ¡AJUSTADO! Reducido en un 10% */
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   font-weight: 300;
   line-height: 1.6;
   color: #ffffff;
@@ -140,7 +140,7 @@
 .home__logo-gris-container.is-visible {
   opacity: 1;
   transform: translateY(0);
-  margin-top: -10rem; /* Ajustado */
+  margin-top: -10rem; /* ¡AJUSTADO! Se sube más el logo gris */
 }
 
 .home__logo-gris {
@@ -160,7 +160,7 @@
 
 .pilares__intro-text {
   max-width: 900px;
-  margin: -6rem auto 4rem; /* Ajustado */
+  margin: -6rem auto 4rem; /* ¡AJUSTADO! Se sube más para reducir el espacio */
   font-family: var(--fuente-secundaria);
   font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 300;
@@ -177,7 +177,7 @@
 .pilares__intro-text.is-in-view {
   opacity: 1;
   transform: translateY(0);
-  margin-top: 0; /* Ajustado */
+  margin-top: 0; /* ¡AJUSTADO! Se posiciona en su lugar final, más arriba */
 }
 
 .pilares-grid {
@@ -588,7 +588,7 @@
   .home__logo-gris-container {
     opacity: 1; /* Siempre visible en móvil */
     transform: translateY(0); /* Sin animación de traducción en móvil */
-    margin-top: -6rem; /* AJUSTADO: Se reduce el margen negativo para evitar superposición */
+    margin-top: -12rem; /* ¡AJUSTADO! Se sube aún más el logo gris (de -10rem a -12rem) */
     padding-top: 0; 
     margin-bottom: 0; 
   }
@@ -602,7 +602,7 @@
     font-size: clamp(0.9rem, 2.5vw, 1.2rem);
     line-height: 1.3;
     text-align: justify;
-    margin-top: -2rem; /* AJUSTADO: Se reduce el margen negativo para evitar superposición */
+    margin-top: -6rem; /* ¡AJUSTADO! Se sube aún más la frase introductoria de pilares (de -4rem a -6rem) */
   }
 
   .pilar-item {
@@ -663,7 +663,6 @@
   }
 
   .newsletter__text {
-    font-family: var(--fuente-secundaria);
     font-size: clamp(1rem, 2.2vw, 1.2rem);
     margin-top: 1.5rem;
     margin-bottom: 2.5rem;
@@ -771,5 +770,227 @@
   /* Clase para justificar texto */
   .text-justify-custom {
     text-align: justify;
+  }
+
+  /* --- Responsive Adjustments --- */
+  @media (max-width: 768px) {
+    .hero-content {
+      gap: 1rem;
+      padding: 100px 5vw 40px; 
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .hero__cta-full-button {
+      white-space: normal;
+      max-width: 100%;
+      box-sizing: border-box;
+      padding: 0.8rem 1.5rem;
+    }
+    
+    .hero-section {
+      width: 100vw;
+      max-width: 100vw;
+      min-width: 0;
+      height: auto; 
+      min-height: 500px;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      padding-top: 0; 
+      padding-bottom: 0; 
+      overflow-x: hidden;
+      justify-content: center;
+      align-items: center;
+      background-color: #f1f0eb;
+    }
+
+    .home__logo-gris-container {
+      opacity: 1; /* Siempre visible en móvil */
+      transform: translateY(0); /* Sin animación de traducción en móvil */
+      margin-top: -12rem; /* ¡AJUSTADO! Se sube aún más el logo gris (de -10rem a -12rem) */
+      padding-top: 0; 
+      margin-bottom: 0; 
+    }
+
+    .pilares-section {
+      padding: 2rem 1.5rem 4rem; 
+    }
+
+    .pilares__intro-text {
+      margin-bottom: 3rem;
+      font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+      line-height: 1.3;
+      text-align: justify;
+      margin-top: -6rem; /* ¡AJUSTADO! Se sube aún más la frase introductoria de pilares (de -4rem a -6rem) */
+    }
+
+    .pilar-item {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .pilar-item h3 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+    }
+
+    .lifewear__phonetic, .bespoke__phonetic {
+      font-size: clamp(1rem, 2.2vw, 1.4rem);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .pilar-item__description {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      text-align: justify;
+    }
+
+    .pilar-item__boton {
+      align-self: center;
+      font-size: 0.85rem;
+      padding: 0.7rem 1.8rem;
+    }
+
+    .lifewear-carousel-container {
+      height: 420px;
+    }
+
+    .cartas-al-mar-section {
+      padding: 1rem 1.5rem;
+      margin-top: 0;
+    }
+
+    .cartas-al-mar-section h3,
+    .newsletter-section h3 {
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      margin-bottom: 1rem;
+    }
+
+    .cartas__intro-text {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      margin: -15px auto 2rem;
+      text-align: justify;
+    }
+
+    .cartas__boton {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      padding: 0.8rem 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .newsletter-section {
+      padding: 2rem 1.5rem;
+    }
+
+    .newsletter__text {
+      font-family: var(--fuente-secundaria);
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      margin-top: 1.5rem;
+      margin-bottom: 2.5rem;
+      text-align: justify;
+    }
+
+    .newsletter__form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .newsletter__form input {
+      padding: 1.2rem;
+      border: 1px solid var(--color-texto);
+      border-radius: 50px;
+      background-color: transparent;
+      color: var(--color-texto);
+      font-family: var(--fuente-secundaria);
+      font-size: 1rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .newsletter__form input::placeholder {
+      color: rgba(68, 70, 83, 0.6);
+      opacity: 1;
+    }
+
+    .newsletter__form input:focus {
+      outline: none;
+      border-color: var(--color-texto);
+      box-shadow: 0 0 0 2px rgba(68, 70, 83, 0.2);
+    }
+
+    .newsletter__boton {
+      padding: 1.2rem;
+      border: 1px solid var(--color-texto);
+      background-color: var(--color-texto);
+      color: var(--color-fondo);
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+      cursor: pointer;
+      border-radius: 50px;
+      transition: background-color 0.3s, color 0.3s;
+      font-family: var(--fuente-secundaria);
+      font-size: 1rem;
+    }
+
+    .newsletter__boton:hover {
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
+    }
+
+    .newsletter__submission-message {
+      margin-top: 1.5rem;
+      font-family: var(--fuente-secundaria);
+      font-size: 1rem;
+      color: var(--color-texto);
+      font-style: italic;
+    }
+
+
+    /* --- 2.5. Frase Pre-Footer --- */
+    .pre-footer-section {
+      position: relative;
+      width: 100%;
+      min-height: 40vh;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--color-fondo);
+      text-align: center;
+      padding: 4rem 2rem;
+      box-sizing: border-box;
+    }
+
+    .pre-footer-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .pre-footer__text {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      font-family: var(--fuente-principal);
+      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+      font-weight: 300;
+      line-height: 1.4;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Clase para justificar texto */
+    .text-justify-custom {
+      text-align: justify;
+    }
   }
 }
