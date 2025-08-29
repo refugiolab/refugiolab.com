@@ -178,12 +178,13 @@
 @media (max-width: 768px) {
   .main-header {
     padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.8); /* AJUSTADO: Fondo más sólido al 80% */
-    backdrop-filter: blur(8px); /* AJUSTADO: Más blur */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente SIEMPRE en móvil */
+    backdrop-filter: blur(8px); /* Blur SIEMPRE en móvil */
     -webkit-backdrop-filter: blur(8px);
   }
 
   /* Colores de los links y el ícono en móvil SIEMPRE serán var(--color-texto) */
+  /* para que sean legibles sobre el fondo semi-transparente */
   .main-header .header__nav-link,
   .main-header .header__icon-bar,
   .main-header .header__cart-icon .header__nav-link {
@@ -193,13 +194,6 @@
     background-color: var(--color-texto); 
   }
 
-  /* Estilos específicos cuando el menú hamburguesa está abierto */
-  .main-header.open .header__nav {
-    background-color: var(--color-fondo); /* Fondo sólido cuando el menú está abierto */
-    backdrop-filter: blur(12px); /* AJUSTADO: Más blur al abrir */
-    -webkit-backdrop-filter: blur(12px);
-  }
-  
   .header__menu-toggle {
     display: block;
     order: 1;
@@ -207,10 +201,6 @@
     transition: all 0.3s ease;
   }
   
-  /* Color del icono de hamburguesa cuando el header no se ha scrolleado y en móvil */
-  /* Este ya se hereda de .main-header .header__icon-bar ahora */
-
-
   .header__nav {
     position: fixed;
     top: 0;
@@ -220,11 +210,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: transparent; /* Se mantiene transparente, el fondo lo da .main-header.open .header__nav */
+    /* AJUSTADO: Fondo sólido para cuando el menú está abierto */
+    background-color: var(--color-fondo); 
+    backdrop-filter: blur(12px); /* Blur al abrir */
+    -webkit-backdrop-filter: blur(12px);
     transform: translateX(100%);
     transition: transform 0.4s ease-in-out;
     gap: 2rem;
-    padding-top: 5rem; /* Asegura espacio para el icono de cierre */
+    padding-top: 5rem; /* Espacio para el icono de cierre */
+    z-index: 55; /* Aseguramos que esté por encima del main-header */
   }
 
   .main-header.open .header__nav {

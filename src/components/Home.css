@@ -60,7 +60,7 @@
 
 .hero__manifiesto {
   font-family: var(--fuente-secundaria);
-  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-size: clamp(1.08rem, 2.25vw, 1.44rem); /* Reducido en un 10% */
   font-weight: 300;
   line-height: 1.6;
   color: #ffffff;
@@ -140,7 +140,7 @@
 .home__logo-gris-container.is-visible {
   opacity: 1;
   transform: translateY(0);
-  margin-top: -10rem; /* ¡AJUSTADO! Se sube más el logo gris */
+  margin-top: -10rem; /* Revertido a un valor previo para escritorio */
 }
 
 .home__logo-gris {
@@ -160,7 +160,7 @@
 
 .pilares__intro-text {
   max-width: 900px;
-  margin: -6rem auto 4rem; /* ¡AJUSTADO! Se sube más para reducir el espacio */
+  margin: -6rem auto 4rem; /* Revertido a un valor previo para escritorio */
   font-family: var(--fuente-secundaria);
   font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 300;
@@ -177,7 +177,7 @@
 .pilares__intro-text.is-in-view {
   opacity: 1;
   transform: translateY(0);
-  margin-top: 0; /* ¡AJUSTADO! Se posiciona en su lugar final, más arriba */
+  margin-top: 0; /* Revertido a un valor previo para escritorio */
 }
 
 .pilares-grid {
@@ -586,23 +586,25 @@
   }
 
   .home__logo-gris-container {
+    /* Revertido a un valor más neutro para evitar superposición */
+    margin-top: 2rem; /* Valor positivo para que no se suba tanto */
+    padding-top: 0; 
+    margin-bottom: 0; 
     opacity: 1; /* Siempre visible en móvil */
     transform: translateY(0); /* Sin animación de traducción en móvil */
-    margin-top: -10rem; /* ¡AJUSTADO! Sube más el logo gris */
-    padding-top: 0; /* AJUSTADO: Elimina padding-top aquí */
-    margin-bottom: 0; /* AJUSTADO: Elimina margin-bottom para que suba más */
   }
 
   .pilares-section {
-    padding: 2rem 1.5rem 4rem; /* AJUSTADO: Reducido padding-top y padding-bottom, aumentado para el siguiente elemento */
+    padding: 2rem 1.5rem 4rem; 
   }
 
   .pilares__intro-text {
+    /* Revertido a un valor más neutro para evitar superposición */
+    margin-top: 1rem; /* Valor positivo para que no se suba tanto */
     margin-bottom: 3rem;
     font-size: clamp(0.9rem, 2.5vw, 1.2rem);
     line-height: 1.3;
     text-align: justify;
-    margin-top: -4rem; /* ¡AJUSTADO! Sube la frase introductoria de pilares */
   }
 
   .pilar-item {
@@ -663,28 +665,113 @@
   }
 
   .newsletter__text {
+    font-family: var(--fuente-secundaria);
     font-size: clamp(1rem, 2.2vw, 1.2rem);
     margin-top: 1.5rem;
     margin-bottom: 2.5rem;
     text-align: justify;
   }
 
-  .newsletter__form input, .newsletter__boton {
-    padding: 1rem;
-    font-size: 0.9rem;
+  .newsletter__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    max-width: 400px;
+    margin: 0 auto;
   }
 
+  .newsletter__form input {
+    padding: 1.2rem;
+    border: 1px solid var(--color-texto);
+    border-radius: 50px;
+    background-color: transparent;
+    color: var(--color-texto);
+    font-family: var(--fuente-secundaria);
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .newsletter__form input::placeholder {
+    color: rgba(68, 70, 83, 0.6);
+    opacity: 1;
+  }
+
+  .newsletter__form input:focus {
+    outline: none;
+    border-color: var(--color-texto);
+    box-shadow: 0 0 0 2px rgba(68, 70, 83, 0.2);
+  }
+
+  .newsletter__boton {
+    padding: 1.2rem;
+    border: 1px solid var(--color-texto);
+    background-color: var(--color-texto);
+    color: var(--color-fondo);
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: var(--fuente-secundaria);
+    font-size: 1rem;
+  }
+
+  .newsletter__boton:hover {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+  }
+
+  .newsletter__submission-message {
+    margin-top: 1.5rem;
+    font-family: var(--fuente-secundaria);
+    font-size: 1rem;
+    color: var(--color-texto);
+    font-style: italic;
+  }
+
+
+  /* --- 2.5. Frase Pre-Footer --- */
   .pre-footer-section {
-    padding: 3rem 1.5rem;
-    min-height: 30vh;
+    position: relative;
+    width: 100%;
+    min-height: 40vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-fondo);
+    text-align: center;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
+  }
+
+  .pre-footer-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
   }
 
   .pre-footer__text {
-    font-size: clamp(1.3rem, 3vw, 2rem);
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    font-family: var(--fuente-principal);
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    font-weight: 300;
+    line-height: 1.4;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   }
 
-  .hero__manifiesto { 
-    font-size: clamp(0.9rem, 2.5vw, 1.2rem); 
-    line-height: 1.4;
+  /* Clase para justificar texto */
+  .text-justify-custom {
+    text-align: justify;
   }
 }
