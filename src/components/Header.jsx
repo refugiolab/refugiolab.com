@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
-import isonegro from '/isoblanco.svg'; // Asegúrate de que esta ruta sea correcta para tu proyecto
+import isonegro from '/isonegro.svg'; // ¡Ruta del logo modificada a isonegro.svg!
 import { FaShoppingBag } from 'react-icons/fa';
 
 const Header = () => {

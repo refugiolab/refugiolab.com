@@ -10,9 +10,9 @@
   position: relative;
   width: 100%;
   height: 100vh; /* Alto para escritorio y pantallas grandes */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-size: cover; /* ¡Asegura que la imagen cubra toda la sección en escritorio! */
+  background-position: center center;
+  background-repeat: no-repeat; /* Evita la repetición */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,6 +20,8 @@
   overflow: hidden;
   margin: 0;
   padding: 0;
+  /* El color de fondo para escritorio solo se vería si la imagen no carga */
+  background-color: #f1f0eb; 
 }
 
 .hero__overlay {
@@ -28,7 +30,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.3); /* Asegura que el overlay también cubre el fondo */
   z-index: 1;
 }
 
@@ -149,7 +151,7 @@
 
 /* --- 2.2. Nuestros Pilares: La Esencia de Refugio --- */
 .pilares-section {
-  padding: 0 2rem 6rem;
+  padding: 0 2rem 3rem; /* ¡Reducido padding-bottom de 6rem a 3rem! */
   text-align: center;
   background-color: var(--color-fondo);
   color: var(--color-texto);
@@ -350,11 +352,11 @@
 
 /* --- 2.3. Cartas al Mar --- */
 .cartas-al-mar-section {
-  padding: 4rem 2rem;
+  padding: 2rem 2rem 1rem; /* AJUSTADO: Reducido padding-bottom de 2rem a 1rem */
   text-align: center;
   background-color: var(--color-fondo);
   color: var(--color-texto);
-  margin-top: 20px;
+  margin-top: 0; 
 }
 
 .cartas__intro-text {
@@ -417,7 +419,7 @@
 
 /* --- 2.4. Formulario de Newsletter --- */
 .newsletter-section {
-  padding: 6rem 2rem;
+  padding: 3rem 2rem; /* AJUSTADO: Reducido padding-top de 6rem a 3rem */
   background-color: var(--color-fondo);
   color: var(--color-texto);
   text-align: center;
@@ -568,16 +570,19 @@
     width: 100vw;
     max-width: 100vw;
     min-width: 0;
-    /* AJUSTE CLAVE: Altura más flexible y background-size: contain */
-    height: 65vh; /* Se usa vh para mantener una relación con el viewport */
-    background-size: contain; /* ¡Permite que la imagen se vea entera! */
-    background-position: center center; /* Centra la imagen contenida */
-    background-repeat: no-repeat; /* Evita que la imagen se repita si hay espacio */
-    padding-top: 80px; /* Asegura que el contenido no quede debajo del header fijo */
-    padding-bottom: 40px; /* Espacio inferior para el contenido */
+    /* AJUSTES CLAVE para móviles */
+    height: auto; /* La altura se adapta al contenido */
+    min-height: 500px; /* Pero asegura una altura mínima en píxeles para el hero */
+    background-size: cover; /* ¡Cubre el fondo sin márgenes! */
+    background-position: center center; /* Centra la imagen */
+    background-repeat: no-repeat;
+    padding-top: 80px; /* Espacio para el header fijo */
+    padding-bottom: 40px; /* Espacio debajo del contenido */
     overflow-x: hidden;
     justify-content: center;
     align-items: center;
+    /* El background-color de #f1f0eb solo se vería si la imagen no carga */
+    background-color: #f1f0eb;
   }
 
   .pilares-section {
@@ -622,8 +627,8 @@
   }
 
   .cartas-al-mar-section {
-    padding: 2rem 1.5rem;
-    margin-top: 20px;
+    padding: 1rem 1.5rem; /* AJUSTADO: Reducido padding-top y padding-bottom a 1rem */
+    margin-top: 0;
   }
 
   .cartas-al-mar-section h3,
@@ -645,7 +650,7 @@
   }
 
   .newsletter-section {
-    padding: 4rem 1.5rem;
+    padding: 2rem 1.5rem; /* AJUSTADO: Reducido padding-top a 2rem */
   }
 
   .newsletter__text {

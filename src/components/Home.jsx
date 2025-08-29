@@ -116,8 +116,8 @@ const Home = () => {
             Refugio es una declaración viva, un espacio nómade donde arte, cuerpo y tiempo se entrelazan. Nace de la urgencia de crear un modo distinto de estar en el mundo: más humano, más consciente, más lento.
           </p>
           <div className="hero__cta-group">
-            <Link to="/about" className="hero__cta-full-button">
-              <span className="hero__cta-descubri">Descubrí</span> la belleza de habitar el mundo a tu propio ritmo
+            <Link to="/about" className="hero__cta-full-button"> {/* La ruta se mantiene como /about */}
+              <span className="hero__cta-descubri">Descubrí</span> Refugio {/* ¡Texto modificado aquí! */}
             </Link>
           </div>
         </div>
@@ -227,7 +227,7 @@ const Home = () => {
           <br />
           De habitar con presencia.
           <br />
-          De vestir(nos) con sentido
+          De vestir(nos) con sentido.
         </p>
       </section>
     </div>
