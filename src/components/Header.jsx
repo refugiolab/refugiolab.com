@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
-import isonegro from '/isonegro.svg'; 
+import isonegro from '/isonegro.svg';
 import { FaShoppingBag } from 'react-icons/fa';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [itemCount, setItemCount] = useState(0); 
+  const [itemCount, setItemCount] = useState(0);
   const location = useLocation();
 
   const toggleMenu = () => {
@@ -21,7 +21,7 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       // El Header se considera "scrolled" cuando el scroll es mayor a 50px
-      if (window.scrollY > 50) { 
+      if (window.scrollY > 50) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -36,11 +36,11 @@ const Header = () => {
 
   return (
     <header className={`main-header ${isOpen ? 'open' : ''} ${isScrolled ? 'scrolled' : ''}`}>
-      <button 
-        className="header__menu-toggle" 
-        onClick={toggleMenu} 
-        aria-expanded={isOpen} 
-        aria-controls="main-navigation" 
+      <button
+        className="header__menu-toggle"
+        onClick={toggleMenu}
+        aria-expanded={isOpen}
+        aria-controls="main-navigation"
         aria-label="Abrir menú de navegación"
       >
         <span className="header__icon-bar"></span>

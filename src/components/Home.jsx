@@ -128,7 +128,7 @@ const Home = () => {
             Refugio es una declaración viva, un espacio nómade donde arte, cuerpo y tiempo se entrelazan. Nace de la urgencia de crear un modo distinto de estar en el mundo: más humano, más consciente, más lento.
           </p>
           <div className="hero__cta-group">
-            <Link to="/about" className="hero__cta-full-button">
+            <Link to="/home/about" className="hero__cta-full-button">
               <span className="hero__cta-descubri">Descubrí</span> Refugio
             </Link>
           </div>
@@ -173,7 +173,7 @@ const Home = () => {
                 ))}
               </div>
             </div>
-            <Link to="/lifewear" className="pilar-item__boton">Ver Cápsulas</Link>
+            <Link to="/home/lifewear" className="pilar-item__boton">Ver Cápsulas</Link>
           </div>
 
           {/* Bloque 2: Bespoke */}
@@ -183,7 +183,7 @@ const Home = () => {
             <p className="pilar-item__description">
               Nuestro servicio de creación a medida es el arte de concebir piezas que capturan tu esencia, diseñadas para honrar tu individualidad y acompañar tu ritmo. Es un proceso de co-creación que da vida a diseños exclusivos, perfectos para celebrar y expresar quién sos en tus ocasiones más significativas.
             </p>
-            <Link to="/disenar-tu-refugio" className="pilar-item__boton">Diseñar mi refugio</Link>
+            <Link to="/home/disenar-tu-refugio" className="pilar-item__boton">Diseñar mi refugio</Link>
           </div>
         </div>
       </section>
@@ -194,10 +194,10 @@ const Home = () => {
         <p className={`cartas__intro-text ${cartasAlMarInView ? 'is-in-view' : ''}`} ref={cartasAlMarRef}>
           Nuestro rincón de inspiración donde la prosa se une a la poesía de la vida consciente. Encontrarás reflexiones que profundizan tu conexión con el mundo. Cada carta es un diálogo pausado para nutrir tu interior y celebrar la belleza de lo simple.
         </p>
-        <Link to="/cartas-al-mar" className="cartas__image-link">
+        <Link to="/home/cartas-al-mar" className="cartas__image-link">
           <img src="/images/homecartasalmar.svg" alt="Cartas al Mar - Imagen inspiradora" className="cartas__image" />
         </Link>
-        <Link to="/cartas-al-mar" className="cartas__boton">Explorar Bitácora</Link>
+        <Link to="/home/cartas-al-mar" className="cartas__boton">Explorar Bitácora</Link>
       </section>
 
       {/* 2.4. Formulario de Newsletter */}
