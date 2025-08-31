@@ -53,7 +53,7 @@ const HeroSection = () => {
 
     return (
         <>
-            <section className="hero-section" style={{ backgroundImage: `url('/images/hero.svg')` }} ref={heroSectionRef}>
+            <section className="hero-section" ref={heroSectionRef}>
                 <div className="hero__overlay"></div>
                 <div className="hero-content">
                     <p className={`hero__manifiesto text-justify-custom ${heroTextInView ? 'is-in-view' : ''}`} ref={heroTextRef}>

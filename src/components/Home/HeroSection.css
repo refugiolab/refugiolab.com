@@ -3,6 +3,16 @@
     position: relative;
     height: 100vh;
     width: 100%;
+    /* Múltiples formatos para optimización y compatibilidad */
+    background-image: url('/images/hero.png'); /* Fallback para navegadores antiguos */
+    background-image: -webkit-image-set(
+        url('/images/hero.webp') 1x,
+        url('/images/hero.png') 1x
+    );
+    background-image: image-set(
+        url('/images/hero.webp') 1x,
+        url('/images/hero.png') 1x
+    );
     background-size: cover;
     background-position: center;
     display: flex;
@@ -131,9 +141,7 @@
 /* Media Queries para Móvil */
 @media (max-width: 768px) {
     .hero-section {
-        /* Se ajusta la altura al 70% del viewport para una mejor adaptabilidad */
         height: 70vh;
-        /* Se usa una altura mínima para evitar que sea muy pequeña en pantallas muy cortas */
         min-height: 500px;
         padding: 0 1rem 4rem;
         background-size: cover;
@@ -150,7 +158,6 @@
     }
 
     .home__logo-gris-container {
-        /* Mantener la posición absoluta para que quede sobre el hero */
         position: absolute;
         top: 20px;
         left: 50%;
