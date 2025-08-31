@@ -1,4 +1,6 @@
-import { useEffect, useRef } from 'react';
+// src/components/AboutUs.jsx
+
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import './AboutUs.css';
@@ -10,33 +12,16 @@ const AboutUs = () => {
     const [philosophyRef, philosophyInView] = useInView({ threshold: 0.2, triggerOnce: true });
     const [creativeRef, creativeInView] = useInView({ threshold: 0.2, triggerOnce: true });
     const [lifewearRef, lifewearInView] = useInView({ threshold: 0.2, triggerOnce: true });
-    const heroRef = useRef(null);
 
     useEffect(() => {
-        window.scrollTo(0, 0); // Vuelve al inicio de la página al montarse
-
-        const handleScroll = () => {
-            const heroSection = heroRef.current;
-            if (heroSection) {
-                const scrollPosition = window.scrollY;
-                const sectionHeight = heroSection.offsetHeight;
-                const fadeStart = sectionHeight * 0.5;
-                const fadeAmount = Math.min(1, Math.max(0, (scrollPosition - fadeStart) / (sectionHeight - fadeStart)));
-                heroSection.style.opacity = 1 - fadeAmount;
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        // Aseguramos que la página siempre comience en la parte superior
+        window.scrollTo(0, 0);
     }, []);
 
     return (
         <div className="aboutus-container">
             {/* 1. Experiencia de Entrada: La Bienvenida */}
-            <section ref={heroRef} className="aboutus-hero-section">
+            <section className="aboutus-hero-section">
                 <div className={`aboutus-hero-text ${introInView ? 'is-in-view' : ''}`} ref={introRef}>
                     <img src="/images/logorefugioblanco.svg" alt="Logo de Refugio" className="hero-logo" />
                     <p>En nuestro universo, vestir es mucho más que cubrir el cuerpo: es una forma profunda de habitar(nos).</p>
@@ -113,7 +98,7 @@ const AboutUs = () => {
                         </div>
                     </div>
                 </div>
-                
+
                 <div className={`lifewear-philosophy ${lifewearInView ? 'is-in-view' : ''}`} ref={lifewearRef}>
                     <p>En este contexto, el concepto de **LifeWear** es un pilar fundamental. Concebimos nuestras prendas para la vida, como compañeras esenciales que se adaptan a tu ritmo y a tu historia. La funcionalidad del LifeWear contemporáneo se integra para crear piezas que no solo visten, sino que abrazan tu día a día con comodidad, versatilidad y una profunda conexión con tu bienestar. Cada prenda es diseñada para perdurar, para ser parte de tus rituales cotidianos, estableciendo una experiencia sensorial que va más allá de lo superficial. La moda, en Refugio, se convierte así en una extensión de tu ser, un diálogo constante con tu cuerpo y tu entorno.</p>
                     <p>Cada colección nace de una inspiración profunda en el patrimonio natural y cultural de los lugares que nos habitan o nos habitaron. Guiados por la esencia nómade de Refugio, cada cápsula narra una historia vinculada a la riqueza y la sabiduría de un lugar. Para nuestra próxima colección, nos sumergimos en la conexión con nuestro origen, la ciudad de Rosario, a través de la majestuosidad del río Paraná. Esta cápsula es un homenaje a la belleza, fuerza y serenidad de sus aguas, que se transforman en una paleta y una estampa que vibran con su esencia. Refleja cómo la naturaleza y la cultura se entrelazan para construir un refugio de sentido y estética, donde cada creación no solo se viste, sino que se vive.</p>

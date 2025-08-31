@@ -1,0 +1,71 @@
+/* --- 2.3. Cartas al Mar --- */
+.cartas-al-mar-section {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+.cartas-al-mar-section h3 {
+    font-size: 2rem;
+}
+
+.cartas__intro-text {
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.cartas__intro-text.is-in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cartas__image-link {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    border: 1px solid var(--color-borde-gris);
+    transition: transform 0.3s ease;
+}
+
+.cartas__image-link:hover {
+    transform: scale(1.02);
+}
+
+.cartas__image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.cartas__boton {
+    text-decoration: none;
+    color: var(--color-texto);
+    border: 1px solid var(--color-texto);
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cartas__boton:hover {
+    background-color: var(--color-texto);
+    color: var(--color-fondo);
+}
+
+/* Cambios en la versión móvil */
+@media (max-width: 768px) {
+    .cartas-al-mar-section {
+        padding: 2rem 1.5rem;
+    }
+    .cartas__intro-text {
+        font-size: 0.9rem;
+    }
+}

@@ -27,32 +27,44 @@ universo-refugio/
 ├── src/
 │      ├── assets/
 │      ├──components/
-│              ├── EntradaInmersiva.jsx   
-│              ├── EntradaInmersiva.css   
-│              ├── Header.jsx
-│              ├── Header.css           
-│              ├── Manifiesto.jsx
-│              ├── Manifiesto.css
-│              ├── LifeWear.jsx
-│              ├── LifeWear.css
-│              ├── CartasAlMar.jsx
-│              ├── CartasAlMar.css
-│              ├── Layout.jsx
-│              ├── Layout.css
-│              ├── NudosDeSal.jsx
-│              ├── NudosDeSal.css
-│              ├── DisenarTuRefugio.jsx
-│              ├── DisenarTuRefugio.css
-│              ├── ProgramaDeBienestar.jsx
-│              ├── ProgramaDeBienestar.css
+│              ├── Home/
+│                     ├── CartasAlMarSection.jsx
+│                     ├── CartasAlMarSection.css
+│                     └── PilaresSection.jsx
+│                     ├── PilaresSection.css
+│                     ├── HeroSection.jsx
+│                     ├── HeroSection.css
+│                     ├── Home.jsx
+│                     ├── Home.css
+│                     ├── PreFooterSection.jsx
+│                     └── PreFooterSection.css
+│              ├── AboutUs.jsx
+│              ├── AboutUs.css
 │              ├── Contacto.jsx
 │              ├── Contacto.css
-│              ├── Home.jsx
-│              ├── Home.css             
+│              ├── DisenarTuRefugio.jsx
+│              ├── DisenarTuRefugio.css
+│              ├── EntradaInmersiva.jsx   
+│              ├── EntradaInmersiva.css
 │              ├── Footer.jsx
-│              ├── Footer.css
+│              ├── Footer.css  
+│              ├── Header.jsx
+│              ├── Header.css
+│              ├── Layout.jsx
+│              ├── Layout.css              
+│              ├── LifeWear.jsx
+│              ├── LifeWear.css
 │              ├── Modal.jsx
-│              └── Modal.css
+│              ├── Modal.css
+│              ├── NewsletterForm.jsx
+│              ├── NewsletterForm.css
+│              ├── NudosDeSal.jsx
+│              ├── NudosDeSal.css
+│              ├── ProgramaDeBienestar.jsx
+│              └── ProgramaDeBienestar.css
+│      ├── common/
+│              ├── NewsletterForm.jsx
+│              └── NewsletterForm.jsx
 │      ├── fonts/
 │              ├── NewYork.woff2
 │              └── Recoleta.woff2
@@ -70,4 +82,7 @@ universo-refugio/
 ├── README.md
 ├── netlify.toml
 └── vite.config.js
+
+
+cmd - dame los comandos commits para subir a github
 

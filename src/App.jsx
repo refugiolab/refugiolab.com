@@ -4,11 +4,11 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 // Importaciones de Componentes principales
 import EntradaInmersiva from './components/EntradaInmersiva';
 import Layout from './components/Layout';
-import Home from './components/Home';
+import Home from './components/Home/Home';
 import AboutUs from './components/AboutUs';
 import LifeWear from './components/LifeWear';
 import NudosDeSal from './components/NudosDeSal';
-import CartasAlMar from './components/CartasAlMar';
+import CartasAlMarSection from './components/Home/CartasAlMarSection'; // Ruta corregida
 import DisenarTuRefugio from './components/DisenarTuRefugio';
 import ProgramaDeBienestar from './components/ProgramaDeBienestar';
 import Contacto from './components/Contacto';
@@ -59,7 +59,7 @@ function App() {
                     />
 
                     {/* Otras páginas */}
-                    <Route path="cartas-al-mar" element={<CartasAlMar />} />
+                    <Route path="cartas-al-mar" element={<CartasAlMarSection />} />
                     <Route path="nudos-de-sal" element={<NudosDeSal />} />
                     <Route path="disenar-tu-refugio" element={<DisenarTuRefugio />} />
                     <Route path="programa-de-bienestar" element={<ProgramaDeBienestar />} />

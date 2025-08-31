@@ -1,0 +1,28 @@
+/* --- Frase Pre-Footer --- */
+.pre-footer-section {
+    padding: 6rem 2rem;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--color-texto); /* Color de fallback */
+    color: var(--color-fondo);
+    text-align: center;
+}
+
+.pre-footer__text {
+    font-family: var(--fuente-principal);
+    font-size: 1.8rem;
+    line-height: 1.4;
+    text-shadow: var(--sombra-texto-oscura);
+}
+
+/* Media Queries para Escritorio */
+@media (min-width: 769px) {
+    .pre-footer-section {
+        padding: 8rem 4rem;
+    }
+
+    .pre-footer__text {
+        font-size: 3rem;
+        line-height: 1.6;
+    }
+}

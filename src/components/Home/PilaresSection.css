@@ -1,0 +1,163 @@
+/* --- Nuestros Pilares Section --- */
+.pilares-section {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+.pilares__intro-text {
+    max-width: 750px;
+    margin: 0 auto 4rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.pilares__intro-text.is-in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pilares-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.pilar-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.pilar-item.is-in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pilar-item h3 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.lifewear__phonetic {
+    font-family: var(--fuente-secundaria);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--color-texto);
+    opacity: 0.7;
+    margin-bottom: 1rem;
+}
+
+.bespoke__phonetic {
+    font-family: var(--fuente-secundaria);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--color-texto);
+    opacity: 0.7;
+    margin-bottom: 1rem;
+}
+
+.pilar-item__description {
+    max-width: 550px;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.pilar-item__boton {
+    text-decoration: none;
+    color: var(--color-texto);
+    border: 1px solid var(--color-texto);
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pilar-item__boton:hover {
+    background-color: var(--color-texto);
+    color: var(--color-fondo);
+}
+
+/* Carrusel de LifeWear */
+.lifewear-carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.lifewear-carousel-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    color: var(--color-texto);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.dot {
+    height: 8px;
+    width: 8px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--color-texto);
+}
+
+@media (min-width: 769px) {
+    .pilares-grid {
+        flex-direction: row;
+        gap: 2rem;
+        justify-content: center;
+    }
+    .pilar-item {
+        flex: 1;
+    }
+}
