@@ -37,7 +37,7 @@
     margin-bottom: 2.5rem;
     line-height: 1.6;
     letter-spacing: 0.5px;
-    opacity: 0; /* Estado inicial para la animación */
+    opacity: 0;
     transform: translateY(20px);
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
@@ -92,14 +92,14 @@
     position: sticky;
     top: 0;
     width: 100%;
-    height: 60px; /* Altura del logo */
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 998;
     background-color: transparent;
     transition: background-color 0.5s ease-out, opacity 0.5s ease-out;
-    opacity: 0; /* Por defecto oculto en móvil y escritorio */
+    opacity: 0;
 }
 
 .home__logo-gris-container.is-visible {
@@ -120,8 +120,7 @@
         font-weight: 300;
         line-height: 1.8;
     }
-    
-    /* El logo gris solo se muestra en escritorio */
+
     .home__logo-gris-container.is-visible {
         opacity: 1;
         background-color: var(--color-fondo);
@@ -132,16 +131,24 @@
 /* Media Queries para Móvil */
 @media (max-width: 768px) {
     .hero-section {
-        padding: 0 1rem 4rem;
-        background-size: contain; /* AJUSTADO: El hero se adapta a la pantalla */
-        background-position: center bottom; /* AJUSTADO: Se centra mejor en vertical */
-        background-repeat: no-repeat; /* AJUSTADO: Evita la repetición */
+        /* Ajuste de altura para que la imagen se vea completa en la mayoría de los dispositivos */
+        height: 70vh; 
+        padding-bottom: 2rem;
+        background-size: cover;
+        background-position: center;
+    }
+    .hero-content {
+        margin-bottom: 0;
     }
 
-    /* En móvil, el logo debe ser siempre visible en la parte superior del Hero */
+    .hero__manifiesto {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
     .home__logo-gris-container {
         position: absolute;
-        top: 10px;
+        top: 20px;
         left: 50%;
         transform: translateX(-50%);
         width: auto;
@@ -149,5 +156,6 @@
         background-color: transparent;
         border: none;
         height: auto;
+        z-index: 999; /* Aseguramos que el logo del hero siempre esté arriba del contenido del hero */
     }
 }
