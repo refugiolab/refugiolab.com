@@ -131,22 +131,24 @@
 /* Media Queries para Móvil */
 @media (max-width: 768px) {
     .hero-section {
-        /* Ajuste de altura para que la imagen se vea completa en la mayoría de los dispositivos */
-        height: 70vh; 
-        padding-bottom: 2rem;
+        /* Altura fija para evitar recortes, pero más pequeña que la pantalla completa */
+        height: 600px;
+        padding: 0 1rem 4rem;
         background-size: cover;
         background-position: center;
     }
+
     .hero-content {
         margin-bottom: 0;
     }
-
+    
     .hero__manifiesto {
         font-size: 1rem;
         margin-bottom: 1.5rem;
     }
-    
+
     .home__logo-gris-container {
+        /* Mantener la posición absoluta para que quede sobre el hero */
         position: absolute;
         top: 20px;
         left: 50%;
@@ -156,6 +158,6 @@
         background-color: transparent;
         border: none;
         height: auto;
-        z-index: 999; /* Aseguramos que el logo del hero siempre esté arriba del contenido del hero */
+        z-index: 999;
     }
 }
