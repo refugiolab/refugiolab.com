@@ -131,8 +131,10 @@
 /* Media Queries para Móvil */
 @media (max-width: 768px) {
     .hero-section {
-        /* Altura fija para evitar recortes, pero más pequeña que la pantalla completa */
-        height: 600px;
+        /* Se ajusta la altura al 70% del viewport para una mejor adaptabilidad */
+        height: 70vh;
+        /* Se usa una altura mínima para evitar que sea muy pequeña en pantallas muy cortas */
+        min-height: 500px;
         padding: 0 1rem 4rem;
         background-size: cover;
         background-position: center;
@@ -141,7 +143,7 @@
     .hero-content {
         margin-bottom: 0;
     }
-    
+
     .hero__manifiesto {
         font-size: 1rem;
         margin-bottom: 1.5rem;
