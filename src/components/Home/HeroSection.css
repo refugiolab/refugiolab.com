@@ -133,6 +133,9 @@
 @media (max-width: 768px) {
     .hero-section {
         padding: 0 1rem 4rem;
+        background-size: contain; /* AJUSTADO: El hero se adapta a la pantalla */
+        background-position: center bottom; /* AJUSTADO: Se centra mejor en vertical */
+        background-repeat: no-repeat; /* AJUSTADO: Evita la repetición */
     }
 
     /* En móvil, el logo debe ser siempre visible en la parte superior del Hero */
