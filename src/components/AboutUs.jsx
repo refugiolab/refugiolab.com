@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import './AboutUs.css';
@@ -10,19 +10,39 @@ const AboutUs = () => {
     const [philosophyRef, philosophyInView] = useInView({ threshold: 0.2, triggerOnce: true });
     const [creativeRef, creativeInView] = useInView({ threshold: 0.2, triggerOnce: true });
     const [lifewearRef, lifewearInView] = useInView({ threshold: 0.2, triggerOnce: true });
+    const heroRef = useRef(null);
 
     useEffect(() => {
         window.scrollTo(0, 0); // Vuelve al inicio de la página al montarse
+
+        const handleScroll = () => {
+            const heroSection = heroRef.current;
+            if (heroSection) {
+                const scrollPosition = window.scrollY;
+                const sectionHeight = heroSection.offsetHeight;
+                const fadeStart = sectionHeight * 0.5;
+                const fadeAmount = Math.min(1, Math.max(0, (scrollPosition - fadeStart) / (sectionHeight - fadeStart)));
+                heroSection.style.opacity = 1 - fadeAmount;
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     return (
         <div className="aboutus-container">
             {/* 1. Experiencia de Entrada: La Bienvenida */}
-            <section className="aboutus-hero-section">
+            <section ref={heroRef} className="aboutus-hero-section">
                 <div className={`aboutus-hero-text ${introInView ? 'is-in-view' : ''}`} ref={introRef}>
-                    <p>Bienvenid@ a un universo donde vestir es mucho más que cubrir el cuerpo: es una forma profunda de habitar el mundo.</p>
-                    <p>Refugio nació con el deseo inmencho de imaginar otra manera de estar: una que fuera más humana, más lenta, más sensible. Cada prenda, cada objeto que creamos, busca acompañarte como un gesto de cuidado, como un espacio donde el alma pueda volver a respirar.</p>
-                    <p>No creemos en modas pasajeras, sino en la atemporalidad. En Refugio, trascendemos el lujo del exceso para celebrar el verdadero lujo de lo que perdura: lo hecho a mano, lo ético, lo que lleva un alma. Entendemos el acto de refugiarse no como esconderse, sino como elegir con profunda conciencia desde dónde y cómo queremos estar en el mundo. Queremos que cada cápsula, cada textil, cada historia que compartimos sea un puente tangible entre tu cuerpo, la tierra y el tiempo.</p>
+                    <img src="/images/logorefugioblanco.svg" alt="Logo de Refugio" className="hero-logo" />
+                    <p>En nuestro universo, vestir es mucho más que cubrir el cuerpo: es una forma profunda de habitar(nos).</p>
+                    <p>Nacimos con la visión de imaginar otra manera de estar: una que fuera más humana, más lenta, más sensible. Cada prenda, cada objeto que creamos, busca acompañarte como un gesto de cuidado, como un espacio donde el alma pueda volver a respirar.</p>
+                    <p>No creemos en modas pasajeras, sino en la atemporalidad. Trascendemos el lujo del exceso para celebrar el verdadero lujo de lo que perdura: lo hecho a mano, lo ético, lo que lleva alma.</p>
+                    <p>Entendemos el acto de refugiarse no como esconderse, sino como elegir con profunda conciencia desde dónde y cómo queremos estar en el mundo.</p>
                 </div>
             </section>
 
@@ -32,8 +52,10 @@ const AboutUs = () => {
                     <img src="/images/Milagros.svg" alt="Milagros Salvatierra, Fundadora y Directora Creativa de Refugio." />
                 </div>
                 <div className="milagros__text-container">
-                    <h2 className="milagros__greeting">Hola, soy Milagros Salvatierra,</h2>
-                    <p>Fundadora y Directora Creativa de Refugio. Este proyecto surge como un acto de búsqueda personal y un firme desafío a una industria de la moda que a menudo diluye la individualidad en la producción en serie. Desde mi visión como diseñadora, siempre quise ir más allá de la prenda, creando un universo donde lo que vestimos sea un puente tangible hacia un estilo de vida más consciente. Por eso, Refugio no es solo una marca; integra productos, servicios y experiencias diseñadas para acompañar tu propósito y bienestar. Por mucho tiempo, sentí la necesidad imperante de un lugar donde el diseño encontrara su propósito en lo esencial, elevándose por encima de lo efímero, convencida de que la lentitud no es sinónimo de despacio, sino de una profunda forma de habitar.</p>
+                    <h2 className="milagros__greeting">Hola, soy Milagros Salvatierra</h2>
+                    <p>
+                        <span className="milagros__subtitle">Fundadora y Directora Creativa de Refugio.</span> Este proyecto surge como un acto de búsqueda personal y un firme desafío a una industria de la moda que a menudo diluye la individualidad en la producción en serie. Desde mi visión como diseñadora, siempre quise ir más allá de la prenda, creando un universo donde lo que vestimos sea un puente tangible hacia un estilo de vida más consciente. Por eso, Refugio no es solo una marca; integra productos, servicios y experiencias diseñadas para acompañar tu propósito y bienestar. Por mucho tiempo, sentí la necesidad imperante de un lugar donde el diseño encontrara su propósito en lo esencial, elevándose por encima de lo efímero, convencida de que la lentitud no es sinónimo de despacio, sino de una profunda forma de habitar.
+                    </p>
                     <p>Mi inspiración se nutre de los patrimonios naturales y culturales que nos atraviesan, de la inmensidad de los paisajes que nos ofrecen cobijo, de las memorias intrínsecas en las tradiciones textiles y del amor por lo artesanal que se manifiesta en cada puntada. Refugio nace de esa convicción profunda: la certeza de que vestirnos también puede ser un gesto de libertad, de belleza y de cuidado consciente.</p>
                     <p>Para mí, la vida es un ritual, y cada pieza de Refugio es un espacio de introspección, similar a un refugio de montaña. Un lugar donde podemos hacer una pausa significativa, respirar hondo y recargar las energías para continuar la aventura de la vida con propósito y consciencia. El ritual aquí es una decisión: mirar con amor, una forma de volver al centro cuando todo parece desbordar. Es una pausa que nos reencanta, un verdadero refugio. Es mi forma de compartir con vos un espacio vivo, sensible y en constante movimiento. Un lugar para tejer un modo distinto de habitar el presente, trascendiendo tendencias y en coherencia con quienes somos y con lo que soñamos ser.</p>
                     <p className="milagros__final-text">Gracias por estar acá. Refugio también es tuyo.</p>
@@ -42,30 +64,25 @@ const AboutUs = () => {
 
             {/* 3. Nuestra Filosofía */}
             <section className={`philosophy-section ${philosophyInView ? 'is-in-view' : ''}`} ref={philosophyRef}>
-                <h3 className="section-title">Nuestra Filosofía</h3>
                 <p className="section-intro">
                     En Refugio, nuestra filosofía se manifiesta en cada decisión. Creemos que vestir es volver al cuerpo como territorio, al día como ritual, y a la belleza como lenguaje de cuidado.
                 </p>
-                <div className="philosophy-grid">
-                    <div className="philosophy-card">
-                        <span className="icon-placeholder">🌿</span>
-                        <h4>Materiales</h4>
-                        <p>Nos comprometemos con materiales nobles, reciclados o recuperados, favoreciendo textiles naturales y descartes revalorizados.</p>
+                <div className="philosophy-staggered-grid">
+                    <div className="philosophy-staggered-item">
+                        <h4 className="philosophy-staggered-title">Materiales</h4>
+                        <p className="philosophy-staggered-text">Nos comprometemos con materiales nobles, reciclados o recuperados, favoreciendo textiles naturales y descartes revalorizados.</p>
                     </div>
-                    <div className="philosophy-card">
-                        <span className="icon-placeholder">🤲</span>
-                        <h4>Producción</h4>
-                        <p>Apostamos por una producción ética, local y artesanal que garantice una cadena de valor justa y respetuosa con las personas y el planeta.</p>
+                    <div className="philosophy-staggered-item">
+                        <h4 className="philosophy-staggered-title">Producción</h4>
+                        <p className="philosophy-staggered-text">Apostamos por una producción ética, local y artesanal que garantice una cadena de valor justa y respetuosa con las personas y el planeta.</p>
                     </div>
-                    <div className="philosophy-card">
-                        <span className="icon-placeholder">🌱</span>
-                        <h4>Sostenibilidad</h4>
-                        <p>Entendemos la sostenibilidad no solo como una práctica, sino como una ética, una estética y una forma vital de ser.</p>
+                    <div className="philosophy-staggered-item">
+                        <h4 className="philosophy-staggered-title">Sostenibilidad</h4>
+                        <p className="philosophy-staggered-text">Entendemos la sostenibilidad no solo como una práctica, sino como una ética, una estética y una forma vital de ser.</p>
                     </div>
-                    <div className="philosophy-card">
-                        <span className="icon-placeholder">❤️</span>
-                        <h4>Consciencia</h4>
-                        <p>Creemos en el vestir consciente como una forma de volver al cuerpo, al día como ritual y a la belleza como cuidado.</p>
+                    <div className="philosophy-staggered-item">
+                        <h4 className="philosophy-staggered-title">Consciencia</h4>
+                        <p className="philosophy-staggered-text">Creemos en el vestir consciente como una forma de volver al cuerpo, al día como ritual y a la belleza como cuidado.</p>
                     </div>
                 </div>
             </section>

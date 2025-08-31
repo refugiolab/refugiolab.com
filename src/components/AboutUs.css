@@ -12,22 +12,43 @@
     align-items: center;
     padding: 2rem;
     background-color: var(--color-background);
+    /* Cambios para la imagen de fondo */
+    background-image: url('/images/heroaboutus.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Ajuste para que se solape con el header */
+    margin-top: calc(-1 * var(--header-height));
+    padding-top: var(--header-height);
+    position: relative;
+    transition: opacity 0.5s ease-out; /* Transición para el efecto de scroll */
 }
 
+/* Se elimina el ::after para el nuevo efecto de desvanecimiento por scroll */
+
 .aboutus-hero-text {
-    max-width: 800px;
-    font-family: var(--font-primary);
-    font-size: 1.5rem;
+    max-width: 650px; /* Hecho más compacto */
+    font-family: var(--font-secondary);
     line-height: 1.8;
-    color: var(--color-text-dark);
-    text-align: center;
+    color: #fffffc; /* Color de texto blanco */
+    text-align: justify; /* Justificado */
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
 }
 
+.hero-logo {
+    max-width: 250px; /* Tamaño del logo */
+    height: auto;
+    display: block;
+    margin: 0 auto 2rem;
+    opacity: 0.8; /* Opacidad 20% menor */
+}
+
 .aboutus-hero-text p {
-    margin-bottom: 2rem;
+    font-size: 1.35rem; /* Tamaño de fuente 10% más pequeño */
+    margin-bottom: 1.5rem; /* Espaciado entre párrafos */
+    text-align: justify; /* Justificado */
 }
 
 .aboutus-hero-text.is-in-view {
@@ -85,13 +106,17 @@
     color: var(--color-text-dark);
 }
 
+.milagros__subtitle {
+    font-weight: bold;
+}
+
 .milagros__final-text {
     margin-top: 2rem;
     font-style: italic;
     font-weight: bold;
 }
 
-/* 3. Nuestra Filosofía y Universo Creativo */
+/* 3. Nuestra Filosofía - Nuevo Diseño */
 .philosophy-section, .creative-universe-section {
     padding: 4rem 2rem;
     text-align: center;
@@ -120,33 +145,48 @@
     line-height: 1.6;
 }
 
-.philosophy-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+.philosophy-staggered-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    margin-top: 4rem;
 }
 
-.philosophy-card {
-    background-color: var(--color-white);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+.philosophy-staggered-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
 }
 
-.philosophy-card h4 {
+.philosophy-staggered-item:nth-child(even) {
+    align-self: flex-end;
+    text-align: right;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
+    .philosophy-staggered-item:nth-child(even) {
+        text-align: left;
+    }
+}
+
+.philosophy-staggered-title {
     font-family: var(--font-primary);
-    margin-top: 1rem;
+    font-size: 3rem;
+    margin-bottom: 1rem;
     color: var(--color-text-dark);
 }
 
-.philosophy-card p {
+.philosophy-staggered-text {
     font-family: var(--font-secondary);
-    line-height: 1.5;
-}
-
-.icon-placeholder {
-    font-size: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 500px;
 }
 
 /* Universo Creativo */
