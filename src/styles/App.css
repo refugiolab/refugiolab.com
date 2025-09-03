@@ -1,0 +1,79 @@
+/* Importación de fuentes de Google Fonts */
+/* Commissioner para fuente secundaria */
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap');
+
+/* Declaración de las fuentes personalizadas */
+@font-face {
+  font-family: 'NewYork';
+  /* Ruta absoluta desde la raíz del proyecto (la carpeta public) */
+  src: url('/fonts/NewYork.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Definición de variables CSS */
+:root {
+  /* Paleta de colores principal */
+  --color-fondo: #fffffc;
+  --color-texto: #444653;
+  --color-borde-gris: #f1f0eb;
+
+  /* Otras variables */
+  --duracion-animacion: 3.5s;
+
+  /* Fuentes */
+  --fuente-principal: "NewYork", serif;
+  --fuente-secundaria: "Commissioner", sans-serif;
+
+  /* Sombra de Textos */
+  --sombra-texto-clara: 0 0 5px rgba(255, 255, 255, 0.2);
+  --sombra-texto-oscura: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos Globales para el Cuerpo de la Página - RESET */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-secundaria);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* Reset universal para todos los elementos */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Contenedor principal de React */
+#root {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos para los títulos globales */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fuente-principal);
+  color: var(--color-texto);
+}
+
+/* Ajuste del contenido principal para evitar solapamiento con el header */
+.main-content {
+  flex-grow: 1;
+  padding-top: 0;
+  width: 100%;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}

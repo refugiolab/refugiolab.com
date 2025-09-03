@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
-import logogris from '/icons/logorefugiogris.svg'; // Nuevo logo
+import logogris from '/icons/logorefugiogris.svg';
 
 const Footer = () => {
   const navigateLinks = [
-    { name: "About Us", href: "/home/about" },
-    { name: "FAQs", href: "/home/faq" },
+    { name: "About Us", href: "/sobre-mi" },
+    { name: "FAQs", href: "/faq" },
   ];
 
   const connectLinks = [
@@ -19,7 +19,7 @@ const Footer = () => {
     <footer className="main-footer" role="contentinfo">
       <div className="footer-container">
         <div className="footer__logo">
-          <Link to="/home" aria-label="Ir a la página de inicio">
+          <Link to="/" aria-label="Ir a la página de inicio">
             <img src={logogris} alt="Refugio Logo" />
           </Link>
           <p>La vida es un ritual</p>

@@ -1,83 +1,33 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-
-// Importaciones de Componentes principales
-import EntradaInmersiva from './components/EntradaInmersiva';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
-import Home from './components/Home/Home';
-import AboutUs from './components/AboutUs';
-import LifeWear from './components/LifeWear';
-import NudosDeSal from './components/NudosDeSal';
-import CartasAlMarSection from './components/Home/CartasAlMarSection'; // Ruta corregida
-import DisenarTuRefugio from './components/DisenarTuRefugio';
-import ProgramaDeBienestar from './components/ProgramaDeBienestar';
-import Contacto from './components/Contacto';
-import './App.css';
+import HomePage from './pages/Home/HomePage.jsx';
+import AboutUsPage from './pages/AboutUs/AboutUsPage.jsx';
+import BlogPage from './pages/Blog/BlogPage.jsx';
+import ProductosPage from './pages/Productos/ProductosPage.jsx';
+import ContactoPage from './pages/Contacto/ContactoPage.jsx';
+import ImmersiveIntroPage from './pages/ImmersiveIntro/ImmersiveIntroPage.jsx';
 
-// Componentes de Placeholder (simplificados y agrupados)
-const PagePlaceholder = ({ title, description }) => (
-    <div className="placeholder-container">
-        <h2>{title}</h2>
-        <p>{description}</p>
-    </div>
-);
+import './styles/App.css';
 
 function App() {
-    const [hasEntered, setHasEntered] = useState(false);
-
-    const handleEnter = () => {
-        setHasEntered(true);
-    };
-
-    return (
-        <Router>
-            <Routes>
-                {/* 1. Ruta de Entrada Inmersiva */}
-                <Route
-                    path="/"
-                    element={hasEntered ? <Navigate to="/home" replace /> : <EntradaInmersiva onEnter={handleEnter} />}
-                />
-
-                {/* 2. Rutas Anidadas bajo el Layout Principal */}
-                <Route path="/home" element={<Layout />}>
-                    <Route index element={<Home />} />
-                    <Route path="about" element={<AboutUs />} />
-                    <Route path="lifewear" element={<LifeWear />} />
-                    
-                    {/* Sub-páginas de LifeWear usando el placeholder */}
-                    <Route
-                        path="lifewear/yogawear"
-                        element={<PagePlaceholder title="Colección YogaWear" description="Esta es la página de la colección YogaWear. ¡Pronto estará disponible!" />}
-                    />
-                    <Route
-                        path="lifewear/knitwear"
-                        element={<PagePlaceholder title="Colección Knitwear" description="Esta es la página de la colección Knitwear. ¡Pronto estará disponible!" />}
-                    />
-                    <Route
-                        path="lifewear/archivo"
-                        element={<PagePlaceholder title="Colección Archivo" description="Esta es la página de la colección Archivo. ¡Pronto estará disponible!" />}
-                    />
-
-                    {/* Otras páginas */}
-                    <Route path="cartas-al-mar" element={<CartasAlMarSection />} />
-                    <Route path="nudos-de-sal" element={<NudosDeSal />} />
-                    <Route path="disenar-tu-refugio" element={<DisenarTuRefugio />} />
-                    <Route path="programa-de-bienestar" element={<ProgramaDeBienestar />} />
-                    <Route path="contacto" element={<Contacto />} />
-
-                    {/* Páginas de Placeholder Finales */}
-                    <Route
-                        path="faq"
-                        element={<PagePlaceholder title="Preguntas frecuentes" description="Aquí encontrarás respuestas a las preguntas más comunes sobre nuestros productos y servicios." />}
-                    />
-                    <Route
-                        path="cart"
-                        element={<PagePlaceholder title="Tu Carrito de Compras" description="Aquí verás los artículos que has añadido a tu bolsa." />}
-                    />
-                </Route>
-            </Routes>
-        </Router>
-    );
+  return (
+    <Router>
+      <Routes>
+        {/* La entrada inmersiva sigue siendo la ruta principal */}
+        <Route path="/" element={<ImmersiveIntroPage />} />
+        
+        {/* El componente Layout ahora es una ruta padre */}
+        <Route path="/" element={<Layout />}>
+          <Route path="inicio" element={<HomePage />} />
+          <Route path="sobre-mi" element={<AboutUsPage />} />
+          <Route path="cartas-al-mar" element={<BlogPage />} />
+          <Route path="lifewear" element={<ProductosPage />} />
+          <Route path="contacto" element={<ContactoPage />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;

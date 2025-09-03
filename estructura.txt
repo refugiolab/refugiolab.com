@@ -19,10 +19,34 @@ universo-refugio/
 │      │      ├── logo.png
 │      │      └── iso.png
 │      └── images/
-│              ├── imagen1.png
-│              ├── imagen2.png
-│              └── mar.png
+│              ├── hero.png
+│              ├── hero.webp
+│              ├── heroaboutus.png
+│              ├── heroaboutus.webp
+│              ├── homecartasalmar.png
+│              ├── homecartasalmar.webp
+│              ├── homelifewear1.png
+│              ├── homelifewear2.webp
+│              ├── homelifewear2.png
+│              ├── homelifewear3.png
+│              ├── homelifewear3.webp
+│              ├── homelifewear4.png
+│              ├── homelifewear4.webp
+│              ├── homelifewear5.png
+│              ├── homelifewear5.webp
+│              ├── homelifewear6.png
+│              ├── homelifewear6.webp
+│              ├── homelifewear7.png
+│              ├── homelifewear7.webp
+│              ├── homelifewear8.png
+│              ├── homelifewear8.webp
+│              ├── homelifewear9.png
+│              ├── homelifewear9.webp
+│              ├── homeprefooter.png
+│              ├── homeprefooter.webp
 │      ├── VideoIntro.mp4
+│      ├── isonegro.svg
+│      ├── logorefugioblanco.svg
 │      └── isoblanco.svg
 ├── src/
 │      ├── assets/
@@ -42,8 +66,8 @@ universo-refugio/
 │              ├── AboutUs.css
 │              ├── Contacto.jsx
 │              ├── Contacto.css
-│              ├── DisenarTuRefugio.jsx
-│              ├── DisenarTuRefugio.css
+│              ├── Bespoke.jsx
+│              ├── Bespoke.css
 │              ├── EntradaInmersiva.jsx   
 │              ├── EntradaInmersiva.css
 │              ├── Footer.jsx
@@ -58,8 +82,8 @@ universo-refugio/
 │              ├── Modal.css
 │              ├── NewsletterForm.jsx
 │              ├── NewsletterForm.css
-│              ├── NudosDeSal.jsx
-│              ├── NudosDeSal.css
+│              ├── UniversoSensorial.jsx
+│              ├── UniversoSensorial.css
 │              ├── ProgramaDeBienestar.jsx
 │              └── ProgramaDeBienestar.css
 │      ├── common/
@@ -68,6 +92,7 @@ universo-refugio/
 │      ├── fonts/
 │              ├── NewYork.woff2
 │              └── Recoleta.woff2
+│              ├── Comissioner
 │      ├── App.css                    
 │      ├── App.jsx               
 │      └── main.jsx

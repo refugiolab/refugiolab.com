@@ -1,0 +1,256 @@
+/* Estilos del contenedor principal de la página Home */
+.home-container {
+    width: 100%;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+    overflow-x: hidden;
+}
+
+/* --- ESTILOS MEJORADOS PARA SECCIONES CON IMAGEN DE FONDO --- */
+/* La clave es background-repeat: no-repeat; y background-size: cover; */
+.hero-section,
+.pre-footer-section {
+    /* Evita que la imagen se repita */
+    background-repeat: no-repeat;
+    /* Ajusta el tamaño para que cubra todo el contenedor sin deformarse */
+    background-size: cover;
+    /* Centra la imagen en el contenedor */
+    background-position: center;
+}
+
+/* Asignación de las imágenes a cada sección */
+.hero-section {
+    background-image: url('/images/hero.png');
+    background-image: -webkit-image-set(
+        url('/images/hero.webp') 1x,
+        url('/images/hero.png') 1x
+    );
+    background-image: image-set(
+        url('/images/hero.webp') 1x,
+        url('/images/hero.png') 1x
+    );
+}
+
+.pre-footer-section {
+    background-image: url('/images/homeprefooter.png');
+    background-image: -webkit-image-set(
+        url('/images/homeprefooter.webp') 1x,
+        url('/images/homeprefooter.png') 1x
+    );
+    background-image: image-set(
+        url('/images/homeprefooter.webp') 1x,
+        url('/images/homeprefooter.png') 1x
+    );
+}
+
+/* Ajuste del tamaño del logo y espacio con la siguiente sección */
+.home__logo-gris {
+    height: 52px;
+    width: auto;
+}
+
+/* Corregir el espaciado para que la frase no se corte */
+.pilares-section {
+    margin-top: 2rem;
+}
+
+.newsletter-section {
+    padding: 3rem 2rem;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    text-align: center;
+}
+
+.newsletter__content {
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.newsletter__content.is-in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- ESTILOS NUEVOS PARA LA SECCIÓN DE PILARES CON EL OJO Y SVG --- */
+.pilares-section {
+    position: relative;
+    padding: 6rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    overflow: hidden;
+}
+
+/* Contenedor principal de los conceptos y el ojo */
+.conceptos-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* El ojo central (imagen) */
+.ojo-refugio {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 300px;
+    height: 300px;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 1s ease-out 0.8s, transform 1s ease-out 0.8s;
+}
+
+.pilares-section.is-in-view .ojo-refugio {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.ojo-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Líneas SVG orgánicas y estéticas */
+.conceptos-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1s ease-out 1.2s;
+}
+
+.pilares-section.is-in-view .conceptos-lines {
+    opacity: 1;
+}
+
+/* Estilo para los bloques de texto de los conceptos */
+.bloque-texto {
+    position: absolute;
+    max-width: 250px;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: justify;
+    z-index: 3;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.pilares-section.is-in-view .bloque-texto {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Posicionamiento específico de cada bloque de texto */
+.bloque-texto-1 {
+    top: -8%;
+    left: 41%; /* MOVIDO 2 CM A LA IZQUIERDA */
+    transform: translateX(-50%);
+    transition-delay: 1.5s;
+}
+
+.bloque-texto-2 {
+    top: 26%;
+    left: -12.5%;
+    transform: translateX(0);
+    transition-delay: 1.8s;
+}
+
+.bloque-texto-3 {
+    top: 65%;
+    right: 1%;
+    transform: translateX(0);
+    transition-delay: 2.1s;
+}
+
+/* Sección del CTA */
+.cta-section {
+    margin-top: -8rem;
+    margin-left: -20.5rem; /* MOVIDO 4 CM A LA IZQUIERDA */
+    z-index: 3;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out 2.5s, transform 1s ease-out 2.5s;
+}
+
+.pilares-section.is-in-view .cta-section {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border: 1px solid var(--color-texto);
+    color: var(--color-texto);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--color-texto);
+    color: var(--color-fondo);
+}
+
+/* Estilos de ejemplo para Pre-footer y Footer (pueden ir en sus propios CSS) */
+.pre-footer-section, .main-footer {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--color-fondo-oscuro);
+    color: var(--color-texto-claro);
+}
+
+/* Responsive para dispositivos móviles */
+@media (max-width: 768px) {
+    .pilares-section {
+        padding-top: 4rem;
+        justify-content: flex-start;
+    }
+    .conceptos-container {
+        height: auto;
+        flex-direction: column;
+    }
+    .conceptos-lines {
+        display: none;
+    }
+    .ojo-refugio {
+        position: static;
+        transform: none;
+        margin-bottom: 2rem;
+        width: 200px;
+        height: 200px;
+    }
+    .bloque-texto {
+        position: static;
+        max-width: 90%;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        transition-delay: 0s !important;
+    }
+    .cta-section {
+        margin-top: 2rem;
+    }
+}

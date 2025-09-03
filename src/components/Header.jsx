@@ -49,9 +49,9 @@ const Header = () => {
 
             <nav className="header__nav" id="main-navigation">
                 <ul className="header__nav-list header__nav-list--left">
-                    <li><Link to="/home/lifewear" className={`header__nav-link ${location.pathname === '/home/lifewear' ? 'active' : ''}`} onClick={closeMenu}>LifeWear</Link></li>
-                    <li><Link to="/home/cartas-al-mar" className={`header__nav-link ${location.pathname === '/home/cartas-al-mar' ? 'active' : ''}`} onClick={closeMenu}>Cartas al Mar</Link></li>
-                    <li><Link to="/home/disenar-tu-refugio" className={`header__nav-link ${location.pathname === '/home/disenar-tu-refugio' ? 'active' : ''}`} onClick={closeMenu}>Bespoke</Link></li>
+                    <li><Link to="/lifewear" className={`header__nav-link ${location.pathname === '/lifewear' ? 'active' : ''}`} onClick={closeMenu}>LifeWear</Link></li>
+                    <li><Link to="/cartas-al-mar" className={`header__nav-link ${location.pathname === '/cartas-al-mar' ? 'active' : ''}`} onClick={closeMenu}>Cartas al Mar</Link></li>
+                    <li><Link to="/disenar-tu-refugio" className={`header__nav-link ${location.pathname === '/disenar-tu-refugio' ? 'active' : ''}`} onClick={closeMenu}>Bespoke</Link></li>
                 </ul>
                 <Link to="/" className="header__logo-container" onClick={closeMenu}>
                     <div className="header__logo-circle">
@@ -59,11 +59,11 @@ const Header = () => {
                     </div>
                 </Link>
                 <ul className="header__nav-list header__nav-list--right">
-                    <li><Link to="/home/nudos-de-sal" className={`header__nav-link ${location.pathname === '/home/nudos-de-sal' ? 'active' : ''}`} onClick={closeMenu}>Universo Sensorial</Link></li>
-                    <li><Link to="/home/programa-de-bienestar" className={`header__nav-link ${location.pathname === '/home/programa-de-bienestar' ? 'active' : ''}`} onClick={closeMenu}>Programa de Bienestar</Link></li>
-                    <li><Link to="/home/contacto" className={`header__nav-link ${location.pathname === '/home/contacto' ? 'active' : ''}`} onClick={closeMenu}>Contacto</Link></li>
+                    <li><Link to="/universo-sensorial" className={`header__nav-link ${location.pathname === '/universo-sensorial' ? 'active' : ''}`} onClick={closeMenu}>Universo Sensorial</Link></li>
+                    <li><Link to="/programa-de-bienestar" className={`header__nav-link ${location.pathname === '/programa-de-bienestar' ? 'active' : ''}`} onClick={closeMenu}>Programa de Bienestar</Link></li>
+                    <li><Link to="/contacto" className={`header__nav-link ${location.pathname === '/contacto' ? 'active' : ''}`} onClick={closeMenu}>Contacto</Link></li>
                     <li className="header__cart-icon">
-                        <Link to="/home/cart" className="header__nav-link" onClick={closeMenu} aria-label="Bolsa de compras">
+                        <Link to="/cart" className="header__nav-link" onClick={closeMenu} aria-label="Bolsa de compras">
                             <FaShoppingBag size={18} />
                             {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
                         </Link>
