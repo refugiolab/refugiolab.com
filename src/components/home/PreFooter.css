@@ -2,13 +2,10 @@
 
 .prefooter-section {
     padding: 80px 20px;
-    background-color: var(--color-prefooter-bg); /* Un color de fondo distintivo */
+    background-color: transparent; 
     color: var(--color-white);
-    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: 30px;
 
     opacity: 0;
@@ -22,37 +19,16 @@
 }
 
 .prefooter__text {
-    font-family: var(--font-body); /* Tu fuente de cuerpo de texto */
+    font-family: var(--font-body);
     font-size: clamp(1.2rem, 2.5vw, 1.8rem);
     line-height: 1.5;
     max-width: 700px;
-    color: var(--color-light-text-alt); /* Un blanco roto o gris claro */
+    color: #fffffc;
+    text-align: left;
+    margin: 0 auto;
 }
 
-.prefooter__cta-button {
-    background-color: transparent;
-    color: var(--color-white);
-    border: 2px solid var(--color-white);
-    padding: 15px 30px;
-    font-family: var(--font-heading); /* Una fuente más audaz para el CTA */
-    font-size: clamp(1rem, 2vw, 1.3rem);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 5px; /* Bordes ligeramente redondeados */
-}
-
-.prefooter__cta-button:hover:not(:disabled) {
-    background-color: var(--color-white);
-    color: var(--color-prefooter-bg); /* Invertir colores al pasar el ratón */
-    transform: translateY(-2px);
-}
-
-.prefooter__cta-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
+/* El estilo para el botón ha sido eliminado, ya que el botón fue removido del componente. */
 
 /* Responsive para PreFooter */
 @media (max-width: 768px) {
@@ -63,15 +39,4 @@
     .prefooter__text {
         font-size: 1rem;
     }
-
-    .prefooter__cta-button {
-        padding: 12px 25px;
-        font-size: 0.9rem;
-    }
 }
-
-/* COLORES DE EJEMPLO para el prefooter (ASEGÚRATE DE USAR LOS TUYOS) */
-/* :root {
-    --color-prefooter-bg: #4a6c8e; 
-    --color-light-text-alt: #e0e0e0;
-} */

@@ -1,16 +1,18 @@
-import React from 'react'
-import { useInView } from 'react-intersection-observer'
-import { Link } from 'react-router-dom'
-import HeroSection from './HeroSection'
-import Newsletter from '../../components/home/Newsletter'
-import PreFooter from '../../components/home/PreFooter'
-import './HomePage.css'
+import React, { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
+import HeroSection from './HeroSection';
+import Newsletter from '../../components/home/Newsletter';
+import PreFooter from '../../components/home/PreFooter';
+import './HomePage.css';
 
 const HomePage = () => {
     const { ref: sectionRef, inView: sectionInView } = useInView({
         triggerOnce: true,
         threshold: 0.1,
-    })
+    });
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const bloquesTexto = [
         {
@@ -25,7 +27,15 @@ const HomePage = () => {
             id: 'bloque-3',
             text: 'Te invitamos a habitar el presente con piezas que eleven tu bienestar.',
         },
-    ]
+    ];
+
+    const handleOjoClick = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <>
@@ -74,7 +84,7 @@ const HomePage = () => {
                         />
                     </svg>
 
-                    <div className="ojo-refugio">
+                    <div className="ojo-refugio" onClick={handleOjoClick}>
                         <picture>
                             <source
                                 srcSet="/images/ojo-refugio.webp"
@@ -105,11 +115,38 @@ const HomePage = () => {
                     </Link>
                 </div>
             </section>
-
+            
+            {/* Nueva sección de imagen */}
+            <section className="separador-bloques-section">
+                <picture>
+                    <source srcSet="/images/separador-bloques.webp" type="image/webp" />
+                    <img src="/images/separador-bloques.png" alt="Imagen que separa secciones" className="separador-bloques-image" />
+                </picture>
+            </section>
+            
             <Newsletter />
             <PreFooter />
-        </>
-    )
-}
 
-export default HomePage
+            {/* Código del cartel (modal) */}
+            {isModalOpen && (
+                <div className="modal-overlay" onClick={handleCloseModal}>
+                    <div className="modal-content" onClick={e => e.stopPropagation()}>
+                        <h2 className="modal-title">¿Y si tu vida fuera tu obra de arte?</h2>
+                        <p className="modal-text">
+                            Entendemos el acto de refugiarse no como esconderse, sino como volver a casa, a tu propia esencia. Es un acto de conexión que se siente, que se viste, que se vive.
+                        </p>
+                        <Link
+                            to="/universo-sensorial"
+                            className="modal-button"
+                            onClick={handleCloseModal}
+                        >
+                            EXPLORAR UNIVERSO SENSORIAL
+                        </Link>
+                    </div>
+                </div>
+            )}
+        </>
+    );
+};
+
+export default HomePage;

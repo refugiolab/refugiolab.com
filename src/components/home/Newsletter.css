@@ -49,13 +49,13 @@
 }
 
 .newsletter-content h3 {
-    font-family: 'New York', serif;
-    font-size: calc(var(--font-size-h2) * 2); /* AHORA ES EL DOBLE DE GRANDE */
+    font-size: 3rem; 
     color: var(--color-primary-dark);
     margin-bottom: 15px;
     position: relative;
     padding-bottom: 10px;
     text-align: left;
+    font-family: 'New York', serif;
 }
 
 /* Línea decorativa debajo del título */
@@ -114,21 +114,26 @@
 .newsletter__boton {
     width: 100%;
     padding: 14px 25px;
-    background-color: var(--color-dark-text);
+    /* Color inicial y borde */
+    background-color: #788990; 
     color: var(--color-white);
-    border: none;
+    border: 1px solid #788990;
     border-radius: 5px;
     font-family: var(--font-heading);
     font-size: var(--font-size-button);
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    display: block; 
+    visibility: visible; 
+    opacity: 1; 
 }
 
 .newsletter__boton:hover {
-    background-color: var(--color-accent);
+    background-color: transparent;
+    color: #788990;
     transform: translateY(-2px);
 }
 
@@ -162,7 +167,7 @@
     }
 
     .newsletter-content h3 {
-        font-size: calc(var(--font-size-h3) * 2); /* AHORA ES EL DOBLE DE GRANDE EN MÓVIL */
+        font-size: calc(var(--font-size-h3) * 1.5); 
         margin-bottom: 10px;
         text-align: center;
     }

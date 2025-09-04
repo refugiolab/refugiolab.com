@@ -17,8 +17,15 @@
   text-align: center;
 }
 
+.footer__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .footer__logo img {
-  width: 120px;
+  width: 156px; /* Aumentado en un 30% (120px * 1.3 = 156px) */
   margin-bottom: 1rem;
 }
 
@@ -29,6 +36,7 @@
   color: var(--color-texto);
   opacity: 0.8;
   font-family: var(--fuente-secundaria);
+  margin: 0;
 }
 
 .footer__links h4,

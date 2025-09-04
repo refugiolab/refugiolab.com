@@ -1,120 +1,350 @@
-.productos {
-  padding: 8rem 2rem;
-  text-align: center;
-  color: var(--color-texto);
-  background-color: var(--color-fondo);
+/* Estilos del contenedor principal de la página Home */
+.home-container {
+    width: 100%;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+    overflow-x: hidden;
 }
 
-.productos__header {
-  margin-bottom: 4rem;
+/* --- ESTILOS MEJORADOS PARA SECCIONES CON IMAGEN DE FONDO --- */
+/* La clave es background-repeat: no-repeat; y background-size: cover; */
+.hero-section,
+.pre-footer-section {
+    /* Evita que la imagen se repita */
+    background-repeat: no-repeat;
+    /* Ajusta el tamaño para que cubra todo el contenedor sin deformarse */
+    background-size: cover;
+    /* Centra la imagen en el contenedor */
+    background-position: center;
 }
 
-.productos__titulo {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 300;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+/* Asignación de las imágenes a cada sección */
+.hero-section {
+    background-image: url('/images/hero.png');
+    background-image: -webkit-image-set(
+        url('/images/hero.webp') 1x,
+        url('/images/hero.png') 1x
+    );
+    background-image: image-set(
+        url('/images/hero.webp') 1x,
+        url('/images/hero.png') 1x
+    );
 }
 
-.productos__subtitulo {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  font-weight: 300;
-  color: var(--color-texto);
-  opacity: 0.8;
+.pre-footer-section {
+    background-image: url('/images/homeprefooter.png');
+    background-image: -webkit-image-set(
+        url('/images/homeprefooter.webp') 1x,
+        url('/images/homeprefooter.png') 1x
+    );
+    background-image: image-set(
+        url('/images/homeprefooter.webp') 1x,
+        url('/images/homeprefooter.png') 1x
+    );
 }
 
-.productos__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
+/* Ajuste del tamaño del logo y espacio con la siguiente sección */
+.home__logo-gris {
+    height: 52px;
+    width: auto;
 }
 
-.productos__grid.is-in-view {
-  opacity: 1;
-  transform: translateY(0);
+/* Corregir el espaciado para que la frase no se corte */
+.pilares-section {
+    margin-top: 2rem;
 }
 
-.productos__collection-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(68, 70, 83, 0.1);
-  transition: transform 0.3s ease;
+.newsletter-section {
+    padding: 3rem 2rem;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    text-align: center;
 }
 
-.productos__collection-item:hover {
-  transform: translateY(-10px);
+.newsletter__content {
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-.productos__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.newsletter__content.is-in-view {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.productos__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(68, 70, 83, 0.7);
-  color: var(--color-fondo);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+/* --- ESTILOS NUEVOS PARA LA SECCIÓN DE PILARES CON EL OJO Y SVG --- */
+.pilares-section {
+    position: relative;
+    padding: 6rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    overflow: hidden;
 }
 
-.productos__collection-item:hover .productos__overlay {
-  opacity: 1;
+/* Contenedor principal de los conceptos y el ojo */
+.conceptos-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.productos__overlay h3 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  letter-spacing: 1px;
+/* El ojo central (imagen) */
+.ojo-refugio {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 300px;
+    height: 300px;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 1s ease-out 0.8s, transform 1s ease-out 0.8s;
+    cursor: pointer; /* Agrega cursor de puntero para indicar que es clickeable */
 }
 
-.productos__overlay p {
-  font-size: 1rem;
-  font-weight: 300;
-  margin-bottom: 1rem;
-  max-width: 80%;
+.pilares-section.is-in-view .ojo-refugio {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
-.productos__button {
-  background: var(--color-fondo);
-  color: var(--color-texto);
-  padding: 0.75rem 2rem;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.9rem;
-  border-radius: 5px;
-  border: 1px solid var(--color-fondo);
-  transition: background-color 0.3s, color 0.3s;
+.ojo-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.productos__button:hover {
-  background-color: transparent;
-  color: var(--color-fondo);
+/* Líneas SVG orgánicas y estéticas */
+.conceptos-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1s ease-out 1.2s;
 }
 
+.pilares-section.is-in-view .conceptos-lines {
+    opacity: 1;
+}
+
+/* Estilo para los bloques de texto de los conceptos */
+.bloque-texto {
+    position: absolute;
+    max-width: 250px;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: justify;
+    z-index: 3;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.pilares-section.is-in-view .bloque-texto {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Posicionamiento específico de cada bloque de texto */
+.bloque-texto-1 {
+    top: -8%;
+    left: 41%; /* MOVIDO 2 CM A LA IZQUIERDA */
+    transform: translateX(-50%);
+    transition-delay: 1.5s;
+}
+
+.bloque-texto-2 {
+    top: 26%;
+    left: -12.5%;
+    transform: translateX(0);
+    transition-delay: 1.8s;
+}
+
+.bloque-texto-3 {
+    top: 65%;
+    right: 1%;
+    transform: translateX(0);
+    transition-delay: 2.1s;
+}
+
+/* Sección del CTA */
+.cta-section {
+    margin-top: -8rem;
+    margin-left: -20.5rem; /* MOVIDO 4 CM A LA IZQUIERDA */
+    z-index: 3;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out 2.5s, transform 1s ease-out 2.5s;
+}
+
+.pilares-section.is-in-view .cta-section {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilo unificado para el botón CTA, basado en el de Newsletter */
+.cta-button {
+    display: inline-block;
+    padding: 14px 25px;
+    border-radius: 5px;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-button);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease, border-color 0.3s ease;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    
+    /* Colores iniciales y borde */
+    background-color: #a07033;
+    color: var(--color-white);
+    border: 1px solid #a07033;
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    color: #a07033;
+    border-color: #a07033;
+    transform: translateY(-2px);
+}
+
+/* Estilos de ejemplo para Pre-footer y Footer (pueden ir en sus propios CSS) */
+.pre-footer-section, .main-footer {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--color-fondo-oscuro);
+    color: var(--color-texto-claro);
+}
+
+/* Estilos para el cartel (modal) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    padding: 2.5rem;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 600px; /* Aumentado para mayor ancho */
+    animation: fadeIn 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-title {
+    font-family: var(--fuente-principal);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-texto);
+    white-space: nowrap;
+    text-align: center;
+}
+
+.modal-text {
+    font-family: var(--fuente-secundaria);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: var(--color-texto);
+    text-align: justify; /* Texto justificado */
+    hyphens: auto; /* Permite la división de palabras para una mejor justificación */
+}
+
+.modal-button {
+    background-color: #8d957e;
+    color: var(--color-white);
+    border: none;
+    padding: 12px 20px; /* Reducido para que sea más delicado */
+    font-family: var(--font-heading);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.modal-button:hover {
+    background-color: #79826a;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive para dispositivos móviles */
 @media (max-width: 768px) {
-  .productos {
-    padding: 6rem 1rem;
-  }
-  .productos__grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
+    .pilares-section {
+        padding-top: 4rem;
+        justify-content: flex-start;
+    }
+    .conceptos-container {
+        height: auto;
+        flex-direction: column;
+    }
+    .conceptos-lines {
+        display: none;
+    }
+    .ojo-refugio {
+        position: static;
+        transform: none;
+        margin-bottom: 2rem;
+        width: 200px;
+        height: 200px;
+    }
+    .bloque-texto {
+        position: static;
+        max-width: 90%;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        transition-delay: 0s !important;
+    }
+    .cta-section {
+        margin-top: 2rem;
+    }
+    .cta-button {
+        padding: 12px 20px;
+        font-size: var(--font-size-small);
+    }
+    .modal-content {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+    .modal-title,
+    .modal-text {
+        white-space: normal;
+        text-align: center;
+    }
 }
