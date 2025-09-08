@@ -1,9 +1,9 @@
-/* src/components/home/PreFooter.css */
+/* src/pages/Home/sections/PreFooter.css */
 
-.prefooter-section {
+.pre-footer-section {
     padding: 80px 20px;
-    background-color: transparent; 
-    color: var(--color-white);
+    background-color: transparent;
+    color: var(--color-texto);
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -13,17 +13,18 @@
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.prefooter-section.is-in-view {
+/* La clase is-in-view ahora se maneja globalmente */
+/* .pre-footer-section.is-in-view {
     opacity: 1;
     transform: translateY(0);
-}
+} */
 
 .prefooter__text {
-    font-family: var(--font-body);
+    font-family: var(--fuente-secundaria);
     font-size: clamp(1.2rem, 2.5vw, 1.8rem);
     line-height: 1.5;
     max-width: 700px;
-    color: #fffffc;
+    color: var(--color-texto);
     text-align: left;
     margin: 0 auto;
 }
@@ -32,7 +33,7 @@
 
 /* Responsive para PreFooter */
 @media (max-width: 768px) {
-    .prefooter-section {
+    .pre-footer-section {
         padding: 60px 15px;
     }
 

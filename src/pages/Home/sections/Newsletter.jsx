@@ -1,26 +1,43 @@
-import React, { useState } from 'react'
-import { useInView } from 'react-intersection-observer'
-import './Newsletter.css'
+// Archivo: src/pages/Home/sections/Newsletter.jsx
+import React, { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+import { collection, addDoc } from 'firebase/firestore'; // Importa las funciones de Firebase
+import { db } from '../../../firebaseConfig'; // Importa la instancia de la base de datos
+import './Newsletter.css';
 
 const Newsletter = () => {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [message, setMessage] = useState('')
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
 
     const { ref, inView } = useInView({
         triggerOnce: true,
         threshold: 0.1,
-    })
+    });
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        setMessage('')
-        console.log('Newsletter Subscription:', { name, email })
-        setMessage('🌿Gracias por sumarte. Muy pronto recibirás tu primera carta de Refugio.')
-        setName('')
-        setEmail('')
-        setTimeout(() => setMessage(''), 5000)
-    }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setMessage('');
+
+        try {
+            // Guarda los datos en una nueva colección llamada 'newsletter_subscribers'
+            const docRef = await addDoc(collection(db, 'newsletter_subscribers'), {
+                name: name,
+                email: email,
+                timestamp: new Date() // Añade una marca de tiempo
+            });
+
+            console.log('Suscripción exitosa con ID:', docRef.id);
+            setMessage('🌿¡Gracias por sumarte! Muy pronto recibirás tu primera carta de Refugio.');
+            setName('');
+            setEmail('');
+        } catch (error) {
+            console.error('Error al guardar la suscripción:', error);
+            setMessage('❌ Ocurrió un error. Por favor, intenta de nuevo.');
+        } finally {
+            setTimeout(() => setMessage(''), 5000);
+        }
+    };
 
     return (
         <section
@@ -28,7 +45,6 @@ const Newsletter = () => {
             ref={ref}
         >
             <div className="newsletter-background"></div>{' '}
-            {/* Nuevo div para el fondo */}
             <div className="newsletter-content">
                 <div className="newsletter__text-container">
                     <h3>Sumate a nuestra comunidad</h3>
@@ -65,7 +81,7 @@ const Newsletter = () => {
                 )}
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default Newsletter
+export default Newsletter;

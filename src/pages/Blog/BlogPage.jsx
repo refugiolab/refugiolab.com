@@ -1,3 +1,4 @@
+// Archivo: C:\universo-refugio\src\pages\Blog\BlogPage.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';

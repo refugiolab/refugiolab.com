@@ -1,11 +1,12 @@
-.bespoke-section {
+/* src/pages/Components/UniversoSensorial.css*/
+.universo-sensorial-section {
     position: relative;
     width: 100%;
     min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('/images/hero.png');
+    background-image: url('/images/mar.png');
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -13,7 +14,7 @@
     color: #fff;
 }
 
-.bespoke-overlay {
+.universo-sensorial-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -23,7 +24,7 @@
     z-index: 1;
 }
 
-.bespoke-content {
+.universo-sensorial-content {
     position: relative;
     z-index: 2;
     max-width: 700px;
@@ -34,14 +35,14 @@
     justify-content: center;
 }
 
-.bespoke-title {
+.universo-sensorial-title {
     font-family: var(--fuente-principal);
     font-size: 3rem;
     font-weight: 400;
     margin-bottom: 1rem;
 }
 
-.bespoke-text {
+.universo-sensorial-text {
     font-family: var(--fuente-secundaria);
     font-size: 1.1rem;
     line-height: 1.6;
@@ -51,20 +52,12 @@
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-.bespoke-text.is-in-view {
+.universo-sensorial-text.is-in-view {
     opacity: 1;
     transform: translateY(0);
 }
 
-.bespoke-cta-container {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    align-items: center;
-}
-
-.bespoke-button,
-.bespoke-link {
+.universo-sensorial-button {
     padding: 0.8rem 2rem;
     border-radius: 9999px;
     font-family: "Commissioner", sans-serif;
@@ -72,48 +65,13 @@
     text-transform: uppercase;
     text-decoration: none;
     transition: all 0.3s ease;
-}
-
-.bespoke-button {
     background-color: #a07033;
     border: 1px solid #a07033;
     color: #fff;
     cursor: pointer;
 }
 
-.bespoke-button:hover {
+.universo-sensorial-button:hover {
     background-color: transparent;
     color: #a07033;
-}
-
-.bespoke-link {
-    background-color: transparent;
-    border: 1px solid #fff;
-    color: #fff;
-}
-
-.bespoke-link:hover {
-    background-color: #fff;
-    color: #000;
-}
-
-/* Modal */
-.modal-content {
-    text-align: center;
-    padding: 2rem;
-}
-
-.modal-content h2 {
-    font-family: var(--fuente-principal);
-    margin-bottom: 1rem;
-}
-
-.modal-close-button {
-    margin-top: 1rem;
-    background-color: #a07033;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 5px;
 }

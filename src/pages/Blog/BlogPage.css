@@ -1,4 +1,5 @@
-/* --- 2.3. Blog Page --- */
+/* src/pages/Blog/BlogPage.css */
+
 .blog-page-section {
     padding: 4rem 2rem;
     text-align: center;
@@ -20,10 +21,11 @@
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-.blog__intro-text.is-in-view {
+/* La clase is-in-view ahora se maneja globalmente */
+/* .blog__intro-text.is-in-view {
     opacity: 1;
     transform: translateY(0);
-}
+} */
 
 .blog__image-container {
     width: 100%;
@@ -47,31 +49,14 @@
     margin-top: 2rem;
 }
 
-/* Estilo del botón */
-.blog__boton {
-    text-decoration: none;
-    border: 1px solid #a07033;
-    background-color: #a07033;
-    color: #fff;
-    padding: 1rem 2.5rem;
+.blog__button {
+    /* Se utiliza la clase de utilidad global btn-secondary */
+    background-color: var(--color-acento);
+    color: var(--color-texto);
+    border: none;
+    padding: 1rem 2rem;
     font-size: 1rem;
-    border-radius: 9999px;
-    font-family: "Commissioner", sans-serif;
-    text-transform: capitalize;
-    transition: all 0.3s ease;
-}
-
-.blog__boton:hover {
-    background-color: transparent;
-    color: #a07033;
-}
-
-/* Cambios en la versión móvil */
-@media (max-width: 768px) {
-    .blog-page-section {
-        padding: 2rem 1.5rem;
-    }
-    .blog__intro-text {
-        font-size: 0.9rem;
-    }
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }

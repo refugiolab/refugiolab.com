@@ -1,3 +1,16 @@
+/* src/pages/Contacto/ContactoPage.css */
+
+/* Importación de las nuevas tipografías */
+@import url('https://fonts.cdnfonts.com/css/newyork');
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@400;700&display=swap');
+
+/* Definición de variables CSS para las nuevas fuentes */
+:root {
+  /* Resto de tus variables... */
+  --fuente-newyork: 'NewYork', serif;
+  --fuente-commissioner: 'Commissioner', sans-serif;
+}
+
 .contacto {
   padding: 6rem 2rem;
   background-color: var(--color-fondo);
@@ -6,21 +19,32 @@
 
 .contacto__header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem; /* Reducimos el espacio de abajo del encabezado */
 }
 
 .contacto__titulo {
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 300;
   letter-spacing: 2px;
-  text-transform: uppercase;
+  /* Se eliminó la línea que convertía el texto a mayúsculas */
+  /* text-transform: uppercase; */
+  /* Aplica la tipografía "NewYork" */
+  font-family: var(--fuente-newyork);
+  margin-bottom: 0; /* Eliminamos el margen inferior para acercarlo al subtítulo */
 }
 
 .contacto__subtitulo {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-size: 1.09em; /* Aumentamos el tamaño de la fuente un 10% */
   font-weight: 300;
   color: var(--color-texto);
   opacity: 0.8;
+  /* Aplica la tipografía "Commissioner" */
+  font-family: var(--fuente-commissioner);
+  white-space: nowrap; /* Mantiene el texto en una sola línea */
+  overflow: hidden; /* Oculta el texto que desborda */
+  text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es demasiado largo */
+  max-width: 100%; /* Permite que ocupe todo el ancho disponible */
+  margin: 0.5rem auto 0 auto; /* Reducimos el margen superior y centramos */
 }
 
 .contacto__contenido {
@@ -30,36 +54,26 @@
   max-width: 1000px;
   margin: 0 auto;
   align-items: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.contacto__contenido.is-in-view {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .contacto__info {
-  text-align: center;
-}
-
-.contacto__info p {
-  font-size: 1rem;
-  line-height: 1.8;
-  margin-bottom: 1rem;
+  text-align: left;
 }
 
 .contacto__logo {
-  width: 150px;
+  width: 150px; /* Aumentamos el tamaño en un 50% */
   margin-bottom: 2rem;
 }
 
+.contacto__texto {
+  font-size: 1rem;
+  line-height: 1.6;
+  /* Aplica la tipografía "Commissioner" */
+  font-family: var(--fuente-commissioner);
+}
+
 .contacto__redes-sociales {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .contacto__redes-sociales a {
@@ -76,6 +90,7 @@
 
 .contacto__form-container {
   width: 100%;
+  margin-top: 3cm; /* Subimos el formulario 2cm */
 }
 
 .contacto__form {
@@ -92,6 +107,7 @@
   padding: 1rem;
   font-size: 1rem;
   transition: border-color 0.3s ease;
+  font-family: var(--fuente-commissioner);
 }
 
 .contacto__form input:focus,
@@ -109,33 +125,27 @@
   text-align: left;
   font-size: 0.9rem;
   color: var(--color-texto);
-  opacity: 0.8;
 }
 
 .contacto__boton {
-  background: var(--color-texto);
-  color: var(--color-fondo);
+  background-color: #8d957e;
+  color: #fffffc;
+  border: 1px solid #8d957e;
   padding: 1rem 2rem;
-  border: 1px solid var(--color-texto);
-  cursor: pointer;
   font-size: 1rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 2px;
-  transition: background-color 0.3s, color 0.3s;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-family: var(--fuente-secundaria);
 }
 
 .contacto__boton:hover {
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
+  background-color: transparent;
+  color: #8d957e;
 }
 
 @media (max-width: 768px) {
   .contacto {
     padding: 4rem 1rem;
-  }
-  .contacto__contenido {
-    grid-template-columns: 1fr;
-    gap: 2rem;
   }
 }

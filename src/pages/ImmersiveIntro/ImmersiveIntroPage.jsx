@@ -1,19 +1,13 @@
+// src/pages/ImmersiveIntro/ImmersiveIntroPage.jsx
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa el hook useNavigate
+import { useNavigate } from 'react-router-dom';
+import { FaPlay, FaPause } from 'react-icons/fa';
+import data from './intro-data'; // ¡Aquí está el cambio!
 import './ImmersiveIntroPage.css';
 import logoRefugio from '/logorefugioblanco.svg';
-import VideoIntro from '/VideoIntro.mp4';
-import { FaPlay, FaPause } from 'react-icons/fa';
-
-const frases = [
-    "La vida es un ritual",
-    "Encontrá tu propio ritmo",
-    "Estamos en movimiento",
-    "Vestir(nos) con sentido"
-];
 
 const ImmersiveIntroPage = () => {
-    const navigate = useNavigate(); // Inicializa useNavigate
+    const navigate = useNavigate();
     const [currentFrase, setCurrentFrase] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
     const videoRef = useRef(null);
@@ -34,27 +28,36 @@ const ImmersiveIntroPage = () => {
     // Rotación de frases
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setCurrentFrase((prev) => (prev + 1) % frases.length);
-        }, 3500);
+            setCurrentFrase((prevFrase) => (prevFrase + 1) % data.frases.length);
+        }, 3500); // Duración de 3.5 segundos por frase
         return () => clearInterval(intervalId);
     }, []);
 
-    // Control de audio
-    const toggleAudio = () => {
-        const audio = audioRef.current;
-        if (!audio) return;
-
-        if (isPlaying) {
-            audio.pause();
-        } else {
-            audio.play().catch(error => console.error("Error al reproducir el audio:", error));
+    // Lógica para el botón de "Entrar"
+    const handleEnter = () => {
+        if (videoRef.current) {
+            videoRef.current.classList.add('fade-out'); // Agregar clase para fade-out del video
         }
-        setIsPlaying(!isPlaying);
+        if (audioRef.current) {
+            audioRef.current.volume = 0; // Silenciar audio
+        }
+        // Retraso para que la animación se complete antes de la navegación
+        setTimeout(() => {
+            navigate('/inicio');
+        }, 1000); // Duración de la animación
     };
 
-    // Función para manejar la entrada a la página principal
-    const handleEnter = () => {
-        navigate('/inicio'); // Redirige a la ruta /inicio
+    // Lógica para reproducir/pausar audio
+    const toggleAudio = () => {
+        const audio = audioRef.current;
+        if (audio) {
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                audio.play().catch(error => console.log("Error al reproducir audio:", error));
+            }
+            setIsPlaying(!isPlaying);
+        }
     };
 
     return (
@@ -63,7 +66,7 @@ const ImmersiveIntroPage = () => {
                 ref={videoRef}
                 id="video-fondo"
                 className="video-fondo"
-                src={VideoIntro}
+                src={data.video.url}
                 autoPlay
                 loop
                 muted
@@ -73,20 +76,20 @@ const ImmersiveIntroPage = () => {
 
             <div className="contenido-central">
                 <div className="content-group">
-                    <img ref={logoRef} src={logoRefugio} alt="Refugio Logo" className="logo-refugio" />
+                    <img ref={logoRef} src="/logorefugioblanco.svg" alt="Refugio Logo" className="logo-refugio" />
                     <div className="narrativa-texto">
                         <span key={currentFrase} className="frase-animada">
-                            {frases[currentFrase]}
+                            {data.frases[currentFrase]}
                         </span>
                     </div>
                     <button className="boton-entrar" onClick={handleEnter}>
-                        Ingresar
+                        {data.botonEntrar}
                     </button>
                 </div>
             </div>
 
             <div className="controles-musica">
-                <audio ref={audioRef} src="/audio/musica-ambiente.mp3" loop />
+                <audio ref={audioRef} src={data.audio.url} loop />
                 <button onClick={toggleAudio} className="boton-audio" aria-label={isPlaying ? "Pausar audio" : "Reproducir audio"}>
                     {isPlaying ? <FaPause size={18} /> : <FaPlay size={18} />}
                 </button>

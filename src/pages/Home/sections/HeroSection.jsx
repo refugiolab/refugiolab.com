@@ -1,24 +1,22 @@
-// src/pages/Home/HeroSection.jsx
+// src/pages/Home/sections/HeroSection.jsx
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useInView } from 'react-intersection-observer';
+import useScrollAnimation from '../../../hooks/useScrollAnimation';
 import './HeroSection.css';
 
 const HeroSection = () => {
-    const { ref: heroInViewRef, inView: heroSectionInView } = useInView({
-        triggerOnce: true,
-        threshold: 0,
-    });
+    // Uso del nuevo hook personalizado
+    const { elementRef: heroSectionRef, inView: heroSectionInView } = useScrollAnimation({ threshold: 0 });
 
     const [fadeOverlayHeight, setFadeOverlayHeight] = useState(0);
     const [heroHeight, setHeroHeight] = useState('100vh');
-    const heroSectionRef = useRef(null);
+    const heroSectionDOMRef = useRef(null);
 
     useEffect(() => {
         const handleScroll = () => {
-            if (heroSectionRef.current) {
+            if (heroSectionDOMRef.current) {
                 const scrollPosition = window.scrollY;
-                const heroHeightValue = heroSectionRef.current.offsetHeight;
+                const heroHeightValue = heroSectionDOMRef.current.offsetHeight;
+                
                 if (window.innerWidth > 768) {
                     const fadeStart = heroHeightValue * 0.1;
                     const fadeEnd = heroHeightValue * 0.5;
@@ -28,23 +26,29 @@ const HeroSection = () => {
                         const fadeProgress = Math.min(1, scrollAmountInFadeSection / (fadeEnd - fadeStart));
                         const maxFadeCoverHeight = heroHeightValue * 0.5;
                         newFadeHeight = maxFadeCoverHeight * fadeProgress;
-                    } else {
-                        newFadeHeight = 0;
                     }
                     setFadeOverlayHeight(newFadeHeight);
-                    setHeroHeight('100vh');
-                } else {
-                    setFadeOverlayHeight(0);
-                    setHeroHeight('70vh');
                 }
             }
         };
 
+        const handleResize = () => {
+            if (heroSectionDOMRef.current && window.innerWidth <= 768) {
+                const newHeight = heroSectionDOMRef.current.offsetWidth / 1.5;
+                setHeroHeight(`${newHeight}px`);
+            } else if (window.innerWidth > 768) {
+                setHeroHeight('100vh');
+            }
+        };
+
+        handleResize(); // Ejecutar al inicio para establecer la altura inicial
+
         window.addEventListener('scroll', handleScroll);
-        handleScroll();
+        window.addEventListener('resize', handleResize);
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
 
@@ -52,13 +56,12 @@ const HeroSection = () => {
         <section
             className={`hero-section ${heroSectionInView ? 'is-in-view' : ''}`}
             ref={(node) => {
-                heroInViewRef(node);
-                heroSectionRef.current = node;
+                heroSectionRef(node);
+                heroSectionDOMRef.current = node;
             }}
             style={{ height: heroHeight }}
         >
             <picture className="hero-background-picture">
-                {/* RUTAS ACTUALIZADAS PARA USAR LOS NUEVOS ARCHIVOS */}
                 <source srcSet="/images/hero-bg.webp" type="image/webp" />
                 <img src="/images/hero-bg.png" alt="Fondo de la sección principal" className="hero-background-image" />
             </picture>

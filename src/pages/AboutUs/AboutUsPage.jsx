@@ -1,5 +1,4 @@
-// src/pages/AboutUs/AboutUsPage.jsx
-
+// Archivo: C:\universo-refugio\src\pages\AboutUs\AboutUsPage.jsx
 import React from 'react';
 import './AboutUsPage.css'; // Aquí importas los estilos
 

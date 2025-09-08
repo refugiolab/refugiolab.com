@@ -1,3 +1,4 @@
+/* Archivo: C:\universo-refugio\src\App.css */
 /* Importación de fuentes de Google Fonts */
 /* Commissioner para fuente secundaria */
 @import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap');
@@ -47,33 +48,35 @@ body {
   font-family: var(--fuente-secundaria);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.5;
 }
 
-/* Reset universal para todos los elementos */
-*, *::before, *::after {
-  box-sizing: inherit;
+/* Eliminar el estilo de enfoque por defecto para todos los elementos */
+*:focus {
+  outline: none;
 }
 
-/* Contenedor principal de React */
-#root {
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+/* Estilos Generales para Enlaces */
+a {
+  text-decoration: none;
+  color: inherit; /* Mantener el color del texto del padre */
 }
 
-/* Estilos para los títulos globales */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--fuente-principal);
-  color: var(--color-texto);
+/* Estilos Generales para Botones - Adaptación para ser accesibles y coherentes */
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  padding: 0;
 }
 
-/* Ajuste del contenido principal para evitar solapamiento con el header */
-.main-content {
-  flex-grow: 1;
-  padding-top: 0;
-  width: 100%;
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
+/* Animaciones y Transiciones */
+.fade-in {
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

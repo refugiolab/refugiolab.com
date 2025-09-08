@@ -1,7 +1,9 @@
-import React from "react";
-import { useInView } from "react-intersection-observer";
-import "./UniversoSensorial.css";
-import hero from "/images/hero.png";
+// src/pages/UniversoSensorial/UniversoSensorial.jsx
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useInView } from 'react-intersection-observer';
+import './UniversoSensorial.css';
+import universoSensorialData from './universoSensorialData.js';
 
 const UniversoSensorial = () => {
     const { ref: sectionRef, inView: sectionInView } = useInView({
@@ -11,16 +13,15 @@ const UniversoSensorial = () => {
 
     return (
         <section className="universo-sensorial-section" ref={sectionRef}>
-            <img src={hero} alt="Fondo hero" className="universo-sensorial-background" />
             <div className="universo-sensorial-overlay"></div>
             <div className="universo-sensorial-content">
-                <h1 className="universo-sensorial-title">Universo Sensorial</h1>
-                <p className={`universo-sensorial-text ${sectionInView ? "is-in-view" : ""}`}>
-                    En este espacio, el arte y los sentidos se unen para ofrecerte una experiencia única y profunda. Explora nuestra curaduría de objetos y vivencias que nutren el alma.
+                <h1 className="universo-sensorial-title">{universoSensorialData.title}</h1>
+                <p className={`universo-sensorial-text ${sectionInView ? 'is-in-view' : ''}`}>
+                    {universoSensorialData.text}
                 </p>
-                <a href="/home" className="universo-sensorial-button">
-                    Explorar
-                </a>
+                <Link to={universoSensorialData.button.path} className="universo-sensorial-button">
+                    {universoSensorialData.button.text}
+                </Link>
             </div>
         </section>
     );

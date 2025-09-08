@@ -1,3 +1,4 @@
+// Archivo: C:\universo-refugio\src\components\ProgramaDeBienestar.jsx
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import './ProgramaDeBienestar.css';

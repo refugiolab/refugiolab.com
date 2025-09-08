@@ -1,102 +1,106 @@
-Estructura del proyecto: 
+Estructura del Proyecto 
 
 universo-refugio/
 ├── dist/
-│      ├── assets/
-│      ├── icons/
-│      ├── images/
-│      ├── index.html
-│      ├── Videointro.mp4
-│      └── vite.svg
+│   ├── assets/
+│   ├── audio/
+│   ├── fonts/
+│   ├── icons/
+│   ├── images/
+│   ├── index.html
+│   ├── isoblanco.svg
+│   ├── isonegro.svg
+│   ├── logorefugioblanco.svg
+│   ├── Videointro.mp4
+│   └── vite.svg
 ├── node_modules/
 ├── public/
-│      ├── audio/                 
-│      │      └── musica-ambiente.mp3
-│      ├── icons/
-│      │      ├── instagram.png
-│      │      ├── whatsapp.png
-│      │      ├── youtube.png
-│      │      ├── logo.png
-│      │      └── iso.png
-│      └── images/
-│              ├── hero.png
-│              ├── hero.webp
-│              ├── heroaboutus.png
-│              ├── heroaboutus.webp
-│              ├── homecartasalmar.png
-│              ├── homecartasalmar.webp
-│              ├── homelifewear1.png
-│              ├── homelifewear2.webp
-│              ├── homelifewear2.png
-│              ├── homelifewear3.png
-│              ├── homelifewear3.webp
-│              ├── homelifewear4.png
-│              ├── homelifewear4.webp
-│              ├── homelifewear5.png
-│              ├── homelifewear5.webp
-│              ├── homelifewear6.png
-│              ├── homelifewear6.webp
-│              ├── homelifewear7.png
-│              ├── homelifewear7.webp
-│              ├── homelifewear8.png
-│              ├── homelifewear8.webp
-│              ├── homelifewear9.png
-│              ├── homelifewear9.webp
-│              ├── homeprefooter.png
-│              ├── homeprefooter.webp
-│      ├── VideoIntro.mp4
-│      ├── isonegro.svg
-│      ├── logorefugioblanco.svg
-│      └── isoblanco.svg
+│   ├── audio/
+│   │   └── musica-ambiente.mp3
+│   ├── fonts/
+│   │   ├── Comissioner/
+│   │   └── NewYork.woff2
+│   ├── icons/
+│   │   ├── instagram.png
+│   │   ├── whatsapp.png
+│   │   ├── youtube.png
+│   │   ├── logo.png
+│   │   ├── logorefugiogris.svg
+│   │   └── iso.png
+│   └── images/
+│       ├── hero-bg.png
+│       ├── hero-bg.webp
+│       ├── heroaboutus.png
+│       ├── heroaboutus.webp
+│       ├── blogcartasalmar.png
+│       ├── blogcartasalmar.webp
+│       ├── ojo-refugio.png
+│       ├── ojo-refugio.webp
+│       ├── separador-bloque.png
+│       ├── homeprefooter.png
+│       └── homeprefooter.webp
 ├── src/
-│      ├── assets/
-│      ├──components/
-│              ├── Home/
-│                     ├── CartasAlMarSection.jsx
-│                     ├── CartasAlMarSection.css
-│                     └── PilaresSection.jsx
-│                     ├── PilaresSection.css
-│                     ├── HeroSection.jsx
-│                     ├── HeroSection.css
-│                     ├── Home.jsx
-│                     ├── Home.css
-│                     ├── PreFooterSection.jsx
-│                     └── PreFooterSection.css
-│              ├── AboutUs.jsx
-│              ├── AboutUs.css
-│              ├── Contacto.jsx
-│              ├── Contacto.css
-│              ├── Bespoke.jsx
-│              ├── Bespoke.css
-│              ├── EntradaInmersiva.jsx   
-│              ├── EntradaInmersiva.css
-│              ├── Footer.jsx
-│              ├── Footer.css  
-│              ├── Header.jsx
-│              ├── Header.css
-│              ├── Layout.jsx
-│              ├── Layout.css              
-│              ├── LifeWear.jsx
-│              ├── LifeWear.css
-│              ├── Modal.jsx
-│              ├── Modal.css
-│              ├── NewsletterForm.jsx
-│              ├── NewsletterForm.css
-│              ├── UniversoSensorial.jsx
-│              ├── UniversoSensorial.css
-│              ├── ProgramaDeBienestar.jsx
-│              └── ProgramaDeBienestar.css
-│      ├── common/
-│              ├── NewsletterForm.jsx
-│              └── NewsletterForm.jsx
-│      ├── fonts/
-│              ├── NewYork.woff2
-│              └── Recoleta.woff2
-│              ├── Comissioner
-│      ├── App.css                    
-│      ├── App.jsx               
-│      └── main.jsx
-├── .gitignore
+│   ├── assets/
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── Modal.jsx
+│   │   │   └── Modal.css
+│   │   ├── Footer.jsx
+│   │   ├── Footer.css
+│   │   ├── Header.jsx
+│   │   ├── Header.css
+│   │   ├── Layout.jsx
+│   │   ├── Layout.css
+│   │   ├── PrivateRoute.jsx
+│   │   ├── ProgramaDeBienestar.jsx
+│   │   └── ProgramaDeBienestar.css
+│   ├── constants/
+│   │   └── data.js
+│   ├── hooks/
+│   │   ├── useModal.js
+│   │   └── useScrollAnimation.js
+│   ├── pages/
+│   │   ├── AboutUs/
+│   │   │   ├── AboutUsPage.css
+│   │   │   └── AboutUsPage.jsx
+│   │   ├── AdminPanel/
+│   │   │   ├── AdminPanel.css
+│   │   │   └── AdminPanel.jsx
+│   │   ├── Blog/
+│   │   │   ├── BlogPage.css
+│   │   │   └── BlogPage.jsx
+│   │   ├── Contacto/
+│   │   │   ├── ContactoPage.css
+│   │   │   └── ContactoPage.jsx
+│   │   ├── LoginPage/
+│   │   │   └── LoginPage.jsx
+│   │   ├── Home/
+│   │   │   ├── HomePage.jsx
+│   │   │   └── sections/
+│   │   │       ├── HeroSection.css
+│   │   │       ├── HeroSection.jsx
+│   │   │       ├── Newsletter.css
+│   │   │       ├── Newsletter.jsx
+│   │   │       ├── PreFooter.css
+│   │   │       └── PreFooter.jsx
+│   │   ├── ImmersiveIntro/
+│   │   │   ├── ImmersiveIntroPage.jsx
+│   │   │   ├── data.js
+│   │   │   └── ImmersiveIntroPage.css
+│   │   ├── Productos/
+│   │   │   ├── ProductosPage.jsx
+│   │   │   └── ProductosPage.css
+│   │   └── UniversoSensorial/
+│   │       ├── UniversoSensorial.jsx
+│   │       ├── UniversoSensorial.css
+│   │       └── universoSensorialData.js
+│   ├── styles/
+│   │   ├── App.css
+│   │   └── global.css
+│   ├── App.jsx 
+│   ├── firebaseConfig.js
+│   └── main.jsx
+├── .env
 ├── audiointro.m4a
 ├── eslint.config.js
 ├── estructura.txt
@@ -105,9 +109,5 @@ universo-refugio/
 ├── package.json
 ├── package-lock.json
 ├── README.md
-├── netlify.toml
+├── start.bat
 └── vite.config.js
-
-
-cmd - dame los comandos commits para subir a github
-

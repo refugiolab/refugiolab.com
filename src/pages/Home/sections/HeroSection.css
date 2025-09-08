@@ -1,9 +1,9 @@
-/* src/pages/Home/HeroSection.css */
+/* src/pages/Home/sections/HeroSection.css */
 
 .hero-section {
     position: relative;
     width: 100%;
-    height: 100vh; /* Asegura que ocupe el 100% de la altura del viewport */
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,12 +17,12 @@
 }
 
 .hero-background-picture {
-    position: absolute; /* Posicionamiento absoluto para cubrir todo el contenedor */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; /* Asegura que la imagen esté en la capa más baja */
+    z-index: 0;
     object-fit: cover;
 }
 
@@ -30,7 +30,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* La imagen en sí no necesita un z-index, ya que lo hereda de su contenedor <picture> */
 }
 
 .hero__overlay {
@@ -39,19 +38,18 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    filter: grayscale(100%);
-    z-index: 1; /* Por encima de la imagen, debajo del contenido */
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 1;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2; /* Por encima de todo lo demás */
+    z-index: 2;
     text-align: center;
     max-width: 800px;
     padding: 0 20px;
     margin: 0 auto;
-    color: #fffffc; /* Color del texto cambiado a #fffffc */
+    color: #fffffc;
 }
 
 .hero__title {
@@ -92,24 +90,18 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(to top, var(--color-background) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
     z-index: 3;
     pointer-events: none;
-    transition: height 0.1s ease-out;
+    transition: height 0.5s ease-out;
 }
 
-/* Responsive para el Hero Section */
+/* Media Queries para HeroSection */
 @media (max-width: 768px) {
-    .hero-section {
-        height: 70vh;
-    }
-
     .hero__title {
-        font-size: clamp(2rem, 8vw, 3.5rem);
+        font-size: clamp(2rem, 5vw, 3rem);
     }
-
     .hero__main-text {
         font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-        text-align: left;
     }
 }
