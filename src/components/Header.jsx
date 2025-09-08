@@ -1,14 +1,16 @@
-// Archivo: C:\universo-refugio\src\components\Header.jsx
-import React, { useState, useEffect } from 'react';
+// src/components/Header.jsx
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import isonegro from '/isonegro.svg';
 import { FaShoppingBag } from 'react-icons/fa';
+import { NAV_LINKS } from '../constants/data'; // Importamos las constantes
+import { CartContext } from '../context/CartContext'; // Importamos el contexto del carrito
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    const [itemCount, setItemCount] = useState(0);
+    const { itemCount } = useContext(CartContext); // Usamos el contexto para el contador
     const location = useLocation();
 
     const toggleMenu = () => {
@@ -34,6 +36,19 @@ const Header = () => {
         };
     }, []);
 
+    // Definimos los elementos de navegación utilizando las constantes
+    const navItemsLeft = [
+        { name: 'LifeWear', path: NAV_LINKS.lifewear },
+        { name: 'Cartas al Mar', path: NAV_LINKS.blog },
+        { name: 'Bespoke', path: NAV_LINKS.bespoke },
+    ];
+    
+    const navItemsRight = [
+        { name: 'Universo Sensorial', path: NAV_LINKS.sensoryUniverse },
+        { name: 'Programa de Bienestar', path: NAV_LINKS.wellnessProgram },
+        { name: 'Contacto', path: NAV_LINKS.contact },
+    ];
+
     return (
         <header className={`main-header ${isOpen ? 'open' : ''} ${isScrolled ? 'scrolled' : ''}`}>
             <button
@@ -50,9 +65,17 @@ const Header = () => {
 
             <nav className="header__nav" id="main-navigation">
                 <ul className="header__nav-list header__nav-list--left">
-                    <li><Link to="/lifewear" className={`header__nav-link ${location.pathname === '/lifewear' ? 'active' : ''}`} onClick={closeMenu}>LifeWear</Link></li>
-                    <li><Link to="/cartas-al-mar" className={`header__nav-link ${location.pathname === '/cartas-al-mar' ? 'active' : ''}`} onClick={closeMenu}>Cartas al Mar</Link></li>
-                    <li><Link to="/disenar-tu-refugio" className={`header__nav-link ${location.pathname === '/disenar-tu-refugio' ? 'active' : ''}`} onClick={closeMenu}>Bespoke</Link></li>
+                    {navItemsLeft.map((item, index) => (
+                        <li key={index}>
+                            <Link 
+                                to={item.path} 
+                                className={`header__nav-link ${location.pathname === item.path ? 'active' : ''}`} 
+                                onClick={closeMenu}
+                            >
+                                {item.name}
+                            </Link>
+                        </li>
+                    ))}
                 </ul>
                 <Link to="/" className="header__logo-container" onClick={closeMenu}>
                     <div className="header__logo-circle">
@@ -60,9 +83,17 @@ const Header = () => {
                     </div>
                 </Link>
                 <ul className="header__nav-list header__nav-list--right">
-                    <li><Link to="/universo-sensorial" className={`header__nav-link ${location.pathname === '/universo-sensorial' ? 'active' : ''}`} onClick={closeMenu}>Universo Sensorial</Link></li>
-                    <li><Link to="/programa-de-bienestar" className={`header__nav-link ${location.pathname === '/programa-de-bienestar' ? 'active' : ''}`} onClick={closeMenu}>Programa de Bienestar</Link></li>
-                    <li><Link to="/contacto" className={`header__nav-link ${location.pathname === '/contacto' ? 'active' : ''}`} onClick={closeMenu}>Contacto</Link></li>
+                    {navItemsRight.map((item, index) => (
+                        <li key={index}>
+                            <Link 
+                                to={item.path} 
+                                className={`header__nav-link ${location.pathname === item.path ? 'active' : ''}`} 
+                                onClick={closeMenu}
+                            >
+                                {item.name}
+                            </Link>
+                        </li>
+                    ))}
                     <li className="header__cart-icon">
                         <Link to="/cart" className="header__nav-link" onClick={closeMenu} aria-label="Bolsa de compras">
                             <FaShoppingBag size={18} />
