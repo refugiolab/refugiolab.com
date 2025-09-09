@@ -16,6 +16,7 @@
     opacity: 1;
 }
 
+/* El contenedor picture ahora se usa para las fuentes de imagen */
 .hero-background-picture {
     position: absolute;
     top: 0;
@@ -23,13 +24,14 @@
     width: 100%;
     height: 100%;
     z-index: 0;
-    object-fit: cover;
 }
 
+/* La imagen de fondo ahora cubre el contenedor por completo */
 .hero-background-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Asegura que la imagen no se distorsione y cubra todo el espacio */
+    object-position: center; /* Centra la imagen */
 }
 
 .hero__overlay {
@@ -83,17 +85,6 @@
 .hero__main-text.is-in-view {
     opacity: 1;
     transform: translateY(0);
-}
-
-.hero-fade-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    z-index: 3;
-    pointer-events: none;
-    transition: height 0.5s ease-out;
 }
 
 /* Media Queries para HeroSection */

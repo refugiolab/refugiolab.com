@@ -1,5 +1,6 @@
 /* Estilos para la entrada inmersiva */
-.entrada-inmersiva {
+/* Estilos para la entrada inmersiva */
+.immersive-intro-page {
   position: relative;
   height: 100vh;
   width: 100%;
@@ -33,33 +34,32 @@
   z-index: 2;
 }
 
+/* Contenedor principal que centra el contenido */
 .contenido-central {
   position: relative;
   text-align: center;
   z-index: 3;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* Centra el nuevo 'content-group' verticalmente */
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
   width: 100%;
-  max-width: 100%;
+  height: 100%; /* Ocupa la altura completa para un centrado efectivo */
   /* Texto claro para contrastar */
   color: var(--color-fondo);
-  height: 100%; /* Asegura que ocupe toda la altura para la distribución */
 }
 
-/* Nuevo contenedor para el grupo de elementos a centrar */
+/* Contenedor para el grupo de elementos a centrar (logo, texto, botón) */
 .content-group {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem min(1rem, 5vw); /* Padding movido aquí para el grupo */
+  padding: 2rem min(1rem, 5vw);
   width: 100%;
-  box-sizing: border-box; /* Asegura que el padding no exceda el width */
-  opacity: 0; /* ¡CAMBIO AQUÍ! Inicialmente invisible */
-  transform: translateY(20px); /* ¡CAMBIO AQUÍ! Ligeramente abajo */
-  animation: fadeSlideUp 1.5s ease-out forwards; /* ¡CAMBIO AQUÍ! Animación de entrada */
-  animation-delay: 0.5s; /* Retraso para que el video de fondo cargue */
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 1.5s ease-out forwards;
+  animation-delay: 0.5s;
 }
 
 @keyframes fadeSlideUp {
@@ -74,11 +74,11 @@
 }
 
 .logo-refugio {
-  max-width: 300px; /* ¡CAMBIO AQUÍ! Un poco más grande aún */
-  width: 65%; /* Ajuste para responsividad */
+  max-width: 300px;
+  width: 65%;
   height: auto;
   opacity: 0.7;
-  margin-top: 3rem; /* Se mantiene para la posición inicial dentro del grupo */
+  margin-top: 3rem;
   transition: all 0.8s ease-in-out;
 }
 
@@ -161,8 +161,8 @@
 
 @media (max-width: 768px) {
   .logo-refugio {
-    max-width: 220px; /* ¡CAMBIO AQUÍ! Ajuste para móviles */
-    width: 75%; /* Ajuste para móviles */
+    max-width: 220px;
+    width: 75%;
     margin-top: 2rem;
   }
 
