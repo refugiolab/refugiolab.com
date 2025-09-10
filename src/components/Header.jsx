@@ -1,4 +1,4 @@
-// src/components/Header.jsx
+// Archivo: src/components/Header.jsx
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
@@ -103,8 +103,12 @@ const Header = () => {
             {/* Contenedor Central - Logo con etiqueta <picture> */}
             <Link to="/" className="header__logo-container" onClick={closeMenu}>
                 <picture>
-                    <source srcSet="/isoblanco.webp" type="image/webp" />
-                    <img src="/isoblanco.svg" alt="Refugio Logo" className="header__logo logo-blanco" />
+                    <source srcSet={isScrolled ? '/icons/isonegro.webp' : '/icons/isoblanco.webp'} type="image/webp" />
+                    <img
+                        src={isScrolled ? '/icons/isonegro.svg' : '/icons/isoblanco.svg'}
+                        alt="Refugio Logo"
+                        className="header__logo logo-blanco"
+                    />
                 </picture>
             </Link>
 
@@ -137,7 +141,7 @@ const Header = () => {
                                     >
                                         <div className={`header__nav-link ${location.pathname === item.path ? 'active' : ''}`} >
                                             {item.name}
-                                            <span className={`submenu-toggle-arrow ${openSubMenu === item.name ? 'open' : ''}`}>&#8744;</span>
+                                            <span className={`submenu-toggle-arrow ${openSubMenu === item.name ? 'open' : ''}`}>∨</span>
                                         </div>
                                     </div>
                                 ) : (

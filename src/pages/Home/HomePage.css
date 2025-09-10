@@ -1,4 +1,4 @@
-// Archivo: C:\universo-refugio\src\pages\Home\HomePage.css
+/* src/pages\Home\HomePage.css
 /* Estilos del contenedor principal de la página Home */
 .home-container {
     width: 100%;
@@ -227,21 +227,6 @@
     transform: translateY(-2px);
 }
 
-/* Nueva sección de imagen de bloques */
-.separador-bloques-section {
-    width: 100%;
-    padding: 0;
-    margin: 4rem 0; /* Espacio arriba y abajo para separar los bloques */
-    overflow: hidden;
-}
-
-.separador-bloques-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-}
-
 /* Estilos de ejemplo para Pre-footer y Footer (pueden ir en sus propios CSS) */
 .pre-footer-section, .main-footer {
     padding: 4rem 2rem;
@@ -369,3 +354,5 @@
         white-space: normal;
     }
 }
+
+/* Se eliminan los estilos de .separador-bloques-section y .separador-bloques-image */

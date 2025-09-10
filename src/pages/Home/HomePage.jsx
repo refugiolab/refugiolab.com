@@ -1,4 +1,3 @@
-// src/pages/Home/HomePage.jsx
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
@@ -43,12 +42,7 @@ const HomePage = () => {
                 </div>
             </section>
             
-            <section className="separador-bloques-section">
-                <picture>
-                    <source srcSet={IMAGE_PATHS.separadorBloques.webp} type="image/webp" />
-                    <img src={IMAGE_PATHS.separadorBloques.png} alt="Imagen que separa secciones" className="separador-bloques-image" />
-                </picture>
-            </section>
+            {/* Se elimina la sección del separador de bloques */}
             
             <Newsletter />
             <PreFooter />

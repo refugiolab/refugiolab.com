@@ -1,5 +1,4 @@
 /* src/components/Header.css */
-
 .main-header {
     position: fixed;
     top: 0;
@@ -51,9 +50,10 @@
     width: auto;
 }
 
-/* Clase para el logo blanco con tamaño reducido en un 30% */
+/* Clase para el logo blanco con tamaño reducido */
 .logo-blanco {
-    height: 189px;
+    /* Altura reducida en un 50% de la última altura (132.3px * 0.50 = 66.15px) */
+    height: 66.15px;
     width: auto;
 }
 
@@ -101,10 +101,10 @@
 
 /* Colores de los íconos y el menú toggle en el estado "scroll" */
 .main-header.scrolled .header__icon-bar {
-    background-color: var(--color-fondo);
+    background-color: #444653; /* Se cambia a gris */
 }
 .main-header.scrolled .header__icon-button {
-    color: var(--color-fondo);
+    color: #444653; /* Se cambia a gris */
 }
 
 /* Animación del ícono de menú a la "X" */
@@ -156,7 +156,7 @@
 .header__nav-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 13.3rem 0 0;
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
@@ -173,7 +173,7 @@
     text-decoration: none;
     text-transform: capitalize;
     font-family: var(--fuente-principal);
-    font-size: clamp(1.4rem, 3.5vw, 2.5rem);
+    font-size: clamp(1.19rem, 2.975vw, 2.125rem);
     font-weight: 500;
     letter-spacing: 1px;
     color: #444653;
@@ -223,13 +223,14 @@
 }
 
 .submenu-list.open {
-    max-height: 200px;
+    max-height: 300px; /* Se aumenta para que "Archivo" no se corte */
+    margin-bottom: 0; /* Se elimina el margen extra */
 }
 
 .header__nav-sub-link {
     text-decoration: none;
     font-family: 'Commissioner', sans-serif;
-    font-size: clamp(1rem, 2.5vw, 1.8rem);
+    font-size: clamp(0.85rem, 2.125vw, 1.53rem);
     font-weight: 400;
     color: #444653;
     display: block;

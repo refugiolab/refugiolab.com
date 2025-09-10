@@ -1,9 +1,10 @@
-// Archivo: src/pages/Home/sections/Newsletter.jsx
+// src/pages/Home/sections/Newsletter.jsx
 import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth, signInWithCustomToken } from 'firebase/auth';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import './Newsletter.css';
 
 // Estas variables globales son proporcionadas por el entorno.
 const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
@@ -58,9 +59,8 @@ const Newsletter = () => {
     }
 
     try {
-      // Usar la ruta correcta que se ve en la consola de Firebase.
       const docRef = await addDoc(collection(db, `newsletter_subscribers`), {
-        name: name,
+        name: name || 'No especificado',
         email: email,
         timestamp: new Date()
       });
@@ -78,145 +78,50 @@ const Newsletter = () => {
   };
 
   return (
-    <>
-      <style>{`
-        .newsletter-section {
-          position: relative;
-          min-height: 50vh;
-          overflow: hidden;
-          padding: 8rem 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-        }
-
-        .newsletter-background {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-image: url('https://placehold.co/1920x1080/4F7449/ffffff?text=Newsletter+Background');
-          background-size: cover;
-          background-position: center;
-          opacity: 0.8;
-          z-index: 1;
-        }
-
-        .newsletter-content {
-          position: relative;
-          z-index: 2;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 2rem;
-          color: white;
-          padding: 2rem;
-          border-radius: 12px;
-          background: rgba(0, 0, 0, 0.4);
-        }
-
-        .newsletter__text-container {
-          max-width: 600px;
-          margin-bottom: 1.5rem;
-        }
-
-        .newsletter__text-container h3 {
-          font-family: 'NewYork', serif;
-          font-size: 2.5rem;
-          font-weight: 700;
-          margin-bottom: 1rem;
-        }
-
-        .newsletter__text {
-          font-family: 'Comissioner', sans-serif;
-          font-size: 1.1rem;
-          line-height: 1.6;
-        }
-
-        .newsletter__form {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 1rem;
-          width: 100%;
-          max-width: 400px;
-        }
-
-        .newsletter__form input {
-          width: 100%;
-          padding: 0.75rem;
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          font-size: 1rem;
-          background-color: rgba(255, 255, 255, 0.9);
-          color: #333;
-        }
-
-        .newsletter__boton {
-          background-color: #4F7449;
-          color: white;
-          padding: 0.75rem 1.5rem;
-          border: none;
-          border-radius: 8px;
-          font-size: 1rem;
-          font-weight: bold;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-        }
-
-        .newsletter__boton:hover {
-          background-color: #3D5A3A;
-        }
-
-        .newsletter__submission-message {
-          margin-top: 1rem;
-          font-weight: bold;
-        }
-      `}</style>
-      <section
-        className={`newsletter-section ${inView ? 'is-in-view' : ''}`}
-        ref={ref}
-      >
-        <div className="newsletter-background"></div>
-        <div className="newsletter-content">
-          <div className="newsletter__text-container">
-            <h3>Sumate a nuestra comunidad</h3>
-            <p className="newsletter__text">
-              Nos gusta llegar solo cuando tenemos algo con alma para
-              compartir. Recibirás noticias, pre-lanzamientos, próximas
-              experiencias y propuestas para habitar el mundo con más
-              sentido.
-            </p>
-          </div>
-          <form className="newsletter__form" onSubmit={handleSubmit}>
+    <section ref={ref} className={`newsletter-section ${inView ? 'is-in-view' : ''}`}>
+      <div className="newsletter-container">
+        <div className="newsletter-text-content">
+          <h3 className="newsletter-heading">Sumate a nuestra comunidad</h3>
+          <p className="newsletter-description">
+            Nos gusta llegar solo cuando tenemos algo con alma para compartir.
+          </p>
+          <p className="newsletter-description">
+            Recibirás noticias, pre-lanzamientos, próximas experiencias y propuestas para habitar el mundo con más sentido.
+          </p>
+        </div>
+        <form className="newsletter-form" onSubmit={handleSubmit}>
+          <div className="newsletter-input-group">
             <input
               type="text"
               placeholder="Nombre"
               aria-label="Nombre"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              className="newsletter-input"
               required
             />
             <input
               type="email"
-              placeholder="Email"
+              placeholder="Correo electrónico"
               aria-label="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className="newsletter-input"
               required
             />
-            <button type="submit" className="newsletter__boton">
-              Suscribirme
-            </button>
-          </form>
+          </div>
+          <button type="submit" className="subscribe-button" aria-label="Suscribirse">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14.43 5.92999L20.5 12L14.43 18.07" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M3.5 12H20.33" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
           {message && (
-            <p className="newsletter__submission-message">{message}</p>
+            <p className="newsletter-message">{message}</p>
           )}
-        </div>
-      </section>
-    </>
+        </form>
+      </div>
+    </section>
   );
 };
 
