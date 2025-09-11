@@ -1,129 +1,121 @@
-// Archivo: C:\universo-refugio\src\components\Footer.css
+/* src/components\Footer.css */
 .main-footer {
-  /* Se usan los colores base */
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
-  padding: 4rem min(2rem, 5vw) 2rem;
-  /* Borde sutil con el color de texto */
-  border-top: 1px solid rgba(68, 70, 83, 0.1);
-  box-sizing: border-box;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    padding: 4rem min(2rem, 5vw) 2rem;
+    border-top: 1px solid rgba(68, 70, 83, 0.1);
+    box-sizing: border-box;
 }
 
 .footer-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto 2rem;
-  text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    text-align: center;
 }
 
 .footer__logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer__logo img {
-  width: 156px; /* Aumentado en un 30% (120px * 1.3 = 156px) */
-  margin-bottom: 1rem;
+    width: 156px;
+    margin-bottom: 1rem;
 }
 
 .footer__logo p {
-  font-size: 0.9rem;
-  font-style: italic;
-  /* Se usa el color de texto con opacidad para diferenciarlo */
-  color: var(--color-texto);
-  opacity: 0.8;
-  font-family: var(--fuente-secundaria);
-  margin: 0;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--color-texto);
+    opacity: 0.8;
+    font-family: var(--fuente-secundaria);
+    margin: 0;
 }
 
 .footer__links h4,
 .footer__newsletter-section h4 {
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--color-texto);
-  font-family: var(--fuente-principal);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-texto);
+    font-family: var(--fuente-principal);
 }
 
 .footer__links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .footer__links li {
-  margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .footer__links a {
-  /* Se usa el color de texto con opacidad */
-  color: var(--color-texto);
-  opacity: 0.8;
-  text-decoration: none;
-  font-family: var(--fuente-secundaria);
-  font-size: 0.9rem;
-  font-weight: 300;
-  transition: opacity 0.3s ease;
-  /* Se eliminó la línea `text-transform: lowercase;` */
+    color: var(--color-texto);
+    opacity: 0.8;
+    text-decoration: none;
+    font-family: var(--fuente-secundaria);
+    font-size: 0.9rem;
+    font-weight: 300;
+    transition: opacity 0.3s ease;
 }
 
 .footer__links a:hover {
-  /* Al pasar el mouse, la opacidad se va a 1 */
-  opacity: 1;
+    opacity: 1;
 }
 
 .footer__bottom {
-  text-align: center;
-  margin-top: 2rem;
-  padding-top: 1rem;
-  /* Borde sutil */
-  border-top: 1px solid rgba(68, 70, 83, 0.05);
-  box-sizing: border-box;
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(68, 70, 83, 0.05);
+    box-sizing: border-box;
 }
 
 .footer__bottom p {
-  font-size: 0.8rem;
-  /* Texto con opacidad */
-  color: var(--color-texto);
-  opacity: 0.8;
-  font-family: var(--fuente-secundaria);
+    font-size: 0.8rem;
+    color: var(--color-texto);
+    opacity: 0.8;
+    font-family: var(--fuente-secundaria);
 }
 
 @media (max-width: 768px) {
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 1.5rem;
-  }
-  
-  .footer__links,
-  .footer__newsletter-section {
-    margin-bottom: 0;
-    padding: 0 1rem;
-  }
-  
-  .footer__links ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .footer__links,
+    .footer__newsletter-section {
+        margin-bottom: 0;
+        padding: 0 1rem;
+    }
+    
+    .footer__links ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
 
-  .footer__links h4,
-  .footer__newsletter-section h4 {
-    font-size: 1.1rem;
-  }
+    .footer__links h4,
+    .footer__newsletter-section h4 {
+        font-size: 1.1rem;
+    }
 }
 
 @media (min-width: 768px) {
-  .footer-container {
-    text-align: left;
-  }
+    .footer-container {
+        text-align: left;
+    }
 }

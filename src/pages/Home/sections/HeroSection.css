@@ -8,13 +8,16 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    opacity: 0;
-    transition: opacity 1.5s ease-out;
+    /* La opacidad se controlará por JS, así que puedes eliminar esta línea */
+    /* opacity: 0; */ 
+    /* La transición de opacidad también la manejará el JS para mayor fluidez */
+    /* transition: opacity 1.5s ease-out; */
 }
 
-.hero-section.is-in-view {
+/* Puedes eliminar esta regla, ya no es necesaria */
+/* .hero-section.is-in-view {
     opacity: 1;
-}
+} */
 
 /* El contenedor picture ahora se usa para las fuentes de imagen */
 .hero-background-picture {

@@ -13,18 +13,17 @@
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* La clase is-in-view ahora se maneja globalmente */
-/* .pre-footer-section.is-in-view {
+.pre-footer-section.is-in-view {
     opacity: 1;
     transform: translateY(0);
-} */
+}
 
 .prefooter__text {
-    font-family: var(--fuente-secundaria);
+    font-family: var(--font-body);
     font-size: clamp(1.2rem, 2.5vw, 1.8rem);
     line-height: 1.5;
     max-width: 700px;
-    color: var(--color-texto);
+    color: #fffffc; /* El color se mantiene en blanco (#fffffc) */
     text-align: left;
     margin: 0 auto;
 }

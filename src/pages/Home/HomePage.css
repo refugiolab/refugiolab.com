@@ -1,4 +1,4 @@
-/* src/pages\Home\HomePage.css
+/* src/pages/Home/HomePage.css */
 /* Estilos del contenedor principal de la página Home */
 .home-container {
     width: 100%;
@@ -36,7 +36,7 @@
     background-image: url('/images/homeprefooter.png');
     background-image: -webkit-image-set(
         url('/images/homeprefooter.webp') 1x,
-        url('/images/homeprefooter.png') 1x
+        url('/images/homepreprefooter.png') 1x
     );
     background-image: image-set(
         url('/images/homeprefooter.webp') 1x,
@@ -48,11 +48,6 @@
 .home__logo-gris {
     height: 52px;
     width: auto;
-}
-
-/* Corregir el espaciado para que la frase no se corte */
-.pilares-section {
-    margin-top: 2rem;
 }
 
 .newsletter-section {
@@ -75,131 +70,6 @@
     transform: translateY(0);
 }
 
-/* --- ESTILOS NUEVOS PARA LA SECCIÓN DE PILARES CON EL OJO Y SVG --- */
-.pilares-section {
-    position: relative;
-    padding: 6rem 2rem;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-fondo);
-    color: var(--color-texto);
-    overflow: hidden;
-}
-
-/* Contenedor principal de los conceptos y el ojo */
-.conceptos-container {
-    position: relative;
-    width: 100%;
-    max-width: 1000px;
-    height: 700px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* El ojo central (imagen) */
-.ojo-refugio {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
-    width: 300px;
-    height: 300px;
-    z-index: 2;
-    opacity: 0;
-    transition: opacity 1s ease-out 0.8s, transform 1s ease-out 0.8s;
-    cursor: pointer; /* Agrega cursor de puntero para indicar que es clickeable */
-}
-
-.pilares-section.is-in-view .ojo-refugio {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.ojo-image {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Líneas SVG orgánicas y estéticas */
-.conceptos-lines {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 1s ease-out 1.2s;
-}
-
-.pilares-section.is-in-view .conceptos-lines {
-    opacity: 1;
-}
-
-/* Estilo para los bloques de texto de los conceptos */
-.bloque-texto {
-    position: absolute;
-    max-width: 250px;
-    font-size: 1rem;
-    line-height: 1.6;
-    text-align: justify;
-    z-index: 3;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.pilares-section.is-in-view .bloque-texto {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Posicionamiento específico de cada bloque de texto */
-.bloque-texto-1 {
-    top: -8%;
-    left: 41%; /* MOVIDO 2 CM A LA IZQUIERDA */
-    transform: translateX(-50%);
-    transition-delay: 1.5s;
-}
-
-.bloque-texto-2 {
-    top: 26%;
-    left: -12.5%;
-    transform: translateX(0);
-    transition-delay: 1.8s;
-}
-
-.bloque-texto-3 {
-    top: 65%;
-    right: 1%;
-    transform: translateX(0);
-    transition-delay: 2.1s;
-}
-
-/* Sección del CTA */
-.cta-section {
-    margin-top: -8rem;
-    margin-left: -20.5rem; /* MOVIDO 4 CM A LA IZQUIERDA */
-    z-index: 3;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-out 2.5s, transform 1s ease-out 2.5s;
-}
-
-.pilares-section.is-in-view .cta-section {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 /* Estilo unificado para el botón CTA, basado en el de Newsletter */
 .cta-button {
     display: inline-block;
@@ -214,7 +84,6 @@
     text-transform: uppercase;
     text-decoration: none;
     
-    /* Colores iniciales y borde */
     background-color: #a07033;
     color: var(--color-white);
     border: 1px solid #a07033;
@@ -264,7 +133,7 @@
 
 .modal-title {
     font-family: var(--fuente-principal);
-    font-size: 0.8rem; /* Tamaño de fuente más pequeño */
+    font-size: 0.8rem;
     margin-bottom: 0.5rem;
     color: var(--color-texto);
     white-space: nowrap;
@@ -273,7 +142,7 @@
 
 .modal-text {
     font-family: var(--fuente-secundaria);
-    font-size: 0.6rem; /* Tamaño de fuente más pequeño */
+    font-size: 0.6rem;
     line-height: 1.6;
     margin-bottom: 0.8rem;
     color: var(--color-texto);
@@ -309,34 +178,6 @@
 
 /* Responsive para dispositivos móviles */
 @media (max-width: 768px) {
-    .pilares-section {
-        padding-top: 4rem;
-        justify-content: flex-start;
-    }
-    .conceptos-container {
-        height: auto;
-        flex-direction: column;
-    }
-    .conceptos-lines {
-        display: none;
-    }
-    .ojo-refugio {
-        position: static;
-        transform: none;
-        margin-bottom: 2rem;
-        width: 200px;
-        height: 200px;
-    }
-    .bloque-texto {
-        position: static;
-        max-width: 90%;
-        margin-bottom: 1.5rem;
-        text-align: center;
-        transition-delay: 0s !important;
-    }
-    .cta-section {
-        margin-top: 2rem;
-    }
     .cta-button {
         padding: 12px 20px;
         font-size: var(--font-size-small);
@@ -354,5 +195,3 @@
         white-space: normal;
     }
 }
-
-/* Se eliminan los estilos de .separador-bloques-section y .separador-bloques-image */
