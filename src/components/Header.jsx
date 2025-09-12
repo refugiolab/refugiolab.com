@@ -82,7 +82,7 @@ const Header = () => {
             ],
         },
         { name: 'Sobre Refugio', path: '/sobre-refugio', image: sobreRefugioMenuImage, hasSubSections: false },
-        { name: 'Cartas al Mar', path: '/cartas-al-mar', image: cartasMarMenuImage, hasSubSections: false },
+        { name: 'Cartas al Mar', image: cartasMarMenuImage, hasSubSections: false },
         { name: 'Universo Refugio', path: '/universo-sensorial', image: universoRefugioMenuImage, hasSubSections: false },
         { name: 'Programa de Bienestar', path: '/programa-de-bienestar', image: programaBienestarMenuImage, hasSubSections: false },
         { name: 'Contacto', path: '/contacto', image: contactoMenuImage, hasSubSections: false },

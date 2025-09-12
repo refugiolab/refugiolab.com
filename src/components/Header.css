@@ -327,23 +327,33 @@
 
     .mobile-nav-list {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas para una distribución equitativa */
         padding: 0 1rem; /* Ajuste del padding para mayor separación */
         margin: 0;
         list-style: none;
         align-items: center;
+        gap: 0.5rem; /* Pequeño espacio entre los íconos */
     }
 
     .mobile-nav-list li {
         text-align: center;
+        display: flex; /* Para centrar el contenido dentro de cada li */
+        justify-content: center; /* Para centrar el contenido dentro de cada li */
+        align-items: center; /* Para centrar el contenido dentro de cada li */
     }
 
-    .mobile-nav-list li:first-child {
-        justify-self: start;
+    /* Ajustes para el centrado de los grupos */
+    .mobile-nav-list li:first-child { /* Lupa */
+        justify-content: flex-start;
     }
-
-    .mobile-nav-list li:last-child {
-        justify-self: end;
+    .mobile-nav-list li:nth-child(2) { /* Bolsa */
+        justify-content: flex-end;
+    }
+    .mobile-nav-list li:nth-child(3) { /* Menú */
+        grid-column: 2 / 4; /* El menú abarca 2 columnas centrales */
+    }
+    .mobile-nav-list li:nth-child(4) { /* Login */
+        justify-content: flex-start;
     }
 
     .mobile-nav-link {
@@ -406,21 +416,9 @@
 
     .cart-item-count {
         top: -2px;
-        right: 18px;
+        right: -8px; /* Ajuste para que el contador quede pegado al ícono */
     }
     
-    .mobile-nav-list li:nth-child(2) {
-        grid-column: 2 / 3;
-        justify-self: center;
-    }
-    .mobile-nav-list li:nth-child(3) {
-        grid-column: 3 / 4;
-    }
-
-    .mobile-nav-link.cart-link {
-        grid-column: 4 / 5;
-    }
-
     /* Ocultar el ícono del menú, solo dejar el texto */
     .menu-button svg {
         display: none;
