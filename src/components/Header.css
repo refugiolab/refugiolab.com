@@ -52,7 +52,6 @@
 
 /* Clase para el logo blanco con tamaño reducido */
 .logo-blanco {
-    /* Altura reducida en un 50% de la última altura (132.3px * 0.50 = 66.15px) */
     height: 66.15px;
     width: auto;
 }
@@ -101,23 +100,23 @@
 
 /* Colores de los íconos y el menú toggle en el estado "scroll" */
 .main-header.scrolled .header__icon-bar {
-    background-color: #444653; /* Se cambia a gris */
+    background-color: #444653;
 }
 .main-header.scrolled .header__icon-button {
-    color: #444653; /* Se cambia a gris */
+    color: #444653;
 }
 
 /* Animación del ícono de menú a la "X" */
 .main-header.open .header__menu-toggle .header__icon-bar:nth-child(1) {
     transform: rotate(45deg) translate(5px, 4px);
-    background-color: #444653; /* Color de la X al abrir el menú */
+    background-color: #444653;
 }
 .main-header.open .header__menu-toggle .header__icon-bar:nth-child(2) {
     opacity: 0;
 }
 .main-header.open .header__menu-toggle .header__icon-bar:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -4px);
-    background-color: #444653; /* Color de la X al abrir el menú */
+    background-color: #444653;
 }
 
 /* Estilos para el menú de navegación (el panel que se despliega) */
@@ -223,8 +222,8 @@
 }
 
 .submenu-list.open {
-    max-height: 300px; /* Se aumenta para que "Archivo" no se corte */
-    margin-bottom: 0; /* Se elimina el margen extra */
+    max-height: 300px;
+    margin-bottom: 0;
 }
 
 .header__nav-sub-link {
@@ -322,6 +321,8 @@
         background-color: white;
         z-index: 100;
         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        padding: 0.5rem 0;
+        border-radius: 20px 20px 0 0;
     }
 
     .mobile-nav-list {
@@ -345,17 +346,56 @@
         padding: 10px 0;
         color: #444653;
         text-decoration: none;
-        font-size: 10px;
         font-family: var(--fuente-principal);
         transition: color 0.3s ease;
         position: relative;
     }
 
+    .mobile-nav-link.active {
+        color: var(--color-acento);
+    }
+    
+    .mobile-nav-link.active svg {
+        animation: pulse 0.5s ease-in-out;
+    }
+
     .mobile-nav-link:hover {
         color: #8d957e;
     }
-
+    
     .mobile-nav-link span {
+        font-size: 10px;
         margin-top: 5px;
+        font-family: 'Commissioner', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .mobile-nav-link:not(.menu-button) span {
+        display: none;
+    }
+
+    .menu-button span {
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 0;
+    }
+    
+    .cart-item-count {
+        top: -2px;
+        right: 18px;
+    }
+    
+    /* Animación de pulso */
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
     }
 }

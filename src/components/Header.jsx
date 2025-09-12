@@ -1,8 +1,8 @@
-// src/components/Header.jsx
+/* src/components/Header.jsx */
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
-import { FaShoppingBag, FaSearch, FaUser, FaHome, FaBars } from 'react-icons/fa';
+import { IoBagOutline, IoSearchOutline, IoPersonOutline, IoHomeOutline, IoMenuOutline } from "react-icons/io5";
 import { NAV_LINKS } from '../constants/data';
 import { CartContext } from '../context/CartContext';
 import { FaInstagram, FaWhatsapp, FaSpotify } from 'react-icons/fa';
@@ -13,9 +13,10 @@ import capsulasMenuImage from '/images/capsulas-menu.webp';
 import sobreRefugioMenuImage from '/images/sobre-refugio-menu.webp';
 import cartasMarMenuImage from '/images/cartas-al-mar-menu.webp';
 import universoRefugioMenuImage from '/images/universo-refugio-menu.webp';
-import programaBienestarMenuImage from '/images/programa-bienestar-menu.webp';
+import programaBienestarMenuImage from '/images/programa-bienestar-menu.webp'; // <-- Aquí está el cambio
 import contactoMenuImage from '/images/contacto-menu.webp';
 import menuDefaultImage from '/images/menu-default.webp';
+import logoNegro from '/icons/isonegro.svg';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -60,6 +61,10 @@ const Header = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
+    useEffect(() => {
+        closeMenu();
+    }, [location.pathname]);
 
     const navSections = [
         { name: 'New In', path: '/new-in', image: newInMenuImage, hasSubSections: false },
@@ -117,13 +122,13 @@ const Header = () => {
                 {/* Contenedor Derecho - Íconos de utilidad */}
                 <div className="header-right">
                     <button className="header__icon-button" aria-label="Buscador">
-                        <FaSearch size={18} />
+                        <IoSearchOutline size={18} />
                     </button>
                     <button className="header__icon-button" aria-label="Mi cuenta">
-                        <FaUser size={18} />
+                        <IoPersonOutline size={18} />
                     </button>
                     <Link to="/cart" className="header__icon-button header__cart-icon" aria-label="Bolsa de compras" onClick={closeMenu}>
-                        <FaShoppingBag size={18} />
+                        <IoBagOutline size={18} />
                         {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
                     </Link>
                 </div>
@@ -197,29 +202,29 @@ const Header = () => {
             <nav className="mobile-nav-container">
                 <ul className="mobile-nav-list">
                     <li>
-                        <Link to="/" className="mobile-nav-link">
-                            <FaHome size={22} />
-                            <span>Inicio</span>
+                        <Link to="/" className={`mobile-nav-link ${location.pathname === '/' ? 'active' : ''}`}>
+                            <IoHomeOutline size={22} />
                         </Link>
                     </li>
                     <li>
-                        <button onClick={toggleMenu} className="mobile-nav-link" aria-label="Abrir menú de navegación">
-                            <FaBars size={22} />
+                        <button
+                            onClick={toggleMenu}
+                            className={`mobile-nav-link menu-button ${isOpen ? 'active' : ''}`}
+                            aria-label="Abrir menú de navegación">
+                            <IoMenuOutline size={22} />
                             <span>Menú</span>
                         </button>
                     </li>
                     <li>
-                        <Link to="/cart" className="mobile-nav-link">
-                            <FaShoppingBag size={22} />
-                            <span>Bolsa</span>
+                        <Link to="/cart" className={`mobile-nav-link ${location.pathname === '/cart' ? 'active' : ''}`}>
+                            <IoBagOutline size={22} />
                             {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
                         </Link>
                     </li>
                     <li>
-                        <button className="mobile-nav-link">
-                            <FaUser size={22} />
-                            <span>Cuenta</span>
-                        </button>
+                        <Link to="/cuenta" className={`mobile-nav-link ${location.pathname === '/cuenta' ? 'active' : ''}`}>
+                            <IoPersonOutline size={22} />
+                        </Link>
                     </li>
                 </ul>
             </nav>
