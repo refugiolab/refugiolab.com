@@ -2,11 +2,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
-import { IoBagOutline, IoSearchOutline, IoPersonOutline, IoHomeOutline, IoMenuOutline } from "react-icons/io5";
+import { IoBagOutline, IoSearchOutline, IoPersonOutline, IoMenuOutline } from "react-icons/io5";
 import { NAV_LINKS } from '../constants/data';
 import { CartContext } from '../context/CartContext';
 import { FaInstagram, FaWhatsapp, FaSpotify } from 'react-icons/fa';
-import { FaHeart, FaUserCircle } from 'react-icons/fa'; // Iconos de ejemplo para reemplazar la casita
 
 // Importa tus imágenes para el menú
 import newInMenuImage from '/images/new-in-menu.webp';
