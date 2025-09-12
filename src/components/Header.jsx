@@ -1,8 +1,8 @@
-// Archivo: src/components/Header.jsx
+// src/components/Header.jsx
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
-import { FaShoppingBag, FaSearch, FaUser } from 'react-icons/fa';
+import { FaShoppingBag, FaSearch, FaUser, FaHome, FaBars } from 'react-icons/fa';
 import { NAV_LINKS } from '../constants/data';
 import { CartContext } from '../context/CartContext';
 import { FaInstagram, FaWhatsapp, FaSpotify } from 'react-icons/fa';
@@ -37,7 +37,7 @@ const Header = () => {
         setIsOpen(false);
         setOpenSubMenu(null);
     };
-    
+
     const toggleSubMenu = (sectionName) => {
         if (openSubMenu === sectionName) {
             setOpenSubMenu(null);
@@ -84,112 +84,146 @@ const Header = () => {
     ];
 
     return (
-        <header className={`main-header ${isOpen ? 'open' : ''} ${isScrolled ? 'scrolled' : ''}`}>
-            {/* Contenedor Izquierdo - Botón de menú */}
-            <div className="header-left">
-                <button
-                    className="header__menu-toggle"
-                    onClick={toggleMenu}
-                    aria-expanded={isOpen}
-                    aria-controls="main-navigation"
-                    aria-label="Abrir o cerrar menú de navegación"
-                >
-                    <span className="header__icon-bar"></span>
-                    <span className="header__icon-bar"></span>
-                    <span className="header__icon-bar"></span>
-                </button>
-            </div>
+        <>
+            {/* Header de Escritorio */}
+            <header className={`main-header ${isOpen ? 'open' : ''} ${isScrolled ? 'scrolled' : ''}`}>
+                {/* Contenedor Izquierdo - Botón de menú */}
+                <div className="header-left">
+                    <button
+                        className="header__menu-toggle"
+                        onClick={toggleMenu}
+                        aria-expanded={isOpen}
+                        aria-controls="main-navigation"
+                        aria-label="Abrir o cerrar menú de navegación"
+                    >
+                        <span className="header__icon-bar"></span>
+                        <span className="header__icon-bar"></span>
+                        <span className="header__icon-bar"></span>
+                    </button>
+                </div>
 
-            {/* Contenedor Central - Logo con etiqueta <picture> */}
-            <Link to="/" className="header__logo-container" onClick={closeMenu}>
-                <picture>
-                    <source srcSet={isScrolled ? '/icons/isonegro.webp' : '/icons/isoblanco.webp'} type="image/webp" />
-                    <img
-                        src={isScrolled ? '/icons/isonegro.svg' : '/icons/isoblanco.svg'}
-                        alt="Refugio Logo"
-                        className="header__logo logo-blanco"
-                    />
-                </picture>
-            </Link>
-
-            {/* Contenedor Derecho - Íconos de utilidad */}
-            <div className="header-right">
-                <button className="header__icon-button" aria-label="Buscador">
-                    <FaSearch size={18} />
-                </button>
-                <button className="header__icon-button" aria-label="Mi cuenta">
-                    <FaUser size={18} />
-                </button>
-                <Link to="/cart" className="header__icon-button header__cart-icon" aria-label="Bolsa de compras" onClick={closeMenu}>
-                    <FaShoppingBag size={18} />
-                    {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
+                {/* Contenedor Central - Logo con etiqueta <picture> */}
+                <Link to="/" className="header__logo-container" onClick={closeMenu}>
+                    <picture>
+                        <source srcSet={isScrolled ? '/icons/isonegro.webp' : '/icons/isoblanco.webp'} type="image/webp" />
+                        <img
+                            src={isScrolled ? '/icons/isonegro.svg' : '/icons/isoblanco.svg'}
+                            alt="Refugio Logo"
+                            className="header__logo logo-blanco"
+                        />
+                    </picture>
                 </Link>
-            </div>
 
-            {/* Menú de navegación (oculto por defecto) */}
-            <nav className={`header__nav ${isOpen ? 'open' : ''}`} id="main-navigation">
-                <div className="header__nav-content">
-                    <ul className="header__nav-list">
-                        {navSections.map((item, index) => (
-                            <li key={index}>
-                                {item.hasSubSections ? (
-                                    <div
-                                        className="header__nav-link-container"
-                                        onMouseEnter={() => item.image && setActiveMenuImage(item.image)}
-                                        onMouseLeave={() => item.image && setActiveMenuImage(menuDefaultImage)}
-                                        onClick={() => toggleSubMenu(item.name)}
-                                    >
-                                        <div className={`header__nav-link ${location.pathname === item.path ? 'active' : ''}`} >
-                                            {item.name}
-                                            <span className={`submenu-toggle-arrow ${openSubMenu === item.name ? 'open' : ''}`}>∨</span>
+                {/* Contenedor Derecho - Íconos de utilidad */}
+                <div className="header-right">
+                    <button className="header__icon-button" aria-label="Buscador">
+                        <FaSearch size={18} />
+                    </button>
+                    <button className="header__icon-button" aria-label="Mi cuenta">
+                        <FaUser size={18} />
+                    </button>
+                    <Link to="/cart" className="header__icon-button header__cart-icon" aria-label="Bolsa de compras" onClick={closeMenu}>
+                        <FaShoppingBag size={18} />
+                        {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
+                    </Link>
+                </div>
+
+                {/* Menú de navegación (oculto por defecto) */}
+                <nav className={`header__nav ${isOpen ? 'open' : ''}`} id="main-navigation">
+                    <div className="header__nav-content">
+                        <ul className="header__nav-list">
+                            {navSections.map((item, index) => (
+                                <li key={index}>
+                                    {item.hasSubSections ? (
+                                        <div
+                                            className="header__nav-link-container"
+                                            onMouseEnter={() => item.image && setActiveMenuImage(item.image)}
+                                            onMouseLeave={() => item.image && setActiveMenuImage(menuDefaultImage)}
+                                            onClick={() => toggleSubMenu(item.name)}
+                                        >
+                                            <div className={`header__nav-link ${location.pathname === item.path ? 'active' : ''}`} >
+                                                {item.name}
+                                                <span className={`submenu-toggle-arrow ${openSubMenu === item.name ? 'open' : ''}`}>∨</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                ) : (
-                                    <Link
-                                        to={item.path}
-                                        className={`header__nav-link ${location.pathname === item.path ? 'active' : ''}`}
-                                        onClick={closeMenu}
-                                        onMouseEnter={() => item.image && setActiveMenuImage(item.image)}
-                                        onMouseLeave={() => item.image && setActiveMenuImage(menuDefaultImage)}
-                                    >
-                                        {item.name}
-                                    </Link>
-                                )}
-                                {item.hasSubSections && (
-                                    <ul className={`submenu-list ${openSubMenu === item.name ? 'open' : ''}`}>
-                                        {item.subSections.map((subItem, subIndex) => (
-                                            <li key={subIndex}>
-                                                <Link
-                                                    to={subItem.path}
-                                                    className={`header__nav-sub-link ${location.pathname === subItem.path ? 'active' : ''}`}
-                                                    onClick={closeMenu}
-                                                >
-                                                    {subItem.name}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-                            </li>
-                        ))}
-                    </ul>
-                    <div className="social-media-icons">
-                        <a href="https://www.instagram.com/refugio_________?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                            <FaInstagram size={24} />
-                        </a>
-                        <a href="https://wa.me/message/6ZMNWYQBIN5HA1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                            <FaWhatsapp size={24} />
-                        </a>
-                        <a href="https://open.spotify.com/artist/tu-artista-id" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
-                            <FaSpotify size={24} />
-                        </a>
+                                    ) : (
+                                        <Link
+                                            to={item.path}
+                                            className={`header__nav-link ${location.pathname === item.path ? 'active' : ''}`}
+                                            onClick={closeMenu}
+                                            onMouseEnter={() => item.image && setActiveMenuImage(item.image)}
+                                            onMouseLeave={() => item.image && setActiveMenuImage(menuDefaultImage)}
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    )}
+                                    {item.hasSubSections && (
+                                        <ul className={`submenu-list ${openSubMenu === item.name ? 'open' : ''}`}>
+                                            {item.subSections.map((subItem, subIndex) => (
+                                                <li key={subIndex}>
+                                                    <Link
+                                                        to={subItem.path}
+                                                        className={`header__nav-sub-link ${location.pathname === subItem.path ? 'active' : ''}`}
+                                                        onClick={closeMenu}
+                                                    >
+                                                        {subItem.name}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                        <div className="social-media-icons">
+                            <a href="https://www.instagram.com/refugio_________?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <FaInstagram size={24} />
+                            </a>
+                            <a href="https://wa.me/message/6ZMNWYQBIN5HA1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                                <FaWhatsapp size={24} />
+                            </a>
+                            <a href="https://open.spotify.com/artist/tu-artista-id" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+                                <FaSpotify size={24} />
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div className="header__nav-image-container">
-                    <img src={activeMenuImage} alt="Imagen de sección" className="header__nav-image" />
-                </div>
+                    <div className="header__nav-image-container">
+                        <img src={activeMenuImage} alt="Imagen de sección" className="header__nav-image" />
+                    </div>
+                </nav>
+            </header>
+
+            {/* Menú de Navegación Móvil (Footer Fijo) */}
+            <nav className="mobile-nav-container">
+                <ul className="mobile-nav-list">
+                    <li>
+                        <Link to="/" className="mobile-nav-link">
+                            <FaHome size={22} />
+                            <span>Inicio</span>
+                        </Link>
+                    </li>
+                    <li>
+                        <button onClick={toggleMenu} className="mobile-nav-link" aria-label="Abrir menú de navegación">
+                            <FaBars size={22} />
+                            <span>Menú</span>
+                        </button>
+                    </li>
+                    <li>
+                        <Link to="/cart" className="mobile-nav-link">
+                            <FaShoppingBag size={22} />
+                            <span>Bolsa</span>
+                            {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
+                        </Link>
+                    </li>
+                    <li>
+                        <button className="mobile-nav-link">
+                            <FaUser size={22} />
+                            <span>Cuenta</span>
+                        </button>
+                    </li>
+                </ul>
             </nav>
-        </header>
+        </>
     );
 };
 

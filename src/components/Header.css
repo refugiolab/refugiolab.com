@@ -299,3 +299,63 @@
 .social-media-icons a:hover {
     color: #444653;
 }
+
+/* Ocultar el menú móvil por defecto */
+.mobile-nav-container {
+    display: none;
+}
+
+/* === Media Queries para Móviles === */
+@media (max-width: 768px) {
+    /* Ocultar el Header de escritorio en móviles */
+    .main-header {
+        display: none;
+    }
+
+    /* Mostrar y estilizar el nuevo menú móvil */
+    .mobile-nav-container {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 100;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-nav-list {
+        display: flex;
+        justify-content: space-around;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .mobile-nav-list li {
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    .mobile-nav-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+        color: #444653;
+        text-decoration: none;
+        font-size: 10px;
+        font-family: var(--fuente-principal);
+        transition: color 0.3s ease;
+        position: relative;
+    }
+
+    .mobile-nav-link:hover {
+        color: #8d957e;
+    }
+
+    .mobile-nav-link span {
+        margin-top: 5px;
+    }
+}
