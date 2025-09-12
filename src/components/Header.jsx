@@ -198,7 +198,7 @@ const Header = () => {
             </header>
 
             {/* Menú de Navegación Móvil (Footer Fijo) */}
-            <nav className="mobile-nav-container">
+            <nav className={`mobile-nav-container ${isOpen ? 'open' : ''}`}>
                 <ul className="mobile-nav-list">
                     <li>
                         <Link to="/search" className="mobile-nav-link" aria-label="Buscador">

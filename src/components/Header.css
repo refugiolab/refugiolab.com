@@ -137,10 +137,17 @@
     overflow: hidden;
 }
 
-.main-header.open .header__nav,
+/* Abrir menú en escritorio */
+.main-header.open .header__nav {
+    transform: translateX(0);
+}
+
+/* Abrir menú en móvil cuando el mobile-nav-container tiene la clase "open" */
+.mobile-nav-container.open + .main-header .header__nav,
 .mobile-nav-container.open ~ .main-header .header__nav {
     transform: translateX(0);
 }
+
 
 .header__nav-content {
     background-color: #fffffc;
