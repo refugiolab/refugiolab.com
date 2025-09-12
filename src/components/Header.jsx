@@ -207,6 +207,12 @@ const Header = () => {
                         </Link>
                     </li>
                     <li>
+                        <Link to="/cart" className={`mobile-nav-link ${location.pathname === '/cart' ? 'active' : ''}`}>
+                            <IoBagOutline size={22} />
+                            {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
+                        </Link>
+                    </li>
+                    <li>
                         <button
                             onClick={toggleMenu}
                             className={`menu-button`}
@@ -217,12 +223,6 @@ const Header = () => {
                     <li>
                         <Link to="/cuenta" className={`mobile-nav-link ${location.pathname === '/cuenta' ? 'active' : ''}`}>
                             <IoPersonOutline size={22} />
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/cart" className={`mobile-nav-link ${location.pathname === '/cart' ? 'active' : ''}`}>
-                            <IoBagOutline size={22} />
-                            {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
                         </Link>
                     </li>
                 </ul>
