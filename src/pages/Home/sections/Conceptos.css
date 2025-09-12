@@ -116,7 +116,7 @@
 }
 
 .ojo-refugio-bottom {
-    width: clamp(120px, 12vw, 180px);
+    width: clamp(144px, 14.4vw, 216px); /* Aumentado el ancho en 20% (120 * 1.2 = 144; 12 * 1.2 = 14.4; 180 * 1.2 = 216) */
     height: auto;
     display: block;
     transition: transform 0.3s ease;
@@ -233,7 +233,7 @@
     }
 
     .ojo-refugio-bottom {
-        width: 80px;
+        width: 96px; /* Aumentado en 20% (80 * 1.2 = 96) */
     }
 
     .popup-content {

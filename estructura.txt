@@ -79,6 +79,8 @@ universo-refugio/
 │   │   ├── Home/
 │   │   │   ├── HomePage.jsx
 │   │   │   └── sections/
+│   │   │       ├── Conceptos.jsx
+│   │   │       └── Conceptos.css 
 │   │   │       ├── HeroSection.css
 │   │   │       ├── HeroSection.jsx
 │   │   │       ├── Newsletter.css

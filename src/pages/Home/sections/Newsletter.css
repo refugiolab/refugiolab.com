@@ -18,17 +18,18 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding: 40px 20px 80px 20px; /* Reducido el padding-top de 80px a 40px */
+  padding: 40px 20px 20px 20px; /* Modificado: padding-bottom reducido a 20px */
   background-color: #fffffc;
   color: var(--color-text-dark);
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1s ease-out, transform 1s ease-out;
+  /* Eliminamos la línea 'transform: translateY(-20px);' que causaba la superposición */
 }
 
 .newsletter-section.is-in-view {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0); /* Se restablece a 0 para no causar superposiciones */
 }
 
 .newsletter-section::before {
