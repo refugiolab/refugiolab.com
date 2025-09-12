@@ -326,15 +326,15 @@
     }
 
     .mobile-nav-list {
-        display: flex;
-        justify-content: space-around;
+        display: grid; /* Cambiado a grid */
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
         padding: 0;
         margin: 0;
         list-style: none;
+        align-items: center;
     }
 
     .mobile-nav-list li {
-        flex-grow: 1;
         text-align: center;
     }
 
@@ -375,6 +375,19 @@
         display: none;
     }
 
+    .menu-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+        color: #444653;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: var(--fuente-principal);
+    }
+
     .menu-button span {
         font-size: 14px;
         font-weight: 500;
@@ -385,7 +398,21 @@
         top: -2px;
         right: 18px;
     }
-    
+
+    /* Posicionamiento de los iconos */
+    .mobile-nav-list li:nth-child(1) {
+        grid-column: 1 / 2;
+    }
+
+    .mobile-nav-list li:nth-child(2) {
+        grid-column: 2 / 4;
+        justify-self: center;
+    }
+
+    .mobile-nav-list li:nth-child(3) {
+        grid-column: 4 / 5;
+    }
+
     /* Animación de pulso */
     @keyframes pulse {
         0% {

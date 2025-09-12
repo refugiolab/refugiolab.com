@@ -13,7 +13,7 @@ import capsulasMenuImage from '/images/capsulas-menu.webp';
 import sobreRefugioMenuImage from '/images/sobre-refugio-menu.webp';
 import cartasMarMenuImage from '/images/cartas-al-mar-menu.webp';
 import universoRefugioMenuImage from '/images/universo-refugio-menu.webp';
-import programaBienestarMenuImage from '/images/programa-bienestar-menu.webp'; // <-- Aquí está el cambio
+import programaBienestarMenuImage from '/images/programa-bienestar-menu.webp';
 import contactoMenuImage from '/images/contacto-menu.webp';
 import menuDefaultImage from '/images/menu-default.webp';
 import logoNegro from '/icons/isonegro.svg';
@@ -209,7 +209,7 @@ const Header = () => {
                     <li>
                         <button
                             onClick={toggleMenu}
-                            className={`mobile-nav-link menu-button ${isOpen ? 'active' : ''}`}
+                            className={`mobile-nav-link menu-button`}
                             aria-label="Abrir menú de navegación">
                             <IoMenuOutline size={22} />
                             <span>Menú</span>
