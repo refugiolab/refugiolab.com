@@ -142,12 +142,6 @@
     transform: translateX(0);
 }
 
-/* Abrir menú en móvil cuando el mobile-nav-container tiene la clase "open" */
-.mobile-nav-container.open + .main-header .header__nav,
-.mobile-nav-container.open ~ .main-header .header__nav {
-    transform: translateX(0);
-}
-
 
 .header__nav-content {
     background-color: #fffffc;
@@ -414,5 +408,21 @@
         100% {
             transform: scale(1);
         }
+    }
+    
+    /* Regla para mostrar el menú de navegación en móviles cuando el menú está abierto */
+    .header__nav {
+        transform: translateX(-100%);
+    }
+
+    .mobile-nav-container.open ~ .main-header .header__nav {
+        display: block; /* Se asegura de que el menú se muestre */
+        transform: translateX(0); /* Desliza el menú para que sea visible */
+    }
+
+    /* Ajuste para que el menú de navegación se muestre correctamente */
+    .mobile-nav-container.open + .main-header .header__nav,
+    .mobile-nav-container.open ~ .main-header .header__nav {
+        transform: translateX(0);
     }
 }
