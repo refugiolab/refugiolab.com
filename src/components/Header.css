@@ -1,4 +1,3 @@
-/* src/components/Header.css */
 .main-header {
     position: fixed;
     top: 0;
@@ -138,7 +137,8 @@
     overflow: hidden;
 }
 
-.main-header.open .header__nav {
+.main-header.open .header__nav,
+.mobile-nav-container.open ~ .main-header .header__nav {
     transform: translateX(0);
 }
 
@@ -326,34 +326,17 @@
     }
 
     .mobile-nav-list {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4 columnas para una distribución equitativa */
-        padding: 0 1rem; /* Ajuste del padding para mayor separación */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
         margin: 0;
         list-style: none;
-        align-items: center;
-        gap: 0.5rem; /* Pequeño espacio entre los íconos */
     }
 
     .mobile-nav-list li {
+        flex: 1;
         text-align: center;
-        display: flex; /* Para centrar el contenido dentro de cada li */
-        justify-content: center; /* Para centrar el contenido dentro de cada li */
-        align-items: center; /* Para centrar el contenido dentro de cada li */
-    }
-
-    /* Ajustes para el centrado de los grupos */
-    .mobile-nav-list li:first-child { /* Lupa */
-        justify-content: flex-start;
-    }
-    .mobile-nav-list li:nth-child(2) { /* Bolsa */
-        justify-content: flex-end;
-    }
-    .mobile-nav-list li:nth-child(3) { /* Menú */
-        grid-column: 2 / 4; /* El menú abarca 2 columnas centrales */
-    }
-    .mobile-nav-list li:nth-child(4) { /* Login */
-        justify-content: flex-start;
     }
 
     .mobile-nav-link {
@@ -382,48 +365,37 @@
     }
 
     .mobile-nav-link span {
-        font-size: 10px;
+        font-size: 14px;
         margin-top: 5px;
         font-family: 'Commissioner', sans-serif;
         text-transform: uppercase;
         letter-spacing: 1px;
     }
 
-    .mobile-nav-link:not(.menu-button) span {
-        display: none;
-    }
-
+    /* Estilos para el botón del menú */
     .menu-button {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 10px 0;
-        color: #444653;
         background: none;
         border: none;
         cursor: pointer;
-        font-family: var(--fuente-principal);
-    }
-
-    .menu-button span {
-        font-size: 14px;
-        font-weight: 500;
-        margin-top: 0;
+        padding: 10px 0;
         color: #444653;
         font-family: 'Commissioner', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color 0.3s ease;
+    }
+    
+    .menu-button.open {
+        color: var(--color-acento);
     }
 
     .cart-item-count {
         top: -2px;
-        right: -8px; /* Ajuste para que el contador quede pegado al ícono */
+        right: 0;
     }
     
-    /* Ocultar el ícono del menú, solo dejar el texto */
-    .menu-button svg {
-        display: none;
-    }
-
     /* Animación de pulso */
     @keyframes pulse {
         0% {

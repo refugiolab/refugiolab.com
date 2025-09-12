@@ -1,4 +1,3 @@
-/* src/components/Header.jsx */
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
@@ -202,12 +201,12 @@ const Header = () => {
             <nav className="mobile-nav-container">
                 <ul className="mobile-nav-list">
                     <li>
-                        <Link to="/search" className="mobile-nav-link">
+                        <Link to="/search" className="mobile-nav-link" aria-label="Buscador">
                             <IoSearchOutline size={22} />
                         </Link>
                     </li>
                     <li>
-                        <Link to="/cart" className={`mobile-nav-link ${location.pathname === '/cart' ? 'active' : ''}`}>
+                        <Link to="/cart" className={`mobile-nav-link ${location.pathname === '/cart' ? 'active' : ''}`} aria-label="Bolsa de compras">
                             <IoBagOutline size={22} />
                             {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
                         </Link>
@@ -215,13 +214,13 @@ const Header = () => {
                     <li>
                         <button
                             onClick={toggleMenu}
-                            className={`menu-button`}
-                            aria-label="Abrir menú de navegación">
+                            className={`mobile-nav-link menu-button ${isOpen ? 'open' : ''}`}
+                            aria-label="Abrir o cerrar menú de navegación">
                             <span>Menú</span>
                         </button>
                     </li>
                     <li>
-                        <Link to="/cuenta" className={`mobile-nav-link ${location.pathname === '/cuenta' ? 'active' : ''}`}>
+                        <Link to="/cuenta" className={`mobile-nav-link ${location.pathname === '/cuenta' ? 'active' : ''}`} aria-label="Mi cuenta">
                             <IoPersonOutline size={22} />
                         </Link>
                     </li>
