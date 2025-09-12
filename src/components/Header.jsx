@@ -30,12 +30,16 @@ const Header = () => {
         if (!isOpen) {
             setActiveMenuImage(menuDefaultImage);
             setOpenSubMenu(null);
+            document.body.classList.add('menu-open');
+        } else {
+            document.body.classList.remove('menu-open');
         }
     };
 
     const closeMenu = () => {
         setIsOpen(false);
         setOpenSubMenu(null);
+        document.body.classList.remove('menu-open');
     };
 
     const toggleSubMenu = (sectionName) => {
@@ -198,7 +202,7 @@ const Header = () => {
             </header>
 
             {/* Menú de Navegación Móvil (Footer Fijo) */}
-            <nav className={`mobile-nav-container ${isOpen ? 'open' : ''}`}>
+            <nav className="mobile-nav-container">
                 <ul className="mobile-nav-list">
                     <li>
                         <Link to="/search" className="mobile-nav-link" aria-label="Buscador">

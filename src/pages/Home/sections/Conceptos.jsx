@@ -61,7 +61,7 @@ const Conceptos = () => {
                     <div className="card-content">
                         <h3>LifeWear</h3>
                         <p>Esta es nuestra selección de prendas para la vida, creadas para acompañarte en cada instante, honrando la conexión profunda entre tu cuerpo, tu entorno y tu propio ritmo. Piezas que celebran la comodidad, la fluidez y la belleza de un estilo de vida consciente y natural.</p>
-                        <a href="#vestir-accion" class="card-button">Ver cápsulas</a>
+                        <a href="#vestir-accion" className="card-button">Ver cápsulas</a>
                     </div>
                 </div>
 
@@ -73,7 +73,7 @@ const Conceptos = () => {
                     <div className="card-content">
                         <h3>Universo Sensorial</h3>
                         <p>En nuestro universo, vestir es mucho más que cubrir el cuerpo: es la forma en que nos manifestamos al mundo. Te invitamos a habitar el presente con piezas que eleven tu bienestar y conocer nuestro universo sensorial.</p>
-                        <a href="#meditar-accion" class="card-button">Explorar</a>
+                        <a href="#meditar-accion" className="card-button">Explorar</a>
                     </div>
                 </div>
 
@@ -85,7 +85,7 @@ const Conceptos = () => {
                     <div className="card-content">
                         <h3>Citas virtuales</h3>
                         <p>Contanos tu historia, un evento especial, o simplemente la visión que tenés en mente. A partir de ella, co-creamos juntas una pieza única, hecha a medida, que se alinee con tu estilo y tus valores.</p>
-                        <a href="#habitar-accion" class="card-button">Diseñar mi refugio</a>
+                        <a href="#habitar-accion" className="card-button">Diseñar mi refugio</a>
                     </div>
                 </div>
             </div>

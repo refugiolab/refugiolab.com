@@ -411,18 +411,17 @@
     }
     
     /* Regla para mostrar el menú de navegación en móviles cuando el menú está abierto */
-    .header__nav {
-        transform: translateX(-100%);
-    }
-
-    .mobile-nav-container.open ~ .main-header .header__nav {
-        display: block; /* Se asegura de que el menú se muestre */
+    body.menu-open .header__nav {
         transform: translateX(0); /* Desliza el menú para que sea visible */
     }
 
-    /* Ajuste para que el menú de navegación se muestre correctamente */
-    .mobile-nav-container.open + .main-header .header__nav,
-    .mobile-nav-container.open ~ .main-header .header__nav {
-        transform: translateX(0);
+    /* Ocultar el menú de navegación por defecto en móvil */
+    .header__nav {
+        display: block; /* Aseguramos que el menú se muestre, pero oculto */
+        transform: translateX(-100%);
+    }
+
+    body.menu-open {
+        overflow: hidden; /* Evita el scroll del fondo cuando el menú está abierto */
     }
 }

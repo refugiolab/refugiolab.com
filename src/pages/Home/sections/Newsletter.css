@@ -1,4 +1,3 @@
-/* src/pages/Home/sections/Newsletter.css */
 @import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@200;400;700&family=NewYork:wght@400;700&display=swap');
 
 :root {
@@ -18,18 +17,17 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding: 40px 20px 20px 20px; /* Modificado: padding-bottom reducido a 20px */
+  padding: 40px 20px 20px 20px;
   background-color: #fffffc;
   color: var(--color-text-dark);
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1s ease-out, transform 1s ease-out;
-  /* Eliminamos la línea 'transform: translateY(-20px);' que causaba la superposición */
 }
 
 .newsletter-section.is-in-view {
   opacity: 1;
-  transform: translateY(0); /* Se restablece a 0 para no causar superposiciones */
+  transform: translateY(0);
 }
 
 .newsletter-section::before {
@@ -74,9 +72,7 @@
   margin-bottom: 20px;
   line-height: 1.1;
   color: var(--color-text-dark);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* ¡Cambiado! Eliminamos white-space: nowrap; y overflow: hidden; */
 }
 
 .newsletter-description {
@@ -196,6 +192,8 @@
     align-items: center;
   }
   .newsletter-heading {
+    /* ¡Cambiado! Eliminamos el white-space: nowrap; para que el texto se ajuste. */
+    white-space: normal;
     font-size: clamp(1.98rem, 7.2vw, 3.15rem);
   }
   .newsletter-description {
@@ -207,5 +205,8 @@
   .newsletter-section {
     min-height: 60vh;
     padding: 60px 15px;
+  }
+  .newsletter-heading {
+    font-size: 2.5rem; /* Establecemos un tamaño de fuente fijo para asegurar legibilidad */
   }
 }

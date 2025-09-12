@@ -1,4 +1,3 @@
-// src/pages/Home/sections/Newsletter.jsx
 import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { initializeApp, getApps, getApp } from 'firebase/app';
