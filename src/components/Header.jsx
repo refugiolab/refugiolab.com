@@ -6,6 +6,7 @@ import { IoBagOutline, IoSearchOutline, IoPersonOutline, IoHomeOutline, IoMenuOu
 import { NAV_LINKS } from '../constants/data';
 import { CartContext } from '../context/CartContext';
 import { FaInstagram, FaWhatsapp, FaSpotify } from 'react-icons/fa';
+import { FaHeart, FaUserCircle } from 'react-icons/fa'; // Iconos de ejemplo para reemplazar la casita
 
 // Importa tus imágenes para el menú
 import newInMenuImage from '/images/new-in-menu.webp';
@@ -202,28 +203,27 @@ const Header = () => {
             <nav className="mobile-nav-container">
                 <ul className="mobile-nav-list">
                     <li>
-                        <Link to="/" className={`mobile-nav-link ${location.pathname === '/' ? 'active' : ''}`}>
-                            <IoHomeOutline size={22} />
+                        <Link to="/search" className="mobile-nav-link">
+                            <IoSearchOutline size={22} />
                         </Link>
                     </li>
                     <li>
                         <button
                             onClick={toggleMenu}
-                            className={`mobile-nav-link menu-button`}
+                            className={`menu-button`}
                             aria-label="Abrir menú de navegación">
-                            <IoMenuOutline size={22} />
                             <span>Menú</span>
                         </button>
+                    </li>
+                    <li>
+                        <Link to="/cuenta" className={`mobile-nav-link ${location.pathname === '/cuenta' ? 'active' : ''}`}>
+                            <IoPersonOutline size={22} />
+                        </Link>
                     </li>
                     <li>
                         <Link to="/cart" className={`mobile-nav-link ${location.pathname === '/cart' ? 'active' : ''}`}>
                             <IoBagOutline size={22} />
                             {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/cuenta" className={`mobile-nav-link ${location.pathname === '/cuenta' ? 'active' : ''}`}>
-                            <IoPersonOutline size={22} />
                         </Link>
                     </li>
                 </ul>

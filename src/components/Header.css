@@ -326,18 +326,19 @@
     }
 
     .mobile-nav-list {
-        display: grid; /* Cambiado a grid */
-        grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         padding: 0;
         margin: 0;
         list-style: none;
         align-items: center;
+        justify-content: space-around;
     }
 
     .mobile-nav-list li {
         text-align: center;
     }
-
+    
     .mobile-nav-link {
         display: flex;
         flex-direction: column;
@@ -354,7 +355,7 @@
     .mobile-nav-link.active {
         color: var(--color-acento);
     }
-    
+
     .mobile-nav-link.active svg {
         animation: pulse 0.5s ease-in-out;
     }
@@ -387,11 +388,15 @@
         cursor: pointer;
         font-family: var(--fuente-principal);
     }
-
     .menu-button span {
         font-size: 14px;
         font-weight: 500;
         margin-top: 0;
+        color: #444653;
+    }
+
+    .mobile-nav-list li:nth-child(2) {
+        grid-column: 2 / 4;
     }
     
     .cart-item-count {
@@ -399,18 +404,9 @@
         right: 18px;
     }
 
-    /* Posicionamiento de los iconos */
-    .mobile-nav-list li:nth-child(1) {
-        grid-column: 1 / 2;
-    }
-
-    .mobile-nav-list li:nth-child(2) {
-        grid-column: 2 / 4;
-        justify-self: center;
-    }
-
-    .mobile-nav-list li:nth-child(3) {
-        grid-column: 4 / 5;
+    /* Ocultar el ícono del menú, solo dejar el texto */
+    .menu-button svg {
+        display: none;
     }
 
     /* Animación de pulso */
