@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
-import { IoBagOutline, IoSearchOutline, IoPersonOutline, IoMenuOutline } from "react-icons/io5";
+import { IoBagOutline, IoSearchOutline, IoPersonOutline, IoMenuOutline, IoHeartOutline } from "react-icons/io5";
+import { FaInstagram, FaWhatsapp, FaSpotify } from 'react-icons/fa';
 import { NAV_LINKS } from '../constants/data';
 import { CartContext } from '../context/CartContext';
-import { FaInstagram, FaWhatsapp, FaSpotify } from 'react-icons/fa';
 
 // Importa tus imágenes para el menú
 import newInMenuImage from '/images/new-in-menu.webp';
@@ -14,21 +14,32 @@ import cartasMarMenuImage from '/images/cartas-al-mar-menu.webp';
 import universoRefugioMenuImage from '/images/universo-refugio-menu.webp';
 import programaBienestarMenuImage from '/images/programa-bienestar-menu.webp';
 import contactoMenuImage from '/images/contacto-menu.webp';
-import menuDefaultImage from '/images/menu-default.webp';
 import logoNegro from '/icons/isonegro.svg';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    const [activeMenuImage, setActiveMenuImage] = useState(menuDefaultImage);
+    const [activeMenuImage, setActiveMenuImage] = useState(null); 
     const [openSubMenu, setOpenSubMenu] = useState(null);
     const { itemCount } = useContext(CartContext);
     const location = useLocation();
 
+    // Imágenes para las secciones del menú
+    const navImages = {
+        'New In': '/images/new-in-menu.webp',
+        'Cápsulas': '/images/capsulas-menu.webp',
+        'Sobre Refugio': '/images/sobre-refugio-menu.webp',
+        'Cartas al Mar': '/images/cartas-al-mar-menu.webp',
+        'Universo Refugio': '/images/universo-refugio-menu.webp',
+        'Programa de Bienestar': '/images/programa-bienestar-menu.webp',
+        'Contacto': '/images/contacto-menu.webp',
+        'default': '/images/menu-default.webp'
+    };
+
     const toggleMenu = () => {
         setIsOpen(!isOpen);
         if (!isOpen) {
-            setActiveMenuImage(menuDefaultImage);
+            setActiveMenuImage(null);
             setOpenSubMenu(null);
             document.body.classList.add('menu-open');
         } else {
@@ -70,11 +81,10 @@ const Header = () => {
     }, [location.pathname]);
 
     const navSections = [
-        { name: 'New In', path: '/new-in', image: newInMenuImage, hasSubSections: false },
+        { name: 'New In', path: '/new-in', hasSubSections: false },
         {
             name: 'Cápsulas',
             path: '/productos',
-            image: capsulasMenuImage,
             hasSubSections: true,
             subSections: [
                 { name: 'Ver todo', path: '/productos' },
@@ -84,11 +94,11 @@ const Header = () => {
                 { name: 'Archivo', path: '/productos/archivo' },
             ],
         },
-        { name: 'Sobre Refugio', path: '/sobre-refugio', image: sobreRefugioMenuImage, hasSubSections: false },
-        { name: 'Cartas al Mar', image: cartasMarMenuImage, hasSubSections: false },
-        { name: 'Universo Refugio', path: '/universo-sensorial', image: universoRefugioMenuImage, hasSubSections: false },
-        { name: 'Programa de Bienestar', path: '/programa-de-bienestar', image: programaBienestarMenuImage, hasSubSections: false },
-        { name: 'Contacto', path: '/contacto', image: contactoMenuImage, hasSubSections: false },
+        { name: 'Sobre Refugio', path: '/sobre-refugio', hasSubSections: false },
+        { name: 'Cartas al Mar', path: '/cartas-al-mar', hasSubSections: false },
+        { name: 'Universo Refugio', path: '/universo-sensorial', hasSubSections: false },
+        { name: 'Programa de Bienestar', path: '/programa-de-bienestar', hasSubSections: false },
+        { name: 'Contacto', path: '/contacto', hasSubSections: false },
     ];
 
     return (
@@ -145,8 +155,8 @@ const Header = () => {
                                     {item.hasSubSections ? (
                                         <div
                                             className="header__nav-link-container"
-                                            onMouseEnter={() => item.image && setActiveMenuImage(item.image)}
-                                            onMouseLeave={() => item.image && setActiveMenuImage(menuDefaultImage)}
+                                            onMouseEnter={() => setActiveMenuImage(navImages[item.name])}
+                                            onMouseLeave={() => setActiveMenuImage(null)}
                                             onClick={() => toggleSubMenu(item.name)}
                                         >
                                             <div className={`header__nav-link ${location.pathname === item.path ? 'active' : ''}`} >
@@ -159,8 +169,8 @@ const Header = () => {
                                             to={item.path}
                                             className={`header__nav-link ${location.pathname === item.path ? 'active' : ''}`}
                                             onClick={closeMenu}
-                                            onMouseEnter={() => item.image && setActiveMenuImage(item.image)}
-                                            onMouseLeave={() => item.image && setActiveMenuImage(menuDefaultImage)}
+                                            onMouseEnter={() => setActiveMenuImage(navImages[item.name])}
+                                            onMouseLeave={() => setActiveMenuImage(null)}
                                         >
                                             {item.name}
                                         </Link>
@@ -196,7 +206,7 @@ const Header = () => {
                         </div>
                     </div>
                     <div className="header__nav-image-container">
-                        <img src={activeMenuImage} alt="Imagen de sección" className="header__nav-image" />
+                        <img src={activeMenuImage || navImages['default']} alt="Imagen de sección" className="header__nav-image" />
                     </div>
                 </nav>
             </header>
@@ -210,9 +220,8 @@ const Header = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/cart" className={`mobile-nav-link ${location.pathname === '/cart' ? 'active' : ''}`} aria-label="Bolsa de compras">
-                            <IoBagOutline size={22} />
-                            {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
+                        <Link to="/" className={`mobile-nav-link ${location.pathname === '/' ? 'active' : ''}`} aria-label="Inicio">
+                            <IoHeartOutline size={22} color="#444653" />
                         </Link>
                     </li>
                     <li>
@@ -226,6 +235,12 @@ const Header = () => {
                     <li>
                         <Link to="/cuenta" className={`mobile-nav-link ${location.pathname === '/cuenta' ? 'active' : ''}`} aria-label="Mi cuenta">
                             <IoPersonOutline size={22} />
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/cart" className={`mobile-nav-link ${location.pathname === '/cart' ? 'active' : ''}`} aria-label="Bolsa de compras">
+                            <IoBagOutline size={22} />
+                            {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
                         </Link>
                     </li>
                 </ul>

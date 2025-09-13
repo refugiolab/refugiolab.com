@@ -72,7 +72,6 @@
   margin-bottom: 20px;
   line-height: 1.1;
   color: var(--color-text-dark);
-  /* ¡Cambiado! Eliminamos white-space: nowrap; y overflow: hidden; */
 }
 
 .newsletter-description {
@@ -81,6 +80,7 @@
   line-height: 1.7;
   margin-bottom: 15px;
   color: var(--color-text-dark);
+  text-align: justify; /* CORRECCIÓN: Se agrega esta propiedad para justificar el texto */
 }
 
 .newsletter-form {
@@ -192,8 +192,6 @@
     align-items: center;
   }
   .newsletter-heading {
-    /* ¡Cambiado! Eliminamos el white-space: nowrap; para que el texto se ajuste. */
-    white-space: normal;
     font-size: clamp(1.98rem, 7.2vw, 3.15rem);
   }
   .newsletter-description {
@@ -205,8 +203,5 @@
   .newsletter-section {
     min-height: 60vh;
     padding: 60px 15px;
-  }
-  .newsletter-heading {
-    font-size: 2.5rem; /* Establecemos un tamaño de fuente fijo para asegurar legibilidad */
   }
 }
