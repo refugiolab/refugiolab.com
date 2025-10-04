@@ -19,6 +19,9 @@ const CarritoPage = lazy(() => import('./pages/Carrito/CarritoPage.jsx'));
 const ProductoDetalle = lazy(() => import('./components/AdminPanel/sections/Products/ProductDetails.jsx'));
 const CheckoutPage = lazy(() => import('./pages/Carrito/Checkout.jsx')); 
 
+// === NUEVA IMPORTACIÓN LAZY ===
+const ComingSoonPage = lazy(() => import('./pages/ComingSoon/ComingSoonPage.jsx'));
+
 // Importación de componentes del Panel de Administración
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage.jsx')); 
 const AdminPanel = lazy(() => import('./components/AdminPanel/AdminPanel.jsx'));
@@ -35,55 +38,64 @@ const NewsletterAdminPanel = lazy(() => import('./pages/Admin/Components/Newslet
 
 
 function App() {
-    return (
-        <Router>
-            <CartProvider>
-                <Suspense fallback={<div>Cargando...</div>}>
-                    <Routes>
-                        <Route path="/" element={<ImmersiveIntroPage />} />
-                        <Route element={<Layout />}>
-                            {/* Rutas del Front-end */}
-                            <Route path={NAV_LINKS.home} element={<HomePage />} />
-                            <Route path={NAV_LINKS.aboutUs} element={<AboutUsPage />} />
-                            <Route path={NAV_LINKS.blog} element={<BlogPage />} />
-                            <Route path="productos" element={<ProductosPage />} />
-                            <Route path="productos/:category" element={<ProductosPage />} />
-                            <Route path="producto/:id" element={<ProductoDetalle />} />
-                            <Route path="carrito" element={<CarritoPage />} />
-                            <Route path="checkout" element={<CheckoutPage />} />
-                            <Route path={NAV_LINKS.contact} element={<ContactoPage />} />
-                        </Route>
+    return (
+        <Router>
+            <CartProvider>
+                <Suspense fallback={<div>Cargando...</div>}>
+                    <Routes>
+                        <Route path="/" element={<ImmersiveIntroPage />} />
+                        <Route element={<Layout />}>
+                            {/* Rutas del Front-end */}
+                            <Route path={NAV_LINKS.home} element={<HomePage />} />
+                            <Route path={NAV_LINKS.aboutUs} element={<AboutUsPage />} />
+                            <Route path={NAV_LINKS.blog} element={<BlogPage />} />
+                            <Route path="productos" element={<ProductosPage />} />
+                            
+                            {/* === RUTA ESPECÍFICA: YogaWear - Redirige a ComingSoonPage === */}
+                            <Route path="productos/yogawear" element={<ComingSoonPage />} />
 
-                        <Route path="/login" element={<LoginPage />} />
+                            {/* === RUTA COMODÍN: /proximamente/* - Captura Cartas, Universo y Programa === */}
+                            <Route path="/proximamente/*" element={<ComingSoonPage />} />
 
-                        <Route
-                            path="/admin"
-                            element={
-                                <PrivateRoute>
-                                    <AdminPanel />
-                                </PrivateRoute>
-                            }
-                        >
-                            {/* Rutas anidadas para el panel de administración */}
-                            <Route index element={<Dashboard />} />
-                            <Route path="products/*" element={<ProductsSection />} /> {/* ¡AJUSTADO AQUÍ! */}
-                            <Route path="orders" element={<Orders />} />
-                            <Route path="users" element={<Users />} />
-                            <Route path="contact" element={<ContactAdminPanel />} />
-                            <Route path="newsletter" element={<NewsletterAdminPanel />} />
-                            <Route path="inventory" element={<Inventory />} />
-                            <Route path="collections" element={<Collections />} />
-                            <Route path="discounts" element={<Discounts />} />
-                            <Route path="settings" element={<Settings />} />
-                        </Route>
+                            {/* Esta ruta genérica debe ir al final de las rutas de productos */}
+                            <Route path="productos/:category" element={<ProductosPage />} />
+                            
+                            <Route path="producto/:id" element={<ProductoDetalle />} />
+                            <Route path="carrito" element={<CarritoPage />} />
+                            <Route path="checkout" element={<CheckoutPage />} />
+                            <Route path={NAV_LINKS.contact} element={<ContactoPage />} />
+                        </Route>
 
-                        {/* Manejo de rutas no encontradas (404) */}
-                        <Route path="*" element={<div>Página no encontrada</div>} />
-                    </Routes>
-                </Suspense>
-            </CartProvider>
-        </Router>
-    );
+                        <Route path="/login" element={<LoginPage />} />
+
+                        <Route
+                            path="/admin"
+                            element={
+                                <PrivateRoute>
+                                    <AdminPanel />
+                                </PrivateRoute>
+                            }
+                        >
+                            {/* Rutas anidadas para el panel de administración */}
+                            <Route index element={<Dashboard />} />
+                            <Route path="products/*" element={<ProductsSection />} /> 
+                            <Route path="orders" element={<Orders />} />
+                            <Route path="users" element={<Users />} />
+                            <Route path="contact" element={<ContactAdminPanel />} />
+                            <Route path="newsletter" element={<NewsletterAdminPanel />} />
+                            <Route path="inventory" element={<Inventory />} />
+                            <Route path="collections" element={<Collections />} />
+                            <Route path="discounts" element={<Discounts />} />
+                            <Route path="settings" element={<Settings />} />
+                        </Route>
+
+                        {/* Manejo de rutas no encontradas (404) */}
+                        <Route path="*" element={<div>Página no encontrada</div>} />
+                    </Routes>
+                </Suspense>
+            </CartProvider>
+        </Router>
+    );
 }
 
 export default App;
