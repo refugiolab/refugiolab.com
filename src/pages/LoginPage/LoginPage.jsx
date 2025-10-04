@@ -2,7 +2,14 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+import { 
+    getAuth, 
+    signInWithEmailAndPassword, 
+    createUserWithEmailAndPassword, 
+    sendEmailVerification,
+    signInWithPopup, 
+    GoogleAuthProvider 
+} from 'firebase/auth';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -33,19 +40,29 @@ const LoginPage = () => {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
-            // Envía el correo de verificación al nuevo usuario
             await sendEmailVerification(user);
 
-            // Informa al usuario que se registró y que debe verificar su correo
             console.log('Usuario registrado. Correo de verificación enviado.');
             alert('¡Registro exitoso! Por favor, verifica tu correo electrónico para iniciar sesión.');
             
-            // Opcional: cambia a la vista de login después del registro exitoso
             setIsRegistering(false);
 
         } catch (error) {
             console.error('Error al registrar:', error.message);
             setError('Error al registrar. Inténtalo de nuevo.');
+        }
+    };
+
+    const handleGoogleSignIn = async () => {
+        const provider = new GoogleAuthProvider();
+        setError('');
+
+        try {
+            await signInWithPopup(auth, provider);
+            navigate('/admin');
+        } catch (error) {
+            console.error('Error al iniciar sesión con Google:', error);
+            setError('Error al iniciar sesión con Google. Inténtalo de nuevo.');
         }
     };
 
@@ -76,6 +93,9 @@ const LoginPage = () => {
                 </button>
             </form>
             {error && <p className="error-message">{error}</p>}
+            <button onClick={handleGoogleSignIn}>
+                Iniciar sesión con Google
+            </button>
             <p>
                 {isRegistering ? (
                     <>

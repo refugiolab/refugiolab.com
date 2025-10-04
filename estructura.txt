@@ -1,109 +1,155 @@
-Estructura del Proyecto 
+Estructura del proyecto:
 
 universo-refugio/
 ├── dist/
-│   ├── assets/
-│   ├── audio/
-│   ├── fonts/
-│   ├── icons/
-│   ├── images/
-│   ├── index.html
-│   ├── isoblanco.svg
-│   ├── isonegro.svg
-│   ├── logorefugioblanco.svg
-│   ├── Videointro.mp4
-│   └── vite.svg
+│   ├── assets/
+│   ├── audio/
+│   ├── fonts/
+│   ├── icons/
+│   ├── images/
+│   ├── index.html
+│   ├── isoblanco.svg
+│   ├── isonegro.svg
+│   ├── logorefugioblanco.svg
+│   ├── Videointro.mp4
+│   └── vite.svg
 ├── node_modules/
 ├── public/
-│   ├── audio/
-│   │   └── musica-ambiente.mp3
-│   ├── fonts/
-│   │   ├── Comissioner/
-│   │   └── NewYork.woff2
-│   ├── icons/
-│   │   ├── instagram.png
-│   │   ├── whatsapp.png
-│   │   ├── youtube.png
-│   │   ├── logo.png
-│   │   ├── logorefugiogris.svg
-│   │   └── iso.png
-│   └── images/
-│       ├── hero-bg.png
-│       ├── hero-bg.webp
-│       ├── heroaboutus.png
-│       ├── heroaboutus.webp
-│       ├── blogcartasalmar.png
-│       ├── blogcartasalmar.webp
-│       ├── ojo-refugio.png
-│       ├── ojo-refugio.webp
-│       ├── separador-bloque.png
-│       ├── homeprefooter.png
-│       └── homeprefooter.webp
+│   ├── audio/
+│   │   └── musica-ambiente.mp3
+│   ├── fonts/
+│   │   ├── Comissioner/
+│   │   └── NewYork.woff2
+│   ├── icons/
+│   │   ├── instagram.png
+│   │   ├── whatsapp.png
+│   │   ├── youtube.png
+│   │   ├── logo.png
+│   │   ├── logorefugiogris.svg
+│   │   └── iso.png
+│   └── images/
+│       ├── hero-bg.png
+│       ├── hero-bg.webp
+│       ├── heroaboutus.png
+│       ├── heroaboutus.webp
+│       ├── blogcartasalmar.png
+│       ├── blogcartasalmar.webp
+│       ├── ojo-refugio.png
+│       ├── ojo-refugio.webp
+│       ├── separador-bloque.png
+│       ├── homeprefooter.png
+│       └── homeprefooter.webp
 ├── src/
-│   ├── assets/
-│   ├── components/
-│   │   ├── common/
-│   │   │   ├── Modal.jsx
-│   │   │   └── Modal.css
-│   │   ├── Footer.jsx
-│   │   ├── Footer.css
-│   │   ├── Header.jsx
-│   │   ├── Header.css
-│   │   ├── Layout.jsx
-│   │   ├── Layout.css
-│   │   ├── PrivateRoute.jsx
-│   │   ├── ProgramaDeBienestar.jsx
-│   │   └── ProgramaDeBienestar.css
-│   ├── constants/
-│   │   └── data.js
-│   ├── context/
-│   │   └── CartContext.jsx
-│   ├── hooks/
-│   │   ├── useModal.js
-│   │   └── useScrollAnimation.js
-│   ├── pages/
-│   │   ├── AboutUs/
-│   │   │   ├── AboutUsPage.css
-│   │   │   └── AboutUsPage.jsx
-│   │   ├── AdminPanel/
-│   │   │   ├── AdminPanel.css
-│   │   │   └── AdminPanel.jsx
-│   │   ├── Blog/
-│   │   │   ├── BlogPage.css
-│   │   │   └── BlogPage.jsx
-│   │   ├── Contacto/
-│   │   │   ├── ContactoPage.css
-│   │   │   └── ContactoPage.jsx
-│   │   ├── LoginPage/
-│   │   │   └── LoginPage.jsx
-│   │   ├── Home/
-│   │   │   ├── HomePage.jsx
-│   │   │   └── sections/
+│   ├── assets/
+│   ├── components/
+│   │   ├── AdminPanel/
+│   │   │   ├── AdminPanel.jsx             // Componente principal de  todo el panel de administración
+│   │   │   ├── AdminPanel.css
+│   │   │   └── sections/
+│   │   │       ├── Dashboard/
+│   │   │       │   └── index.jsx          // Panel principal con resúmenes y gráficos
+│   │   │       ├── Products/
+│   │   │       │   ├── index.jsx          // Componente principal para la gestión de productos
+│   │   │       │   ├── ProductForm.jsx      // Formulario para crear o editar un producto
+│   │   │       │   ├── ProductList.jsx      // Lista de todos los productos
+│   │   │       │   └── ProductDetails.jsx   // Vista detallada de un solo producto
+│   │   │       ├── Orders/
+│   │   │       │   ├── index.jsx          // Componente principal para la gestión de pedidos
+│   │   │       │   ├── OrderList.jsx        // Lista de todos los pedidos
+│   │   │       │   └── OrderDetails.jsx     // Vista de los detalles de un pedido
+│   │   │       ├── Users/
+│   │   │       │   ├── index.jsx          // Componente principal para la gestión de usuarios
+│   │   │       │   ├── UserList.jsx         // Lista de todos los usuarios
+│   │   │       │   └── UserProfile.jsx      // Vista para ver y editar el perfil del usuario
+│   │   │       ├── Settings/
+│   │   │       │   ├── index.jsx          // Componente principal para la configuración
+│   │   │       │   ├── GeneralSettings.jsx  // Formulario para la configuración general de la tienda
+│   │   │       │   ├── ShippingSettings.jsx // Formulario para opciones de envío
+│   │   │       │   └── PaymentSettings.jsx  // Formulario para la configuración de pagos
+│   │   │       ├── Inventory/
+│   │   │       │   ├── index.jsx          // Componente principal para la gestión de inventario
+│   │   │       │   └── StockList.jsx        // Vista para ver el stock y las variantes (tallas, colores)
+│   │   │       ├── Collections/
+│   │   │       │   ├── index.jsx          // Componente principal para la gestión de colecciones
+│   │   │       │   ├── CollectionList.jsx   // Lista de todas las colecciones
+│   │   │       │   └── CollectionForm.jsx   // Formulario para crear o editar una colección
+│   │   │       └── Discounts/
+│   │   │           ├── index.jsx          // Componente principal para la gestión de descuentos
+│   │   │           ├── DiscountList.jsx     // Lista de todos los códigos de descuento
+│   │   │           └── DiscountForm.jsx     // Formulario para crear o editar un descuento
+│   │   ├── common/
+│   │   │   ├── CartModal.jsx
+│   │   │   ├── Modal.jsx
+│   │   │   └── Modal.css
+│   │   ├── Footer.jsx
+│   │   ├── Footer.css
+│   │   ├── Header.jsx
+│   │   ├── Header.css
+│   │   ├── Layout.jsx
+│   │   ├── Layout.css
+│   │   ├── PrivateRoute.jsx
+│   │   ├── ProgramaDeBienestar.jsx
+│   │   └── ProgramaDeBienestar.css
+│   ├── constants/
+│   │   └── data.js
+│   ├── context/
+│   │   └── CartContext.jsx
+│   ├── hooks/
+│   │   ├── useAuthStatus.js 
+│   │   ├── useModal.js
+│   │   ├── useFirestore.js
+│   │   ├── useProductos.js
+│   │   └── useScrollAnimation.js
+│   ├── pages/
+│   │   ├── AboutUs/
+│   │   │   ├── AboutUsPage.css
+│   │   │   └── AboutUsPage.jsx
+│   │   ├── Admin/
+│   │   │   └── Components/
+│   │   │       ├── ContactAdminPanel.css
+│   │   │       ├── ContactAdminPanel.jsx
+│   │   │       ├── NewsletterAdminPanel.css
+│   │   │       └── NewsletterAdminPanel.jsx
+│   │   ├── Blog/
+│   │   │   ├── BlogPage.css
+│   │   │   └── BlogPage.jsx
+│   │   ├── Carrito/
+│   │   │   ├── CarritoPage.css
+│   │   │   ├── CarritoPage.jsx
+│   │   │   └── Checkout.jsx
+│   │   ├── Contacto/
+│   │   │   ├── ContactoPage.css
+│   │   │   └── ContactoPage.jsx
+│   │   ├── LoginPage/
+│   │   │   └── LoginPage.jsx
+│   │   ├── Home/
+│   │   │   ├── HomePage.jsx
+│   │   │   └── sections/
 │   │   │       ├── Conceptos.jsx
-│   │   │       └── Conceptos.css 
-│   │   │       ├── HeroSection.css
-│   │   │       ├── HeroSection.jsx
-│   │   │       ├── Newsletter.css
-│   │   │       ├── Newsletter.jsx
-│   │   │       ├── PreFooter.css
-│   │   │       └── PreFooter.jsx
-│   │   ├── ImmersiveIntro/
-│   │   │   ├── ImmersiveIntroPage.jsx
-│   │   │   ├── data.js
-│   │   │   └── ImmersiveIntroPage.css
-│   │   ├── Productos/
-│   │   │   ├── ProductosPage.jsx
-│   │   │   └── ProductosPage.css
-│   │   └── UniversoSensorial/
-│   │       ├── UniversoSensorial.jsx
-│   │       ├── UniversoSensorial.css
-│   │       └── universoSensorialData.js
-│   ├── styles/
-│   │   ├── App.css
-│   │   └── global.css
-│   ├── App.jsx 
-│   ├── firebaseConfig.js
-│   └── main.jsx
+│   │   │       ├── Conceptos.css
+│   │   │       ├── HeroSection.css
+│   │   │       ├── HeroSection.jsx
+│   │   │       ├── Newsletter.css
+│   │   │       ├── Newsletter.jsx
+│   │   │       ├── PreFooter.css
+│   │   │       └── PreFooter.jsx
+│   │   ├── ImmersiveIntro/
+│   │   │   ├── ImmersiveIntroPage.jsx
+│   │   │   ├── data.js
+│   │   │   └── ImmersiveIntroPage.css
+│   │   ├── Productos/
+│   │   │   ├── ProductosPage.jsx
+│   │   │   └── ProductosPage.css
+│   │   └── UniversoSensorial/
+│   │       ├── UniversoSensorial.jsx
+│   │       ├── UniversoSensorial.css
+│   │       └── universoSensorialData.js
+│   ├── styles/
+│   │   ├── App.css
+│   │   └── global.css
+│   ├── App.jsx
+│   ├── firebaseConfig.js
+│   └── main.jsx
 ├── .env
 ├── audiointro.m4a
 ├── eslint.config.js
@@ -115,3 +161,13 @@ universo-refugio/
 ├── README.md
 ├── start.bat
 └── vite.config.js
+
+
+
+backend/
+├── node_modules/
+├── .env
+├── index.js
+├── package.json
+└── package-lock.json
+

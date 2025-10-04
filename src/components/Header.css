@@ -1,402 +1,491 @@
+/* ---------------------------------------------------------------------- */
+/* ESTILOS GLOBALES */
+/* ---------------------------------------------------------------------- */
+
 .main-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 50;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: transparent;
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
-  transition: background-color 0.3s ease, border-bottom 0.3s ease, backdrop-filter 0.3s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Reducimos el padding horizontal aquí para controlarlo en header-left/right */
+    padding: 1rem 0; 
+    background-color: transparent;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    transition: background-color 0.3s ease, border-bottom 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .main-header.scrolled {
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border-bottom: 1px solid rgba(68, 70, 83, 0.1);
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(68, 70, 83, 0.1);
 }
 
 .header-left,
 .header-right {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
+    display: flex; 
+    align-items: center;
+    gap: 1.5rem;
+    width: 33.33%; 
+}
+
+/* Contenedor Izquierdo */
+.header-left {
+    justify-content: flex-start;
+}
+
+/* Contenedor Derecho */
+.header-right {
+    justify-content: flex-end; 
 }
 
 /* Logo central */
 .header__logo-container {
-  flex-grow: 1;
-  text-align: center;
+    flex-grow: 0; 
+    text-align: center;
 }
 
 .header__logo {
-  height: auto;
-  width: auto;
+    height: auto;
+    width: auto;
 }
 
 /* Clase para el logo blanco con tamaño reducido */
 .logo-blanco {
-  height: 66.15px;
-  width: auto;
+    height: 66.15px;
+    width: auto;
 }
 
-/* Botón de menú a la "X" */
+/* ---------------------------------------------------------------------- */
+/* ESTILOS ICONOS Y COLORES (Escritorio y Móvil) */
+/* ---------------------------------------------------------------------- */
+
 .header__menu-toggle {
-  display: block;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  width: 25px;
-  height: 18px;
-  position: relative;
-  z-index: 60;
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 25px;
+    height: 18px;
+    position: relative;
+    z-index: 60;
 }
 
 .header__icon-bar {
-  display: block;
-  width: 100%;
-  height: 2px;
-  margin-bottom: 4px;
-  background-color: #fffffc;
-  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 4px;
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
 }
 
 .header__icon-button {
-  background: none;
-  border: none;
-  color: #fffffc;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  position: relative;
-  transition: color 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: color 0.3s ease;
+    line-height: 1; 
 }
 
 /* Colores de los íconos y el menú toggle en el estado "no scroll" */
 .main-header:not(.scrolled) .header__icon-bar {
-  background-color: #fffffc;
+    background-color: #fffffc;
 }
 .main-header:not(.scrolled) .header__icon-button {
-  color: #fffffc;
+    color: #fffffc;
 }
+.main-header:not(.scrolled) .header__icon-button svg {
+    color: #fffffc;
+}
+
 
 /* Colores de los íconos y el menú toggle en el estado "scroll" */
 .main-header.scrolled .header__icon-bar {
-  background-color: #444653;
+    background-color: #444653;
 }
 .main-header.scrolled .header__icon-button {
-  color: #444653;
+    color: #444653;
+}
+.main-header.scrolled .header__icon-button svg {
+    color: #444653;
 }
 
-/* Animación del ícono de menú a la "X" */
+/* Animación de la "X" (sin cambios) */
 .main-header.open .header__menu-toggle .header__icon-bar:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 4px);
-  background-color: #444653;
+    transform: rotate(45deg) translate(5px, 4px);
+    background-color: #444653;
 }
 .main-header.open .header__menu-toggle .header__icon-bar:nth-child(2) {
-  opacity: 0;
+    opacity: 0;
 }
 .main-header.open .header__menu-toggle .header__icon-bar:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -4px);
-  background-color: #444653;
+    transform: rotate(-45deg) translate(5px, -4px);
+    background-color: #444653;
 }
 
-/* Estilos para el menú de navegación (el panel que se despliega) */
+/* Contador de ítems (sin cambios) */
+.cart-item-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #444653;
+    color: #fff;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---------------------------------------------------------------------- */
+/* ESTILOS NAVEGACIÓN DESPLEGABLE (sin cambios) */
+/* ---------------------------------------------------------------------- */
+
 .header__nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: transparent;
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
-  transform: translateX(-100%);
-  transition: transform 0.4s ease-in-out;
-  z-index: 55;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  box-sizing: border-box;
-  overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 55;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-/* Abrir menú en escritorio */
 .main-header.open .header__nav {
-  transform: translateX(0);
+    transform: translateX(0);
 }
-
 
 .header__nav-content {
-  background-color: #fffffc;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem 4rem;
-  overflow-y: auto;
-  position: relative;
+    background-color: #fffffc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 4rem;
+    overflow-y: auto;
+    position: relative;
 }
 
 .header__nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 13.3rem 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+    list-style: none;
+    padding: 0;
+    margin: 13.3rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
 }
 
 .header__nav-link-container {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  padding: 0.2rem 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.2rem 0;
 }
 
 .header__nav-link {
-  text-decoration: none;
-  text-transform: capitalize;
-  font-family: var(--fuente-principal);
-  font-size: clamp(1.19rem, 2.975vw, 2.125rem);
-  font-weight: 500;
-  letter-spacing: 1px;
-  color: #444653;
-  position: relative;
-  padding: 0;
-  transition: color 0.3s ease;
-  display: flex;
-  align-items: center;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-family: var(--fuente-principal);
+    font-size: clamp(1.19rem, 2.975vw, 2.125rem);
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #444653;
+    position: relative;
+    padding: 0;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
 }
 
 .header__nav-link-container:hover .header__nav-link,
 .header__nav-link:hover {
-  color: var(--color-acento);
+    color: var(--color-acento);
 }
 
 .header__nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: 5px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #444653;
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #444653;
 }
 
-/* Flecha de submenú */
 .submenu-toggle-arrow {
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
-  color: #444653;
-  transition: transform 0.3s ease;
-  margin-left: 10px;
-  display: inline-block;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: #444653;
+    transition: transform 0.3s ease;
+    margin-left: 10px;
+    display: inline-block;
 }
 
 .submenu-toggle-arrow.open {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
-/* Submenú */
 .submenu-list {
-  list-style: none;
-  padding-left: 1rem;
-  margin: 0.5rem 0 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-out;
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0.5rem 0 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
 }
 
 .submenu-list.open {
-  max-height: 300px;
-  margin-bottom: 0;
+    max-height: 300px;
+    margin-bottom: 0;
 }
 
 .header__nav-sub-link {
-  text-decoration: none;
-  font-family: 'Commissioner', sans-serif;
-  font-size: clamp(0.85rem, 2.125vw, 1.25rem);
-  font-weight: 400;
-  color: #444653;
-  display: block;
-  padding: 0.2rem 0;
-  transition: color 0.3s ease;
+    text-decoration: none;
+    font-family: 'Commissioner', sans-serif;
+    font-size: clamp(0.85rem, 2.125vw, 1.25rem);
+    font-weight: 400;
+    color: #444653;
+    display: block;
+    padding: 0.2rem 0;
+    transition: color 0.3s ease;
 }
 
 .header__nav-sub-link:hover {
-  color: var(--color-acento);
+    color: var(--color-acento);
 }
 
 .social-media-icons {
-  display: flex;
-  justify-content: flex-start;
-  gap: 1.5rem;
-  margin-top: auto;
-  padding-top: 2rem;
-  color: #444653;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    margin-top: auto;
+    padding-top: 2rem;
+    color: #444653;
 }
 
 .social-media-icons a {
-  color: inherit;
-  transition: color 0.3s ease;
+    color: inherit;
+    transition: color 0.3s ease;
 }
 
 .social-media-icons a:hover {
-  color: var(--color-acento);
+    color: var(--color-acento);
 }
 
 .header__nav-image-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-height: 100vh;
-  overflow: hidden;
-  position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
 .header__nav-image {
-  max-width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-  transition: opacity 0.4s ease;
+    max-width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transition: opacity 0.4s ease;
 }
 
-.cart-item-count {
-  position: absolute;
-  top: -5px;
-  right: -10px;
-  background-color: #444653;
-  color: #fff;
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  font-size: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/* ---------------------------------------------------------------------- */
+/* ESTILOS NAVEGACIÓN MÓVIL (sin cambios) */
+/* ---------------------------------------------------------------------- */
 
-/* Estilos de la navegación móvil (barra inferior) */
 .mobile-nav-container {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  background-color: #fff;
-  border-top: 1px solid #ccc;
-  z-index: 60;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  padding-top: 0.5rem;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    z-index: 60;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding-top: 0.5rem;
 }
 
 .mobile-nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .mobile-nav-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #444653;
-  font-family: var(--fuente-principal);
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  transition: color 0.3s ease;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-  position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #444653;
+    font-family: var(--fuente-principal);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    position: relative;
 }
 
 .mobile-nav-link svg {
-  margin-bottom: 2px;
+    margin-bottom: 2px;
 }
 
 .mobile-nav-link:hover,
 .mobile-nav-link.active {
-  color: var(--color-acento);
+    color: var(--color-acento);
 }
 
 .mobile-nav-link.menu-button {
-  font-family: 'Commissioner', sans-serif;
+    font-family: 'Commissioner', sans-serif;
 }
 .mobile-nav-link.menu-button span {
-  font-size: 0.75rem;
+    font-size: 0.75rem;
 }
 
-/* Media Query para móvil */
+
+/* ---------------------------------------------------------------------- */
+/* MEDIA QUERIES */
+/* ---------------------------------------------------------------------- */
+
+/* Media Query para móvil (<= 900px) */
 @media (max-width: 900px) {
-  /* CAMBIO CRUCIAL: El header móvil también usa Flexbox para centrar el logo */
-  .main-header {
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* Ocultar elementos de escritorio */
-  .main-header .header-left,
-  .main-header .header-right {
-    display: none;
-  }
+    
+    .main-header {
+        display: flex;
+        justify-content: center;
+        padding: 1rem 1rem;
+    }
+    
+    /* Ocultamos los contenedores de los lados en móvil */
+    .header-right,
+    .header-left {
+        display: none !important; 
+    }
 
-  /* Ajustar logo central */
-  .main-header .header__logo-container {
-    /* Se eliminan los estilos de grid para usar flexbox */
-    flex-grow: 0;
-    width: 100%;
-    text-align: center;
-    padding-left: 0;
-  }
+    .main-header .header__logo-container {
+        flex-grow: 0;
+        width: auto;
+        text-align: center;
+        padding-left: 0;
+    }
 
-  .main-header .header__logo {
-    height: 40px;
-    width: auto;
-  }
+    .main-header .header__logo {
+        height: 40px;
+        width: auto;
+    }
 
-  /* Mostrar barra de navegación móvil */
-  .mobile-nav-container {
-    display: block;
-  }
+    /* Mostrar barra de navegación móvil */
+    .mobile-nav-container {
+        display: block;
+    }
 
-  /* Estilos del menú desplegable en móvil */
-  .header__nav {
-    grid-template-columns: 1fr;
-  }
+    /* Estilos del menú desplegable en móvil */
+    .header__nav {
+        grid-template-columns: 1fr;
+    }
 
-  .header__nav-image-container {
-    display: none;
-  }
+    .header__nav-image-container {
+        display: none;
+    }
 
-  .header__nav-content {
-    justify-content: space-between;
-    padding-bottom: 5rem;
-  }
+    .header__nav-content {
+        justify-content: space-between;
+        padding-bottom: 5rem;
+    }
 
-  .header__nav-list {
-    margin-top: 5rem;
-  }
+    .header__nav-list {
+        margin-top: 5rem;
+    }
 
-  /* Quitar el margin-top auto para que los íconos no se peguen abajo */
-  .social-media-icons {
-    margin-top: 2rem;
-  }
+    .social-media-icons {
+        margin-top: 2rem;
+    }
+}
+
+/* --- AJUSTES PARA ESCRITORIO (> 900px) --- */
+@media (min-width: 901px) {
+    
+    /* 1. Asegura que los contenedores de los lados se muestren como flex */
+    .main-header .header-left,
+    .main-header .header-right {
+        display: flex !important; 
+        visibility: visible !important; 
+        opacity: 1 !important; 
+        align-items: center;
+    }
+    
+    /* 2. CORRECCIÓN CRÍTICA DE ESPACIADO: Añadir margen para que los íconos se vean */
+    .header-left {
+        padding-left: 2rem; /* Margen izquierdo para la hamburguesa */
+        justify-content: flex-start;
+    }
+    .header-right {
+        padding-right: 2rem; /* Margen derecho para que la lupa y los otros íconos entren */
+        justify-content: flex-end;
+    }
+    
+    /* 3. Asegura la visibilidad de todos los botones */
+    .header-left .header__icon-button,
+    .header-right .header__icon-button { 
+        display: flex !important; 
+        align-items: center; 
+        justify-content: center; 
+        position: relative; 
+        z-index: 70; 
+        opacity: 1 !important; 
+        visibility: visible !important;
+    }
+
+    /* 4. Unificar el tamaño de los íconos SVG */
+    .main-header .header__icon-button svg {
+        display: block;
+        width: 22px; 
+        height: 22px;
+    }
+
+    /* 5. SOLUCIÓN CRÍTICA DE COLOR/CONTORNO */
+    
+    /* Aplicamos contorno y relleno transparente a Login, Bolsa Y BUSCADOR (íconos de contorno) */
+    .header__login-icon svg path,
+    .header__cart-icon svg path,
+    .header__search-icon svg path {
+        stroke: currentColor !important; 
+        fill: none !important; 
+        stroke-width: 32; 
+    }
+
+    /* 6. Asegura que la barra de navegación móvil esté oculta */
+    .mobile-nav-container {
+        display: none !important; 
+    }
 }

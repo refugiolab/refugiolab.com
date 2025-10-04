@@ -1,34 +1,77 @@
 // src/context/CartContext.jsx
-import React, { createContext, useState, useEffect } from 'react';
 
-// Crea el contexto para el carrito.
-export const CartContext = createContext();
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Crea el proveedor de contexto que envolverá a la aplicación.
+const CartContext = createContext();
+
 export const CartProvider = ({ children }) => {
-    // Usamos el estado local para el contador de artículos del carrito.
-    const [itemCount, setItemCount] = useState(0); 
+  const [cart, setCart] = useState(() => {
+    try {
+      const storedCart = localStorage.getItem('cart');
+      return storedCart ? JSON.parse(storedCart) : [];
+    } catch (e) {
+      console.error("Error al cargar el carrito desde localStorage", e);
+      return [];
+    }
+  });
 
-    // Aquí irá la lógica para agregar, remover, etc.
-    const addToCart = () => {
-        setItemCount(prevCount => prevCount + 1);
-    };
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
-    const removeFromCart = () => {
-        setItemCount(prevCount => (prevCount > 0 ? prevCount - 1 : 0));
-    };
+  const addToCart = (product) => {
+    setCart(prevCart => {
+      const existingProduct = prevCart.find(item => item.id === product.id);
+      if (existingProduct) {
+        return prevCart.map(item =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      } else {
+        return [...prevCart, { ...product, quantity: 1 }];
+      }
+    });
+  };
 
-    // Puedes agregar lógica para cargar el estado del carrito desde
-    // el almacenamiento local o Firestore si lo deseas.
-    useEffect(() => {
-        // Ejemplo: Lógica para cargar el estado inicial del carrito.
-    }, []);
+  const removeFromCart = (productId) => {
+    setCart(prevCart => prevCart.filter(item => item.id !== productId));
+  };
 
-    return (
-        // El proveedor hace que 'itemCount' y las funciones estén disponibles
-        // para cualquier componente hijo que lo consuma.
-        <CartContext.Provider value={{ itemCount, addToCart, removeFromCart }}>
-            {children}
-        </CartContext.Provider>
-    );
+  const incrementQuantity = (productId) => {
+    setCart(prevCart => prevCart.map(item => 
+      item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+    ));
+  };
+
+  const decrementQuantity = (productId) => {
+    setCart(prevCart => prevCart.map(item =>
+      item.id === productId && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
+    ));
+  };
+
+  const clearCart = () => {
+    setCart([]);
+  };
+
+  // Calcular el total del carrito solo para productos con precio fijo
+  const cartTotal = cart.reduce((total, item) => {
+    // Convertir a número solo si el precio es fijo, de lo contrario, el total no suma nada.
+    const price = item.isPriceFixed ? parseFloat(item.price) : 0;
+    return total + price * item.quantity;
+  }, 0);
+
+  return (
+    <CartContext.Provider value={{
+      cart,
+      addToCart,
+      removeFromCart,
+      incrementQuantity,
+      decrementQuantity,
+      clearCart,
+      cartTotal
+    }}>
+      {children}
+    </CartContext.Provider>
+  );
 };
+
+export const useCart = () => useContext(CartContext);

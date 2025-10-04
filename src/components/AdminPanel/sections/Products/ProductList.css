@@ -1,0 +1,146 @@
+/* src/components/AdminPanel/sections/Products/ProductList.css */
+
+.products-list-container {
+    padding: 0;
+}
+
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.admin-panel-title {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--color-secondary);
+}
+
+.action-button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.primary-button {
+    background-color: var(--color-primary);
+    color: var(--color-light-text);
+}
+
+.primary-button:hover {
+    background-color: #d6b14f; /* Un tono ligeramente más oscuro */
+}
+
+/* Estilos de la tabla de productos */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--color-panel-background);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.admin-table th, .admin-table td {
+    padding: 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.admin-table th {
+    background-color: var(--color-background-light);
+    color: var(--color-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Imagen en la tabla */
+.product-image-list {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Celda de acciones */
+.action-buttons-cell {
+    white-space: nowrap; /* Evita que los botones se envuelvan en varias líneas */
+}
+
+.table-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.table-button.edit {
+    color: #007bff;
+}
+
+.table-button.edit:hover {
+    background-color: #eaf5ff;
+}
+
+.table-button.delete {
+    color: #dc3545;
+}
+
+.table-button.delete:hover {
+    background-color: #f8d7da;
+}
+
+/* Mensajes de estado */
+.status-message {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.deleting-message, .success-message {
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.deleting-message {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

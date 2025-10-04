@@ -1,0 +1,116 @@
+src/pages/Admin/components/NewsletterAdminPanel.css
+:root {
+  --color-admin-bg: #f9f9f9;
+  --color-admin-text: #333;
+  --color-admin-border: #ddd;
+  --color-admin-header-bg: #8d957e;
+  --color-admin-header-text: #fff;
+  --font-family-admin: 'Commissioner', sans-serif;
+}
+
+.admin-panel-container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--color-admin-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: var(--font-family-admin);
+  color: var(--color-admin-text);
+}
+
+.admin-panel-title {
+  font-family: 'NewYork', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-admin-header-bg);
+  margin-bottom: 10px;
+}
+
+.admin-panel-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-admin-border);
+}
+
+.admin-table th {
+  background-color: var(--color-admin-header-bg);
+  color: var(--color-admin-header-text);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.admin-table tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+.admin-table tbody tr:hover {
+  background-color: #e0e0e0;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.loading-message, .error-message, .empty-state {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.error-message {
+  color: #d32f2f;
+}
+
+@media (max-width: 768px) {
+  .admin-panel-container {
+    padding: 20px;
+  }
+  .admin-panel-title {
+    font-size: 2rem;
+  }
+  .admin-table, .admin-table thead, .admin-table tbody, .admin-table th, .admin-table td, .admin-table tr {
+    display: block;
+    width: 100%;
+  }
+  .admin-table thead {
+    display: none;
+  }
+  .admin-table tr {
+    margin-bottom: 15px;
+    border: 1px solid var(--color-admin-border);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .admin-table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+    border: none;
+  }
+  .admin-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+    color: var(--color-admin-header-bg);
+  }
+  .admin-table td:nth-of-type(1)::before { content: "Nombre"; }
+  .admin-table td:nth-of-type(2)::before { content: "Correo Electrónico"; }
+  .admin-table td:nth-of-type(3)::before { content: "Fecha de Suscripción"; }
+}

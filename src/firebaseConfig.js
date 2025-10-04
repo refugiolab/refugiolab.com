@@ -1,24 +1,27 @@
 // src/firebaseConfig.js
-
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+import { getAuth } from "firebase/auth";
 
-// Tu configuración de Firebase
+// Tu configuración de Firebase ahora lee los valores del archivo .env
 const firebaseConfig = {
-    apiKey: "AIzaSyCMuS3VU-vUbBg0egU6peGjVoBjkIoV3H0",
-    authDomain: "universo-refugio-app.firebaseapp.com",
-    projectId: "universo-refugio-app",
-    storageBucket: "universo-refugio-app.firebasestorage.app",
-    messagingSenderId: "676590037531",
-    appId: "1:676590037531:web:4344da6d762e6d6758e6be",
-    measurementId: "12128347726"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Inicializa Firebase
 const app = initializeApp(firebaseConfig);
 
-// Inicializa Firestore y guarda su instancia
+// Inicializa Firestore, Storage y Auth
 const db = getFirestore(app);
+const storage = getStorage(app);
+const auth = getAuth(app);
 
 // Exporta las instancias para que puedan ser usadas en otros componentes
-export { app, db };
+export { app, db, storage, auth };

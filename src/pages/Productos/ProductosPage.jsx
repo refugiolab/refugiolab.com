@@ -1,35 +1,59 @@
+// src/pages/Productos/ProductosPage.jsx
 import React from 'react';
-import { useInView } from 'react-intersection-observer';
-import { Link } from "react-router-dom";
+import { useParams, Link } from 'react-router-dom';
+import { FaShoppingCart } from 'react-icons/fa';
+import useProductos from '../../hooks/useProductos.js';
+import { useCart } from '../../context/CartContext.jsx';
 import './ProductosPage.css';
 
 const ProductosPage = () => {
-    // Mantengo el hook useInView para la sección principal si se necesita,
-    // pero se eliminan las referencias a los elementos de producto.
-    const { ref: sectionRef, inView: sectionInView } = useInView({
-        triggerOnce: true,
-        threshold: 0.2,
-    });
+    const { category } = useParams();
+    const { productos, loading, error } = useProductos();
+    const { addToCart } = useCart();
+
+    if (loading) {
+        return <div className="loading">Cargando productos...</div>;
+    }
+
+    if (error) {
+        return <div className="error">{error}</div>;
+    }
+
+    const filteredProductos = category 
+      ? productos.filter(p => p.category?.toLowerCase().includes(category.toLowerCase())) 
+      : productos;
 
     return (
-        <section className={`productos-page ${sectionInView ? 'is-in-view' : ''}`} ref={sectionRef}>
-            <div className="productos-header">
-                <h1 className="productos__titulo">LIFEAWARE</h1>
-                <p className="productos__subtitulo">Vestir(nos) con sentido.</p>
+        <div className="productos-page">
+            <h1 className="productos-page-title">{category ? category.toUpperCase() : "TODOS LOS PRODUCTOS"}</h1>
+            <div className="productos-list">
+                {filteredProductos.map(producto => (
+                    // Se usa <Link> para navegar a la página de detalles
+                    <div key={producto.id} className="producto-card">
+                        <Link to={`/producto/${producto.id}`}>
+                            <img src={producto.images[0]} alt={producto.name} className="producto-image" />
+                        </Link>
+                        <div className="product-info">
+                            <h2 className="producto-name">{producto.name}</h2>
+                            <p className="producto-description">
+                                {producto.description}
+                            </p>
+                            <div className="product-footer">
+                                <p className="producto-price">
+                                    {producto.isPriceFixed ? `$${producto.price}` : producto.price}
+                                </p>
+                                <button 
+                                    onClick={() => addToCart(producto)} 
+                                    className="add-to-cart-btn"
+                                >
+                                    <FaShoppingCart /> Agregar al carrito
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
-            
-            <div className="productos-placeholder">
-                <p>Aquí irá el contenido de las colecciones de productos.</p>
-                {/* Puedes añadir una imagen de relleno o un icono si lo necesitas */}
-                
-            </div>
-
-            <div className="productos-cta">
-                <Link to="/contacto" className="productos-cta-button">
-                    <span>Solicita un diseño personalizado</span>
-                </Link>
-            </div>
-        </section>
+        </div>
     );
 };
 

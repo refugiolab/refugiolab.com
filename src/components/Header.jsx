@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
-import { IoBagOutline, IoSearchOutline, IoPersonOutline, IoMenuOutline, IoHeartOutline } from "react-icons/io5";
+// Íconos necesarios
+import { IoSearchOutline, IoPersonOutline, IoHeartOutline } from "react-icons/io5";
 import { FaInstagram, FaWhatsapp, FaSpotify } from 'react-icons/fa';
-import { NAV_LINKS } from '../constants/data';
-import { CartContext } from '../context/CartContext';
+import { NAV_LINKS } from '../constants/data'; // Asegúrate de que esta constante exista
+import { useCart } from '../context/CartContext'; // Asegúrate de que este contexto exista
 
-// Importa tus imágenes para el menú
+// Rutas de imágenes del menú (Asegúrate de que estas rutas sean correctas)
 import newInMenuImage from '/images/new-in-menu.webp';
 import capsulasMenuImage from '/images/capsulas-menu.webp';
 import sobreRefugioMenuImage from '/images/sobre-refugio-menu.webp';
@@ -14,25 +15,42 @@ import cartasMarMenuImage from '/images/cartas-al-mar-menu.webp';
 import universoRefugioMenuImage from '/images/universo-refugio-menu.webp';
 import programaBienestarMenuImage from '/images/programa-bienestar-menu.webp';
 import contactoMenuImage from '/images/contacto-menu.webp';
-import logoNegro from '/icons/isonegro.svg';
+
+// Componente de Ícono de Bolsa Personalizado (Utiliza stroke para contorno)
+const CustomBagIcon = ({ size = 22, color = 'currentColor' }) => (
+    <svg 
+        stroke={color === 'currentColor' ? 'currentColor' : color} 
+        fill="none" 
+        strokeWidth="32" 
+        viewBox="0 0 512 512" 
+        height={size} 
+        width={size} 
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ fill: 'none', strokeLinecap: 'round', strokeLinejoin: 'round' }}
+    >
+        <path d="M80 176a16 16 0 0 0-16 16v216c0 30.24 25.76 56 56 56h272c30.24 0 56-24.51 56-54.75V192a16 16 0 0 0-16-16zm80 0v-32a96 96 0 0 1 96-96h0a96 96 0 0 1 96 96v32"></path>
+    </svg>
+);
+
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeMenuImage, setActiveMenuImage] = useState(null); 
     const [openSubMenu, setOpenSubMenu] = useState(null);
-    const { itemCount } = useContext(CartContext);
+    const { cart } = useCart(); 
     const location = useLocation();
 
-    // Imágenes para las secciones del menú
+    const itemCount = cart ? cart.reduce((total, item) => total + item.quantity, 0) : 0;
+
     const navImages = {
-        'New In': '/images/new-in-menu.webp',
-        'Cápsulas': '/images/capsulas-menu.webp',
-        'Sobre Refugio': '/images/sobre-refugio-menu.webp',
-        'Cartas al Mar': '/images/cartas-al-mar-menu.webp',
-        'Universo Refugio': '/images/universo-refugio-menu.webp',
-        'Programa de Bienestar': '/images/programa-bienestar-menu.webp',
-        'Contacto': '/images/contacto-menu.webp',
+        'New In': newInMenuImage,
+        'Cápsulas': capsulasMenuImage,
+        'Sobre Refugio': sobreRefugioMenuImage,
+        'Cartas al Mar': cartasMarMenuImage,
+        'Universo Refugio': universoRefugioMenuImage,
+        'Programa de Bienestar': programaBienestarMenuImage,
+        'Contacto': contactoMenuImage,
         'default': '/images/menu-default.webp'
     };
 
@@ -73,14 +91,15 @@ const Header = () => {
         window.addEventListener('scroll', handleScroll);
         return () => {
             window.removeEventListener('scroll', handleScroll);
-        };
+        }
     }, []);
 
     useEffect(() => {
         closeMenu();
     }, [location.pathname]);
 
-    const navSections = [
+    // Estructura de navegación con corrección de error de .map
+    const defaultNavSections = [
         { name: 'New In', path: '/new-in', hasSubSections: false },
         {
             name: 'Cápsulas',
@@ -100,13 +119,18 @@ const Header = () => {
         { name: 'Programa de Bienestar', path: '/programa-de-bienestar', hasSubSections: false },
         { name: 'Contacto', path: '/contacto', hasSubSections: false },
     ];
+    
+    // Usa NAV_LINKS si es un array válido, si no, usa el array por defecto.
+    const navSections = Array.isArray(NAV_LINKS) ? NAV_LINKS : defaultNavSections;
 
     return (
         <>
             {/* Header de Escritorio */}
             <header className={`main-header ${isOpen ? 'open' : ''} ${isScrolled ? 'scrolled' : ''}`}>
-                {/* Contenedor Izquierdo - Botón de menú */}
+                
+                {/* Contenedor Izquierdo - SOLO BOTÓN DE MENÚ */}
                 <div className="header-left">
+                    {/* BOTÓN DE MENÚ */}
                     <button
                         className="header__menu-toggle"
                         onClick={toggleMenu}
@@ -120,7 +144,7 @@ const Header = () => {
                     </button>
                 </div>
 
-                {/* Contenedor Central - Logo con etiqueta <picture> */}
+                {/* Contenedor Central - Logo */}
                 <Link to="/" className="header__logo-container" onClick={closeMenu}>
                     <picture>
                         <source srcSet={isScrolled ? '/icons/isonegro.webp' : '/icons/isoblanco.webp'} type="image/webp" />
@@ -132,18 +156,30 @@ const Header = () => {
                     </picture>
                 </Link>
 
-                {/* Contenedor Derecho - Íconos de utilidad */}
+                {/* Contenedor Derecho - CARRITO, LOGIN y BUSCADOR */}
                 <div className="header-right">
-                    <button className="header__icon-button" aria-label="Buscador">
-                        <IoSearchOutline size={18} />
-                    </button>
-                    <button className="header__icon-button" aria-label="Mi cuenta">
-                        <IoPersonOutline size={18} />
-                    </button>
-                    <Link to="/cart" className="header__icon-button header__cart-icon" aria-label="Bolsa de compras" onClick={closeMenu}>
-                        <IoBagOutline size={18} />
+                    
+                    {/* CARRITO (BOLSA) */}
+                    <Link 
+                        to="/cart" 
+                        className="header__icon-button header__cart-icon" 
+                        aria-label="Bolsa de compras" 
+                        onClick={closeMenu}
+                    >
+                        <CustomBagIcon size={22} color="currentColor" />
                         {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
                     </Link>
+                    
+                    {/* ÍCONO DE MI CUENTA (LOGIN) */}
+                    <Link to="/login" className="header__icon-button header__login-icon" aria-label="Mi cuenta" onClick={closeMenu}>
+                        <IoPersonOutline size={22} /> 
+                    </Link>
+                    
+                    {/* BUSCADOR */}
+                    <button className="header__icon-button header__search-icon" aria-label="Buscador">
+                        <IoSearchOutline size={22} /> 
+                    </button>
+
                 </div>
 
                 {/* Menú de navegación (oculto por defecto) */}
@@ -233,13 +269,14 @@ const Header = () => {
                         </button>
                     </li>
                     <li>
-                        <Link to="/cuenta" className={`mobile-nav-link ${location.pathname === '/cuenta' ? 'active' : ''}`} aria-label="Mi cuenta">
+                        <Link to="/login" className={`mobile-nav-link ${location.pathname === '/login' ? 'active' : ''}`} aria-label="Mi cuenta">
                             <IoPersonOutline size={22} />
                         </Link>
                     </li>
                     <li>
+                        {/* Carrito en navegación móvil */}
                         <Link to="/cart" className={`mobile-nav-link ${location.pathname === '/cart' ? 'active' : ''}`} aria-label="Bolsa de compras">
-                            <IoBagOutline size={22} />
+                            <CustomBagIcon size={22} color="currentColor" />
                             {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
                         </Link>
                     </li>

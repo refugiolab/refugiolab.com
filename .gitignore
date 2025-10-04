@@ -25,3 +25,6 @@ dist-ssr
 
 # Ignorar carpeta con errores de Git
 /public/images/universo-refugio
+
+# ¡AGREGA ESTA LÍNEA!
+.env

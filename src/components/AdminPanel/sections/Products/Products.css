@@ -1,0 +1,124 @@
+/* src/components/AdminPanel/sections/Products/Products.css */
+
+.action-button, .back-button, .save-button, .cancel-button, .table-button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    font-family: inherit;
+    font-size: 1rem;
+    border: none;
+    margin-right: 10px;
+}
+
+.action-button {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:hover {
+    background-color: #d8a635;
+    transform: translateY(-2px);
+}
+
+.table-button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+}
+
+.table-button.view {
+    background-color: #6c757d;
+    color: white;
+}
+
+.table-button.view:hover {
+    background-color: #5a6268;
+}
+
+.table-button.edit {
+    background-color: #28a745;
+    color: white;
+}
+
+.table-button.edit:hover {
+    background-color: #218838;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-secondary);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(204, 153, 41, 0.2);
+}
+
+.form-actions {
+    margin-top: 2rem;
+}
+
+.save-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.save-button:hover {
+    background-color: #218838;
+}
+
+.cancel-button {
+    background-color: #6c757d;
+    color: white;
+}
+
+.cancel-button:hover {
+    background-color: #5a6268;
+}
+
+.back-button {
+    background-color: #f8f9fa;
+    color: var(--color-secondary);
+    border: 1px solid var(--color-border);
+    margin-bottom: 2rem;
+}
+
+.back-button:hover {
+    background-color: #e2e6ea;
+}
+
+.details-container {
+    background-color: var(--color-panel-background);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.details-container p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+}
