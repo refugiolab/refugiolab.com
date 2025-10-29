@@ -1,12 +1,16 @@
 // src/firebaseConfig.js
+// Configuración de Firebase que lee variables de entorno de forma segura (Vite)
+
+// Importa las funciones necesarias del SDK de Firebase
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
-import { getAuth } from "firebase/auth";
+import { getAnalytics } from "firebase/analytics"; 
+import { getAuth } from "firebase/auth";       
+import { getFirestore } from "firebase/firestore"; 
+import { getStorage } from "firebase/storage";   
 
 // Tu configuración de Firebase ahora lee los valores del archivo .env
 const firebaseConfig = {
-    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY, 
     authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
     projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
     storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
@@ -15,13 +19,12 @@ const firebaseConfig = {
     measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
-// Inicializa Firebase
-const app = initializeApp(firebaseConfig);
+// Inicializa Firebase App (el contenedor principal)
+export const app = initializeApp(firebaseConfig); // <-- CAMBIO CLAVE: exporta 'app'
+                                                 //    para que main.jsx lo encuentre.
 
-// Inicializa Firestore, Storage y Auth
-const db = getFirestore(app);
-const storage = getStorage(app);
-const auth = getAuth(app);
-
-// Exporta las instancias para que puedan ser usadas en otros componentes
-export { app, db, storage, auth };
+// Inicializa y exporta los servicios
+export const analytics = getAnalytics(app); 
+export const auth = getAuth(app);       
+export const db = getFirestore(app);    
+export const storage = getStorage(app);
