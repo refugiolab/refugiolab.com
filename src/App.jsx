@@ -3,6 +3,7 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
+import ErrorBoundary from './components/ErrorBoundary';
 import './styles/App.css';
 import { NAV_LINKS } from './constants/data'; 
 
@@ -42,6 +43,7 @@ function App() {
         <Router>
             <CartProvider>
                 <Suspense fallback={<div>Cargando...</div>}>
+  <ErrorBoundary>
                     <Routes>
                         <Route path="/" element={<ImmersiveIntroPage />} />
                         <Route element={<Layout />}>
@@ -92,6 +94,7 @@ function App() {
                         {/* Manejo de rutas no encontradas (404) */}
                         <Route path="*" element={<div>Página no encontrada</div>} />
                     </Routes>
+           </ErrorBoundary>
                 </Suspense>
             </CartProvider>
         </Router>

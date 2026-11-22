@@ -4,7 +4,7 @@ import { initMercadoPago } from '@mercadopago/sdk-react';
 
 // Reemplaza 'TU_PUBLIC_KEY' con tu clave pública de Mercado Pago.
 // Esto sigue siendo seguro porque la clave pública no se usa para crear pagos.
-initMercadoPago('TU_PUBLIC_KEY', {
+initMercadoPago(import.meta.env.VITE_MERCADO_PAGO_PUBLIC_KEY || 'TU_PUBLIC_KEY', {
   locale: 'es-AR', 
 });
 
@@ -12,7 +12,7 @@ const Checkout = ({ cart }) => {
   const processPayment = async () => {
     try {
       // Envía el carrito directamente a tu servidor backend
-      const response = await fetch('http://localhost:3001/api/create_preference', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/api/create_preference`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

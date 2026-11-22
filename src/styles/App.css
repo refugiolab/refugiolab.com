@@ -50,9 +50,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Eliminar el estilo de enfoque por defecto para todos los elementos */
-*:focus {
-  outline: none;
+/* Mantener el indicador de enfoque visible para navegación por teclado (accesibilidad) */
+*:focus-visible {
+  outline: 2px solid var(--color-texto, #444653);
+  outline-offset: 2px;
 }
 
 /* Estilos Generales para Enlaces */

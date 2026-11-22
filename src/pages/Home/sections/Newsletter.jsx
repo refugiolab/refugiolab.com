@@ -1,24 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getAuth, signInWithCustomToken } from 'firebase/auth';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
+import { db, auth } from '../../../firebaseConfig.js';
 import './Newsletter.css';
-
-// Estas variables globales son proporcionadas por el entorno.
-const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-
-// Inicialización de Firebase. Es importante que esta parte se ejecute una sola vez.
-let app, auth, db;
-if (!getApps().length) {
-  app = initializeApp(firebaseConfig);
-} else {
-  app = getApp();
-}
-db = getFirestore(app);
-auth = getAuth(app);
 
 const Newsletter = () => {
   const [name, setName] = useState('');
@@ -31,21 +15,9 @@ const Newsletter = () => {
     threshold: 0.1,
   });
 
-  // Autentica el usuario al cargar el componente.
+  // Firebase ya está inicializado en firebaseConfig.js; auth está listo para usar.
   useEffect(() => {
-    const authenticate = async () => {
-      try {
-        if (initialAuthToken) {
-          await signInWithCustomToken(auth, initialAuthToken);
-        }
-        setIsAuthReady(true);
-      } catch (error) {
-        console.error("Error al autenticar con token personalizado:", error);
-      }
-    };
-    if (auth) {
-      authenticate();
-    }
+    setIsAuthReady(true);
   }, []);
 
   const handleSubmit = async (e) => {
