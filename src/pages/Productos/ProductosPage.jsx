@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 import useProductos from '../../hooks/useProductos.js';
 import { useCart } from '../../context/CartContext.jsx';
+import SEO from '../../components/SEO';
 import './ProductosPage.css';
 
 const ProductosPage = () => {
@@ -24,7 +25,14 @@ const ProductosPage = () => {
       : productos;
 
     return (
-        <div className="productos-page">
+        <>
+            <SEO
+                title={category ? `${category.toUpperCase()} | Productos | Refugio` : 'Productos | Refugio'}
+                description={category ? `Descubre nuestra colección de ${category.toLowerCase()} en Refugio.` : 'Explora todas nuestras colecciones de ropa consciente y atemporal en Refugio.'}
+                canonical={`https://refugiolab.com${category ? `/productos/${category.toLowerCase()}` : '/productos'}`}
+                ogImage="/images/hero-bg.webp"
+            />
+            <div className="productos-page">
             <h1 className="productos-page-title">{category ? category.toUpperCase() : "TODOS LOS PRODUCTOS"}</h1>
             <div className="productos-list">
                 {filteredProductos.map(producto => (
@@ -53,7 +61,8 @@ const ProductosPage = () => {
                     </div>
                 ))}
             </div>
-        </div>
+            </div>
+        </>
     );
 };
 

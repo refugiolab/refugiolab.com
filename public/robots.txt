@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://refugiolab.com/sitemap.xml

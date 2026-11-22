@@ -6,6 +6,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../firebaseConfig'; // Importamos la instancia de Firestore
 
 import Modal from '../../components/common/Modal.jsx';
+import SEO from '../../components/SEO';
 import { IMAGE_PATHS, SOCIAL_LINKS, TEXT_CONTENT } from '../../constants/data';
 import useModal from '../../hooks/useModal';
 import './ContactoPage.css';
@@ -108,7 +109,14 @@ const ContactoPage = () => {
     const { header, info, form } = newTEXT_CONTENT.contactPage;
 
     return (
-        <section className="contacto">
+        <>
+            <SEO
+                title="Contacta con Refugio"
+                description="¿Tienes una consulta, una propuesta o simplemente quieres saludar? Escríbenos a Refugio. Estamos aquí para escucharte."
+                canonical="https://refugiolab.com/contacto"
+                ogImage="/images/separador-bloques.webp"
+            />
+            <section className="contacto">
             <header className="contacto__header">
                 <h1 className="contacto__titulo">{header.title}</h1>
                 <p className="contacto__subtitulo">{header.subtitle}</p>
@@ -162,6 +170,7 @@ const ContactoPage = () => {
                 <p>{modalContent.text}</p>
             </Modal>
         </section>
+        </>
     );
 };
 

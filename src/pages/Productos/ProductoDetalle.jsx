@@ -5,6 +5,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebaseConfig.js';
 import { useCart } from '../../context/CartContext.jsx';
 import { FaShoppingCart, FaArrowLeft } from 'react-icons/fa';
+import SEO from '../../components/SEO';
 import './ProductoDetalle.css';
 
 const ProductoDetalle = () => {
@@ -50,7 +51,14 @@ const ProductoDetalle = () => {
     }
 
     return (
-        <div className="product-detail-page">
+        <>
+            <SEO
+                title={producto.name ? `${producto.name} | Refugio` : 'Producto | Refugio'}
+                description={producto.description ? producto.description.substring(0, 160) : 'Descubre este producto único de Refugio.'}
+                canonical={`https://refugiolab.com/producto/${id}`}
+                ogImage={producto.images && producto.images[0] ? producto.images[0] : '/images/hero-bg.webp'}
+            />
+            <div className="product-detail-page">
             <button onClick={() => navigate(-1)} className="back-button">
                 <FaArrowLeft /> Volver
             </button>
@@ -72,7 +80,8 @@ const ProductoDetalle = () => {
                     </button>
                 </div>
             </div>
-        </div>
+            </div>
+        </>
     );
 };
 

@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
+import SEO from '../../components/SEO';
 import './BlogPage.css'; // Importa el archivo de estilos
 
 const BlogPage = () => {
@@ -11,7 +12,14 @@ const BlogPage = () => {
     });
 
     return (
-        <section className="blog-page-section">
+        <>
+            <SEO
+                title="Cartas al Mar | Refugio"
+                description="Nuestro rincón de inspiración donde la prosa se une a la poesía de la vida consciente. Encontrarás reflexiones que profundizan tu conexión con el mundo."
+                canonical="https://refugiolab.com/cartas-al-mar"
+                ogImage="/images/homecartasalmar.webp"
+            />
+            <section className="blog-page-section">
             <div className="blog__text-content">
                 <h3>Cartas al Mar</h3>
                 <p className={`blog__intro-text ${blogTextInView ? 'is-in-view' : ''}`} ref={blogTextRef}>
@@ -32,6 +40,7 @@ const BlogPage = () => {
                 </Link>
             </div>
         </section>
+        </>
     );
 };
 
