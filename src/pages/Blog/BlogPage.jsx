@@ -30,7 +30,7 @@ const BlogPage = () => {
             <div className="blog__image-container">
                 <picture>
                     <source srcSet="/images/homecartasalmar.webp" type="image/webp" />
-                    <img className="blog__image" src="/images/homecartasalmar.png" alt="Cartas al Mar - Imagen inspiradora" />
+                    <img className="blog__image" src="/images/homecartasalmar.png" alt="Cartas al Mar - Imagen inspiradora" loading="lazy" />
                 </picture>
             </div>
 

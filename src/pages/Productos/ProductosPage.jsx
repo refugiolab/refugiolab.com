@@ -39,7 +39,7 @@ const ProductosPage = () => {
                     // Se usa <Link> para navegar a la página de detalles
                     <div key={producto.id} className="producto-card">
                         <Link to={`/producto/${producto.id}`}>
-                            <img src={producto.images[0]} alt={producto.name} className="producto-image" />
+                            <img src={producto.images[0]} alt={producto.name} className="producto-image" loading="lazy" />
                         </Link>
                         <div className="product-info">
                             <h2 className="producto-name">{producto.name}</h2>

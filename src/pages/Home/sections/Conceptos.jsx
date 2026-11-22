@@ -56,7 +56,7 @@ const Conceptos = () => {
                 {/* Concepto 1: LifeWear */}
                 <div className="concepto-card">
                     <div className="card-image-wrapper">
-                        <img src={pilar1} alt="Concepto Vestir" className="card-image" />
+                        <img src={pilar1} alt="Concepto Vestir" className="card-image" loading="lazy" />
                     </div>
                     <div className="card-content">
                         <h3>LifeWear</h3>
@@ -68,7 +68,7 @@ const Conceptos = () => {
                 {/* Concepto 2: Universo Sensorial */}
                 <div className="concepto-card">
                     <div className="card-image-wrapper">
-                        <img src={pilar2} alt="Concepto Meditar" className="card-image" />
+                        <img src={pilar2} alt="Concepto Meditar" className="card-image" loading="lazy" />
                     </div>
                     <div className="card-content">
                         <h3>Universo Sensorial</h3>
@@ -80,7 +80,7 @@ const Conceptos = () => {
                 {/* Concepto 3: Citas virtuales */}
                 <div className="concepto-card">
                     <div className="card-image-wrapper">
-                        <img src={pilar3} alt="Concepto Habitar" className="card-image" />
+                        <img src={pilar3} alt="Concepto Habitar" className="card-image" loading="lazy" />
                     </div>
                     <div className="card-content">
                         <h3>Citas virtuales</h3>
@@ -98,6 +98,7 @@ const Conceptos = () => {
                     className="ojo-refugio-bottom" 
                     onClick={handleOjoClick} 
                     style={{ cursor: 'pointer' }}
+                    loading="lazy"
                 />
             </div>
 
